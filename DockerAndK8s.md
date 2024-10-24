@@ -1,6 +1,4 @@
-# **Comprehensive Guide: Docker and Kubernetes**
-
----
+# **Docker and Kubernetes**
 
 ## **1. Overview of Docker and Kubernetes**
 
