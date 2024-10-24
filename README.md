@@ -1,4 +1,4 @@
-# **Documentation Vault 📚**
+# **Documentations Vault 📚**
 
 All My Documentations
 
