@@ -11,6 +11,7 @@ All Reference Documentations
 1. [SOLID](./SOLID.md)
 
 ## **📄 Java**
-1. [Java - JDK, JRE, JVM](./JavaJDKJREJVM.md)
+1. [JDK, JRE, JVM](./Java/JavaJDKJREJVM.md)
+2. [Heap-Stack](./Java/JavaHeapStack.md)
 
 
