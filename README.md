@@ -20,3 +20,4 @@ All Reference Documentations
 7. [Primitive and Reference Types](./Java/PrimitiveReferenceTypes.md)
 8. [Reference Types Indepth](./Java/ReferenceTypesInDepth.md)
 9. [Collections JCF](./Java/Collections-JCF.md)
+10. [Streams and Lambas](./Java/StreamsLambdas.md)
