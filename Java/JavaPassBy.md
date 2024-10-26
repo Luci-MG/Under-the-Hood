@@ -54,7 +54,7 @@ public class PassByReferenceExample {
 
     public static void modifyObject(MyClass myObject) {
         myObject.value = 20; // Modifies the object's property
-        // myObject = new MyClass(30); // This would not affect the original object reference
+        // myObject = new MyClass(30); // This would not affect the original object reference only changes local myObject.
     }
 }
 ```
