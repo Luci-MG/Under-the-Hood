@@ -1,6 +1,4 @@
-**Java Collections Framework (JCF)** 
-
-## **Java Collections Framework – Overview**
+# **Java Collections Framework**
 
 ### **Categories of Collections**
 1. **List**: Ordered, allows duplicates.
