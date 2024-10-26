@@ -1,6 +1,6 @@
 # Reference Types In Depth.
 
-how **memory management, object references, and behaviors** work in Java, with a focus on **String handling** and other reference types like **arrays, classes, and wrapper objects**.
+How **memory management, object references, and behaviors** work in Java, with a focus on **String handling** and other reference types like **arrays, classes, and wrapper objects**.
 
 ---
 
