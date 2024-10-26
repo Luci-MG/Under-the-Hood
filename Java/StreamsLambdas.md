@@ -1,7 +1,5 @@
 # **Streams and Lambdas** 
 
----
-
 ### 1. **Lambda Expressions**  
 - **Syntax**: `(parameters) -> expression` or `(parameters) -> { statements }`
 - **Purpose**: Enables functional programming by treating functions as first-class citizens.

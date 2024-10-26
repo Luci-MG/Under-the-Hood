@@ -10,6 +10,9 @@ All Reference Documentations
 ## **📄 Design Patterns**
 1. [SOLID](./SOLID.md)
 
+## **📄 LLConcepts**
+1. [Concurrency and Parallelism](./LLConcepts/ConcurrencyParallelism.md)
+
 ## **📄 Java**
 1. [JDK, JRE, JVM](./Java/JavaJDKJREJVM.md)
 2. [Heap-Stack](./Java/JavaHeapStack.md)
