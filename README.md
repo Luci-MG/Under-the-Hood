@@ -25,3 +25,5 @@ All Deep Dives Documentations
 9. [Collections JCF](./Java/Collections-JCF.md)
 10. [Streams and Lambas](./Java/StreamsLambdas.md)
 11. [Threads](./Java/Threads.md)
+12. [Thread Pools](./Java/ThreadPools.md)
+13. [Thread Pool Tuning](./Java/ThreadPoolTuning.md)
