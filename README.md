@@ -17,3 +17,4 @@ All Reference Documentations
 4. [4 Pillars](./Java/4Pillars.md)
 5. [Access Modifiers Public, Private, Protected](./Java/AccessModifPPPPP.md)
 6. [Keywords and Terminologies](./Java/KeyWordsTerminolgies.md)
+7. [Primitive and Reference Types](./Java/PrimitiveReferenceTypes.md)
