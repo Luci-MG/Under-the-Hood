@@ -27,3 +27,6 @@ All Deep Dives Documentations
 11. [Threads](./Java/Threads.md)
 12. [Thread Pools](./Java/ThreadPools.md)
 13. [Thread Pool Tuning](./Java/ThreadPoolTuning.md)
+14. [Locking - Intrinsic](./Java/Locking-Intrinsic.md)
+15. [Locking - Reentrant](./Java/Locking-Reentrant.md)
+16. [Locking - Intrinsic vs Reentrant](./Java/LockingIntrinsicReentrant.md)
