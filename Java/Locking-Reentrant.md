@@ -15,7 +15,7 @@ Java offers various **locking mechanisms**, from **synchronized blocks** to **ex
 
 ---
 
-## **3. What is `ReentrantLock`?**
+## **2. What is `ReentrantLock`?**
 
 The **`ReentrantLock`** class, introduced in **Java 5**, offers more control over thread synchronization than the `synchronized` keyword. It allows for advanced locking techniques such as **fairness policies**, **tryLock**, and **interruptible locks**. Let’s explore everything about `ReentrantLock`, including its use cases, internal mechanisms, and best practices.
 
