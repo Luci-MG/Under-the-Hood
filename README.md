@@ -30,3 +30,7 @@ All Deep Dives Documentations
 14. [Locking - Intrinsic](./Java/Locking-Intrinsic.md)
 15. [Locking - Reentrant](./Java/Locking-Reentrant.md)
 16. [Locking - Intrinsic vs Reentrant](./Java/LockingIntrinsicReentrant.md)
+17. [Locking - Issues - DeadLock](./Java/Locking-Issues-DeadLock.md)
+18. [Locking - Issues - LiveLock](./Java/Locking-Issues-LiveLock.md)
+19. [Locking - Issues - Starvation](./Java/Locking-Issues-Starvation.md)
+20. [Locking - Issues - Others](./Java/Locking-Issues-Others.md)
