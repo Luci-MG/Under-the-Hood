@@ -9,7 +9,8 @@ All Deep Dives Documentations
 2. [Simple Storage Service - S3](./S3.md)
 
 ## **📄 Design Patterns**
-1. [SOLID](./SOLID.md)
+1. [SOLID](./DesignPatterns/SOLID.md)
+1. [Circuit Breakers](./DesignPatterns/CircuitBreakers.md)
 
 ## **📄 LLConcepts**
 1. [Concurrency and Parallelism](./LLConcepts/ConcurrencyParallelism.md)
