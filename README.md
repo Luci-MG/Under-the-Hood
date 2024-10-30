@@ -8,8 +8,13 @@ All Deep Dives Documentations
 1. [Docker & K8s Documentation](./DockerAndK8s.md)
 2. [Simple Storage Service - S3](./S3.md)
 
+## **📄 Fundamental Principles**
+1. [SOLID](./FundamentalPrinciples/SOLID.md)
+1. [KISS](./FundamentalPrinciples/KISS.md)
+1. [DRY](./FundamentalPrinciples/DRY.md)
+1. [YAGNI](./FundamentalPrinciples/YAGNI.md)
+
 ## **📄 Design Patterns**
-1. [SOLID](./DesignPatterns/SOLID.md)
 1. [Circuit Breakers](./DesignPatterns/CircuitBreakers.md)
 
 ## **📄 LLConcepts**
