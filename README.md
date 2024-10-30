@@ -4,10 +4,6 @@ All Deep Dives Documentations
 
 ## **📄 Indexes**
 
-## **📄 Distributed Systems**
-1. [Docker & K8s Documentation](./DockerAndK8s.md)
-2. [Simple Storage Service - S3](./S3.md)
-
 ## **📄 Fundamental Principles**
 1. [SOLID](./FundamentalPrinciples/SOLID.md)
 1. [KISS](./FundamentalPrinciples/KISS.md)
@@ -29,8 +25,14 @@ All Deep Dives Documentations
 1. [Strategy](./DesignPatterns/Strategy.md)
 1. [Circuit Breakers](./DesignPatterns/CircuitBreakers.md)
 
-## **📄 LLConcepts**
-1. [Concurrency and Parallelism](./LLConcepts/ConcurrencyParallelism.md)
+## **📄 Fundamental Concepts**
+1. [Concurrency and Parallelism](./FundamentalConcepts/ConcurrencyParallelism.md)
+1. [High Availability and Fault Tolerance](./FundamentalConcepts/HighAvailabilityFaultTolerance.md)
+
+## **📄 Distributed Systems**
+1. [Docker & K8s Documentation](./DistrubutedSystems/DockerAndK8s.md)
+1. [Simple Storage Service - S3](./DistrubutedSystems/S3.md)
+1. [Kafka](./DistrubutedSystems/Kafka.md)
 
 ## **📄 Java**
 1. [JDK, JRE, JVM](./Java/JavaJDKJREJVM.md)
