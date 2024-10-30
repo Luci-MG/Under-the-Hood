@@ -15,6 +15,11 @@ All Deep Dives Documentations
 1. [YAGNI](./FundamentalPrinciples/YAGNI.md)
 
 ## **📄 Design Patterns**
+1. [Singleton](./DesignPatterns/Singleton.md)
+1. [Factory Method](./DesignPatterns/FactoryMethod.md)
+1. [Abstract Factory](./DesignPatterns/AbstractFactory.md)
+1. [Builder](./DesignPatterns/Builder.md)
+1. [Prototype](./DesignPatterns/Prototype.md)
 1. [Circuit Breakers](./DesignPatterns/CircuitBreakers.md)
 
 ## **📄 LLConcepts**
