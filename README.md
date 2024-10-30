@@ -20,6 +20,13 @@ All Deep Dives Documentations
 1. [Abstract Factory](./DesignPatterns/AbstractFactory.md)
 1. [Builder](./DesignPatterns/Builder.md)
 1. [Prototype](./DesignPatterns/Prototype.md)
+1. [Adapter](./DesignPatterns/Adapter.md)
+1. [Bridge](./DesignPatterns/Bridge.md)
+1. [Composite](./DesignPatterns/Composite.md)
+1. [Decorater](./DesignPatterns/Decorator.md)
+1. [Facade](./DesignPatterns/Facade.md)
+1. [Iterator](./DesignPatterns/Iterator.md)
+1. [Strategy](./DesignPatterns/Strategy.md)
 1. [Circuit Breakers](./DesignPatterns/CircuitBreakers.md)
 
 ## **📄 LLConcepts**

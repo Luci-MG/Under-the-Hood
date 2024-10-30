@@ -1,4 +1,4 @@
-# **Builder Pattern**
+# **Builder Design Pattern**
 
 The **Builder Pattern** is a **creational design pattern** that allows the construction of complex objects step by step. It separates the construction process from the actual object, giving more control over the construction process.
 

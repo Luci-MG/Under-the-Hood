@@ -1,4 +1,4 @@
-# **Abstract Factory Pattern**
+# **Abstract Factory Design Pattern**
 
 The **Abstract Factory Pattern** is a **creational design pattern** that provides an interface for creating families of related or dependent objects without specifying their concrete classes. It promotes **loose coupling** between client code and the actual implementations, allowing the code to be more flexible and scalable.
 

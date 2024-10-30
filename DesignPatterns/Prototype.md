@@ -1,4 +1,4 @@
-# **Prototype Pattern**
+# **Prototype Design Pattern**
 
 The **Prototype Pattern** is a **creational design pattern** used when the cost of creating a new object is expensive or complicated. Instead of creating new instances from scratch, this pattern suggests **cloning existing objects** to produce new ones.
 

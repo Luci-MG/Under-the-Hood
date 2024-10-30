@@ -1,4 +1,4 @@
-# **Factory Method**
+# **Factory Design Method**
 
 The **Factory Method Pattern** is one of the most widely used **creational design patterns**. It helps in the creation of objects without specifying the exact class of the object that will be created. 
 
