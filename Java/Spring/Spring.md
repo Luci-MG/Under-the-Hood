@@ -1,7 +1,5 @@
 # **Spring**
 
----
-
 ## **What is Spring?**
 **Spring** is a popular, open-source Java-based framework used to create enterprise-level applications. It provides a comprehensive programming and configuration model that simplifies **Java development**. At its core, Spring focuses on **dependency injection** and **inversion of control (IoC)**, providing an abstraction over Java's complexity.
 
