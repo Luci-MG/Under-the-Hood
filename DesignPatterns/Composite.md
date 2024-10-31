@@ -254,3 +254,9 @@ The Composite Pattern is a powerful structural pattern for managing **hierarchic
 However, avoid using it when there’s no hierarchy or when performance is critical (deep recursion). Use it wisely, and it can help you **reduce complexity** and **simplify your code**.
 
 ---
+
+### Reference Links
+
+1. https://refactoring.guru/design-patterns/composite
+
+---

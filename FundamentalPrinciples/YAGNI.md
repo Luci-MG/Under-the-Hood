@@ -143,3 +143,9 @@ The **YAGNI principle** encourages developers to focus on **delivering only the 
 When used properly, YAGNI helps teams build better software, faster, and with fewer headaches down the line.
 
 ---
+
+### Reference Links
+
+1. https://blog.algomaster.io/p/8c3c7da7-885b-4a9c-a6e4-70ee02de4772
+
+---

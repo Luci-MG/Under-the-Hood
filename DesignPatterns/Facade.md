@@ -252,3 +252,9 @@ Avoid using it when:
 This makes the Facade pattern a valuable asset in both **object-oriented design** and **modern frameworks** like Spring Boot.
 
 ---
+
+### Reference Links
+
+1. https://refactoring.guru/design-patterns/facade
+
+---

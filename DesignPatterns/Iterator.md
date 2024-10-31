@@ -235,3 +235,9 @@ public class BookController {
 The **Iterator pattern** is a powerful way to **decouple iteration logic** from collections, ensuring a **clean separation of concerns**. It’s useful in Java projects where complex or multiple ways of traversal are required. When integrated into **Spring Boot**, the pattern can be applied to iterate over configurations, data models, or APIs efficiently.
 
 ---
+
+### Reference Links
+
+1. https://refactoring.guru/design-patterns/iterator
+
+---

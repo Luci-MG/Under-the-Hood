@@ -230,3 +230,9 @@ This shows that a **new instance is created each time** a prototype-scoped bean 
 The **Prototype Pattern** offers an elegant way to clone existing objects, saving the overhead of complex object creation. It fits well when objects are **expensive to create** or **share the same initial configuration**. With **Java's cloning mechanisms** and **Spring Boot's prototype scope**, it is easy to implement. However, care must be taken when handling deep versus shallow copies, and the pattern should be avoided when objects are inexpensive to create.
 
 ---
+
+### Reference Links
+
+1. https://refactoring.guru/design-patterns/prototype
+
+---

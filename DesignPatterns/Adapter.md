@@ -209,3 +209,9 @@ public class PaymentController {
 - **Simplifies testing**, as adapters can be mocked or stubbed easily.
 
 ---
+
+### Reference Links
+
+1. https://refactoring.guru/design-patterns/adapter
+
+---

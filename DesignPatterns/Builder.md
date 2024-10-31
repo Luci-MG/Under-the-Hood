@@ -245,3 +245,9 @@ The **Builder Pattern** is an elegant way to handle object creation, especially 
 In **Spring Boot**, the Builder Pattern can be effectively used for creating **DTOs** and other complex objects, improving both code readability and maintenance. This pattern fits well when dealing with **REST API responses** or **configuration settings**, ensuring your objects are built in a clear, consistent manner.
 
 ---
+
+### Reference Links
+
+1. https://refactoring.guru/design-patterns/builder
+
+---

@@ -223,3 +223,9 @@ In **Spring Boot**, it can be used for decorating services with additional featu
 This pattern should be used thoughtfully since excessive use can introduce complexity and make debugging difficult. However, when applied correctly, it ensures that code remains extensible and adheres to the **Single Responsibility Principle** and **Open/Closed Principle**.
 
 ---
+
+### Reference Links
+
+1. https://refactoring.guru/design-patterns/decorator
+
+---

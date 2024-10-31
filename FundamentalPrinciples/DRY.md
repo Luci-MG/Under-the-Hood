@@ -140,3 +140,9 @@ public class OrderService {
 The DRY principle ensures that **code duplication is minimized** for easier maintenance and improved consistency. In our Java example, we extracted common validation logic to **private methods**, adhering to DRY and making the code more maintainable. However, always be careful to avoid **over-abstraction**, as not all code repetition is bad. The goal is to achieve **a balance between simplicity and reusability**.
 
 ---
+
+### Reference Links
+
+1. https://blog.algomaster.io/p/082450d8-0e7b-4447-a8dc-b7308e45f048
+
+---

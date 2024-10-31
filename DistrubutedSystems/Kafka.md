@@ -489,5 +489,10 @@ Here are the  organized into individual tables based on their sections. Each tab
 | `controller.socket.timeout.ms`        | `30,000`                | Sets the timeout for controller-to-controller connections, ensuring stability during network issues. |
 | `leader.imbalance.check.interval.seconds` | `300` (5 minutes)   | Defines the interval at which the controller checks for leader imbalance, helping to maintain even load distribution across brokers. |
 
+---
+
+Reference Links:
+
+https://www.hellointerview.com/learn/system-design/deep-dives/kafka
 
 ---

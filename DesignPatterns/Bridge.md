@@ -236,3 +236,9 @@ In this example, the **Bridge Pattern** allows you to switch between different w
 The **Bridge Pattern** is an essential design pattern to consider when your class hierarchy is growing unmanageable due to multiple dimensions of variations. In **Spring Boot**, this pattern can help in building flexible and scalable systems by dynamically injecting different implementations of a service. Use this pattern when you need to decouple abstraction from implementation and allow them to evolve independently, but avoid it when simpler solutions can suffice.
 
 ---
+
+### Reference Links
+
+1. https://refactoring.guru/design-patterns/bridge
+
+---

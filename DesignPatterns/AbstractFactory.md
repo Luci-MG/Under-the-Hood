@@ -261,3 +261,9 @@ In this example, the theme is configured through the `application.properties` fi
 The **Abstract Factory Pattern** is a powerful tool when designing systems that need to create multiple families of related objects. While it adds complexity, the benefits include **extensibility**, **maintainability**, and **loose coupling**. In a Spring Boot application, it works well alongside **dependency injection**, especially when configurations like themes or environments vary.
 
 ---
+
+### Reference Links
+
+1. https://refactoring.guru/design-patterns/abstract-factory
+
+---

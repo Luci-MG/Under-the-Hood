@@ -207,3 +207,9 @@ When you access `/notify/SMS` or `/notify/Email`, it will dynamically create and
 This pattern is especially helpful in **modular systems** where new functionalities might be added frequently, and we want to **minimize the impact of changes** to existing code.
 
 ---
+
+### Reference Links
+
+1. https://refactoring.guru/design-patterns/factory-method
+
+---

@@ -279,3 +279,9 @@ public class Application {
 The **Strategy Pattern** is a powerful way to manage dynamic behavior selection in a clean and decoupled way. In a Spring Boot application, you can easily integrate it by using **dependency injection**. However, it’s essential to use the pattern wisely to avoid unnecessary complexity or overhead. Use it when multiple behaviors or algorithms need to vary independently without modifying client code. Avoid using it if the added complexity is not justified.
 
 ---
+
+### Reference Links
+
+1. https://refactoring.guru/design-patterns/singleton
+
+---

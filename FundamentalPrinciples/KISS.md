@@ -113,3 +113,9 @@ The **KISS principle** encourages developers to create **simple, maintainable, a
 Ultimately, applying KISS is about **striking the right balance**: making the solution as simple as possible, but not simpler than necessary.
 
 ---
+
+### Reference Links
+
+1. https://blog.algomaster.io/p/21b57678-b351-4ed4-b390-3b6308af2f7d
+
+---

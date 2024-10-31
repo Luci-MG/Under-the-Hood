@@ -301,3 +301,10 @@ class Application {
 | **Dependency Inversion (DIP)**       | Depend on abstractions, not implementations.                 | App depends on `SQLDatabase` directly.         | Use `Database` interface for loose coupling.      |
 
 ---
+
+### Reference Links
+
+1. https://blog.algomaster.io/p/solid-principles-explained-with-code
+1. https://medium.com/backticks-tildes/the-s-o-l-i-d-principles-in-pictures-b34ce2f1e898
+
+---

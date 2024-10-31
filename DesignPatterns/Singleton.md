@@ -229,3 +229,10 @@ By default, **a single instance of the bean** is created and **shared across the
 However, if you need a new instance every time a bean is requested, you can change the scope to `prototype`. But be mindful Spring’s singleton scope simplifies things like caching and state consistency, while prototype beans may introduce complexity.
 
 ---
+
+### Reference Links
+
+1. https://refactoring.guru/design-patterns/singleton
+1. https://blog.algomaster.io/p/singleton-design-pattern
+
+---
