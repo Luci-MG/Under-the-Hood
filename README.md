@@ -25,14 +25,15 @@ All Deep Dives Documentations
 1. [Strategy](./DesignPatterns/Strategy.md)
 1. [Circuit Breakers](./DesignPatterns/CircuitBreakers.md)
 
-## **📄 Fundamental Concepts**
-1. [Concurrency and Parallelism](./FundamentalConcepts/ConcurrencyParallelism.md)
-1. [High Availability and Fault Tolerance](./FundamentalConcepts/HighAvailabilityFaultTolerance.md)
+## **📄 Distributed Systems Concepts**
+1. [Concurrency and Parallelism](./DistributedSystemsConcepts/ConcurrencyParallelism.md)
+1. [High Availability and Fault Tolerance](./DistributedSystemsConcepts/HighAvailabilityFaultTolerance.md)
 
 ## **📄 Distributed Systems**
 1. [Docker & K8s Documentation](./DistrubutedSystems/DockerAndK8s.md)
 1. [Simple Storage Service - S3](./DistrubutedSystems/S3.md)
 1. [Kafka](./DistrubutedSystems/Kafka.md)
+1. [Elasticsearch](./DistrubutedSystems/ElasticSearch.md)
 
 ## **📄 Java**
 1. [JDK, JRE, JVM](./Java/JavaJDKJREJVM.md)
