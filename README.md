@@ -34,6 +34,7 @@ All Deep Dives Documentations
 1. [Simple Storage Service - S3](./DistrubutedSystems/S3.md)
 1. [Kafka](./DistrubutedSystems/Kafka.md)
 1. [Elasticsearch](./DistrubutedSystems/ElasticSearch.md)
+1. [Redis](./DistrubutedSystems/Redis.md)
 
 ## **📄 Java**
 1. [JDK, JRE, JVM](./Java/JavaJDKJREJVM.md)
