@@ -35,6 +35,7 @@ All Deep Dives Documentations
 1. [Kafka](./DistrubutedSystems/Kafka.md)
 1. [Elasticsearch](./DistrubutedSystems/ElasticSearch.md)
 1. [Redis](./DistrubutedSystems/Redis.md)
+1. [Cassandra](./DistrubutedSystems/Cassandra.md)
 
 ## **📄 Java**
 1. [JDK, JRE, JVM](./Java/JavaJDKJREJVM.md)
