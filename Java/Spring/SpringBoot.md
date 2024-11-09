@@ -261,6 +261,6 @@ You can customize or add your own metrics by using `@Timed` or `MeterRegistry`.
 
 ## **Summary**
 
-Spring Boot streamlines the development process by providing **auto-configuration**, **embedded servers**, and a **production-ready environment**. It empowers developers to build and deploy microservices quickly, backed by powerful features like **Spring Security**, **Spring Data**, **Actuator**, and more. With its opinionated defaults and deep customizability, Spring Boot strikes a balance between simplicity and flexibility—making it ideal for both beginners and advanced developers.
+Spring Boot streamlines the development process by providing **auto-configuration**, **embedded servers**, and a **production-ready environment**. It empowers developers to build and deploy microservices quickly, backed by powerful features like **Spring Security**, **Spring Data**, **Actuator**, and more. With its opinionated defaults and deep customizability, Spring Boot strikes a balance between simplicity and flexibility making it ideal for both beginners and advanced developers.
 
 ---
