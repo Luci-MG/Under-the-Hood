@@ -153,15 +153,72 @@ markdown_extensions:
 #   /tutorials/**/*.md
 
 nav:
-  - Home: 'README.md'
-  # - Fundamental Principles:
-  #   - SOLID: 'FundamentalPrinciples/SOLID.md'
-  #   - KISS: 'FundamentalPrinciples/KISS.md'
-  #   - DRY: 'FundamentalPrinciples/DRY.md'
-  #   - YAGNI: 'FundamentalPrinciples/YAGNI.md'
-  # - Design Patterns:
-  #   - Singleton: 'DesignPatterns/Singleton.md'
-  #   - Factory Method: 'DesignPatterns/FactoryMethod.md'
+  - Home: index.md
+  - Tech Dives: 
+    - Distributed Systems Concepts:
+      - Concurrency and Parallelism: techdives/DistrubutedSystemsConcepts/ConcurrencyParallelism.md
+      - High Availability and Fault Tolerance: techdives/DistrubutedSystemsConcepts/HighAvailabilityFaultTolerance.md
+    - Distributed Systems:
+      - Docker & K8s Documentation: techdives/DistrubutedSystems/DockerAndK8s.md
+      - Simple Storage Service - S3: techdives/DistrubutedSystems/S3.md
+      - Kafka: techdives/DistrubutedSystems/Kafka.md
+      - Elasticsearch: techdives/DistrubutedSystems/ElasticSearch.md
+      - Redis: techdives/DistrubutedSystems/Redis.md
+      - Cassandra: techdives/DistrubutedSystems/Cassandra.md
+  - Fundamental Dives:
+    - Fundamental Principles:
+      - SOLID: fundamentaldives/FundamentalPrinciples/SOLID.md
+      - KISS: fundamentaldives/FundamentalPrinciples/KISS.md
+      - DRY: fundamentaldives/FundamentalPrinciples/DRY.md
+      - YAGNI: fundamentaldives/FundamentalPrinciples/YAGNI.md
+    - Design Patterns:
+      - Singleton: fundamentaldives/DesignPatterns/Singleton.md
+      - Factory Method: fundamentaldives/DesignPatterns/FactoryMethod.md
+      - Abstract Factory: fundamentaldives/DesignPatterns/AbstractFactory.md
+      - Builder: fundamentaldives/DesignPatterns/Builder.md
+      - Prototype: fundamentaldives/DesignPatterns/Prototype.md
+      - Adapter: fundamentaldives/DesignPatterns/Adapter.md
+      - Bridge: fundamentaldives/DesignPatterns/Bridge.md
+      - Composite: fundamentaldives/DesignPatterns/Composite.md
+      - Decorater: fundamentaldives/DesignPatterns/Decorator.md
+      - Facade: fundamentaldives/DesignPatterns/Facade.md
+      - Iterator: fundamentaldives/DesignPatterns/Iterator.md
+      - Strategy: fundamentaldives/DesignPatterns/Strategy.md
+      - Circuit Breakers: fundamentaldives/DesignPatterns/CircuitBreakers.md
+  - Lang Dives:
+      - Java:
+        - JDK, JRE, JVM: langdives/Java/JavaJDKJREJVM.md
+        - What is Maven?: langdives/Java/Maven.md
+        - What is Gradle?: langdives/Java/Gradle.md
+        - Maven vs Gradle: langdives/Java/MavenVsGradle.md
+        - Heap-Stack: langdives/Java/JavaHeapStack.md
+        - Pass By Value: langdives/Java/JavaPassBy.md
+        - 4 Pillars: langdives/Java/4Pillars.md
+        - Access Modifiers Public, Private, Protected: langdives/Java/AccessModifPPPPP.md
+        - Keywords and Terminologies: langdives/Java/KeyWordsTerminolgies.md
+        - Primitive and Reference Types: langdives/Java/PrimitiveReferenceTypes.md
+        - Reference Types Indepth: langdives/Java/ReferenceTypesInDepth.md
+        - Collections JCF: langdives/Java/Collections-JCF.md
+        - Streams and Lambas: langdives/Java/StreamsLambdas.md
+        - Threads: langdives/Java/Threads.md
+        - Threads - Atomicity: langdives/Java/Threads-Atomicity.md
+        - Thread Pools: langdives/Java/ThreadPools.md
+        - Thread Pool Tuning: langdives/Java/ThreadPoolTuning.md
+        - Intrinsic Locking: langdives/Java/Locking-Intrinsic.md
+        - Reentrant Locking: langdives/Java/Locking-Reentrant.md
+        - Intrinsic vs Reentrant Locking: langdives/Java/LockingIntrinsicReentrant.md
+        - Reentrant Read Write Locking: langdives/Java/Locking-ReentrantReadWrite.md
+        - DeadLock: langdives/Java/Locking-Issues-DeadLock.md
+        - LiveLock: langdives/Java/Locking-Issues-LiveLock.md
+        - Starvation: langdives/Java/Locking-Issues-Starvation.md
+        - Other Locking issues: langdives/Java/Locking-Issues-Others.md
+        - Garbage Collection(rs): langdives/Java/GarbageCollection.md
+        - Spring: langdives/Java/Spring/Spring.md
+        - Spring Core Framework: langdives/Java/Spring/SpringCoreFramework.md
+        - Spring Boot: langdives/Java/Spring/SpringBoot.md
+        - All Spring Boot Annotations: langdives/Java/Spring/SpringAnnotations.md
+        - Spring Framework vs Spring Boot: langdives/Java/Spring/SpringFrameworkVsSpringBoot.md
+        - Java 8 vs 11 vs 17 vs 21: langdives/Java/Java8vs11vs17vs21.md
   - Blog:
     - blog/index.md
 
