@@ -3,7 +3,7 @@ site_name: 'Documentations Vault'
 site_url: 'https://luci-mg.github.io/Documentations-Vault/'
 site_author: Mrudhul Guda
 site_description: >-
-  All the documentations deep dives by me
+  All the documentations deep dives by Mrudhul Guda
 
 # Repository
 repo_url: https://github.com/Luci-MG/Documentations-Vault
@@ -27,14 +27,15 @@ theme:
     # - content.tabs.link
     - content.tooltips
     # - header.autohide
-    # - navigation.expand
+    # - navigation.path
+    - navigation.expand
     - navigation.footer
     - navigation.indexes
-    # - navigation.instant
+    - navigation.instant
     # - navigation.instant.prefetch
-    # - navigation.instant.progress
+    - navigation.instant.progress
     # - navigation.prune
-    - navigation.sections
+    # - navigation.sections
     - navigation.tabs
     # - navigation.tabs.sticky
     - navigation.top
@@ -51,8 +52,8 @@ theme:
         name: Switch to light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: teal
-      accent: teal
+      primary: purple
+      accent: purple
       toggle:
         icon: material/toggle-switch
         name: Switch to dark mode
@@ -74,6 +75,7 @@ theme:
 # plugins
 plugins:
   - blog
+  # - optimize
   - search:
       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   # - minify:
@@ -149,6 +151,7 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
 
+
 # not_in_nav: |
 #   /tutorials/**/*.md
 
@@ -221,6 +224,7 @@ nav:
         - Java 8 vs 11 vs 17 vs 21: langdives/Java/Java8vs11vs17vs21.md
   - Blog:
     - blog/index.md
+  - Change Log: changelog/index.md
 
 
 
