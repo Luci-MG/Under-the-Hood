@@ -70,3 +70,11 @@ All Deep Dives Documentations from Mrudhul Guda
 1. [All Spring Boot Annotations](./Java/Spring/SpringAnnotations.md)
 1. [Spring Framework vs Spring Boot](./Java/Spring/SpringFrameworkVsSpringBoot.md)
 1. [Java 8 vs 11 vs 17 vs 21](./Java/Java8vs11vs17vs21.md)
+
+# TODO:
+1. Cassandra
+1. MongoDB
+1. PostgreSQL
+1. DynamoDB
+1. RiakDB
+1. RockDB
