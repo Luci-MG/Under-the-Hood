@@ -4,7 +4,7 @@ The **Abstract Factory Pattern** is a **creational design pattern** that provide
 
 ---
 
-### **What is the Abstract Factory Pattern?**
+## **What ?**
 
 The Abstract Factory pattern works as a **super-factory** that creates other factories. Each factory produced by the abstract factory is responsible for creating a family of related objects. This pattern is used when a system needs to create multiple families of related objects but doesn’t want to tightly couple the code to specific implementations.
 
@@ -14,9 +14,7 @@ The Abstract Factory pattern works as a **super-factory** that creates other fac
 - Makes the system **open for extension** but closed for modification (Open-Closed Principle).
 - Clients interact with the **factory interface** instead of the concrete classes.
 
----
-
-### **Class Diagram of Abstract Factory Pattern**
+#### **Class Diagram**
 
 Below is a conceptual **UML diagram** of the pattern:
 
@@ -33,14 +31,36 @@ Client ────────> AbstractFactory, AbstractProduct
 
 ---
 
-### **How to Create an Abstract Factory Pattern in Java**
+## **When to Use ?**
 
-Let’s walk through an **example**.
+- When your application needs to create a **family of related objects** (e.g., GUI components for themes, or different database connections).
+- When the code should be **decoupled from the actual product classes**.
+- If you need to **switch between different configurations** (e.g., Light vs Dark theme).
 
-Imagine you are creating a **UI component factory**. Your application can switch between two themes: **Dark Theme** and **Light Theme**. Both themes provide the same types of components (buttons, text fields) but with different appearances.
+---
 
-#### 1. **Define the Abstract Products**
-These are the common interfaces or abstract classes that define product behaviors.
+## **Advantages**
+
+- **Promotes Code Reusability** Abstract factories make it easy to reuse code across product families.
+- **Supports the Open/Closed Principle** You can introduce new product families without modifying existing code.
+- **Encourages Loose Coupling** Reduces dependencies between client code and the actual implementation of products.
+- **Easy Maintenance** Since product creation logic is centralized, maintenance is simpler.
+
+---
+
+## **Disadvantages**
+
+1. **Increased Complexity:** The pattern introduces multiple classes and interfaces, which can make the design more complex.
+2. **Too Many Factories:** If there are too many products or product families, maintaining multiple factories may become cumbersome.
+3. **Not Ideal for Simple Use-Cases:** For simple object creation tasks, other patterns like Factory Method or just using constructors may be more suitable.
+
+---
+
+## **How to ?**
+
+Let’s go with an **example** Imagine you are creating a **UI component factory**. Your application can switch between two themes: **Dark Theme** and **Light Theme**. Both themes provide the same types of components (buttons, text fields) but with different appearances.
+
+**1. Define the Abstract Products**
 
 ```java
 // Abstract Product: Button
@@ -54,8 +74,7 @@ public interface TextField {
 }
 ```
 
-#### 2. **Create Concrete Products**
-Now, create concrete implementations of the products for each family.
+**2. Create Concrete Products**
 
 ```java
 // Concrete Product: Light Button
@@ -90,7 +109,7 @@ public class DarkTextField implements TextField {
     }
 ```
 
-#### 3. **Define the Abstract Factory Interface**
+**3. Define the Abstract Factory Interface**
 
 ```java
 public interface UIFactory {
@@ -99,7 +118,7 @@ public interface UIFactory {
 }
 ```
 
-#### 4. **Implement Concrete Factories**
+**4. Implement Concrete Factories**
 
 ```java
 // Concrete Factory for Light Theme
@@ -129,7 +148,7 @@ public class DarkUIFactory implements UIFactory {
 }
 ```
 
-#### 5. **Using the Abstract Factory in a Client**
+**5. Using the Abstract Factory in a Client**
 
 ```java
 public class Application {
@@ -163,36 +182,11 @@ Rendering a Dark Text Field
 
 ---
 
-### **When to Use Abstract Factory Pattern**
-
-1. **Families of Related Products:** When your application needs to create a **family of related objects** (e.g., GUI components for themes, or different database connections).
-2. **Client-Implementation Decoupling:** When the code should be **decoupled from the actual product classes**.
-3. **System with Multiple Configurations:** If you need to **switch between different configurations** (e.g., Light vs Dark theme).
-
----
-
-### **Advantages**
-
-1. **Promotes Code Reusability:** Abstract factories make it easy to reuse code across product families.
-2. **Supports the Open/Closed Principle:** You can introduce new product families without modifying existing code.
-3. **Encourages Loose Coupling:** Reduces dependencies between client code and the actual implementation of products.
-4. **Easy Maintenance:** Since product creation logic is centralized, maintenance is simpler.
-
----
-
-### **Disadvantages / Where Not to Use**
-
-1. **Increased Complexity:** The pattern introduces multiple classes and interfaces, which can make the design more complex.
-2. **Too Many Factories:** If there are too many products or product families, maintaining multiple factories may become cumbersome.
-3. **Not Ideal for Simple Use-Cases:** For simple object creation tasks, other patterns like Factory Method or just using constructors may be more suitable.
-
----
-
-### **Integrating Abstract Factory Pattern with Spring Boot**
+## **Integrating with Spring Boot**
 
 In Spring Boot, the **Abstract Factory pattern** can complement **dependency injection (DI)** by delegating object creation logic to the factory. Here’s how to **implement it with Spring Boot**.
 
-#### 1. **Define Factory Beans**
+**1. Define Factory Beans**
 
 ```java
 @Configuration
@@ -209,7 +203,7 @@ public class UIFactoryConfig {
 }
 ```
 
-#### 2. **Use the Factory in a Controller**
+**2. Use the Factory in a Controller**
 
 ```java
 @RestController
@@ -234,7 +228,7 @@ public class UIController {
 }
 ```
 
-#### 3. **Configure Application Properties**
+**3. Configure Application Properties**
 
 ```properties
 # application.properties
@@ -245,7 +239,7 @@ In this example, the theme is configured through the `application.properties` fi
 
 ---
 
-### **Comparison with Factory Method Pattern**
+## **Comparison with Factory Method**
 
 | **Aspect**            | **Factory Method**                   | **Abstract Factory**                 |
 |-----------------------|---------------------------------------|--------------------------------------|
@@ -256,14 +250,8 @@ In this example, the theme is configured through the `application.properties` fi
 
 ---
 
-### **Summary**
+## **Summary**
 
 The **Abstract Factory Pattern** is a powerful tool when designing systems that need to create multiple families of related objects. While it adds complexity, the benefits include **extensibility**, **maintainability**, and **loose coupling**. In a Spring Boot application, it works well alongside **dependency injection**, especially when configurations like themes or environments vary.
-
----
-
-### Reference Links
-
-1. https://refactoring.guru/design-patterns/abstract-factory
 
 ---
