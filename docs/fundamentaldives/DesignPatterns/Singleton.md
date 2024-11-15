@@ -4,24 +4,20 @@
 
 The **Singleton Pattern** is a **creational design pattern** that ensures a class has **only one instance** and provides a global access point to that instance. 
 
-- **Why Use It?**  
-  Singleton is useful when exactly **one instance of a class is needed** across the system, like for logging, configuration, database connection pools, etc.
-
----
-
-### 2. **Key Characteristics of Singleton Pattern**
+#### **Key Characteristics of Singleton Pattern**
 - **Single instance**: Only one object of the class is created.
 - **Global access**: Provides a global point of access to that instance.
-- **Lazy initialization** (optional): Object is initialized only when it’s needed.
+
+Singleton is useful when exactly **one instance of a class is needed** across the system, like for logging, configuration, database connection pools, etc.
 
 ---
 
-### 3. **How to Create Singleton in Java – Different Implementations**
+## **How to Create ??**
 
-#### 3.1 **Eager Initialization Singleton**
-- **Description**: The instance is created when the class is loaded. This is the simplest way, but it doesn’t support lazy loading.
+### **Eager Initialization**
+The instance is created when the class is loaded. This is the simplest way, but it doesn’t support lazy loading.
 
-```java
+``` java
 public class EagerSingleton {
     private static final EagerSingleton INSTANCE = new EagerSingleton();
 
@@ -34,10 +30,13 @@ public class EagerSingleton {
 }
 ```
 
-- **When to use**: When the instance is required throughout the application, and we are okay with it being created at startup.
+!!! note
+    When the instance is required throughout the application, and we are okay with it being created at startup.
 
-#### 3.2 **Lazy Initialization Singleton**
-- **Description**: The instance is created only when needed (on first access). But this version **is not thread-safe**.
+---
+
+### **Lazy Initialization**
+The instance is created only when needed (on first access). But this version **is not thread-safe**.
 
 ```java
 public class LazySingleton {
@@ -54,10 +53,13 @@ public class LazySingleton {
 }
 ```
 
-- **Issue**: Not suitable for multithreaded environments.
+!!! note
+    Not suitable for multithreaded environments.
 
-#### 3.3 **Thread-Safe Singleton using Synchronized Method**
-- **Description**: This solves the issue of thread safety by synchronizing the access method.
+---
+
+### **Using Synchronized**
+This solves the issue of thread safety by synchronizing the access method.
 
 ```java
 public class ThreadSafeSingleton {
@@ -73,11 +75,13 @@ public class ThreadSafeSingleton {
     }
 }
 ```
+!!! note
+    Performance overhead due to synchronization.
 
-- **Downside**: Performance overhead due to synchronization.
+---
 
-#### 3.4 **Thread-Safe Singleton using Double-Checked Locking**
-- **Description**: This improves the performance by reducing the overhead of synchronized block.
+### **Double-Checked Locking**
+This improves the performance by reducing the overhead of synchronized block.
 
 ```java
 public class DoubleCheckedLockingSingleton {
@@ -98,8 +102,10 @@ public class DoubleCheckedLockingSingleton {
 }
 ```
 
-#### 3.5 **Bill Pugh Singleton (Best Practice)**
-- **Description**: This approach leverages **static inner classes**, which ensures thread safety and lazy loading without synchronization overhead.
+---
+
+### **Bill Pugh Singleton**
+This approach leverages **static inner classes**, which ensures thread safety and lazy loading without synchronization overhead.
 
 ```java
 public class BillPughSingleton {
@@ -116,8 +122,13 @@ public class BillPughSingleton {
 }
 ```
 
-#### 3.6 **Enum Singleton (Recommended)**
-- **Description**: This approach is the most concise and prevents issues with serialization and reflection attacks.
+!!! note
+    Best Practice
+
+---
+
+### **Enum Singleton**
+This approach is the most concise and prevents issues with serialization and reflection attacks.
 
 ```java
 public enum EnumSingleton {
@@ -129,15 +140,17 @@ public enum EnumSingleton {
 }
 ```
 
+!!! note
+    Recommended
+
 ---
 
-### 4. **How to Use Singleton with Spring Boot**
+### **How to Create with Spring Boot**
 
 In **Spring Boot**, Spring’s **IoC container** (Inversion of Control) makes singleton beans by default. Each bean in Spring is, by default, a singleton. So, **you don’t need to explicitly implement the Singleton pattern**. Instead, you annotate the class with `@Component` or `@Service`, and Spring ensures that only one instance is created and managed.
 
-**Example in Spring Boot**:
 
-```java
+```java title="Example in Spring Boot"
 import org.springframework.stereotype.Component;
 
 @Component
@@ -148,9 +161,8 @@ public class MySingletonService {
 }
 ```
 
-**How to use in a Spring Boot application**:
 
-```java
+```java title="How to use in a Spring Boot application"
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -172,42 +184,12 @@ public class MyController {
     }
 }
 ```
-
-- **Benefit**: Spring manages the lifecycle and thread safety for you, ensuring it behaves like a Singleton without extra code.
-
----
-
-### 5. **When to Use Singleton Pattern**
-- **Configuration classes**: When an object holds configuration settings for the application.
-- **Database connections**: When only one connection pool should be active throughout the system.
-- **Logging frameworks**: Ensures that all parts of the application use the same logging instance.
-- **Caching components**: When a cache should be available throughout the application.
+!!! note
+    Spring manages the lifecycle and thread safety for you, ensuring it behaves like a Singleton without extra code.
 
 ---
 
-### 6. **When Not to Use Singleton Pattern**
-- **Distributed systems**: Singleton is limited to the JVM instance, so it won't work across multiple servers.
-- **High-concurrency applications**: If the singleton object holds state, it can lead to **thread contention**.
-- **Unit testing**: Singleton classes are difficult to test because their state is shared across tests, leading to unpredictable behavior.
-
----
-
-### 7. **Why Use the Singleton Pattern?**
-- **Memory efficiency**: Only one instance is created, reducing memory overhead.
-- **Consistency**: Ensures a consistent state throughout the application since all code accesses the same instance.
-- **Global access**: Provides a way to access a shared resource or service from anywhere in the code.
-
----
-
-### 8. **Potential Issues with Singleton Pattern**
-- **Thread safety**: If not implemented correctly, it can lead to thread synchronization issues.
-- **Serialization**: Normal singletons can break if the instance is serialized and deserialized.
-- **Tight coupling**: Code becomes tightly coupled to the singleton instance, reducing flexibility.
-- **Testing challenges**: It’s harder to mock or replace singletons in unit tests, leading to less modular code.
-
----
-
-### 9. **Comparison of Different Implementations**
+### **Comparisons**
 
 | **Implementation**                 | **Thread Safety** | **Lazy Initialization** | **Serialization Safe** | **Ease of Implementation** |
 |------------------------------------|------------------|------------------------|-----------------------|-----------------------------|
@@ -220,19 +202,43 @@ public class MyController {
 
 ---
 
-### 10. **Summary**
-
-The **Singleton Pattern** is a powerful tool when used appropriately. However, misuse can lead to tightly coupled code, concurrency issues, and testing difficulties. If you are working with Spring Boot, **rely on Spring’s built-in singleton beans** instead of implementing your own singleton logic. Where thread safety, serialization, or distributed behavior is required, choose the appropriate Singleton implementation—like **Enum Singleton** or **Bill Pugh Singleton**.
-
-By default, **a single instance of the bean** is created and **shared across the entire application** (singleton scope). If two or more components use the same bean, they will refer to **the same instance**.
-
-However, if you need a new instance every time a bean is requested, you can change the scope to `prototype`. But be mindful Spring’s singleton scope simplifies things like caching and state consistency, while prototype beans may introduce complexity.
+## **When to Use ?**
+- When an object holds configuration settings for the application.
+- When only one connection pool should be active throughout the system.
+- Ensures that all parts of the application use the same logging instance.
+- When a cache should be available throughout the application.
 
 ---
 
-### Reference Links
+## **When Not to Use ?**
+- Singleton is limited to the JVM instance, so it won't work across multiple servers such as distributed systems.
+- If the singleton object holds state, it can lead to **thread contention** in cases like High concurrency applications.
+- Singleton classes are difficult to test because their state is shared across tests, leading to unpredictable behavior.
 
-1. https://refactoring.guru/design-patterns/singleton
-1. https://blog.algomaster.io/p/singleton-design-pattern
+---
+
+## **Why Use ?**
+- As Only one instance is created, reducing memory overhead so memory efficiency 
+- Ensures a consistent state throughout the application since all code accesses the same instance.
+- Provides a way to access a shared resource or service from anywhere in the code.
+
+---
+
+## **Potential Issues**
+- If not implemented correctly, it can lead to thread synchronization issues.
+- Normal singletons can break if the instance is serialized and deserialized.
+- Code becomes tightly coupled to the singleton instance, reducing flexibility.
+- It’s harder to mock or replace singletons in unit tests, leading to less modular code.
+
+---
+
+## **Summary**
+
+The **Singleton Pattern** is a powerful tool when used appropriately. However, misuse can lead to tightly coupled code, concurrency issues, and testing difficulties. If you are working with Spring Boot, **rely on Spring’s built-in singleton beans** instead of implementing your own singleton logic. Where thread safety, serialization, or distributed behavior is required, choose the appropriate Singleton implementation like **Enum Singleton** or **Bill Pugh Singleton**.
+
+!!! note
+    By default, **a single instance of the bean** is created and **shared across the entire application** (singleton scope). If two or more components use the same bean, they will refer to **the same instance**.
+
+    However, if you need a new instance every time a bean is requested, you can change the scope to `prototype`. But be mindful Spring’s singleton scope simplifies things like caching and state consistency, while prototype beans may introduce complexity.
 
 ---
