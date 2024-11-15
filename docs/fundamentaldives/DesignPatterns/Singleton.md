@@ -4,7 +4,7 @@
 
 The **Singleton Pattern** is a **creational design pattern** that ensures a class has **only one instance** and provides a global access point to that instance. 
 
-#### **Key Characteristics of Singleton Pattern**
+#### **Key Characteristics**
 - **Single instance**: Only one object of the class is created.
 - **Global access**: Provides a global point of access to that instance.
 
@@ -12,7 +12,7 @@ Singleton is useful when exactly **one instance of a class is needed** across th
 
 ---
 
-## **How to Create ??**
+## **How to Create ?**
 
 ### **Eager Initialization**
 The instance is created when the class is loaded. This is the simplest way, but it doesn’t support lazy loading.
@@ -145,7 +145,7 @@ public enum EnumSingleton {
 
 ---
 
-### **How to Create with Spring Boot**
+### **With Spring Boot**
 
 In **Spring Boot**, Spring’s **IoC container** (Inversion of Control) makes singleton beans by default. Each bean in Spring is, by default, a singleton. So, **you don’t need to explicitly implement the Singleton pattern**. Instead, you annotate the class with `@Component` or `@Service`, and Spring ensures that only one instance is created and managed.
 
