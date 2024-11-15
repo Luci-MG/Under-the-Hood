@@ -4,14 +4,13 @@ The **Builder Pattern** is a **creational design pattern** that allows the const
 
 ---
 
-### **What is the Builder Pattern?**
-- It is used to **create complex objects** with many optional fields or configurations.
-- Instead of having a **constructor with multiple parameters**, it allows the client to build the object **incrementally** through method chaining.
-- It is particularly useful when an object needs **many different configurations** or **optional parameters**.
+## **What ?**
+
+The **Builder Pattern** simplifies the creation of complex objects with many optional fields by enabling incremental construction through method chaining, avoiding constructors with numerous parameters. It's ideal for objects requiring various configurations or optional parameters.
 
 ---
 
-### **When to Use the Builder Pattern?**
+## **When to Use ?**
 - When the class has **many fields** (especially optional ones).
 - When you want to **avoid telescoping constructors** (having constructors with increasing numbers of parameters).
 - When an object must be **immutable** but needs complex construction logic.
@@ -19,20 +18,36 @@ The **Builder Pattern** is a **creational design pattern** that allows the const
 
 ---
 
-### **Why Use the Builder Pattern?**
-1. **Improves Code Readability:** Avoids large constructors by using chained methods.
-2. **Enforces Immutability:** After construction, the built object can remain immutable.
-3. **Increases Flexibility:** Supports different configurations while keeping the same building logic.
-4. **Clear Separation of Logic:** The construction logic stays in the builder, while the object remains a simple data container.
+## **Why Use ?**
+- Improves Code Readability by avoiding large constructors by using chained methods.
+- Enforces Immutability after construction, the built object can remain immutable.
+- Increases Flexibility by supporting different configurations while keeping the same building logic.
+- Clear Separation of Logic Like The construction logic stays in the builder, while the object remains a simple data container.
 
 ---
 
-### **How to Implement the Builder Pattern in Java?**
+## **Where Not to Use ?**
+- If the object is **simple** with only a few attributes, using a builder can overcomplicate things.
+- When performance is critical—since creating the builder involves some **extra overhead** (though minimal).
+- If **immutability** is not necessary, simpler setter methods might suffice.
+
+---
+
+## **Advantages**
+- Clear and readable object construction.
+- Immutable Objects once built, the object cannot be modified.
+- Flexible Object Creation supports optional parameters without overloading constructors.
+- Easier Maintenance with new fields can be easily added without modifying existing constructors.
+
+---
+
+## **How to Implement ?**
+
+### **Simple Java Example**
 
 Below is a basic **Java example** demonstrating the pattern. Assume we need to build a `Car` object with several optional fields.
 
-#### **Example: Simple Builder Implementation**
-```java
+```java title="Simple Builder Implementation"
 public class Car {
     // Required fields
     private final String make;
@@ -107,8 +122,7 @@ public class Car {
 }
 ```
 
-#### **Usage of the Builder Pattern:**
-```java
+```java title="Usage of the Builder Pattern"
 public class Main {
     public static void main(String[] args) {
         // Using the builder to create a Car object
@@ -130,29 +144,12 @@ Car [make=Tesla, model=Model S, color=Red, year=2023, automatic=true]
 
 ---
 
-### **Advantages of Builder Pattern**
-1. **Readable Code:** Clear and readable object construction.
-2. **Immutable Objects:** Once built, the object cannot be modified.
-3. **Flexible Object Creation:** Supports optional parameters without overloading constructors.
-4. **Easier Maintenance:** New fields can be easily added without modifying existing constructors.
-
----
-
-### **Where Not to Use the Builder Pattern?**
-- If the object is **simple** with only a few attributes, using a builder can overcomplicate things.
-- When performance is critical—since creating the builder involves some **extra overhead** (though minimal).
-- If **immutability** is not necessary, simpler setter methods might suffice.
-
----
-
-### **Integrating the Builder Pattern with Spring Boot**
+### **Spring Boot Example**
 
 In **Spring Boot**, you often need to build objects like **DTOs, configurations, or entities** with complex structures. Using the Builder Pattern can make object construction more manageable, especially when working with **REST APIs**.
 
-#### **Example: Using Builder Pattern for DTOs in Spring Boot**
-Let's assume a **UserDTO** object for API responses.
-
-```java
+```java title="Using Builder Pattern for DTOs in Spring Boot"
+// Let's assume a UserDTO object for API responses.
 public class UserDTO {
     private final String username;
     private final String email;
@@ -191,8 +188,7 @@ public class UserDTO {
 }
 ```
 
-#### **Controller Example with Builder Pattern in Spring Boot:**
-```java
+```java title="Controller Example with Builder Pattern in Spring Boot"
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -213,11 +209,10 @@ This approach ensures that the object returned from the API is constructed clean
 
 ---
 
-### **Alternative Ways to Create Objects in Java**
+### **Alternative Ways**
 
-1. **Telescoping Constructors:**
-   - Multiple overloaded constructors for different parameter combinations.
-   - Not ideal for readability and maintainability.
+**Telescoping Constructors**
+Multiple overloaded constructors for different parameter combinations but Not ideal for readability and maintainability.
 
    ```java
    public Car(String make, String model) { ... }
@@ -225,9 +220,8 @@ This approach ensures that the object returned from the API is constructed clean
    public Car(String make, String model, String color, int year) { ... }
    ```
 
-2. **Setter Methods:**
-   - Useful for mutable objects but doesn’t guarantee immutability.
-   - Less readable when constructing objects with many attributes.
+**Setter Methods**
+Useful for mutable objects but doesn’t guarantee immutability but less readable when constructing objects with many attributes.
 
    ```java
    Car car = new Car();
@@ -238,16 +232,11 @@ This approach ensures that the object returned from the API is constructed clean
 
 ---
 
-### **Summary**
+## **Summary**
 
 The **Builder Pattern** is an elegant way to handle object creation, especially when dealing with many fields or optional parameters. It ensures **code readability, immutability, and flexibility** while avoiding the need for numerous constructors. However, it should be used only when **necessary**, as simple objects may not benefit from it.
 
-In **Spring Boot**, the Builder Pattern can be effectively used for creating **DTOs** and other complex objects, improving both code readability and maintenance. This pattern fits well when dealing with **REST API responses** or **configuration settings**, ensuring your objects are built in a clear, consistent manner.
-
----
-
-### Reference Links
-
-1. https://refactoring.guru/design-patterns/builder
+!!! note
+    In **Spring Boot**, the Builder Pattern can be effectively used for creating **DTOs** and other complex objects, improving both code readability and maintenance. This pattern fits well when dealing with **REST API responses** or **configuration settings**, ensuring your objects are built in a clear, consistent manner.
 
 ---

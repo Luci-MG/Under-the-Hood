@@ -56,13 +56,13 @@ Client ────────> AbstractFactory, AbstractProduct
 
 ---
 
-## **How to ?**
+## **How to Implement ?**
+
+### **Simple Java Example**
 
 Let’s go with an **example** Imagine you are creating a **UI component factory**. Your application can switch between two themes: **Dark Theme** and **Light Theme**. Both themes provide the same types of components (buttons, text fields) but with different appearances.
 
-**1. Define the Abstract Products**
-
-```java
+```java title="Step-1: Define the Abstract Products"
 // Abstract Product: Button
 public interface Button {
     void render();
@@ -74,9 +74,7 @@ public interface TextField {
 }
 ```
 
-**2. Create Concrete Products**
-
-```java
+```java title="Step-2: Create Concrete Products"
 // Concrete Product: Light Button
 public class LightButton implements Button {
     @Override
@@ -109,18 +107,15 @@ public class DarkTextField implements TextField {
     }
 ```
 
-**3. Define the Abstract Factory Interface**
 
-```java
+```java title="Step-3:  Define the Abstract Factory Interface"
 public interface UIFactory {
     Button createButton();
     TextField createTextField();
 }
 ```
 
-**4. Implement Concrete Factories**
-
-```java
+```java title="Step-4: Implement Concrete Factories"
 // Concrete Factory for Light Theme
 public class LightUIFactory implements UIFactory {
     @Override
@@ -148,9 +143,7 @@ public class DarkUIFactory implements UIFactory {
 }
 ```
 
-**5. Using the Abstract Factory in a Client**
-
-```java
+```java title="Step-5: Using the Abstract Factory in a Client"
 public class Application {
     private Button button;
     private TextField textField;
@@ -182,13 +175,11 @@ Rendering a Dark Text Field
 
 ---
 
-## **Integrating with Spring Boot**
+### **Spring Boot Example**
 
 In Spring Boot, the **Abstract Factory pattern** can complement **dependency injection (DI)** by delegating object creation logic to the factory. Here’s how to **implement it with Spring Boot**.
 
-**1. Define Factory Beans**
-
-```java
+```java title="Step-1: Define Factory Beans"
 @Configuration
 public class UIFactoryConfig {
     
@@ -203,9 +194,7 @@ public class UIFactoryConfig {
 }
 ```
 
-**2. Use the Factory in a Controller**
-
-```java
+```java title="Step-2: Use the Factory in a Controller"
 @RestController
 @RequestMapping("/ui")
 public class UIController {
@@ -228,9 +217,7 @@ public class UIController {
 }
 ```
 
-**3. Configure Application Properties**
-
-```properties
+```properties title="Step-3: Configure Application Properties"
 # application.properties
 app.theme=dark
 ```

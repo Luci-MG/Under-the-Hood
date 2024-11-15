@@ -16,6 +16,36 @@ The Factory Method Pattern defines an interface for creating an object but **let
 
 ---
 
+## **When to Use ?**
+- When you don't know in advance which class to instantiate (i.e., you want the logic to determine the object type dynamically).
+- When you need flexibility in creating objects but want to avoid tight coupling with specific classes.
+- When new types of objects might be introduced in the future without breaking existing code.
+- When working with complex object creation logic (e.g., when object creation requires conditional logic).
+
+---
+
+## **When Not to Use ?**
+- When **only a single type of object** needs to be created (Factory adds unnecessary complexity).
+- If object creation does not require **polymorphism** or **dynamism**, and the same class instantiation works fine.
+- When performance is critical, as Factory Method can introduce **overhead** by adding extra layers of abstraction.
+
+---
+
+## **Where it Shines ?**
+- Many frameworks (like JDBC, Hibernate, etc.) rely on Factory Method to return specific instances without the client needing to know the class type.
+- When there are multiple subclasses of a product and only one of them needs to be instantiated at runtime.
+- If new product types might be introduced in the future, the pattern provides an easy way to extend.
+
+---
+
+## **Advantages**
+- **Loose coupling:** The controller doesn't need to know the exact type of object being created.
+- **Flexibility:** You can add new types of notifications without modifying the controller logic.
+- **Testability:** The factory can be easily **mocked or stubbed** during unit tests.
+
+---
+
+
 ## **Structure**
 
 1. **Product Interface:** Defines the interface for the object being created.
@@ -25,7 +55,9 @@ The Factory Method Pattern defines an interface for creating an object but **let
 
 ---
 
-## **Simple Java Example**
+## **How To Implement ?**
+
+### **Simple Java Example**
 
 ```java title="Step-1: Define a Product Interface"
 public interface Notification {
@@ -87,7 +119,7 @@ public class Client {
 
 ---
 
-## **Example with Spring Boot**
+### **Spring Boot Example**
 
 Spring Boot relies heavily on **dependency injection (DI)** and **Inversion of Control (IoC)**, which means **Spring beans** can act as factory classes to produce the desired objects.
 
@@ -154,35 +186,6 @@ public class NotificationController {
 ```
 
 When you access `/notify/SMS` or `/notify/Email`, it will dynamically create and send the corresponding notification after running the spring boot application.
-
----
-
-## **When to Use ?**
-- When you don't know in advance which class to instantiate (i.e., you want the logic to determine the object type dynamically).
-- When you need flexibility in creating objects but want to avoid tight coupling with specific classes.
-- When new types of objects might be introduced in the future without breaking existing code.
-- When working with complex object creation logic (e.g., when object creation requires conditional logic).
-
----
-
-## **When Not to Use ?**
-- When **only a single type of object** needs to be created (Factory adds unnecessary complexity).
-- If object creation does not require **polymorphism** or **dynamism**, and the same class instantiation works fine.
-- When performance is critical, as Factory Method can introduce **overhead** by adding extra layers of abstraction.
-
----
-
-## **Where it Shines ?**
-- Many frameworks (like JDBC, Hibernate, etc.) rely on Factory Method to return specific instances without the client needing to know the class type.
-- When there are multiple subclasses of a product and only one of them needs to be instantiated at runtime.
-- If new product types might be introduced in the future, the pattern provides an easy way to extend.
-
----
-
-## **Advantages**
-- **Loose coupling:** The controller doesn't need to know the exact type of object being created.
-- **Flexibility:** You can add new types of notifications without modifying the controller logic.
-- **Testability:** The factory can be easily **mocked or stubbed** during unit tests.
 
 ---
 

@@ -12,7 +12,30 @@ Singleton is useful when exactly **one instance of a class is needed** across th
 
 ---
 
-## **How to Create ?**
+## **When to Use ?**
+- When an object holds configuration settings for the application.
+- When only one connection pool should be active throughout the system.
+- Ensures that all parts of the application use the same logging instance.
+- When a cache should be available throughout the application.
+
+---
+
+## **When Not to Use ?**
+- Singleton is limited to the JVM instance, so it won't work across multiple servers such as distributed systems.
+- If the singleton object holds state, it can lead to **thread contention** in cases like High concurrency applications.
+- Singleton classes are difficult to test because their state is shared across tests, leading to unpredictable behavior.
+
+---
+
+## **Why Use ?**
+- As Only one instance is created, reducing memory overhead so memory efficiency 
+- Ensures a consistent state throughout the application since all code accesses the same instance.
+- Provides a way to access a shared resource or service from anywhere in the code.
+
+---
+
+
+## **How to Implement ?**
 
 ### **Eager Initialization**
 The instance is created when the class is loaded. This is the simplest way, but it doesn’t support lazy loading.
@@ -199,28 +222,6 @@ public class MyController {
 | Double-Checked Locking Singleton   | Yes              | Yes                    | No                    | Moderate                    |
 | Bill Pugh Singleton                | Yes              | Yes                    | No                    | Best Practice               |
 | Enum Singleton                     | Yes              | Yes                    | Yes                   | Recommended                 |
-
----
-
-## **When to Use ?**
-- When an object holds configuration settings for the application.
-- When only one connection pool should be active throughout the system.
-- Ensures that all parts of the application use the same logging instance.
-- When a cache should be available throughout the application.
-
----
-
-## **When Not to Use ?**
-- Singleton is limited to the JVM instance, so it won't work across multiple servers such as distributed systems.
-- If the singleton object holds state, it can lead to **thread contention** in cases like High concurrency applications.
-- Singleton classes are difficult to test because their state is shared across tests, leading to unpredictable behavior.
-
----
-
-## **Why Use ?**
-- As Only one instance is created, reducing memory overhead so memory efficiency 
-- Ensures a consistent state throughout the application since all code accesses the same instance.
-- Provides a way to access a shared resource or service from anywhere in the code.
 
 ---
 
