@@ -8,6 +8,7 @@ site_description: >-
 # Repository
 repo_url: https://github.com/Luci-MG/Under-the-Hood
 repo_name: Luci-MG/Under-the-Hood
+edit_uri: edit/main/docs/
 
 # Copyright
 copyright: Copyright &copy; 2024 Mrudhul Guda
@@ -18,8 +19,8 @@ theme:
   custom_dir: material/overrides
   features:
     - announce.dismiss
-    # - content.action.edit
-    # - content.action.view
+    - content.action.edit
+    - content.action.view
     - content.code.annotate
     - content.code.copy
     # - content.code.select
@@ -69,6 +70,9 @@ theme:
     code: Roboto Mono
   favicon: assets/favicon.png
   logo: assets/favicon.png
+  icon:
+    edit: material/pencil 
+    view: material/eye
     # repo: fontawesome/brands/github
 
 # plugins
