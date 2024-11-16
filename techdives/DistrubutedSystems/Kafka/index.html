@@ -1,0 +1,4275 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Dive deep into the core of technology with in-depth explorations of design patterns, programming languages, distributed systems , databases, their concepts and more all in one place.">
+      
+      
+        <meta name="author" content="Mrudhul Guda">
+      
+      
+        <link rel="canonical" href="https://luci-mg.github.io/Under-the-Hood/techdives/DistrubutedSystems/Kafka/">
+      
+      
+        <link rel="prev" href="../S3/">
+      
+      
+        <link rel="next" href="../ElasticSearch/">
+      
+      
+      <link rel="icon" href="../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+    
+    
+      
+        <title>Kafka - Under the Hood</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link rel="stylesheet" href="../../../assets/stylesheets/custom.7c86dd97.min.css">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#kafka" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Under the Hood" class="md-header__button md-logo" aria-label="Under the Hood" data-md-component="logo">
+      
+  <img src="../../../assets/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Under the Hood
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Kafka
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1M8 13h8v-2H8zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4a5 5 0 0 0 5-5 5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5M7 15a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Luci-MG/Under-the-Hood" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Luci-MG/Under-the-Hood
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../DistrubutedSystemsConcepts/ConcurrencyParallelism/" class="md-tabs__link">
+          
+  
+    
+  
+  Tech Dives
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../fundamentaldives/FundamentalPrinciples/SOLID/" class="md-tabs__link">
+          
+  
+    
+  
+  Fundamental Dives
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../langdives/Java/JavaJDKJREJVM/" class="md-tabs__link">
+          
+  
+    
+  
+  Language Dives
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../blog/" class="md-tabs__link">
+          
+  
+    
+  
+  Blog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../changelog/" class="md-tabs__link">
+        
+  
+    
+  
+  Change Log
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Under the Hood" class="md-nav__button md-logo" aria-label="Under the Hood" data-md-component="logo">
+      
+  <img src="../../../assets/favicon.png" alt="logo">
+
+    </a>
+    Under the Hood
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Luci-MG/Under-the-Hood" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Luci-MG/Under-the-Hood
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tech Dives
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Tech Dives
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Distributed Systems Concepts
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Distributed Systems Concepts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DistrubutedSystemsConcepts/ConcurrencyParallelism/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrency and Parallelism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DistrubutedSystemsConcepts/HighAvailabilityFaultTolerance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    High Availability and Fault Tolerance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Distributed Systems
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Distributed Systems
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DockerAndK8s/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docker & K8s Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../S3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Simple Storage Service - S3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Kafka
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Kafka
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-kafka" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Kafka?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-components-and-keywords" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Components and Keywords
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-kafka-achieves-high-scalability" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Kafka Achieves High Scalability ?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How Kafka Achieves High Scalability ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-partitioning-the-foundation-of-scalability" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Partitioning: The Foundation of Scalability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-distributed-broker-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Distributed Broker Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-horizontal-scaling-add-more-brokers-or-partitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Horizontal Scaling: Add More Brokers or Partitions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-producer-scalability-load-balancing-and-batch-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Producer Scalability: Load Balancing and Batch Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-consumer-scalability-consumer-groups-and-load-sharing" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Consumer Scalability: Consumer Groups and Load Sharing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-efficient-load-balancing-and-rebalancing-mechanisms" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Efficient Load Balancing and Rebalancing Mechanisms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-network-optimization-and-zero-copy-technology" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Network Optimization and Zero-Copy Technology
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-broker-level-optimizations-and-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Broker-Level Optimizations and Compression
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-kafka-controller-and-partition-leadership" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Kafka Controller and Partition Leadership
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-handling-backpressure-for-scalability" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Handling Backpressure for Scalability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-configuring-for-high-scalability-tuning-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Configuring for High Scalability: Tuning Parameters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-kafka-achieves-high-availability-and-fault-tolerance" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Kafka Achieves High Availability and Fault Tolerance ?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How Kafka Achieves High Availability and Fault Tolerance ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-partition-replication-foundation-of-ha-and-ft" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Partition Replication – Foundation of HA and FT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-leader-election-and-failover-mechanism" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Leader Election and Failover Mechanism
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-in-sync-replicas-isr-ensuring-data-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. In-Sync Replicas (ISR) – Ensuring Data Integrity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-controller-broker-managing-ha-and-ft-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Controller Broker – Managing HA and FT Orchestration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-distributed-brokers-avoiding-single-points-of-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Distributed Brokers – Avoiding Single Points of Failure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-acknowledgment-policies-acks-ensuring-data-durability" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Acknowledgment Policies (ACKs) – Ensuring Data Durability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-log-compaction-and-retention-for-data-availability" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Log Compaction and Retention for Data Availability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-handling-split-brain-scenarios-consistency-through-quorums" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Handling Split-Brain Scenarios – Consistency Through Quorums
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-self-healing-and-automated-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Self-Healing and Automated Recovery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-multi-datacenter-replication-for-disaster-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Multi-Datacenter Replication for Disaster Recovery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-client-side-handling-of-failures-for-ha-and-ft" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Client-Side Handling of Failures for HA and FT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-kafkas-high-availability-and-fault-tolerance-mechanisms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary of Kafka’s High Availability and Fault Tolerance Mechanisms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kafka-features-impacts-on-ha-and-ft" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kafka features Impacts on HA and FT
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-makes-kafka-unique" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Makes Kafka Unique ?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What Makes Kafka Unique ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-log-based-architecture-the-foundation-of-kafkas-data-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Log-Based Architecture: The Foundation of Kafka’s Data Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-high-throughput-with-low-latency-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. High-Throughput with Low-Latency Design
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-kafkas-unique-log-based-architecture-and-high-throughput-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary of Kafka’s Unique Log-Based Architecture and High-Throughput Design
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-kafka-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Kafka Settings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommended Kafka Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-broker-level-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Broker-Level Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-producer-level-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Producer-Level Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-consumer-level-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Consumer-Level Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-cluster-level-settings-for-high-availability-and-fault-tolerance" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Cluster-Level Settings for High Availability and Fault Tolerance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-zookeeper-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Zookeeper Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-kraft-kafka-raft-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. KRaft (Kafka Raft) Settings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ElasticSearch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Elasticsearch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Cassandra.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cassandra
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Fundamental Dives
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Fundamental Dives
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Fundamental Principles
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Fundamental Principles
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fundamentaldives/FundamentalPrinciples/SOLID/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SOLID
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fundamentaldives/FundamentalPrinciples/KISS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KISS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fundamentaldives/FundamentalPrinciples/DRY/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DRY
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fundamentaldives/FundamentalPrinciples/YAGNI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    YAGNI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Design Patterns
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Design Patterns
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fundamentaldives/DesignPatterns/Singleton/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Singleton
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fundamentaldives/DesignPatterns/FactoryMethod/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Factory Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fundamentaldives/DesignPatterns/AbstractFactory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Abstract Factory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fundamentaldives/DesignPatterns/Builder/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Builder
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fundamentaldives/DesignPatterns/Prototype/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prototype
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fundamentaldives/DesignPatterns/Adapter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adapter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fundamentaldives/DesignPatterns/Bridge/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bridge
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fundamentaldives/DesignPatterns/Composite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Composite
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fundamentaldives/DesignPatterns/Decorator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Decorater
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fundamentaldives/DesignPatterns/Facade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Facade
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fundamentaldives/DesignPatterns/Iterator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Iterator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fundamentaldives/DesignPatterns/Strategy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Strategy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fundamentaldives/DesignPatterns/CircuitBreakers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Circuit Breakers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Language Dives
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Language Dives
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Java
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Java
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/JavaJDKJREJVM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JDK, JRE, JVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/Maven/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What is Maven?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/Gradle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What is Gradle?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/MavenVsGradle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Maven vs Gradle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/JavaHeapStack/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Heap-Stack
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/JavaPassBy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pass By Value
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/4Pillars/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4 Pillars
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/AccessModifPPPPP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access Modifiers Public, Private, Protected
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/KeyWordsTerminolgies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keywords and Terminologies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/PrimitiveReferenceTypes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Primitive and Reference Types
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/ReferenceTypesInDepth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reference Types Indepth
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/Collections-JCF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections JCF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/StreamsLambdas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Streams and Lambas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/Threads/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Threads
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/Threads-Atomicity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Threads - Atomicity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/ThreadPools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Thread Pools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/ThreadPoolTuning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Thread Pool Tuning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/Locking-Intrinsic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intrinsic Locking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/Locking-Reentrant/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reentrant Locking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/LockingIntrinsicReentrant/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intrinsic vs Reentrant Locking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/Locking-ReentrantReadWrite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reentrant Read Write Locking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/Locking-Issues-DeadLock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DeadLock
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/Locking-Issues-LiveLock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LiveLock
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/Locking-Issues-Starvation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Starvation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/Locking-Issues-Others/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Other Locking issues
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/GarbageCollection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Garbage Collection(rs)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/Spring/Spring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/Spring/SpringCoreFramework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring Core Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/Spring/SpringBoot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring Boot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/Spring/SpringAnnotations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    All Spring Boot Annotations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/Spring/SpringFrameworkVsSpringBoot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring Framework vs Spring Boot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../langdives/Java/Java8vs11vs17vs21/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java 8 vs 11 vs 17 vs 21
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../blog/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Archive
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../changelog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Change Log
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-kafka" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Kafka?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-components-and-keywords" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Components and Keywords
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-kafka-achieves-high-scalability" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Kafka Achieves High Scalability ?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How Kafka Achieves High Scalability ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-partitioning-the-foundation-of-scalability" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Partitioning: The Foundation of Scalability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-distributed-broker-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Distributed Broker Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-horizontal-scaling-add-more-brokers-or-partitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Horizontal Scaling: Add More Brokers or Partitions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-producer-scalability-load-balancing-and-batch-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Producer Scalability: Load Balancing and Batch Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-consumer-scalability-consumer-groups-and-load-sharing" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Consumer Scalability: Consumer Groups and Load Sharing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-efficient-load-balancing-and-rebalancing-mechanisms" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Efficient Load Balancing and Rebalancing Mechanisms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-network-optimization-and-zero-copy-technology" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Network Optimization and Zero-Copy Technology
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-broker-level-optimizations-and-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Broker-Level Optimizations and Compression
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-kafka-controller-and-partition-leadership" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Kafka Controller and Partition Leadership
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-handling-backpressure-for-scalability" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Handling Backpressure for Scalability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-configuring-for-high-scalability-tuning-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Configuring for High Scalability: Tuning Parameters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-kafka-achieves-high-availability-and-fault-tolerance" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Kafka Achieves High Availability and Fault Tolerance ?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How Kafka Achieves High Availability and Fault Tolerance ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-partition-replication-foundation-of-ha-and-ft" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Partition Replication – Foundation of HA and FT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-leader-election-and-failover-mechanism" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Leader Election and Failover Mechanism
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-in-sync-replicas-isr-ensuring-data-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. In-Sync Replicas (ISR) – Ensuring Data Integrity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-controller-broker-managing-ha-and-ft-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Controller Broker – Managing HA and FT Orchestration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-distributed-brokers-avoiding-single-points-of-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Distributed Brokers – Avoiding Single Points of Failure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-acknowledgment-policies-acks-ensuring-data-durability" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Acknowledgment Policies (ACKs) – Ensuring Data Durability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-log-compaction-and-retention-for-data-availability" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Log Compaction and Retention for Data Availability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-handling-split-brain-scenarios-consistency-through-quorums" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Handling Split-Brain Scenarios – Consistency Through Quorums
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-self-healing-and-automated-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Self-Healing and Automated Recovery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-multi-datacenter-replication-for-disaster-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Multi-Datacenter Replication for Disaster Recovery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-client-side-handling-of-failures-for-ha-and-ft" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Client-Side Handling of Failures for HA and FT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-kafkas-high-availability-and-fault-tolerance-mechanisms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary of Kafka’s High Availability and Fault Tolerance Mechanisms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kafka-features-impacts-on-ha-and-ft" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kafka features Impacts on HA and FT
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-makes-kafka-unique" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Makes Kafka Unique ?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What Makes Kafka Unique ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-log-based-architecture-the-foundation-of-kafkas-data-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Log-Based Architecture: The Foundation of Kafka’s Data Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-high-throughput-with-low-latency-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. High-Throughput with Low-Latency Design
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-kafkas-unique-log-based-architecture-and-high-throughput-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary of Kafka’s Unique Log-Based Architecture and High-Throughput Design
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-kafka-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Kafka Settings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommended Kafka Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-broker-level-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Broker-Level Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-producer-level-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Producer-Level Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-consumer-level-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Consumer-Level Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-cluster-level-settings-for-high-availability-and-fault-tolerance" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Cluster-Level Settings for High Availability and Fault Tolerance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-zookeeper-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Zookeeper Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-kraft-kafka-raft-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. KRaft (Kafka Raft) Settings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/Luci-MG/Under-the-Hood/edit/main/docs/techdives/DistrubutedSystems/Kafka.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/Luci-MG/Under-the-Hood/raw/main/docs/techdives/DistrubutedSystems/Kafka.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+    </a>
+  
+
+
+<h1 id="kafka"><strong>Kafka</strong><a class="headerlink" href="#kafka" title="Permanent link">&para;</a></h1>
+<h2 id="what-is-kafka"><strong>What is Kafka?</strong><a class="headerlink" href="#what-is-kafka" title="Permanent link">&para;</a></h2>
+<p><strong>Kafka</strong> is a <strong>distributed event streaming platform</strong> that allows applications to <strong>publish, store, and consume streams of data</strong> in real-time or batch mode. It is designed to handle <strong>continuous streams of events</strong> or records by functioning as a <strong>distributed commit log</strong>, where data is <strong>written sequentially</strong> and can be read independently by multiple consumers.</p>
+<p>Kafka follows a <strong>publish-subscribe model</strong> where producers write data to <strong>topics</strong> divided into <strong>partitions</strong>, and consumers pull data from those partitions at their own pace. Kafka ensures that data flows <strong>reliably</strong> between producers and consumers, with <strong>fault-tolerant replication</strong> and <strong>durable storage</strong> to prevent data loss.</p>
+<p>At its heart, Kafka provides <strong>three core functionalities</strong>:
+1. <strong>Message Streaming</strong>: Enabling systems to send and receive continuous streams of data asynchronously.
+2. <strong>Durable Storage</strong>: Persisting messages on disk, ensuring data is not lost even in case of failures.
+3. <strong>Distributed Processing</strong>: Allowing data to be partitioned and processed across multiple servers for <strong>scalability and fault tolerance</strong>.</p>
+<hr />
+<h2 id="core-components-and-keywords">Core Components and Keywords<a class="headerlink" href="#core-components-and-keywords" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Component / Keyword</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Topic</strong></td>
+<td>A logical channel for data, used to categorize messages. Topics are divided into partitions for parallelism.</td>
+</tr>
+<tr>
+<td><strong>Partition</strong></td>
+<td>A segment of a topic that stores messages in a <strong>log</strong> structure. It ensures parallel processing. Each partition contains messages with <strong>offsets</strong> to track their position.</td>
+</tr>
+<tr>
+<td><strong>Producer</strong></td>
+<td>A client or application that publishes messages to a Kafka topic. Producers can distribute messages across partitions.</td>
+</tr>
+<tr>
+<td><strong>Consumer</strong></td>
+<td>A client or application that subscribes to Kafka topics and reads messages from partitions at their own pace.</td>
+</tr>
+<tr>
+<td><strong>Broker</strong></td>
+<td>A Kafka server that stores messages, handles requests, and coordinates with other brokers in a <strong>Kafka cluster</strong>.</td>
+</tr>
+<tr>
+<td><strong>Kafka Cluster</strong></td>
+<td>A group of multiple Kafka brokers working together to provide scalability and fault tolerance.</td>
+</tr>
+<tr>
+<td><strong>Zookeeper / KRaft</strong></td>
+<td>Zookeeper is used for <strong>metadata management</strong> and <strong>leader election</strong> in older Kafka versions. Newer versions replace Zookeeper with <strong>KRaft</strong> (Kafka Raft) for native metadata management.</td>
+</tr>
+<tr>
+<td><strong>Offset</strong></td>
+<td>A unique identifier for each message within a partition, representing its position in the log. Consumers use offsets to track the messages they have processed.</td>
+</tr>
+<tr>
+<td><strong>Replication</strong></td>
+<td>Kafka duplicates partitions across multiple brokers to ensure <strong>fault tolerance</strong> and <strong>data availability</strong>.</td>
+</tr>
+<tr>
+<td><strong>Leader Partition</strong></td>
+<td>The primary replica of a partition that handles all reads and writes for that partition. Other replicas act as followers.</td>
+</tr>
+<tr>
+<td><strong>Follower Partition</strong></td>
+<td>A copy of the leader partition that replicates its data. If the leader fails, a follower can take over.</td>
+</tr>
+<tr>
+<td><strong>Consumer Group</strong></td>
+<td>A group of consumers sharing the same group ID, ensuring that each partition is consumed by only one member of the group at any given time.</td>
+</tr>
+<tr>
+<td><strong>In-Sync Replica (ISR)</strong></td>
+<td>A replica that is up-to-date with the leader partition. Kafka promotes an ISR as the new leader if the current leader fails.</td>
+</tr>
+<tr>
+<td><strong>Acknowledgments (ACKs)</strong></td>
+<td>A producer configuration that defines when a message is considered successfully sent (e.g., only after being replicated to all followers).</td>
+</tr>
+<tr>
+<td><strong>Retention Policy</strong></td>
+<td>A configuration that determines how long Kafka retains messages before deleting or compacting them. Messages can be removed based on <strong>time</strong> or <strong>size limits</strong>.</td>
+</tr>
+<tr>
+<td><strong>Log Compaction</strong></td>
+<td>A process that keeps only the latest version of a key within a topic, useful for data clean-up and long-term storage.</td>
+</tr>
+<tr>
+<td><strong>Controller</strong></td>
+<td>A designated broker responsible for managing partition leadership and cluster rebalancing.</td>
+</tr>
+<tr>
+<td><strong>Kafka Streams</strong></td>
+<td>A lightweight client library used for processing and analyzing data streams directly within Kafka.</td>
+</tr>
+<tr>
+<td><strong>Kafka Connect</strong></td>
+<td>A framework for integrating Kafka with external systems by providing connectors for data ingestion and extraction.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="how-kafka-achieves-high-scalability"><strong>How Kafka Achieves High Scalability ?</strong><a class="headerlink" href="#how-kafka-achieves-high-scalability" title="Permanent link">&para;</a></h2>
+<p>Kafka’s design is fundamentally <strong>scalable</strong>, allowing it to handle <strong>millions of events per second</strong> efficiently. It achieves this by leveraging <strong>distributed architecture</strong>, <strong>partitioning</strong>, <strong>horizontal scaling</strong>, and several <strong>load balancing strategies</strong>. Let’s explore the <strong>mechanisms, architecture, and workflows</strong> that enable Kafka to scale end-to-end.</p>
+<h3 id="1-partitioning-the-foundation-of-scalability"><strong>1. Partitioning: The Foundation of Scalability</strong><a class="headerlink" href="#1-partitioning-the-foundation-of-scalability" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Partitioning is the primary mechanism</strong> through which Kafka ensures horizontal scalability. </li>
+<li>Each <strong>topic</strong> in Kafka is divided into <strong>partitions</strong>, and each partition stores an ordered, immutable sequence of messages.</li>
+<li><strong>Producers</strong> can write messages to different partitions in parallel, improving throughput.</li>
+<li><strong>Consumers</strong> in a consumer group process data independently from different partitions, spreading the load.</li>
+</ul>
+<h4 id="partition-key-and-load-distribution"><strong>Partition Key and Load Distribution</strong><a class="headerlink" href="#partition-key-and-load-distribution" title="Permanent link">&para;</a></h4>
+<ul>
+<li>A <strong>partition key</strong> can be used to determine to which partition a message will be routed.</li>
+<li>If no key is provided, Kafka defaults to <strong>round-robin distribution</strong> across partitions.</li>
+<li>Partitioning ensures <strong>both scalability and ordering guarantees</strong> within a partition.</li>
+</ul>
+<h4 id="impact-of-more-partitions"><strong>Impact of More Partitions</strong><a class="headerlink" href="#impact-of-more-partitions" title="Permanent link">&para;</a></h4>
+<ul>
+<li>More partitions increase the <strong>parallelism</strong>, allowing more producers and consumers to work simultaneously.</li>
+<li>However, each additional partition incurs <strong>overhead</strong> (memory, I/O, metadata), so the partition count must be tuned carefully.</li>
+</ul>
+<h3 id="2-distributed-broker-architecture"><strong>2. Distributed Broker Architecture</strong><a class="headerlink" href="#2-distributed-broker-architecture" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Kafka is deployed as a <strong>cluster of brokers</strong>, with <strong>each broker responsible for multiple partitions</strong>.</li>
+<li>As Kafka clusters grow, more brokers can be added to <strong>distribute the load</strong>.</li>
+<li>Kafka ensures <strong>no single broker becomes a bottleneck</strong> by distributing topic partitions across all brokers.</li>
+</ul>
+<h4 id="partition-replication-across-brokers"><strong>Partition Replication Across Brokers</strong><a class="headerlink" href="#partition-replication-across-brokers" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Kafka supports <strong>partition replication</strong> for fault tolerance. Each partition has a <strong>leader replica</strong> on one broker and <strong>follower replicas</strong> on other brokers.</li>
+<li>This means even if one broker handles the leader partition, the workload is <strong>distributed across brokers</strong> with followers syncing in the background.</li>
+</ul>
+<h3 id="3-horizontal-scaling-add-more-brokers-or-partitions"><strong>3. Horizontal Scaling: Add More Brokers or Partitions</strong><a class="headerlink" href="#3-horizontal-scaling-add-more-brokers-or-partitions" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Kafka clusters scale horizontally, meaning <strong>new brokers can be added without downtime</strong>.</li>
+<li>As <strong>traffic or data volume increases</strong>, administrators can:</li>
+<li><strong>Add brokers</strong>: Redistribute partitions across the new brokers.</li>
+<li><strong>Add partitions</strong>: Redistribute topics into new partitions.</li>
+</ul>
+<h4 id="scaling-the-producer-and-consumer-layers"><strong>Scaling the Producer and Consumer Layers</strong><a class="headerlink" href="#scaling-the-producer-and-consumer-layers" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Kafka’s <strong>producers and consumers are stateless</strong>, meaning they can scale horizontally.</li>
+<li>Producers write to multiple partitions in parallel.</li>
+<li>
+<p>Consumers in a <strong>consumer group</strong> split the partitions among themselves for parallel processing.</p>
+</li>
+<li>
+<p>When Kafka detects new brokers, <strong>partition leadership rebalances</strong> automatically to evenly distribute the load across brokers.</p>
+</li>
+</ul>
+<h3 id="4-producer-scalability-load-balancing-and-batch-processing"><strong>4. Producer Scalability: Load Balancing and Batch Processing</strong><a class="headerlink" href="#4-producer-scalability-load-balancing-and-batch-processing" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Kafka producers scale by <strong>distributing messages across partitions</strong>. Producers can use:</li>
+<li><strong>Round-robin partitioning</strong>: Evenly distributing messages to all partitions.</li>
+<li>
+<p><strong>Key-based partitioning</strong>: Ensuring messages with the same key always go to the same partition for order guarantees.</p>
+</li>
+<li>
+<p>Kafka producers also use <strong>batching</strong> to group multiple messages into a single request, reducing network overhead and increasing throughput.</p>
+</li>
+<li><strong>Asynchronous sends</strong> allow producers to continue processing without waiting for acknowledgments, further improving scalability.</li>
+</ul>
+<h3 id="5-consumer-scalability-consumer-groups-and-load-sharing"><strong>5. Consumer Scalability: Consumer Groups and Load Sharing</strong><a class="headerlink" href="#5-consumer-scalability-consumer-groups-and-load-sharing" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Kafka scales consumer applications by using <strong>consumer groups</strong>. A <strong>consumer group</strong> is a set of consumers working together to process messages from a topic.</li>
+<li><strong>Each partition in a topic is consumed by only one consumer</strong> in the group at any time, ensuring no two consumers in the same group read the same data.</li>
+<li><strong>More consumers</strong> can be added to a group to share the load, provided the number of partitions is larger than or equal to the number of consumers.</li>
+</ul>
+<h4 id="rebalancing-consumers"><strong>Rebalancing Consumers</strong><a class="headerlink" href="#rebalancing-consumers" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Kafka dynamically adjusts when new consumers are added or removed from a consumer group by <strong>rebalancing partitions</strong> across the group. This ensures efficient data processing, even in a changing environment.</li>
+</ul>
+<h3 id="6-efficient-load-balancing-and-rebalancing-mechanisms"><strong>6. Efficient Load Balancing and Rebalancing Mechanisms</strong><a class="headerlink" href="#6-efficient-load-balancing-and-rebalancing-mechanisms" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Kafka uses <strong>partition rebalancing</strong> when brokers or consumers are added or removed.</li>
+<li><strong>The controller broker</strong> manages the partition leader assignment and rebalancing.</li>
+<li>During rebalancing, Kafka ensures <strong>minimal disruption</strong> by only migrating the necessary partitions, ensuring continuous data flow.</li>
+</ul>
+<h4 id="sticky-partitioning-strategy"><strong>Sticky Partitioning Strategy</strong><a class="headerlink" href="#sticky-partitioning-strategy" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Kafka optimizes load balancing by <strong>sticky partition assignments</strong>, meaning it tries to keep partitions assigned to the same consumer or broker to minimize churn.</li>
+</ul>
+<h3 id="7-network-optimization-and-zero-copy-technology"><strong>7. Network Optimization and Zero-Copy Technology</strong><a class="headerlink" href="#7-network-optimization-and-zero-copy-technology" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Kafka relies heavily on <strong>zero-copy</strong> techniques to achieve high throughput.</li>
+<li>Using <strong>sendfile()</strong> system calls, Kafka can move data directly from the disk to the network buffer, reducing CPU usage and latency.</li>
+<li>This makes Kafka suitable for transferring <strong>large volumes of data</strong> with minimal resource consumption.</li>
+</ul>
+<h3 id="8-broker-level-optimizations-and-compression"><strong>8. Broker-Level Optimizations and Compression</strong><a class="headerlink" href="#8-broker-level-optimizations-and-compression" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Kafka brokers use <strong>I/O batching</strong> and <strong>compression</strong> to improve scalability:</li>
+<li><strong>Batching</strong>: Brokers accumulate messages in memory and flush them to disk in batches, reducing disk I/O operations.</li>
+<li>
+<p><strong>Compression</strong>: Messages can be compressed (e.g., with <strong>Gzip</strong> or <strong>Snappy</strong>) to reduce the amount of data transferred over the network.</p>
+</li>
+<li>
+<p>Kafka also makes <strong>use of page cache</strong> to keep frequently accessed data in memory, further optimizing performance.</p>
+</li>
+</ul>
+<h3 id="9-kafka-controller-and-partition-leadership"><strong>9. Kafka Controller and Partition Leadership</strong><a class="headerlink" href="#9-kafka-controller-and-partition-leadership" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Kafka assigns one broker as the <strong>controller broker</strong>, which handles:</li>
+<li><strong>Leader election</strong>: Assigning leader partitions across brokers.</li>
+<li>
+<p><strong>Metadata updates</strong>: Ensuring all brokers have consistent metadata.</p>
+</li>
+<li>
+<p><strong>Dynamic partition leadership reassignment</strong> ensures that even when new brokers are added or partitions are migrated, Kafka distributes workload evenly.</p>
+</li>
+</ul>
+<h3 id="10-handling-backpressure-for-scalability"><strong>10. Handling Backpressure for Scalability</strong><a class="headerlink" href="#10-handling-backpressure-for-scalability" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Kafka producers and consumers operate <strong>asynchronously</strong>, which allows the system to handle backpressure without affecting throughput.</li>
+<li><strong>Producers continue writing</strong> to partitions regardless of consumer lag.</li>
+<li>Consumers can process messages at their own pace using <strong>offsets</strong>, without impacting producers or causing system slowdowns.</li>
+</ul>
+<h3 id="11-configuring-for-high-scalability-tuning-parameters"><strong>11. Configuring for High Scalability: Tuning Parameters</strong><a class="headerlink" href="#11-configuring-for-high-scalability-tuning-parameters" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Kafka clusters can be optimized for scalability with various tuning parameters:</li>
+<li><strong>Partition count</strong>: More partitions allow more parallel processing.</li>
+<li><strong>Replication factor</strong>: Higher replication ensures fault tolerance, though it also adds overhead.</li>
+<li><strong>Batch size</strong>: Larger batches increase throughput but introduce some latency.</li>
+<li><strong>Compression</strong>: Compressing messages reduces network load but requires more CPU.</li>
+</ul>
+<h4 id="summary-of-kafkas-high-scalability-mechanisms"><strong>Summary of Kafka’s High Scalability Mechanisms</strong><a class="headerlink" href="#summary-of-kafkas-high-scalability-mechanisms" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Aspect</strong></th>
+<th><strong>How Kafka Scales</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Partitioning</strong></td>
+<td>Divides topics into partitions for parallelism.</td>
+</tr>
+<tr>
+<td><strong>Distributed Brokers</strong></td>
+<td>Workload spread across multiple brokers.</td>
+</tr>
+<tr>
+<td><strong>Horizontal Scaling</strong></td>
+<td>New brokers or partitions can be added dynamically.</td>
+</tr>
+<tr>
+<td><strong>Producer Parallelism</strong></td>
+<td>Producers write to multiple partitions concurrently.</td>
+</tr>
+<tr>
+<td><strong>Consumer Groups</strong></td>
+<td>Consumers share partitions for parallel processing.</td>
+</tr>
+<tr>
+<td><strong>Rebalancing</strong></td>
+<td>Redistributes workload when brokers/consumers change.</td>
+</tr>
+<tr>
+<td><strong>Batching &amp; Compression</strong></td>
+<td>Reduces I/O and network overhead.</td>
+</tr>
+<tr>
+<td><strong>Zero-Copy Technology</strong></td>
+<td>Efficient data transfer with low CPU usage.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="how-kafka-achieves-high-availability-and-fault-tolerance"><strong>How Kafka Achieves High Availability and Fault Tolerance ?</strong><a class="headerlink" href="#how-kafka-achieves-high-availability-and-fault-tolerance" title="Permanent link">&para;</a></h2>
+<p>Kafka’s design for high availability and fault tolerance centers on <strong>replication, leader election, distributed brokers, and self-healing mechanisms</strong>. Together, these mechanisms ensure Kafka can <strong>handle hardware, software, and network failures</strong>, while maintaining <strong>data integrity, durability, and continuity</strong>.</p>
+<h3 id="1-partition-replication-foundation-of-ha-and-ft"><strong>1. Partition Replication – Foundation of HA and FT</strong><a class="headerlink" href="#1-partition-replication-foundation-of-ha-and-ft" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Kafka divides topics into <strong>partitions</strong> and <strong>replicates each partition</strong> across multiple brokers.</li>
+<li>For each partition, there is a <strong>leader replica</strong> (primary copy) and <strong>follower replicas</strong>.</li>
+<li><strong>Replication Factor</strong> (set per topic) determines the number of copies for each partition. For example, a replication factor of 3 means one leader and two followers per partition.</li>
+</ul>
+<h4 id="how-replication-ensures-ha-and-ft"><strong>How Replication Ensures HA and FT:</strong><a class="headerlink" href="#how-replication-ensures-ha-and-ft" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Leader-follower model</strong>: Only the <strong>leader replica</strong> handles read and write requests. Followers passively replicate the leader’s data.</li>
+<li><strong>Automatic failover</strong>: If the leader broker fails, one of the followers (from the <strong>in-sync replica set, or ISR</strong>) is promoted as the new leader, ensuring the partition remains available.</li>
+<li>This setup ensures <strong>continuous data availability</strong> and <strong>minimal downtime</strong> when individual brokers fail.</li>
+</ol>
+<h3 id="2-leader-election-and-failover-mechanism"><strong>2. Leader Election and Failover Mechanism</strong><a class="headerlink" href="#2-leader-election-and-failover-mechanism" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Kafka assigns <strong>one replica as the leader</strong> and others as followers for each partition.</li>
+<li><strong>Zookeeper (or KRaft)</strong> coordinates leader election and keeps metadata consistent across brokers.</li>
+</ul>
+<h4 id="leader-election-process-during-failures"><strong>Leader Election Process During Failures:</strong><a class="headerlink" href="#leader-election-process-during-failures" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Detection</strong>: Zookeeper (or KRaft) detects a failed broker.</li>
+<li><strong>Election</strong>: The <strong>controller broker</strong> initiates a leader election for partitions on the failed broker.</li>
+<li><strong>Promotion</strong>: An <strong>in-sync follower</strong> (replica that’s fully up-to-date) is promoted to leader.</li>
+<li><strong>Metadata update</strong>: Kafka updates cluster metadata to reflect the new leader, ensuring clients redirect requests to the new leader.</li>
+</ol>
+<p>This <strong>automated and rapid leader election</strong> ensures Kafka remains <strong>operational with minimal interruption</strong>.</p>
+<h3 id="3-in-sync-replicas-isr-ensuring-data-integrity"><strong>3. In-Sync Replicas (ISR) – Ensuring Data Integrity</strong><a class="headerlink" href="#3-in-sync-replicas-isr-ensuring-data-integrity" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Kafka tracks <strong>in-sync replicas (ISR)</strong>, which are replicas fully synchronized with the leader.</li>
+<li>Kafka only allows <strong>ISR replicas to be promoted to leader</strong> during failover, ensuring the new leader has the latest data.</li>
+</ul>
+<h4 id="role-of-isr-in-minimizing-data-loss"><strong>Role of ISR in Minimizing Data Loss:</strong><a class="headerlink" href="#role-of-isr-in-minimizing-data-loss" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Kafka only acknowledges writes to producers if messages are successfully replicated to <strong>all ISR replicas</strong> (if <code>acks=all</code>).</li>
+<li>If a replica falls behind, it is <strong>temporarily removed from ISR</strong> until it catches up, ensuring only <strong>fully synced replicas</strong> can be promoted to leader.</li>
+</ul>
+<h3 id="4-controller-broker-managing-ha-and-ft-orchestration"><strong>4. Controller Broker – Managing HA and FT Orchestration</strong><a class="headerlink" href="#4-controller-broker-managing-ha-and-ft-orchestration" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Kafka designates one broker as the <strong>controller</strong>, responsible for <strong>partition leadership management</strong> and <strong>rebalancing operations</strong>.</li>
+<li>The controller broker coordinates <strong>leader elections</strong> and <strong>metadata updates</strong> across the cluster.</li>
+<li>If the controller broker fails, a new one is elected to <strong>maintain continuity without disrupting operations</strong>.</li>
+</ul>
+<h3 id="5-distributed-brokers-avoiding-single-points-of-failure"><strong>5. Distributed Brokers – Avoiding Single Points of Failure</strong><a class="headerlink" href="#5-distributed-brokers-avoiding-single-points-of-failure" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Kafka distributes <strong>partitions and their replicas</strong> across multiple brokers, ensuring no single broker failure causes data loss.</li>
+<li>Each broker holds different partitions and replicas, providing <strong>load balancing</strong> and <strong>data redundancy</strong>.</li>
+</ul>
+<h4 id="how-broker-distribution-improves-ha-and-ft"><strong>How Broker Distribution Improves HA and FT:</strong><a class="headerlink" href="#how-broker-distribution-improves-ha-and-ft" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Kafka ensures that no two replicas of the same partition are hosted on the same broker, minimizing risk during a broker failure.</li>
+<li>If a broker fails, other brokers hosting replicas <strong>continue serving data</strong>, maintaining availability.</li>
+<li>Kafka dynamically rebalances partitions and replicas across brokers when a broker joins or leaves the cluster.</li>
+</ul>
+<h3 id="6-acknowledgment-policies-acks-ensuring-data-durability"><strong>6. Acknowledgment Policies (ACKs) – Ensuring Data Durability</strong><a class="headerlink" href="#6-acknowledgment-policies-acks-ensuring-data-durability" title="Permanent link">&para;</a></h3>
+<p>Kafka provides <strong>acknowledgment modes</strong> for tuning data durability against performance. These settings control when a message is considered “successfully written”:</p>
+<ul>
+<li><strong>acks=0</strong>: Producer does not wait for any acknowledgment (fast, but no durability).</li>
+<li><strong>acks=1</strong>: Leader acknowledges after writing to local storage (data loss possible if the leader fails).</li>
+<li><strong>acks=all</strong>: Leader waits until message replication to all ISR replicas, maximizing durability.</li>
+</ul>
+<h4 id="role-of-acks-in-fault-tolerance"><strong>Role of ACKs in Fault Tolerance:</strong><a class="headerlink" href="#role-of-acks-in-fault-tolerance" title="Permanent link">&para;</a></h4>
+<ul>
+<li>With <strong>acks=all</strong>, Kafka ensures even if the leader fails immediately after acknowledging, the message is still replicated on follower brokers.</li>
+<li>This reduces <strong>data loss risk</strong> and enables <strong>safe failover</strong> to a new leader.</li>
+</ul>
+<h3 id="7-log-compaction-and-retention-for-data-availability"><strong>7. Log Compaction and Retention for Data Availability</strong><a class="headerlink" href="#7-log-compaction-and-retention-for-data-availability" title="Permanent link">&para;</a></h3>
+<p>Kafka employs <strong>log compaction and retention</strong> to maintain long-term data availability:</p>
+<ol>
+<li><strong>Time-based retention</strong>: Kafka retains messages for a configurable period (e.g., 7 days).</li>
+<li><strong>Size-based retention</strong>: Kafka deletes old messages once partition logs reach a certain size.</li>
+</ol>
+<h4 id="log-compaction-for-data-recovery"><strong>Log Compaction for Data Recovery:</strong><a class="headerlink" href="#log-compaction-for-data-recovery" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Log compaction keeps only the <strong>latest version of each key</strong>. This is essential for stateful applications where the latest state must always be available.</li>
+<li>Log compaction allows Kafka to <strong>replay and recover data</strong> even during consumer failures or recovery needs.</li>
+</ul>
+<h3 id="8-handling-split-brain-scenarios-consistency-through-quorums"><strong>8. Handling Split-Brain Scenarios – Consistency Through Quorums</strong><a class="headerlink" href="#8-handling-split-brain-scenarios-consistency-through-quorums" title="Permanent link">&para;</a></h3>
+<p>A <strong>split-brain scenario</strong> happens when a broker loses connectivity with others, risking <strong>data inconsistency</strong>.</p>
+<h4 id="kafkas-approach-to-preventing-split-brain"><strong>Kafka’s Approach to Preventing Split-Brain:</strong><a class="headerlink" href="#kafkas-approach-to-preventing-split-brain" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Kafka <strong>removes disconnected brokers from the ISR</strong>, preventing them from serving outdated data.</li>
+<li>Zookeeper (or KRaft) ensures that <strong>only one leader per partition</strong> exists, preventing conflicting writes.</li>
+</ul>
+<p>This <strong>quorum-based replication</strong> prevents <strong>data corruption</strong> during network partitions.</p>
+<h3 id="9-self-healing-and-automated-recovery"><strong>9. Self-Healing and Automated Recovery</strong><a class="headerlink" href="#9-self-healing-and-automated-recovery" title="Permanent link">&para;</a></h3>
+<p>Kafka’s <strong>self-healing mechanisms</strong> enable it to quickly recover from broker or replica failures:</p>
+<ul>
+<li><strong>Controller failover</strong>: If the controller broker fails, a new controller is elected automatically.</li>
+<li><strong>Replica recovery</strong>: Kafka automatically <strong>adds a failed broker back to ISR</strong> once it recovers and synchronizes with the leader.</li>
+<li><strong>Rebalancing</strong>: Kafka reassigns leadership of partitions to healthy brokers during rebalancing to prevent bottlenecks or potential outages.</li>
+</ul>
+<p>These <strong>self-healing features</strong> maintain availability and data consistency without requiring manual intervention.</p>
+<h3 id="10-multi-datacenter-replication-for-disaster-recovery"><strong>10. Multi-Datacenter Replication for Disaster Recovery</strong><a class="headerlink" href="#10-multi-datacenter-replication-for-disaster-recovery" title="Permanent link">&para;</a></h3>
+<p>Kafka supports <strong>multi-datacenter replication</strong> for cross-region fault tolerance using tools like <strong>Kafka MirrorMaker</strong>.</p>
+<h4 id="how-multi-cluster-replication-ensures-availability-and-fault-tolerance"><strong>How Multi-Cluster Replication Ensures Availability and Fault Tolerance:</strong><a class="headerlink" href="#how-multi-cluster-replication-ensures-availability-and-fault-tolerance" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Kafka replicates data across geographically separate clusters to ensure disaster recovery.</li>
+<li>If an entire Kafka cluster becomes unavailable, the <strong>replicated cluster</strong> in another data center takes over, ensuring continuity.</li>
+</ul>
+<h3 id="11-client-side-handling-of-failures-for-ha-and-ft"><strong>11. Client-Side Handling of Failures for HA and FT</strong><a class="headerlink" href="#11-client-side-handling-of-failures-for-ha-and-ft" title="Permanent link">&para;</a></h3>
+<p>Kafka’s producers and consumers have built-in resilience to handle failures gracefully:</p>
+<ul>
+<li><strong>Producers</strong>: Retry sends if a leader partition is temporarily unavailable, with updated metadata guiding them to the new leader.</li>
+<li><strong>Consumers</strong>: Retry reads from a new leader if they detect a leader change, and <strong>consumer groups</strong> dynamically rebalance to share the load among available consumers.</li>
+</ul>
+<h3 id="summary-of-kafkas-high-availability-and-fault-tolerance-mechanisms"><strong>Summary of Kafka’s High Availability and Fault Tolerance Mechanisms</strong><a class="headerlink" href="#summary-of-kafkas-high-availability-and-fault-tolerance-mechanisms" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Mechanism</strong></th>
+<th><strong>How It Ensures HA and FT</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Partition Replication</strong></td>
+<td>Multiple copies of data across brokers ensure availability even during broker failures.</td>
+</tr>
+<tr>
+<td><strong>Leader Election</strong></td>
+<td>Automatically promotes a follower to leader when the leader broker fails.</td>
+</tr>
+<tr>
+<td><strong>In-Sync Replicas (ISR)</strong></td>
+<td>Only fully synchronized replicas can be promoted to leader to prevent data loss.</td>
+</tr>
+<tr>
+<td><strong>Controller Broker</strong></td>
+<td>Manages partition leadership and rebalancing operations, ensuring consistent cluster state.</td>
+</tr>
+<tr>
+<td><strong>Distributed Brokers</strong></td>
+<td>Spreads data across brokers to avoid single points of failure.</td>
+</tr>
+<tr>
+<td><strong>Dynamic Rebalancing</strong></td>
+<td>Adjusts workload across brokers and consumers to handle changes or failures smoothly.</td>
+</tr>
+<tr>
+<td><strong>Acknowledgment Policies (ACKs)</strong></td>
+<td>Ensures data is safely replicated before acknowledging writes, reducing data loss risk.</td>
+</tr>
+<tr>
+<td><strong>Log Compaction</strong></td>
+<td>Maintains the latest data state for recovery during consumer or application failures.</td>
+</tr>
+<tr>
+<td><strong>Client-Side Recovery</strong></td>
+<td>Producers and consumers handle broker failures with retries and automatic rebalancing.</td>
+</tr>
+<tr>
+<td><strong>Network Partition Handling</strong></td>
+<td>Uses Zookeeper/KRaft to prevent split-brain scenarios and ensure data consistency.</td>
+</tr>
+<tr>
+<td><strong>Multi-Datacenter Replication</strong></td>
+<td>Provides disaster recovery and redundancy across regions.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="kafka-features-impacts-on-ha-and-ft"><strong>Kafka features Impacts on HA and FT</strong><a class="headerlink" href="#kafka-features-impacts-on-ha-and-ft" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Feature/Configuration</strong></th>
+<th><strong>Configuration Details</strong></th>
+<th><strong>Impact on HA</strong></th>
+<th><strong>Impact on FT</strong></th>
+<th><strong>Explanation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Partition Replication</strong></td>
+<td>Set a <strong>high replication factor</strong> (e.g., <code>3</code> or <code>5</code>)</td>
+<td>High</td>
+<td>High</td>
+<td>Ensures multiple copies of data across brokers; if the leader fails, a follower can be promoted, maintaining data availability and durability.</td>
+</tr>
+<tr>
+<td><strong>In-Sync Replicas (ISR)</strong></td>
+<td>Use <code>acks=all</code> to ensure ISR sync before acknowledgments</td>
+<td>Moderate</td>
+<td>High</td>
+<td>Guarantees data consistency by ensuring messages are replicated to all ISR replicas before confirming writes, reducing data loss.</td>
+</tr>
+<tr>
+<td><strong>Leader Election Mechanism</strong></td>
+<td>Managed by <strong>Zookeeper</strong> or <strong>KRaft</strong> for automatic failover</td>
+<td>High</td>
+<td>Moderate</td>
+<td>Automatically promotes a follower to leader when the current leader fails, minimizing downtime.</td>
+</tr>
+<tr>
+<td><strong>Controller Broker</strong></td>
+<td>Redundancy provided by re-election if the current controller fails</td>
+<td>High</td>
+<td>Moderate</td>
+<td>Ensures the orchestrator of metadata and rebalancing has a backup, maintaining consistent cluster operations.</td>
+</tr>
+<tr>
+<td><strong>Distributed Broker Placement</strong></td>
+<td>Spread partitions across brokers; no two replicas on the same broker</td>
+<td>High</td>
+<td>High</td>
+<td>Reduces the risk of data unavailability and loss by preventing single points of failure.</td>
+</tr>
+<tr>
+<td><strong>Rebalancing Strategy</strong></td>
+<td>Configure <strong>partition reassignment</strong> for balanced broker load</td>
+<td>High</td>
+<td>Low</td>
+<td>Prevents overload on individual brokers, enhancing availability; this has less impact on data durability.</td>
+</tr>
+<tr>
+<td><strong>Acknowledgment Policy (ACKs)</strong></td>
+<td>Set <code>acks=all</code> for highest data durability</td>
+<td>Low</td>
+<td>High</td>
+<td>Ensures writes are only confirmed after replication to all ISR replicas, reducing the risk of data loss.</td>
+</tr>
+<tr>
+<td><strong>Log Compaction</strong></td>
+<td>Enable for compacted topics to retain latest state</td>
+<td>Moderate</td>
+<td>Moderate</td>
+<td>Retains the latest state of each key, useful for stateful applications; supports recovery but doesn’t guarantee availability.</td>
+</tr>
+<tr>
+<td><strong>Retention Policies</strong></td>
+<td>Configure <strong>time-based</strong> or <strong>size-based</strong> retention</td>
+<td>High</td>
+<td>Low</td>
+<td>Maintains historical data for consumer recovery, contributing to high availability if consumers fall behind.</td>
+</tr>
+<tr>
+<td><strong>Client Retry Mechanisms</strong></td>
+<td>Configure producer and consumer <strong>retries</strong></td>
+<td>High</td>
+<td>Low</td>
+<td>Enables producers and consumers to handle temporary broker unavailability, ensuring continuous operation.</td>
+</tr>
+<tr>
+<td><strong>Consumer Group Rebalancing</strong></td>
+<td>Set rebalancing policies to avoid bottlenecks</td>
+<td>High</td>
+<td>Low</td>
+<td>Ensures efficient load distribution among consumers, enhancing availability but minimally impacting data durability.</td>
+</tr>
+<tr>
+<td><strong>Multi-Datacenter Replication</strong></td>
+<td>Enable with <strong>Kafka MirrorMaker</strong> or similar tools</td>
+<td>High</td>
+<td>High</td>
+<td>Provides cross-region redundancy for both availability and fault tolerance, especially critical for disaster recovery.</td>
+</tr>
+<tr>
+<td><strong>Backpressure Handling</strong></td>
+<td>Use <strong>offset tracking and monitoring</strong></td>
+<td>Moderate</td>
+<td>High</td>
+<td>Allows consumers to fall behind producers without causing data loss, enhancing fault tolerance by protecting against backpressure failures.</td>
+</tr>
+<tr>
+<td><strong>Split-Brain Handling</strong></td>
+<td>Managed by Zookeeper/KRaft to avoid conflicting writes</td>
+<td>Low</td>
+<td>High</td>
+<td>Prevents data inconsistency by ensuring only one leader exists per partition, critical for consistency in partitioned network conditions.</td>
+</tr>
+<tr>
+<td><strong>Log Recovery</strong></td>
+<td>Enable brokers to <strong>rebuild from log segments</strong> on restart</td>
+<td>Moderate</td>
+<td>High</td>
+<td>Ensures brokers can recover their state after a crash, minimizing data loss and ensuring continuity post-restart.</td>
+</tr>
+</tbody>
+</table>
+<p>Kafka’s architecture for <strong>high availability and fault tolerance</strong> ensures the system remains resilient under various failure scenarios. Through <strong>partition replication, leader election, dynamic rebalancing, and multi-datacenter replication</strong>, Kafka provides a robust infrastructure with <strong>no single points of failure</strong> and <strong>near-zero downtime</strong>, making it reliable for critical real-time data streaming and processing applications.</p>
+<hr />
+<h2 id="what-makes-kafka-unique"><strong>What Makes Kafka Unique ?</strong><a class="headerlink" href="#what-makes-kafka-unique" title="Permanent link">&para;</a></h2>
+<p><strong>Append only Log-Based Architecture</strong> and <strong>High-Throughput with Low-Latency Design</strong> two of Kafka’s core features that make it unique. </p>
+<h3 id="1-log-based-architecture-the-foundation-of-kafkas-data-model"><strong>1. Log-Based Architecture: The Foundation of Kafka’s Data Model</strong><a class="headerlink" href="#1-log-based-architecture-the-foundation-of-kafkas-data-model" title="Permanent link">&para;</a></h3>
+<p>Kafka’s <strong>log-based architecture</strong> is what makes it fundamentally different from traditional messaging systems. It’s built on the concept of a <strong>distributed, partitioned, and immutable log</strong>, allowing Kafka to scale, preserve data ordering, and enable consumers to replay data as needed. Here’s a deep dive into what this architecture entails and why it’s special.</p>
+<h4 id="how-log-based-architecture-works"><strong>How Log-Based Architecture Works</strong><a class="headerlink" href="#how-log-based-architecture-works" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Topics and Partitions as Logs</strong>:</li>
+<li>In Kafka, each <strong>topic</strong> is split into <strong>partitions</strong>, and each partition acts as an independent <strong>log</strong>.</li>
+<li>Within a partition, messages are <strong>appended sequentially</strong> in an ordered, immutable fashion, with each message assigned an <strong>offset</strong> (a unique, incremental ID).</li>
+<li>
+<p><strong>Offsets</strong> serve as pointers to each message’s position within the log, making it easy for consumers to track their progress.</p>
+</li>
+<li>
+<p><strong>Immutable Log Storage</strong>:</p>
+</li>
+<li>Messages in each partition are stored as an <strong>append-only log</strong>—once written, messages cannot be modified or deleted (unless retention policies specify otherwise).</li>
+<li>
+<p>This <strong>immutability</strong> provides consistency and durability, as every message has a fixed position within the partition log.</p>
+</li>
+<li>
+<p><strong>Replayable and Persistent Data</strong>:</p>
+</li>
+<li>Kafka’s log structure allows <strong>consumers to replay messages</strong> from any offset within the retention period. Consumers can reread data for <strong>recovery</strong>, <strong>reprocessing</strong>, or <strong>analytics</strong> without impacting other consumers or producers.</li>
+<li>Since Kafka retains messages based on <strong>time</strong> or <strong>size-based retention policies</strong>, consumers can pick up data where they left off or reprocess older data without affecting ongoing data flows.</li>
+</ol>
+<h4 id="why-log-based-architecture-makes-kafka-unique"><strong>Why Log-Based Architecture Makes Kafka Unique</strong><a class="headerlink" href="#why-log-based-architecture-makes-kafka-unique" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong>Efficient Ordering</strong>: Kafka maintains strict <strong>ordering within each partition</strong> since messages are written sequentially. This guarantees that messages within a partition are processed in the order they were produced, which is essential for applications like <strong>transaction logs</strong> and <strong>real-time event processing</strong>.</p>
+</li>
+<li>
+<p><strong>Parallelism and Scalability</strong>: By dividing topics into <strong>multiple partitions</strong>, Kafka enables <strong>horizontal scalability</strong>. Each partition can be processed independently by separate consumers, allowing for <strong>parallel data processing</strong> and high throughput across large datasets.</p>
+</li>
+<li>
+<p><strong>Fault Tolerance and Durability</strong>: The log-based structure, combined with <strong>replication</strong> (having multiple copies of each partition on different brokers), ensures that data remains durable and available even in the event of broker failures.</p>
+</li>
+</ul>
+<h4 id="kafkas-log-based-architecture-in-practice"><strong>Kafka’s Log-Based Architecture in Practice</strong><a class="headerlink" href="#kafkas-log-based-architecture-in-practice" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Data Lake Ingestion</strong>: Kafka’s log-based architecture makes it perfect for acting as a <strong>highly durable source of truth</strong> in a data lake architecture, where data can be stored in raw form and later reprocessed.</li>
+<li><strong>Audit Trails and Event Sourcing</strong>: Kafka’s immutable, ordered log allows applications to <strong>store audit logs</strong> or <strong>event-sourced data</strong> with an unalterable history, which is essential for compliance and traceability.</li>
+<li><strong>Consumer Independence</strong>: Because consumers track their own offsets, they can read at their own pace, without being forced to process data in real-time. This enables <strong>flexibility</strong> for different applications (e.g., one consumer could process events in real-time, while another could do batch processing from the same log).</li>
+</ul>
+<h3 id="2-high-throughput-with-low-latency-design"><strong>2. High-Throughput with Low-Latency Design</strong><a class="headerlink" href="#2-high-throughput-with-low-latency-design" title="Permanent link">&para;</a></h3>
+<p>Kafka’s design is optimized for <strong>handling millions of events per second</strong> with minimal delay, even under heavy load. This high throughput and low latency are achieved through a combination of <strong>disk I/O optimizations, data compression, and efficient network handling</strong>. Let’s explore these in detail.</p>
+<h4 id="key-components-of-kafkas-high-throughput-low-latency-design"><strong>Key Components of Kafka’s High-Throughput, Low-Latency Design</strong><a class="headerlink" href="#key-components-of-kafkas-high-throughput-low-latency-design" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Sequential Disk I/O</strong>:</li>
+<li>Kafka writes messages to disk <strong>sequentially</strong> rather than performing random writes. This significantly reduces <strong>seek time</strong>, as the disk head doesn’t need to jump around to write or read data.</li>
+<li>
+<p>Sequential writes take advantage of <strong>modern disks’ ability to handle high-speed sequential I/O</strong>, especially in SSDs, allowing Kafka to process large volumes of data quickly.</p>
+</li>
+<li>
+<p><strong>Page Cache Usage</strong>:</p>
+</li>
+<li>Kafka <strong>leverages the OS’s page cache</strong> to keep frequently accessed data in memory. By utilizing page cache, Kafka avoids direct disk reads for recently accessed data, reducing read latency.</li>
+<li>
+<p>For producers writing data, Kafka batches messages in memory before flushing them to disk, improving throughput by reducing the number of disk write operations.</p>
+</li>
+<li>
+<p><strong>Zero-Copy Data Transfer</strong>:</p>
+</li>
+<li>Kafka uses <strong>zero-copy technology</strong>, specifically the <strong>sendfile()</strong> system call, to <strong>transfer data directly from disk to network sockets</strong> without additional memory copies.</li>
+<li>
+<p>This allows Kafka to handle network I/O with minimal CPU usage, reducing latency and increasing throughput, especially for large messages.</p>
+</li>
+<li>
+<p><strong>Batching and Compression</strong>:</p>
+</li>
+<li>Kafka <strong>batches multiple messages into a single disk write</strong> or network packet, minimizing the number of I/O operations required.</li>
+<li>
+<p>Batching not only increases efficiency but also <strong>improves compression rates</strong> by reducing network overhead. Kafka supports <strong>Gzip, Snappy, and LZ4 compression</strong>, reducing data size and thus speeding up data transfer.</p>
+</li>
+<li>
+<p><strong>Network Optimization for Low Latency</strong>:</p>
+</li>
+<li>Kafka’s network layer is designed to handle <strong>high-speed data transfer</strong> between producers, brokers, and consumers. Kafka supports <strong>asynchronous data processing</strong>, allowing producers to continue sending messages without waiting for each acknowledgment, which further reduces latency.</li>
+<li>Kafka brokers are <strong>stateful</strong>, meaning they store partition offsets and metadata locally, reducing the need to rely on external systems for routing information. This minimizes delays in routing messages to the correct consumers.</li>
+</ol>
+<h4 id="why-kafkas-throughput-and-latency-make-it-special"><strong>Why Kafka’s Throughput and Latency Make It Special</strong><a class="headerlink" href="#why-kafkas-throughput-and-latency-make-it-special" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Handling Massive Data Streams</strong>: Kafka’s design allows it to <strong>ingest millions of events per second</strong> across hundreds or thousands of partitions, making it highly scalable and capable of handling enterprise-scale data streams in real-time.</li>
+<li><strong>Low-Latency Processing</strong>: Kafka’s ability to process data with minimal delay is essential for real-time applications where low latency is critical, such as <strong>fraud detection</strong>, <strong>real-time analytics</strong>, and <strong>financial trading</strong>.</li>
+<li><strong>Reduced Overhead for Producers and Consumers</strong>: By using <strong>batching, compression, and zero-copy technology</strong>, Kafka minimizes the load on producers and consumers, allowing them to process data efficiently without overwhelming system resources.</li>
+</ul>
+<h4 id="kafkas-high-throughput-low-latency-design-in-practice"><strong>Kafka’s High-Throughput, Low-Latency Design in Practice</strong><a class="headerlink" href="#kafkas-high-throughput-low-latency-design-in-practice" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Real-Time Analytics and Monitoring</strong>: Kafka’s ability to process data in near real-time enables <strong>real-time monitoring</strong> and <strong>analytics</strong> applications. Organizations can monitor <strong>user activity, system performance, or financial transactions</strong> in real-time with minimal delay.</li>
+<li><strong>Microservices Communication</strong>: In microservices architectures, Kafka acts as a high-throughput backbone for <strong>event-driven communication</strong> between services. Kafka’s low-latency design ensures that events are delivered quickly, enabling <strong>responsive and reactive service interactions</strong>.</li>
+<li><strong>Data Pipelines and ETL</strong>: Kafka’s high throughput supports <strong>data pipeline workloads</strong> where large volumes of data need to be extracted, transformed, and loaded across different systems. Kafka can handle ETL pipelines with minimal latency, making it suitable for <strong>streaming data processing</strong>.</li>
+</ul>
+<h3 id="summary-of-kafkas-unique-log-based-architecture-and-high-throughput-design"><strong>Summary of Kafka’s Unique Log-Based Architecture and High-Throughput Design</strong><a class="headerlink" href="#summary-of-kafkas-unique-log-based-architecture-and-high-throughput-design" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Aspect</strong></th>
+<th><strong>Log-Based Architecture</strong></th>
+<th><strong>High-Throughput with Low-Latency Design</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Core Principle</strong></td>
+<td>Immutable, append-only logs for each partition.</td>
+<td>Optimized for sequential writes, memory management, and efficient data transfer.</td>
+</tr>
+<tr>
+<td><strong>Data Storage</strong></td>
+<td>Messages are stored as ordered, append-only logs in each partition, ensuring data immutability and ordering.</td>
+<td>Batching, compression, and zero-copy transfer ensure efficient storage and minimal latency in data handling.</td>
+</tr>
+<tr>
+<td><strong>Fault Tolerance</strong></td>
+<td>Replication across brokers enables resilience against broker failures, as partitions can be replayed and failover to available replicas.</td>
+<td>Brokers use page cache and zero-copy I/O to keep data transfer reliable under heavy load, even in the case of high data volumes.</td>
+</tr>
+<tr>
+<td><strong>Parallelism and Scalability</strong></td>
+<td>Partitions allow Kafka to scale horizontally, providing <strong>parallel processing</strong> across producers and consumers, with strict ordering within each partition.</td>
+<td>Sequential I/O and batching enable Kafka to handle high-throughput workloads, supporting massive parallelism across clients.</td>
+</tr>
+<tr>
+<td><strong>Use Cases</strong></td>
+<td>Event sourcing, state recovery, and audit logs where ordered, immutable data is essential.</td>
+<td>Real-time monitoring, analytics, and streaming data pipelines that require fast ingestion and minimal latency.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="recommended-kafka-settings"><strong>Recommended Kafka Settings</strong><a class="headerlink" href="#recommended-kafka-settings" title="Permanent link">&para;</a></h2>
+<p>Here are the  organized into individual tables based on their sections. Each table provides a summary of the key settings along with recommended values and explanations.</p>
+<h3 id="1-broker-level-settings"><strong>1. Broker-Level Settings</strong><a class="headerlink" href="#1-broker-level-settings" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Setting</strong></th>
+<th><strong>Recommended Value</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>replication.factor</code></td>
+<td><code>3</code></td>
+<td>Ensures redundancy and fault tolerance, allowing partition recovery if a broker fails.</td>
+</tr>
+<tr>
+<td><code>min.insync.replicas</code></td>
+<td><code>2</code></td>
+<td>Reduces data loss risk by ensuring at least two replicas acknowledge writes.</td>
+</tr>
+<tr>
+<td><code>num.partitions</code></td>
+<td><code>6</code> (or based on load)</td>
+<td>Balances throughput and scalability; more partitions allow greater parallel processing.</td>
+</tr>
+<tr>
+<td><code>log.retention.hours</code></td>
+<td><code>168</code> (7 days)</td>
+<td>Controls how long messages are retained; suitable for standard processing and replay needs.</td>
+</tr>
+<tr>
+<td><code>log.segment.bytes</code></td>
+<td><code>1 GB</code></td>
+<td>Manages the segment size for optimal disk usage and performance in log rolling.</td>
+</tr>
+<tr>
+<td><code>log.cleanup.policy</code></td>
+<td><code>delete</code> or <code>compact</code></td>
+<td><code>delete</code> for default; <code>compact</code> for retaining only the latest version of each key.</td>
+</tr>
+<tr>
+<td><code>compression.type</code></td>
+<td><code>producer</code>, <code>snappy</code>, or <code>lz4</code></td>
+<td>Saves bandwidth and improves throughput, especially under high data volume conditions.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-producer-level-settings"><strong>2. Producer-Level Settings</strong><a class="headerlink" href="#2-producer-level-settings" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Setting</strong></th>
+<th><strong>Recommended Value</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>acks</code></td>
+<td><code>all</code></td>
+<td>Ensures that all in-sync replicas acknowledge writes, increasing reliability.</td>
+</tr>
+<tr>
+<td><code>retries</code></td>
+<td><code>Integer.MAX_VALUE</code></td>
+<td>Handles transient network issues by allowing indefinite retries, preventing message loss.</td>
+</tr>
+<tr>
+<td><code>retry.backoff.ms</code></td>
+<td><code>100</code></td>
+<td>Introduces a pause between retries, avoiding retry flooding and improving stability.</td>
+</tr>
+<tr>
+<td><code>enable.idempotence</code></td>
+<td><code>true</code></td>
+<td>Prevents duplicate messages by ensuring exactly-once semantics in data delivery.</td>
+</tr>
+<tr>
+<td><code>batch.size</code></td>
+<td><code>32 KB</code></td>
+<td>Enhances throughput by accumulating records into batches before sending them.</td>
+</tr>
+<tr>
+<td><code>linger.ms</code></td>
+<td><code>5</code></td>
+<td>Small linger time allows batches to fill, reducing network overhead without delaying sends.</td>
+</tr>
+<tr>
+<td><code>compression.type</code></td>
+<td><code>snappy</code> or <code>lz4</code></td>
+<td>Compresses data to reduce payload size, saving bandwidth and reducing transfer time.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-consumer-level-settings"><strong>3. Consumer-Level Settings</strong><a class="headerlink" href="#3-consumer-level-settings" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Setting</strong></th>
+<th><strong>Recommended Value</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>auto.offset.reset</code></td>
+<td><code>earliest</code></td>
+<td>Ensures consumers start reading from the beginning if no offset is committed.</td>
+</tr>
+<tr>
+<td><code>max.poll.records</code></td>
+<td><code>500</code></td>
+<td>Controls the batch size per poll, balancing throughput and processing time.</td>
+</tr>
+<tr>
+<td><code>session.timeout.ms</code></td>
+<td><code>30,000</code></td>
+<td>Provides enough time for consumers to process data without triggering unnecessary rebalances.</td>
+</tr>
+<tr>
+<td><code>heartbeat.interval.ms</code></td>
+<td><code>10,000</code></td>
+<td>Sets the interval for heartbeat checks within the session timeout, reducing rebalance triggers.</td>
+</tr>
+<tr>
+<td><code>fetch.min.bytes</code></td>
+<td><code>1 MB</code></td>
+<td>Improves fetch efficiency by waiting for a minimum data size before retrieving.</td>
+</tr>
+<tr>
+<td><code>fetch.max.bytes</code></td>
+<td><code>50 MB</code></td>
+<td>Enables large batch sizes for high-throughput consumers, reducing network calls.</td>
+</tr>
+<tr>
+<td><code>enable.auto.commit</code></td>
+<td><code>false</code></td>
+<td>Disables automatic offset commits, allowing applications to commit only after processing.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-cluster-level-settings-for-high-availability-and-fault-tolerance"><strong>4. Cluster-Level Settings for High Availability and Fault Tolerance</strong><a class="headerlink" href="#4-cluster-level-settings-for-high-availability-and-fault-tolerance" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Setting</strong></th>
+<th><strong>Recommended Value</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>min.insync.replicas</code></td>
+<td><code>2</code></td>
+<td>Ensures at least two replicas must be in sync, providing better durability.</td>
+</tr>
+<tr>
+<td><code>controlled.shutdown.enable</code></td>
+<td><code>true</code></td>
+<td>Enables controlled shutdown, allowing brokers to gracefully transition leadership.</td>
+</tr>
+<tr>
+<td><code>unclean.leader.election.enable</code></td>
+<td><code>false</code></td>
+<td>Prevents out-of-sync replicas from being elected as leaders, protecting data consistency.</td>
+</tr>
+<tr>
+<td><code>num.network.threads</code></td>
+<td><code>8</code></td>
+<td>Increases concurrency for network traffic, supporting high-throughput applications.</td>
+</tr>
+<tr>
+<td><code>num.io.threads</code></td>
+<td><code>8</code></td>
+<td>Increases I/O concurrency, allowing efficient data transfer under heavy load.</td>
+</tr>
+<tr>
+<td><code>num.replica.fetchers</code></td>
+<td><code>4</code></td>
+<td>Enhances replication speed by allowing multiple fetcher threads for synchronizing replicas.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-zookeeper-settings"><strong>5. Zookeeper Settings</strong><a class="headerlink" href="#5-zookeeper-settings" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Setting</strong></th>
+<th><strong>Recommended Value</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>zookeeper.session.timeout.ms</code></td>
+<td><code>18,000</code></td>
+<td>Prevents frequent Zookeeper disconnections during high loads, stabilizing metadata handling.</td>
+</tr>
+<tr>
+<td><code>zookeeper.connection.timeout.ms</code></td>
+<td><code>6,000</code></td>
+<td>Ensures reliable connections to Zookeeper, reducing the likelihood of leader election issues.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="6-kraft-kafka-raft-settings"><strong>6. KRaft (Kafka Raft) Settings</strong><a class="headerlink" href="#6-kraft-kafka-raft-settings" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Setting</strong></th>
+<th><strong>Recommended Value</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>process.roles</code></td>
+<td><code>broker,controller</code></td>
+<td>Defines the roles of Kafka nodes. A KRaft cluster typically has combined <code>broker</code> and <code>controller</code> roles, but can be split if desired.</td>
+</tr>
+<tr>
+<td><code>controller.quorum.voters</code></td>
+<td>List of controllers</td>
+<td>Specifies the list of controller nodes in the form <code>nodeID@hostname:port</code>, where each entry represents a voter in the Raft consensus group.</td>
+</tr>
+<tr>
+<td><code>controller.listener.names</code></td>
+<td><code>CONTROLLER</code></td>
+<td>Designates the listener name for inter-controller communication in the Raft quorum.</td>
+</tr>
+<tr>
+<td><code>controller.heartbeat.interval.ms</code></td>
+<td><code>2,000</code></td>
+<td>Sets the interval between heartbeats for controller nodes, ensuring they stay connected and responsive within the Raft quorum.</td>
+</tr>
+<tr>
+<td><code>controller.metrics.sample.window.ms</code></td>
+<td><code>30,000</code></td>
+<td>Configures the window size for collecting metrics, helping to monitor Raft performance over time.</td>
+</tr>
+<tr>
+<td><code>controller.log.dirs</code></td>
+<td><code>/path/to/controller/logs</code></td>
+<td>Specifies the directory where controller logs are stored. It’s best to use a dedicated disk for controller logs to avoid I/O contention with brokers.</td>
+</tr>
+<tr>
+<td><code>metadata.log.segment.bytes</code></td>
+<td><code>1 GB</code></td>
+<td>Controls the segment size for metadata logs, managing disk usage and log rolling frequency for metadata in KRaft mode.</td>
+</tr>
+<tr>
+<td><code>metadata.log.retention.bytes</code></td>
+<td><code>-1</code> (unlimited)</td>
+<td>Configures metadata log retention based on disk space, allowing infinite retention by default. Adjust based on available storage.</td>
+</tr>
+<tr>
+<td><code>metadata.log.retention.ms</code></td>
+<td><code>604,800,000</code> (7 days)</td>
+<td>Retains metadata for a set duration; typically configured for a week to enable rollback in case of issues.</td>
+</tr>
+<tr>
+<td><code>controller.socket.timeout.ms</code></td>
+<td><code>30,000</code></td>
+<td>Sets the timeout for controller-to-controller connections, ensuring stability during network issues.</td>
+</tr>
+<tr>
+<td><code>leader.imbalance.check.interval.seconds</code></td>
+<td><code>300</code> (5 minutes)</td>
+<td>Defines the interval at which the controller checks for leader imbalance, helping to maintain even load distribution across brokers.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Reference Links:</p>
+<p><a href="https://www.hellointerview.com/learn/system-design/deep-dives/kafka">https://www.hellointerview.com/learn/system-design/deep-dives/kafka</a></p>
+<hr />
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 16, 2024</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 16, 2024</span>
+  </span>
+
+    
+    
+    
+      
+  <span class="md-source-file__fact">
+    
+      
+  <span class="md-icon" title="Contributors">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
+  </span>
+  <span>GitHub</span>
+
+    
+    <nav>
+      
+        <a href="https://github.com/Luci-MG" class="md-author" title="@Luci-MG">
+          
+          <img src="https://avatars.githubusercontent.com/u/37269568?v=4&size=72" alt="Luci-MG">
+        </a>
+      
+      
+      
+    </nav>
+  </span>
+
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../S3/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Simple Storage Service - S3">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Simple Storage Service - S3
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../ElasticSearch/" class="md-footer__link md-footer__link--next" aria-label="Next: Elasticsearch">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Elasticsearch
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Mrudhul Guda
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Luci-MG" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/mrudhul-guda" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3M447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.instagram.com/_m._._.g/" target="_blank" rel="noopener" title="www.instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141m0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7m146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8m76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8M398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+  
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  <script src="../../../assets/javascripts/custom.4e50d00f.min.js"></script>
+
+  </body>
+</html>
