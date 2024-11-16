@@ -4,28 +4,43 @@ The **Adapter Pattern** is a structural design pattern in software development t
 
 ---
 
-### **1. What is the Adapter Pattern?**
+## **What ?**
 The **Adapter Pattern** converts the interface of a class into another interface that a client expects. This helps integrate two systems with different interfaces so they can work together without altering their code. It is often used when a legacy system needs to be integrated with new components or when third-party APIs are integrated into an existing codebase.
 
-### **Analogy**:
-- Think of a power plug adapter: You have an appliance with a US plug (two flat pins), but you need to connect it to a European socket (two round holes). The adapter ensures that both the incompatible interfaces (US and European plugs) work together without modifying either.
+!!! abstract "**Analogy**"
+    Think of a power plug adapter You have an appliance with a US plug (two flat pins), but you need to connect it to a European socket (two round holes). The adapter ensures that both the incompatible interfaces (US and European plugs) work together without modifying either.
 
 ---
 
-### **2. Ways to Create Adapter Pattern**
+## **When to Use ?**
+- **When two interfaces are incompatible** but need to work together.
+- **When a legacy system** needs to integrate with new components.
+- **When using third-party libraries or APIs** that do not conform to your existing codebase’s interfaces.
+- **When you want to reuse an existing class**, but its interface is not compatible with the rest of your system.
+
+---
+
+## **When Not to Use ?**
+- When you **have control over the original code** (you can modify the existing class instead of creating an adapter).
+- If using the Adapter Pattern makes your design **too complex** (consider refactoring if the incompatibility is minimal).
+- If the Adapter adds **unnecessary overhead** in performance-sensitive environments.
+
+---
+
+## **Ways to Implement**
 
 There are **two common ways** to implement the Adapter Pattern:
 
 1. **Class Adapter** (Inheritance-based)
 2. **Object Adapter** (Composition-based)
 
-#### **2.1. Class Adapter Pattern (via Inheritance)**
+### **Simple Java Example**
+
+#### **Class Adapter Pattern (via Inheritance)**
 
 In this approach, the adapter class **extends** the adaptee (the class that has the incompatible interface) and **implements the interface** that the client expects.
 
-#### **Example Code (Java) - Class Adapter**
-
-```java
+```java title="Class Adapter Java Example"
 // Target Interface - The desired interface that client expects
 interface MediaPlayer {
     void play(String audioType, String fileName);
@@ -64,17 +79,15 @@ public class AudioPlayer {
 }
 ```
 
-##### **Explanation:**
+#### **Explanation:**
 - `MediaAdapter` extends `AdvancedMediaPlayer` (inheriting the original functionality) and implements the `MediaPlayer` interface (adapting it to what the client expects).
 
 
-#### **2.2. Object Adapter Pattern (via Composition)**
+#### **Object Adapter Pattern (via Composition)**
 
 In this approach, the adapter **contains an instance** of the adaptee class and delegates calls to the appropriate methods.
 
-##### **Example Code (Java) - Object Adapter**
-
-```java
+```java title="Object Adapter Java Example"
 // Target Interface
 interface MediaPlayer {
     void play(String audioType, String fileName);
@@ -120,33 +133,16 @@ public class AudioPlayer {
 }
 ```
 
-##### **Explanation:**
+#### **Explanation:**
 - In this version, `MediaAdapter` holds a reference to the `AdvancedMediaPlayer` instance and **delegates** method calls instead of extending the class.
 
 ---
 
-### **3. When to Use the Adapter Pattern?**
-- **When two interfaces are incompatible** but need to work together.
-- **When a legacy system** needs to integrate with new components.
-- **When using third-party libraries or APIs** that do not conform to your existing codebase’s interfaces.
-- **When you want to reuse an existing class**, but its interface is not compatible with the rest of your system.
-
----
-
-### **4. When Not to Use the Adapter Pattern?**
-- When you **have control over the original code** (you can modify the existing class instead of creating an adapter).
-- If using the Adapter Pattern makes your design **too complex** (consider refactoring if the incompatibility is minimal).
-- If the Adapter adds **unnecessary overhead** in performance-sensitive environments.
-
----
-
-### **5. Adapter Pattern with Spring Boot Example**
+### **Spring Boot Example**
 
 In a **Spring Boot** context, the Adapter Pattern can be used to integrate an external or legacy service with your application's service layer.
 
-##### **Example: Integrating a Legacy Payment Service in Spring Boot**
-
-```java
+```java title="Integrating a Legacy Payment Service"
 // Legacy Payment Service - Adaptee
 class LegacyPaymentService {
     public void payWithCreditCard(String cardNumber) {
@@ -195,23 +191,15 @@ public class PaymentController {
 }
 ```
 
-##### **Explanation:**
-1. `LegacyPaymentService` is an old service with an incompatible method.
-2. `PaymentServiceAdapter` acts as an adapter by implementing the `PaymentService` interface and internally calling the legacy service.
-3. The `PaymentController` depends on `PaymentService`, which can now work seamlessly with the legacy system.
+#### **Explanation:**
+- `LegacyPaymentService` is an old service with an incompatible method.
+- `PaymentServiceAdapter` acts as an adapter by implementing the `PaymentService` interface and internally calling the legacy service.
+- The `PaymentController` depends on `PaymentService`, which can now work seamlessly with the legacy system.
 
 ---
 
-### **6. Summary - Why Use the Adapter Pattern?**
-- **Decouples** client code from specific implementations, enhancing flexibility.
-- **Promotes reusability** by allowing incompatible systems to work together without modification.
-- **Improves maintainability** by isolating legacy or third-party code in adapters.
-- **Simplifies testing**, as adapters can be mocked or stubbed easily.
+## **Summary**
 
----
-
-### Reference Links
-
-1. https://refactoring.guru/design-patterns/adapter
+The **Adapter Pattern** enhances flexibility by decoupling client code from specific implementations, promotes reusability by enabling compatibility between systems, improves maintainability by isolating legacy or third-party code, and simplifies testing through easy mock or stub usage.
 
 ---

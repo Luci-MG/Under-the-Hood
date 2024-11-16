@@ -1,9 +1,9 @@
 # Project information
-site_name: 'Documentations Vault'
+site_name: 'Under the Hood'
 site_url: 'https://luci-mg.github.io/Documentations-Vault/'
 site_author: Mrudhul Guda
 site_description: >-
-  All the documentations deep dives by Mrudhul Guda
+  Dive deep into the core of technology with in-depth explorations of design patterns, programming languages, distributed systems , databases, their concepts and more all in one place.
 
 # Repository
 repo_url: https://github.com/Luci-MG/Documentations-Vault
@@ -15,7 +15,7 @@ copyright: Copyright &copy; 2024 Mrudhul Guda
 # Configuration
 theme:
   name: material
-  # custom_dir: material/overrides
+  custom_dir: material/overrides
   features:
     - announce.dismiss
     # - content.action.edit
@@ -52,8 +52,8 @@ theme:
         name: Switch to light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: blue grey
-      accent: blue grey
+      primary: teal
+      accent: teal
       toggle:
         icon: material/toggle-switch
         name: Switch to dark mode
@@ -67,9 +67,8 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
-  # favicon: assets/favicon.png
-  icon:
-    logo: simple/bookstack
+  favicon: assets/favicon.png
+  logo: assets/favicon.png
     # repo: fontawesome/brands/github
 
 # plugins
@@ -99,8 +98,6 @@ extra:
       link: https://www.instagram.com/_m._._.g/
     # - icon: fontawesome/brands/facebook-f
     #   link: https://facebook.com/lucifer.iitbbs
-    # - icon: fontawesome/brands/x-twitter
-    #   link: https://x.com/squidfunk
 
 # Extensions
 markdown_extensions:
@@ -192,7 +189,7 @@ nav:
       - Iterator: fundamentaldives/DesignPatterns/Iterator.md
       - Strategy: fundamentaldives/DesignPatterns/Strategy.md
       - Circuit Breakers: fundamentaldives/DesignPatterns/CircuitBreakers.md
-  - Lang Dives:
+  - Language Dives:
       - Java:
         - JDK, JRE, JVM: langdives/Java/JavaJDKJREJVM.md
         - What is Maven?: langdives/Java/Maven.md

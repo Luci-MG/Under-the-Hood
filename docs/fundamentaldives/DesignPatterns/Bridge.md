@@ -2,15 +2,15 @@
 
 The **Bridge Pattern** is a **structural design pattern** that helps to decouple an abstraction from its implementation so that both can vary independently. This pattern is especially useful when you need to manage complex class hierarchies or have multiple dimensions of variations.
 
-### **Overview of Bridge Pattern**
+## **What ?**
 
-- **Problem Addressed:** When both the abstraction (interface) and its implementation (how it works internally) need to evolve, the code becomes complex and hard to manage. Bridge helps to separate these concerns.
+When both the abstraction (interface) and its implementation (how it works internally) need to evolve, the code becomes complex and hard to manage. Bridge helps to separate these concerns.
 
-- **Key Concept:** The pattern separates the abstraction (interface) from the actual implementation and lets them evolve independently by delegating the concrete work to another interface.
+The pattern separates the abstraction (interface) from the actual implementation and lets them evolve independently by delegating the concrete work to another interface.
 
 ---
 
-### **How the Bridge Pattern Works**
+## **How it Works ?**
 
 The structure involves two key parts:
 
@@ -19,9 +19,8 @@ The structure involves two key parts:
 
 The **Abstraction** contains a reference to the **Implementor** (interface or class). This lets the abstraction delegate the implementation details to the concrete implementations.
 
----
 
-### **Class Diagram of Bridge Pattern**
+### **Class Diagram**
 ```
 Abstraction --> Implementor
      |                |
@@ -31,6 +30,34 @@ RefinedAbstraction   ConcreteImplementor
 - **Implementor**: This is an interface or abstract class that defines the implementation methods.
 - **Refined Abstraction**: A concrete class that extends the Abstraction.
 - **Concrete Implementor**: A concrete class that implements the Implementor interface.
+
+---
+
+## **When to Use ?**
+- **Multiple Dimensions of Variation:** When your class needs to support multiple variations along two or more dimensions (like different types of shapes on different platforms).
+- **Decoupling:** When you want to decouple the abstraction from its implementation so that both can evolve independently.
+- **Avoiding Class Explosion:** If you have multiple variations, inheritance might lead to a combinatorial explosion of classes. For example, `CircleRed`, `CircleBlue`, `SquareRed`, `SquareBlue`—this can be avoided with the Bridge pattern.
+
+---
+
+## **Where Not to Use ?**
+- If the system has **simple inheritance hierarchies** where variations don’t overlap, the added complexity of Bridge isn’t necessary.
+- If **abstraction and implementation are unlikely to change**, simpler patterns (like inheritance) might be more suitable.
+
+---
+
+## **Advantages**
+
+- **Improved Flexibility:** Abstraction and implementation can vary independently.
+- **Reduced Code Duplication:** Avoids combinatorial explosion of subclasses.
+- **Easier to Extend:** You can add new implementations or abstractions without affecting existing code.
+
+---
+
+## **Disadvantages**
+
+- **Increased Complexity:** Separating abstraction from implementation can introduce additional complexity.
+- **More Boilerplate:** You might end up writing more code to implement abstractions and concrete implementations.
 
 ---
 
@@ -114,19 +141,6 @@ public class BridgePatternDemo {
     }
 }
 ```
-
----
-
-### **Where and When to Use the Bridge Pattern**
-
-#### **When to Use:**
-1. **Multiple Dimensions of Variation:** When your class needs to support multiple variations along two or more dimensions (like different types of shapes on different platforms).
-2. **Decoupling:** When you want to decouple the abstraction from its implementation so that both can evolve independently.
-3. **Avoiding Class Explosion:** If you have multiple variations, inheritance might lead to a combinatorial explosion of classes. For example, `CircleRed`, `CircleBlue`, `SquareRed`, `SquareBlue`—this can be avoided with the Bridge pattern.
-
-#### **Where Not to Use:**
-1. If the system has **simple inheritance hierarchies** where variations don’t overlap, the added complexity of Bridge isn’t necessary.
-2. If **abstraction and implementation are unlikely to change**, simpler patterns (like inheritance) might be more suitable.
 
 ---
 
@@ -215,19 +229,6 @@ public class NotificationController {
 ```
 
 In this example, the **Bridge Pattern** allows you to switch between different ways of sending notifications (email or SMS) without changing the client code (the `NotificationController`).
-
----
-
-### **Advantages of the Bridge Pattern**
-
-1. **Improved Flexibility:** Abstraction and implementation can vary independently.
-2. **Reduced Code Duplication:** Avoids combinatorial explosion of subclasses.
-3. **Easier to Extend:** You can add new implementations or abstractions without affecting existing code.
-
-### **Disadvantages of the Bridge Pattern**
-
-1. **Increased Complexity:** Separating abstraction from implementation can introduce additional complexity.
-2. **More Boilerplate:** You might end up writing more code to implement abstractions and concrete implementations.
 
 ---
 

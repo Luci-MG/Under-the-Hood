@@ -1,9 +1,9 @@
-<!-- ---
+---
 template: home.html
-title: Deep Dive Documentations by MG
+title: Under the Hood
 # social:
 #   cards_layout_options:
 #     title: Documentation that simply works
 ---
 
-Welcome to Deep Dives by MG -->
+Welcome to Deep Dives by MG
