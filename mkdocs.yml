@@ -1,13 +1,13 @@
 # Project information
 site_name: 'Under the Hood'
-site_url: 'https://luci-mg.github.io/Documentations-Vault/'
+site_url: 'https://luci-mg.github.io/Under-the-Hood'
 site_author: Mrudhul Guda
 site_description: >-
   Dive deep into the core of technology with in-depth explorations of design patterns, programming languages, distributed systems , databases, their concepts and more all in one place.
 
 # Repository
-repo_url: https://github.com/Luci-MG/Documentations-Vault
-repo_name: Luci-MG/Documentations-Vault
+repo_url: https://github.com/Luci-MG/Under-the-Hood
+repo_name: Luci-MG/Under-the-Hood
 
 # Copyright
 copyright: Copyright &copy; 2024 Mrudhul Guda
@@ -80,6 +80,14 @@ plugins:
       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   # - minify:
   #     minify_html: true
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: date
+  - git-committers:
+      repository: Luci-MG/Under-the-Hood
+      branch: main
+      enabled: !ENV [CI, false]
+  # - git-authors
 
 # Additional configuration
 extra:
@@ -226,9 +234,4 @@ nav:
   - Blog:
     - blog/index.md
   - Change Log: changelog/index.md
-
-
-
-
-
   
