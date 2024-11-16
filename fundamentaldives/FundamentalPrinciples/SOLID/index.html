@@ -932,71 +932,56 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-single-responsibility-principle-srp" class="md-nav__link">
+  <a href="#single-responsibility-principle" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Single Responsibility Principle (SRP)
+      Single Responsibility Principle
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-openclosed-principle-ocp" class="md-nav__link">
+  <a href="#open-closed-principle" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Open/Closed Principle (OCP)
+      Open Closed Principle
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-liskov-substitution-principle-lsp" class="md-nav__link">
+  <a href="#liskov-substitution-principle" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Liskov Substitution Principle (LSP)
+      Liskov Substitution Principle
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-interface-segregation-principle-isp" class="md-nav__link">
+  <a href="#interface-segregation-principle" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Interface Segregation Principle (ISP)
+      Interface Segregation Principle
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-dependency-inversion-principle-dip" class="md-nav__link">
+  <a href="#dependency-inversion-principle" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Dependency Inversion Principle (DIP)
+      Dependency Inversion Principle
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#summary-table" class="md-nav__link">
+  <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
-      Summary Table
+      Summary
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Summary Table">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#reference-links" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reference Links
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2408,71 +2393,56 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-single-responsibility-principle-srp" class="md-nav__link">
+  <a href="#single-responsibility-principle" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Single Responsibility Principle (SRP)
+      Single Responsibility Principle
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-openclosed-principle-ocp" class="md-nav__link">
+  <a href="#open-closed-principle" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Open/Closed Principle (OCP)
+      Open Closed Principle
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-liskov-substitution-principle-lsp" class="md-nav__link">
+  <a href="#liskov-substitution-principle" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Liskov Substitution Principle (LSP)
+      Liskov Substitution Principle
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-interface-segregation-principle-isp" class="md-nav__link">
+  <a href="#interface-segregation-principle" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Interface Segregation Principle (ISP)
+      Interface Segregation Principle
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-dependency-inversion-principle-dip" class="md-nav__link">
+  <a href="#dependency-inversion-principle" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Dependency Inversion Principle (DIP)
+      Dependency Inversion Principle
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#summary-table" class="md-nav__link">
+  <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
-      Summary Table
+      Summary
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Summary Table">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#reference-links" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reference Links
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2508,10 +2478,10 @@
 
 
 <h1 id="solid-principles"><strong>SOLID Principles</strong><a class="headerlink" href="#solid-principles" title="Permanent link">&para;</a></h1>
-<h3 id="1-single-responsibility-principle-srp">1. <strong>Single Responsibility Principle (SRP)</strong><a class="headerlink" href="#1-single-responsibility-principle-srp" title="Permanent link">&para;</a></h3>
-<p><strong>Definition:</strong><br />
-A class should have only <strong>one reason to change</strong>. This means that each class should focus on a <strong>single responsibility</strong> or feature.</p>
-<p><strong>Violation Example:</strong><br />
+<h2 id="single-responsibility-principle"><strong>Single Responsibility Principle</strong><a class="headerlink" href="#single-responsibility-principle" title="Permanent link">&para;</a></h2>
+<p>A class should have only <strong>one reason to change</strong>. This means that each class should focus on a <strong>single responsibility</strong> or feature.</p>
+<details class="example">
+<summary>Violation Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Violates SRP: User class has multiple responsibilities.</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">User</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
@@ -2527,8 +2497,10 @@ A class should have only <strong>one reason to change</strong>. This means that 
 </span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;User saved to DB&quot;</span><span class="p">);</span>
 </span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="p">}</span>
-</span></code></pre></div></p>
-<p><strong>Fixed Example:</strong>
+</span></code></pre></div>
+</details>
+<details class="example">
+<summary>Fixed Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Separate responsibilities into different classes.</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">User</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
@@ -2548,12 +2520,13 @@ A class should have only <strong>one reason to change</strong>. This means that 
 </span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Email sent to &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">user</span><span class="p">.</span><span class="na">getEmail</span><span class="p">());</span>
 </span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="p">}</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
+</details>
 <hr />
-<h3 id="2-openclosed-principle-ocp">2. <strong>Open/Closed Principle (OCP)</strong><a class="headerlink" href="#2-openclosed-principle-ocp" title="Permanent link">&para;</a></h3>
-<p><strong>Definition:</strong><br />
-Software components (classes, functions, etc.) should be <strong>open for extension but closed for modification</strong>. You shouldn’t modify existing code to add new behavior; instead, extend it.</p>
-<p><strong>Violation Example:</strong><br />
+<h2 id="open-closed-principle"><strong>Open Closed Principle</strong><a class="headerlink" href="#open-closed-principle" title="Permanent link">&para;</a></h2>
+<p>Software components (classes, functions, etc.) should be <strong>open for extension but closed for modification</strong>. You shouldn’t modify existing code to add new behavior instead, extend it.</p>
+<details class="example">
+<summary>Violation Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// Violates OCP: PaymentProcessor needs to be modified for new payment types.</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PaymentProcessor</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">pay</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -2564,8 +2537,10 @@ Software components (classes, functions, etc.) should be <strong>open for extens
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="p">}</span>
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">}</span>
-</span></code></pre></div></p>
-<p><strong>Fixed Example:</strong>
+</span></code></pre></div>
+</details>
+<details class="example">
+<summary>Fixed Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Use an interface for extensibility.</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">interface</span> <span class="nc">PaymentMethod</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">pay</span><span class="p">();</span>
@@ -2588,12 +2563,13 @@ Software components (classes, functions, etc.) should be <strong>open for extens
 </span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">        </span><span class="n">paymentMethod</span><span class="p">.</span><span class="na">pay</span><span class="p">();</span>
 </span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="p">}</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
+</details>
 <hr />
-<h3 id="3-liskov-substitution-principle-lsp">3. <strong>Liskov Substitution Principle (LSP)</strong><a class="headerlink" href="#3-liskov-substitution-principle-lsp" title="Permanent link">&para;</a></h3>
-<p><strong>Definition:</strong><br />
-Subclasses should be <strong>substitutable</strong> for their base class without altering the correctness of the program.</p>
-<p><strong>Violation Example:</strong><br />
+<h2 id="liskov-substitution-principle"><strong>Liskov Substitution Principle</strong><a class="headerlink" href="#liskov-substitution-principle" title="Permanent link">&para;</a></h2>
+<p>Subclasses should be <strong>substitutable</strong> for their base class without altering the correctness of the program.</p>
+<details class="example">
+<summary>Violation Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// Violates LSP: Square changes the behavior of Rectangle.</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kd">class</span> <span class="nc">Rectangle</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
@@ -2624,8 +2600,10 @@ Subclasses should be <strong>substitutable</strong> for their base class without
 </span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
 </span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="p">}</span>
-</span></code></pre></div></p>
-<p><strong>Fixed Example:</strong>
+</span></code></pre></div>
+</details>
+<details class="example">
+<summary>Fixed Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// Use separate classes to maintain correct behavior.</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kd">class</span> <span class="nc">Shape</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getArea</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -2659,12 +2637,13 @@ Subclasses should be <strong>substitutable</strong> for their base class without
 </span><span id="__span-5-31"><a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">side</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">side</span><span class="p">;</span>
 </span><span id="__span-5-32"><a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-5-33"><a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="p">}</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
+</details>
 <hr />
-<h3 id="4-interface-segregation-principle-isp">4. <strong>Interface Segregation Principle (ISP)</strong><a class="headerlink" href="#4-interface-segregation-principle-isp" title="Permanent link">&para;</a></h3>
-<p><strong>Definition:</strong><br />
-A client should not be forced to implement interfaces that it <strong>does not use</strong>. Instead, <strong>smaller, more specific interfaces</strong> should be preferred.</p>
-<p><strong>Violation Example:</strong><br />
+<h2 id="interface-segregation-principle"><strong>Interface Segregation Principle</strong><a class="headerlink" href="#interface-segregation-principle" title="Permanent link">&para;</a></h2>
+<p>A client should not be forced to implement interfaces that it <strong>does not use</strong>. Instead, <strong>smaller, more specific interfaces</strong> should be preferred.</p>
+<details class="example">
+<summary>Violation Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// Violates ISP: Car needs to implement unnecessary methods.</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kd">interface</span> <span class="nc">Vehicle</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">drive</span><span class="p">();</span>
@@ -2683,8 +2662,10 @@ A client should not be forced to implement interfaces that it <strong>does not u
 </span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UnsupportedOperationException</span><span class="p">(</span><span class="s">&quot;Car can&#39;t fly&quot;</span><span class="p">);</span>
 </span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="p">}</span>
-</span></code></pre></div></p>
-<p><strong>Fixed Example:</strong>
+</span></code></pre></div>
+</details>
+<details class="example">
+<summary>Fixed Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// Use separate interfaces for each capability.</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kd">interface</span> <span class="nc">Drivable</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">drive</span><span class="p">();</span>
@@ -2712,12 +2693,13 @@ A client should not be forced to implement interfaces that it <strong>does not u
 </span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Plane is flying...&quot;</span><span class="p">);</span>
 </span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="p">}</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
+</details>
 <hr />
-<h3 id="5-dependency-inversion-principle-dip">5. <strong>Dependency Inversion Principle (DIP)</strong><a class="headerlink" href="#5-dependency-inversion-principle-dip" title="Permanent link">&para;</a></h3>
-<p><strong>Definition:</strong><br />
-High-level modules should not depend on low-level modules. <strong>Both should depend on abstractions</strong>.</p>
-<p><strong>Violation Example:</strong><br />
+<h2 id="dependency-inversion-principle"><strong>Dependency Inversion Principle</strong><a class="headerlink" href="#dependency-inversion-principle" title="Permanent link">&para;</a></h2>
+<p>High-level modules should not depend on low-level modules. <strong>Both should depend on abstractions</strong>.</p>
+<details class="example">
+<summary>Violation Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">// Violates DIP: High-level class depends on a specific implementation.</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kd">class</span> <span class="nc">SQLDatabase</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">connect</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -2736,8 +2718,10 @@ High-level modules should not depend on low-level modules. <strong>Both should d
 </span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">        </span><span class="n">database</span><span class="p">.</span><span class="na">connect</span><span class="p">();</span>
 </span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="p">}</span>
-</span></code></pre></div></p>
-<p><strong>Fixed Example:</strong>
+</span></code></pre></div>
+</details>
+<details class="example">
+<summary>Fixed Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">// Depend on an abstraction instead of a specific implementation.</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kd">interface</span> <span class="nc">Database</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">connect</span><span class="p">();</span>
@@ -2766,9 +2750,10 @@ High-level modules should not depend on low-level modules. <strong>Both should d
 </span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="w">        </span><span class="n">database</span><span class="p">.</span><span class="na">connect</span><span class="p">();</span>
 </span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="p">}</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
+</details>
 <hr />
-<h2 id="summary-table"><strong>Summary Table</strong><a class="headerlink" href="#summary-table" title="Permanent link">&para;</a></h2>
+<h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2780,43 +2765,37 @@ High-level modules should not depend on low-level modules. <strong>Both should d
 </thead>
 <tbody>
 <tr>
-<td><strong>Single Responsibility (SRP)</strong></td>
+<td><strong>Single Responsibility</strong></td>
 <td>A class should have only one reason to change.</td>
 <td>User class manages both data and emails.</td>
 <td>Separate <code>User</code>, <code>EmailService</code>, <code>UserRepository</code>.</td>
 </tr>
 <tr>
-<td><strong>Open/Closed (OCP)</strong></td>
+<td><strong>Open Closed</strong></td>
 <td>Open for extension, closed for modification.</td>
 <td>Modify <code>PaymentProcessor</code> for new methods.</td>
 <td>Use <code>PaymentMethod</code> interface and extend classes.</td>
 </tr>
 <tr>
-<td><strong>Liskov Substitution (LSP)</strong></td>
+<td><strong>Liskov Substitution</strong></td>
 <td>Subtypes should behave like their base type.</td>
 <td><code>Square</code> modifies behavior of <code>Rectangle</code>.</td>
 <td>Separate <code>Square</code> and <code>Rectangle</code> classes.</td>
 </tr>
 <tr>
-<td><strong>Interface Segregation (ISP)</strong></td>
+<td><strong>Interface Segregation</strong></td>
 <td>Use small, specific interfaces.</td>
 <td>Car implements unnecessary <code>fly()</code> method.</td>
 <td>Split into <code>Drivable</code> and <code>Flyable</code> interfaces.</td>
 </tr>
 <tr>
-<td><strong>Dependency Inversion (DIP)</strong></td>
+<td><strong>Dependency Inversion</strong></td>
 <td>Depend on abstractions, not implementations.</td>
 <td>App depends on <code>SQLDatabase</code> directly.</td>
 <td>Use <code>Database</code> interface for loose coupling.</td>
 </tr>
 </tbody>
 </table>
-<hr />
-<h3 id="reference-links">Reference Links<a class="headerlink" href="#reference-links" title="Permanent link">&para;</a></h3>
-<ol>
-<li><a href="https://blog.algomaster.io/p/solid-principles-explained-with-code">https://blog.algomaster.io/p/solid-principles-explained-with-code</a></li>
-<li><a href="https://medium.com/backticks-tildes/the-s-o-l-i-d-principles-in-pictures-b34ce2f1e898">https://medium.com/backticks-tildes/the-s-o-l-i-d-principles-in-pictures-b34ce2f1e898</a></li>
-</ol>
 <hr />
 
 
@@ -2840,7 +2819,7 @@ High-level modules should not depend on low-level modules. <strong>Both should d
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 31, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 16, 2024</span>
   </span>
 
     
