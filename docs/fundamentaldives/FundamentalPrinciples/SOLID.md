@@ -1,310 +1,298 @@
 # **SOLID Principles**
 
-### 1. **Single Responsibility Principle (SRP)**  
-**Definition:**  
+## **Single Responsibility Principle**  
 A class should have only **one reason to change**. This means that each class should focus on a **single responsibility** or feature.
 
-**Violation Example:**  
-```java
-// Violates SRP: User class has multiple responsibilities.
-public class User {
-    private String name;
-    private String email;
+??? example "Violation Example"
+    ```java
+    // Violates SRP: User class has multiple responsibilities.
+    public class User {
+        private String name;
+        private String email;
 
-    public void sendEmail(String message) {
-        // Sending email logic here...
-        System.out.println("Email sent to " + email);
+        public void sendEmail(String message) {
+            // Sending email logic here...
+            System.out.println("Email sent to " + email);
+        }
+
+        public void saveUser() {
+            // Save user to the database
+            System.out.println("User saved to DB");
+        }
+    }
+    ```
+
+??? example "Fixed Example"
+    ```java 
+    // Separate responsibilities into different classes.
+    public class User {
+        private String name;
+        private String email;
+
+        // Getters and setters...
     }
 
-    public void saveUser() {
-        // Save user to the database
-        System.out.println("User saved to DB");
+    public class UserRepository {
+        public void save(User user) {
+            System.out.println("User saved to DB");
+        }
     }
-}
-```
 
-**Fixed Example:**
-```java
-// Separate responsibilities into different classes.
-public class User {
-    private String name;
-    private String email;
-
-    // Getters and setters...
-}
-
-public class UserRepository {
-    public void save(User user) {
-        System.out.println("User saved to DB");
+    public class EmailService {
+        public void sendEmail(User user, String message) {
+            System.out.println("Email sent to " + user.getEmail());
+        }
     }
-}
-
-public class EmailService {
-    public void sendEmail(User user, String message) {
-        System.out.println("Email sent to " + user.getEmail());
-    }
-}
-```
+    ```
 
 ---
 
-### 2. **Open/Closed Principle (OCP)**  
-**Definition:**  
-Software components (classes, functions, etc.) should be **open for extension but closed for modification**. You shouldn’t modify existing code to add new behavior; instead, extend it.
+## **Open Closed Principle**  
+Software components (classes, functions, etc.) should be **open for extension but closed for modification**. You shouldn’t modify existing code to add new behavior instead, extend it.
 
-**Violation Example:**  
-```java
-// Violates OCP: PaymentProcessor needs to be modified for new payment types.
-public class PaymentProcessor {
-    public void pay(String type) {
-        if (type.equals("credit")) {
+??? example "Violation Example"
+    ```java
+    // Violates OCP: PaymentProcessor needs to be modified for new payment types.
+    public class PaymentProcessor {
+        public void pay(String type) {
+            if (type.equals("credit")) {
+                System.out.println("Processing credit card payment...");
+            } else if (type.equals("paypal")) {
+                System.out.println("Processing PayPal payment...");
+            }
+        }
+    }
+    ```
+
+??? example "Fixed Example"
+    ```java
+    // Use an interface for extensibility.
+    interface PaymentMethod {
+        void pay();
+    }
+
+    public class CreditCardPayment implements PaymentMethod {
+        public void pay() {
             System.out.println("Processing credit card payment...");
-        } else if (type.equals("paypal")) {
+        }
+    }
+
+    public class PayPalPayment implements PaymentMethod {
+        public void pay() {
             System.out.println("Processing PayPal payment...");
         }
     }
-}
-```
 
-**Fixed Example:**
-```java
-// Use an interface for extensibility.
-interface PaymentMethod {
-    void pay();
-}
-
-public class CreditCardPayment implements PaymentMethod {
-    public void pay() {
-        System.out.println("Processing credit card payment...");
+    public class PaymentProcessor {
+        public void processPayment(PaymentMethod paymentMethod) {
+            paymentMethod.pay();
+        }
     }
-}
-
-public class PayPalPayment implements PaymentMethod {
-    public void pay() {
-        System.out.println("Processing PayPal payment...");
-    }
-}
-
-public class PaymentProcessor {
-    public void processPayment(PaymentMethod paymentMethod) {
-        paymentMethod.pay();
-    }
-}
-```
+    ```
 
 ---
 
-### 3. **Liskov Substitution Principle (LSP)**  
-**Definition:**  
+## **Liskov Substitution Principle**  
 Subclasses should be **substitutable** for their base class without altering the correctness of the program.
 
-**Violation Example:**  
-```java
-// Violates LSP: Square changes the behavior of Rectangle.
-class Rectangle {
-    protected int width, height;
+??? example "Violation Example"
+    ```java
+    // Violates LSP: Square changes the behavior of Rectangle.
+    class Rectangle {
+        protected int width, height;
 
-    public void setWidth(int width) {
-        this.width = width;
+        public void setWidth(int width) {
+            this.width = width;
+        }
+
+        public void setHeight(int height) {
+            this.height = height;
+        }
+
+        public int getArea() {
+            return width * height;
+        }
     }
 
-    public void setHeight(int height) {
-        this.height = height;
+    class Square extends Rectangle {
+        @Override
+        public void setWidth(int width) {
+            this.width = width;
+            this.height = width;  // Violates LSP: Unexpected behavior.
+        }
+
+        @Override
+        public void setHeight(int height) {
+            this.width = height;
+            this.height = height;
+        }
+    }
+    ```
+
+??? example "Fixed Example"
+    ```java
+    // Use separate classes to maintain correct behavior.
+    class Shape {
+        public int getArea() {
+            return 0;
+        }
     }
 
-    public int getArea() {
-        return width * height;
-    }
-}
+    class Rectangle extends Shape {
+        protected int width, height;
 
-class Square extends Rectangle {
-    @Override
-    public void setWidth(int width) {
-        this.width = width;
-        this.height = width;  // Violates LSP: Unexpected behavior.
-    }
+        public Rectangle(int width, int height) {
+            this.width = width;
+            this.height = height;
+        }
 
-    @Override
-    public void setHeight(int height) {
-        this.width = height;
-        this.height = height;
-    }
-}
-```
-
-**Fixed Example:**
-```java
-// Use separate classes to maintain correct behavior.
-class Shape {
-    public int getArea() {
-        return 0;
-    }
-}
-
-class Rectangle extends Shape {
-    protected int width, height;
-
-    public Rectangle(int width, int height) {
-        this.width = width;
-        this.height = height;
+        @Override
+        public int getArea() {
+            return width * height;
+        }
     }
 
-    @Override
-    public int getArea() {
-        return width * height;
-    }
-}
+    class Square extends Shape {
+        private int side;
 
-class Square extends Shape {
-    private int side;
+        public Square(int side) {
+            this.side = side;
+        }
 
-    public Square(int side) {
-        this.side = side;
+        @Override
+        public int getArea() {
+            return side * side;
+        }
     }
-
-    @Override
-    public int getArea() {
-        return side * side;
-    }
-}
-```
+    ```
 
 ---
 
-### 4. **Interface Segregation Principle (ISP)**  
-**Definition:**  
+## **Interface Segregation Principle**
 A client should not be forced to implement interfaces that it **does not use**. Instead, **smaller, more specific interfaces** should be preferred.
 
-**Violation Example:**  
-```java
-// Violates ISP: Car needs to implement unnecessary methods.
-interface Vehicle {
-    void drive();
-    void fly();
-}
-
-class Car implements Vehicle {
-    @Override
-    public void drive() {
-        System.out.println("Car is driving...");
+??? example "Violation Example"
+    ```java
+    // Violates ISP: Car needs to implement unnecessary methods.
+    interface Vehicle {
+        void drive();
+        void fly();
     }
 
-    @Override
-    public void fly() {
-        // Car can't fly! This method is unnecessary.
-        throw new UnsupportedOperationException("Car can't fly");
+    class Car implements Vehicle {
+        @Override
+        public void drive() {
+            System.out.println("Car is driving...");
+        }
+
+        @Override
+        public void fly() {
+            // Car can't fly! This method is unnecessary.
+            throw new UnsupportedOperationException("Car can't fly");
+        }
     }
-}
-```
+    ```
 
-**Fixed Example:**
-```java
-// Use separate interfaces for each capability.
-interface Drivable {
-    void drive();
-}
-
-interface Flyable {
-    void fly();
-}
-
-class Car implements Drivable {
-    @Override
-    public void drive() {
-        System.out.println("Car is driving...");
-    }
-}
-
-class Plane implements Drivable, Flyable {
-    @Override
-    public void drive() {
-        System.out.println("Plane is taxiing...");
+??? example "Fixed Example"
+    ```java
+    // Use separate interfaces for each capability.
+    interface Drivable {
+        void drive();
     }
 
-    @Override
-    public void fly() {
-        System.out.println("Plane is flying...");
+    interface Flyable {
+        void fly();
     }
-}
-```
+
+    class Car implements Drivable {
+        @Override
+        public void drive() {
+            System.out.println("Car is driving...");
+        }
+    }
+
+    class Plane implements Drivable, Flyable {
+        @Override
+        public void drive() {
+            System.out.println("Plane is taxiing...");
+        }
+
+        @Override
+        public void fly() {
+            System.out.println("Plane is flying...");
+        }
+    }
+    ```
 
 ---
 
-### 5. **Dependency Inversion Principle (DIP)**  
-**Definition:**  
+## **Dependency Inversion Principle**
 High-level modules should not depend on low-level modules. **Both should depend on abstractions**.
 
-**Violation Example:**  
-```java
-// Violates DIP: High-level class depends on a specific implementation.
-class SQLDatabase {
-    public void connect() {
-        System.out.println("Connected to SQL Database");
-    }
-}
-
-class Application {
-    private SQLDatabase database;
-
-    public Application() {
-        database = new SQLDatabase();  // Tight coupling to SQLDatabase.
+??? example "Violation Example"
+    ```java
+    // Violates DIP: High-level class depends on a specific implementation.
+    class SQLDatabase {
+        public void connect() {
+            System.out.println("Connected to SQL Database");
+        }
     }
 
-    public void start() {
-        database.connect();
+    class Application {
+        private SQLDatabase database;
+
+        public Application() {
+            database = new SQLDatabase();  // Tight coupling to SQLDatabase.
+        }
+
+        public void start() {
+            database.connect();
+        }
     }
-}
-```
+    ```
 
-**Fixed Example:**
-```java
-// Depend on an abstraction instead of a specific implementation.
-interface Database {
-    void connect();
-}
-
-class SQLDatabase implements Database {
-    public void connect() {
-        System.out.println("Connected to SQL Database");
-    }
-}
-
-class NoSQLDatabase implements Database {
-    public void connect() {
-        System.out.println("Connected to NoSQL Database");
-    }
-}
-
-class Application {
-    private Database database;
-
-    public Application(Database database) {
-        this.database = database;
+??? example "Fixed Example"
+    ```java
+    // Depend on an abstraction instead of a specific implementation.
+    interface Database {
+        void connect();
     }
 
-    public void start() {
-        database.connect();
+    class SQLDatabase implements Database {
+        public void connect() {
+            System.out.println("Connected to SQL Database");
+        }
     }
-}
-```
+
+    class NoSQLDatabase implements Database {
+        public void connect() {
+            System.out.println("Connected to NoSQL Database");
+        }
+    }
+
+    class Application {
+        private Database database;
+
+        public Application(Database database) {
+            this.database = database;
+        }
+
+        public void start() {
+            database.connect();
+        }
+    }
+    ```
 
 ---
 
-## **Summary Table**
+## **Summary**
 
 | **Principle**                       | **Definition**                                              | **Violation Example**                           | **Fixed Example**                                  |
 |--------------------------------------|--------------------------------------------------------------|------------------------------------------------|---------------------------------------------------|
-| **Single Responsibility (SRP)**      | A class should have only one reason to change.               | User class manages both data and emails.       | Separate `User`, `EmailService`, `UserRepository`.|
-| **Open/Closed (OCP)**                | Open for extension, closed for modification.                 | Modify `PaymentProcessor` for new methods.     | Use `PaymentMethod` interface and extend classes. |
-| **Liskov Substitution (LSP)**        | Subtypes should behave like their base type.                 | `Square` modifies behavior of `Rectangle`.     | Separate `Square` and `Rectangle` classes.        |
-| **Interface Segregation (ISP)**      | Use small, specific interfaces.                              | Car implements unnecessary `fly()` method.     | Split into `Drivable` and `Flyable` interfaces.   |
-| **Dependency Inversion (DIP)**       | Depend on abstractions, not implementations.                 | App depends on `SQLDatabase` directly.         | Use `Database` interface for loose coupling.      |
-
----
-
-### Reference Links
-
-1. https://blog.algomaster.io/p/solid-principles-explained-with-code
-1. https://medium.com/backticks-tildes/the-s-o-l-i-d-principles-in-pictures-b34ce2f1e898
+| **Single Responsibility**      | A class should have only one reason to change.               | User class manages both data and emails.       | Separate `User`, `EmailService`, `UserRepository`.|
+| **Open Closed**                | Open for extension, closed for modification.                 | Modify `PaymentProcessor` for new methods.     | Use `PaymentMethod` interface and extend classes. |
+| **Liskov Substitution**        | Subtypes should behave like their base type.                 | `Square` modifies behavior of `Rectangle`.     | Separate `Square` and `Rectangle` classes.        |
+| **Interface Segregation**      | Use small, specific interfaces.                              | Car implements unnecessary `fly()` method.     | Split into `Drivable` and `Flyable` interfaces.   |
+| **Dependency Inversion**       | Depend on abstractions, not implementations.                 | App depends on `SQLDatabase` directly.         | Use `Database` interface for loose coupling.      |
 
 ---
