@@ -4,9 +4,9 @@
 
 The **Singleton Pattern** is a **creational design pattern** that ensures a class has **only one instance** and provides a global access point to that instance. 
 
-#### **Key Characteristics**
-- **Single instance**: Only one object of the class is created.
-- **Global access**: Provides a global point of access to that instance.
+!!! info "Key Characteristics"
+    - **Single instance**: Only one object of the class is created.
+    - **Global access**: Provides a global point of access to that instance.
 
 Singleton is useful when exactly **one instance of a class is needed** across the system, like for logging, configuration, database connection pools, etc.
 
@@ -40,18 +40,19 @@ Singleton is useful when exactly **one instance of a class is needed** across th
 ### **Eager Initialization**
 The instance is created when the class is loaded. This is the simplest way, but it doesn’t support lazy loading.
 
-``` java
-public class EagerSingleton {
-    private static final EagerSingleton INSTANCE = new EagerSingleton();
+???+ example "Eager Initialization Example"
+    ``` java
+    public class EagerSingleton {
+        private static final EagerSingleton INSTANCE = new EagerSingleton();
 
-    // Private constructor to prevent instantiation
-    private EagerSingleton() {}
+        // Private constructor to prevent instantiation
+        private EagerSingleton() {}
 
-    public static EagerSingleton getInstance() {
-        return INSTANCE;
+        public static EagerSingleton getInstance() {
+            return INSTANCE;
+        }
     }
-}
-```
+    ```
 
 !!! note
     When the instance is required throughout the application, and we are okay with it being created at startup.
@@ -61,20 +62,21 @@ public class EagerSingleton {
 ### **Lazy Initialization**
 The instance is created only when needed (on first access). But this version **is not thread-safe**.
 
-```java
-public class LazySingleton {
-    private static LazySingleton instance;
+???+ example "Lazy Initialization Example"
+    ```java
+    public class LazySingleton {
+        private static LazySingleton instance;
 
-    private LazySingleton() {}
+        private LazySingleton() {}
 
-    public static LazySingleton getInstance() {
-        if (instance == null) {
-            instance = new LazySingleton();
+        public static LazySingleton getInstance() {
+            if (instance == null) {
+                instance = new LazySingleton();
+            }
+            return instance;
         }
-        return instance;
     }
-}
-```
+    ```
 
 !!! note
     Not suitable for multithreaded environments.
@@ -84,20 +86,21 @@ public class LazySingleton {
 ### **Using Synchronized**
 This solves the issue of thread safety by synchronizing the access method.
 
-```java
-public class ThreadSafeSingleton {
-    private static ThreadSafeSingleton instance;
+???+ example "Synchronized Example"
+    ```java
+    public class ThreadSafeSingleton {
+        private static ThreadSafeSingleton instance;
 
-    private ThreadSafeSingleton() {}
+        private ThreadSafeSingleton() {}
 
-    public static synchronized ThreadSafeSingleton getInstance() {
-        if (instance == null) {
-            instance = new ThreadSafeSingleton();
+        public static synchronized ThreadSafeSingleton getInstance() {
+            if (instance == null) {
+                instance = new ThreadSafeSingleton();
+            }
+            return instance;
         }
-        return instance;
     }
-}
-```
+    ```
 !!! note
     Performance overhead due to synchronization.
 
@@ -106,44 +109,46 @@ public class ThreadSafeSingleton {
 ### **Double-Checked Locking**
 This improves the performance by reducing the overhead of synchronized block.
 
-```java
-public class DoubleCheckedLockingSingleton {
-    private static volatile DoubleCheckedLockingSingleton instance;
+???+ example "Double-Checked Locking Example"
+    ```java
+    public class DoubleCheckedLockingSingleton {
+        private static volatile DoubleCheckedLockingSingleton instance;
 
-    private DoubleCheckedLockingSingleton() {}
+        private DoubleCheckedLockingSingleton() {}
 
-    public static DoubleCheckedLockingSingleton getInstance() {
-        if (instance == null) {
-            synchronized (DoubleCheckedLockingSingleton.class) {
-                if (instance == null) {
-                    instance = new DoubleCheckedLockingSingleton();
+        public static DoubleCheckedLockingSingleton getInstance() {
+            if (instance == null) {
+                synchronized (DoubleCheckedLockingSingleton.class) {
+                    if (instance == null) {
+                        instance = new DoubleCheckedLockingSingleton();
+                    }
                 }
             }
+            return instance;
         }
-        return instance;
     }
-}
-```
+    ```
 
 ---
 
 ### **Bill Pugh Singleton**
 This approach leverages **static inner classes**, which ensures thread safety and lazy loading without synchronization overhead.
 
-```java
-public class BillPughSingleton {
-    private BillPughSingleton() {}
+???+ example "Bill Pugh Example"
+    ```java
+    public class BillPughSingleton {
+        private BillPughSingleton() {}
 
-    // Static inner class responsible for holding the instance
-    private static class SingletonHelper {
-        private static final BillPughSingleton INSTANCE = new BillPughSingleton();
-    }
+        // Static inner class responsible for holding the instance
+        private static class SingletonHelper {
+            private static final BillPughSingleton INSTANCE = new BillPughSingleton();
+        }
 
-    public static BillPughSingleton getInstance() {
-        return SingletonHelper.INSTANCE;
+        public static BillPughSingleton getInstance() {
+            return SingletonHelper.INSTANCE;
+        }
     }
-}
-```
+    ```
 
 !!! note
     Best Practice
@@ -153,15 +158,16 @@ public class BillPughSingleton {
 ### **Enum Singleton**
 This approach is the most concise and prevents issues with serialization and reflection attacks.
 
-```java
-public enum EnumSingleton {
-    INSTANCE;
+???+ example "Enum Initialization Example"
+    ```java
+    public enum EnumSingleton {
+        INSTANCE;
 
-    public void someMethod() {
-        System.out.println("Enum Singleton Instance");
+        public void someMethod() {
+            System.out.println("Enum Singleton Instance");
+        }
     }
-}
-```
+    ```
 
 !!! note
     Recommended
@@ -172,41 +178,40 @@ public enum EnumSingleton {
 
 In **Spring Boot**, Spring’s **IoC container** (Inversion of Control) makes singleton beans by default. Each bean in Spring is, by default, a singleton. So, **you don’t need to explicitly implement the Singleton pattern**. Instead, you annotate the class with `@Component` or `@Service`, and Spring ensures that only one instance is created and managed.
 
+???+ example "Spring Boot Example"
+    ```java title="How to init in a Spring Boot application"
+    import org.springframework.stereotype.Component;
 
-```java title="Example in Spring Boot"
-import org.springframework.stereotype.Component;
-
-@Component
-public class MySingletonService {
-    public void doSomething() {
-        System.out.println("Singleton service is working");
+    @Component
+    public class MySingletonService {
+        public void doSomething() {
+            System.out.println("Singleton service is working");
+        }
     }
-}
-```
+    ```
 
+    ```java title="How to use in a Spring Boot application"
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.web.bind.annotation.GetMapping;
+    import org.springframework.web.bind.annotation.RestController;
 
-```java title="How to use in a Spring Boot application"
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+    @RestController
+    public class MyController {
 
-@RestController
-public class MyController {
+        private final MySingletonService singletonService;
 
-    private final MySingletonService singletonService;
+        @Autowired
+        public MyController(MySingletonService singletonService) {
+            this.singletonService = singletonService;
+        }
 
-    @Autowired
-    public MyController(MySingletonService singletonService) {
-        this.singletonService = singletonService;
+        @GetMapping("/test")
+        public String test() {
+            singletonService.doSomething();
+            return "Check logs for Singleton Service";
+        }
     }
-
-    @GetMapping("/test")
-    public String test() {
-        singletonService.doSomething();
-        return "Check logs for Singleton Service";
-    }
-}
-```
+    ```
 !!! note
     Spring manages the lifecycle and thread safety for you, ensuring it behaves like a Singleton without extra code.
 

@@ -8,12 +8,10 @@ The **Prototype Pattern** is a **creational design pattern** used when the cost 
 
 The **Prototype Pattern** allows cloning or copying existing instances to create new ones, ensuring that new objects are created **without going through the expensive or complex instantiation process** repeatedly.
 
-#### **Key Characteristics**
-- Objects are created by copying or **cloning an existing prototype** object.
-- Each prototype maintains its state, and the cloned objects are **independent copies**.
-- Useful when the creation of an object is **resource-intensive** (e.g., large data loads, configurations, etc.).
-
-- **Deep Clone vs. Shallow Clone:**
+!!! note "Key Characteristics"
+    - Objects are created by copying or **cloning an existing prototype** object.
+    - Each prototype maintains its state, and the cloned objects are **independent copies**.
+    - Useful when the creation of an object is **resource-intensive** (e.g., large data loads, configurations, etc.).
     - **Shallow Copy:** Only the references of the fields are copied, not the objects themselves.
     - **Deep Copy:** A full independent copy of all nested objects is created.
 
@@ -44,152 +42,151 @@ The **Prototype Pattern** allows cloning or copying existing instances to create
 
 In Java, the **Prototype Pattern** is implemented by making the class implement the **`Cloneable`** interface and **overriding the `clone()`** method from the `Object` class.
 
-### **Simple Java Example**
+???+ example "Simple Java Example"
 
-```java title="Example of Prototype in Java"
-class Address {
-    String street;
-    String city;
+    ```java title="Example of Prototype in Java"
+    class Address {
+        String street;
+        String city;
 
-    public Address(String street, String city) {
-        this.street = street;
-        this.city = city;
+        public Address(String street, String city) {
+            this.street = street;
+            this.city = city;
+        }
+
+        // Deep Copy
+        public Address(Address address) {
+            this.street = address.street;
+            this.city = address.city;
+        }
+
+        @Override
+        public String toString() {
+            return street + ", " + city;
+        }
     }
 
-    // Deep Copy
-    public Address(Address address) {
-        this.street = address.street;
-        this.city = address.city;
+    class Employee implements Cloneable {
+        String name;
+        Address address;
+
+        public Employee(String name, Address address) {
+            this.name = name;
+            this.address = address;
+        }
+
+        // Shallow Copy
+        @Override
+        protected Object clone() throws CloneNotSupportedException {
+            return super.clone();
+        }
+
+        // Deep Copy
+        public Employee deepClone() {
+            return new Employee(this.name, new Address(this.address));
+        }
+
+        @Override
+        public String toString() {
+            return "Employee: " + name + ", Address: " + address;
+        }
     }
 
-    @Override
-    public String toString() {
-        return street + ", " + city;
+    public class PrototypeExample {
+        public static void main(String[] args) throws CloneNotSupportedException {
+            Employee emp1 = new Employee("Alice", new Address("123 Street", "New York"));
+            
+            // Shallow Clone
+            Employee emp2 = (Employee) emp1.clone();
+            
+            // Deep Clone
+            Employee emp3 = emp1.deepClone();
+
+            System.out.println("Original: " + emp1);
+            System.out.println("Shallow Copy: " + emp2);
+            System.out.println("Deep Copy: " + emp3);
+
+            // Modify the original object to see the effect on shallow vs deep copy
+            emp1.address.street = "456 Avenue";
+            
+            System.out.println("After modifying the original object:");
+            System.out.println("Original: " + emp1);
+            System.out.println("Shallow Copy: " + emp2);
+            System.out.println("Deep Copy: " + emp3);
+        }
     }
-}
+    ```
 
-class Employee implements Cloneable {
-    String name;
-    Address address;
+    ??? info "Output"
+        ```
+        Original: Employee: Alice, Address: 123 Street, New York
+        Shallow Copy: Employee: Alice, Address: 123 Street, New York
+        Deep Copy: Employee: Alice, Address: 123 Street, New York
 
-    public Employee(String name, Address address) {
-        this.name = name;
-        this.address = address;
+        After modifying the original object:
+        Original: Employee: Alice, Address: 456 Avenue, New York
+        Shallow Copy: Employee: Alice, Address: 456 Avenue, New York
+        Deep Copy: Employee: Alice, Address: 123 Street, New York
+        ```
+
+    ??? info "Explanation"
+        - **Shallow Copy** (`clone()`): Modifying the original affects the copy (since both reference the same `Address` object).
+        - **Deep Copy** (`deepClone()`): The copy remains unaffected because it contains a completely new `Address` object.
+
+
+???+ example "Spring Boot Example"
+
+    Spring Framework allows defining **prototype-scoped beans**. Each time you request a bean with the prototype scope, Spring returns a new instance, effectively following the **Prototype Pattern**.
+
+    #### How to Use Prototype Scope in Spring Boot
+
+    1. Add `@Scope` annotation to the bean definition.
+    2. Use **`prototype` scope** to ensure each request gets a new object.
+
+    #### Simple Prototype Scope Example in Spring Boot
+
+    ```java title="Bean Definition"
+    import org.springframework.context.annotation.Scope;
+    import org.springframework.stereotype.Component;
+
+    @Component
+    @Scope("prototype")
+    public class Employee {
+        public Employee() {
+            System.out.println("New Employee instance created.");
+        }
     }
+    ```
 
-    // Shallow Copy
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    ```java title="Controller"
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.web.bind.annotation.GetMapping;
+    import org.springframework.web.bind.annotation.RestController;
+
+    @RestController
+    public class EmployeeController {
+
+        @Autowired
+        private Employee employee1;
+
+        @Autowired
+        private Employee employee2;
+
+        @GetMapping("/employees")
+        public String getEmployees() {
+            return "Employee 1: " + employee1 + " | Employee 2: " + employee2;
+        }
     }
+    ```
 
-    // Deep Copy
-    public Employee deepClone() {
-        return new Employee(this.name, new Address(this.address));
-    }
+    ??? info "Output"
+        When you run this application and hit the `/employees` endpoint, you will see:
+        ```
+        New Employee instance created.
+        New Employee instance created.
+        ```
 
-    @Override
-    public String toString() {
-        return "Employee: " + name + ", Address: " + address;
-    }
-}
-
-public class PrototypeExample {
-    public static void main(String[] args) throws CloneNotSupportedException {
-        Employee emp1 = new Employee("Alice", new Address("123 Street", "New York"));
-        
-        // Shallow Clone
-        Employee emp2 = (Employee) emp1.clone();
-        
-        // Deep Clone
-        Employee emp3 = emp1.deepClone();
-
-        System.out.println("Original: " + emp1);
-        System.out.println("Shallow Copy: " + emp2);
-        System.out.println("Deep Copy: " + emp3);
-
-        // Modify the original object to see the effect on shallow vs deep copy
-        emp1.address.street = "456 Avenue";
-        
-        System.out.println("After modifying the original object:");
-        System.out.println("Original: " + emp1);
-        System.out.println("Shallow Copy: " + emp2);
-        System.out.println("Deep Copy: " + emp3);
-    }
-}
-```
-
-#### Output:
-```
-Original: Employee: Alice, Address: 123 Street, New York
-Shallow Copy: Employee: Alice, Address: 123 Street, New York
-Deep Copy: Employee: Alice, Address: 123 Street, New York
-
-After modifying the original object:
-Original: Employee: Alice, Address: 456 Avenue, New York
-Shallow Copy: Employee: Alice, Address: 456 Avenue, New York
-Deep Copy: Employee: Alice, Address: 123 Street, New York
-```
-
-#### In the above example:
-- **Shallow Copy** (`clone()`): Modifying the original affects the copy (since both reference the same `Address` object).
-- **Deep Copy** (`deepClone()`): The copy remains unaffected because it contains a completely new `Address` object.
-
----
-
-### **Spring Boot Example**
-
-Spring Framework allows defining **prototype-scoped beans**. Each time you request a bean with the prototype scope, Spring returns a new instance, effectively following the **Prototype Pattern**.
-
-#### How to Use Prototype Scope in Spring Boot
-
-1. Add `@Scope` annotation to the bean definition.
-2. Use **`prototype` scope** to ensure each request gets a new object.
-
-#### Simple Prototype Scope Example in Spring Boot
-
-```java title="Bean Definition"
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
-@Component
-@Scope("prototype")
-public class Employee {
-    public Employee() {
-        System.out.println("New Employee instance created.");
-    }
-}
-```
-
-```java title="Controller"
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
-public class EmployeeController {
-
-    @Autowired
-    private Employee employee1;
-
-    @Autowired
-    private Employee employee2;
-
-    @GetMapping("/employees")
-    public String getEmployees() {
-        return "Employee 1: " + employee1 + " | Employee 2: " + employee2;
-    }
-}
-```
-
-When you run this application and hit the `/employees` endpoint, you will see:
-
-``` title="Application Output"
-New Employee instance created.
-New Employee instance created.
-```
-
-This shows that a **new instance is created each time** a prototype-scoped bean is injected.
+        This shows that a **new instance is created each time** a prototype-scoped bean is injected.
 
 ---
 

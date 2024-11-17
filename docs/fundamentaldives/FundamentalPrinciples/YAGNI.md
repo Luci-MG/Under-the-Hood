@@ -123,7 +123,7 @@ Lets go through a simple example in Java to illustrate **YAGNI in practice**.
     ```
 
     ???+ info "Explanation"
-        - We only implement the **necessary functionality**—retrieving a user by ID.
+        - We only implement the **necessary functionality** retrieving a user by ID.
         - We avoid premature code like `deleteUser()` or `sendEmailNotification()`.
         - If, in the future, we do need a `deleteUser()` or notification feature, we can implement it **when it becomes necessary**.
 

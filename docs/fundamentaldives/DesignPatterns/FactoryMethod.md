@@ -57,135 +57,130 @@ The Factory Method Pattern defines an interface for creating an object but **let
 
 ## **How To Implement ?**
 
-### **Simple Java Example**
+???+ example "Simple Java Example"
 
-```java title="Step-1: Define a Product Interface"
-public interface Notification {
-    void notifyUser();
-}
-```
-
-```java title="Step-2: Create Concrete Implementations of the Product"
-public class SMSNotification implements Notification {
-    @Override
-    public void notifyUser() {
-        System.out.println("Sending an SMS notification.");
+    ```java title="Step-1: Define a Product Interface"
+    public interface Notification {
+        void notifyUser();
     }
-}
+    ```
 
-public class EmailNotification implements Notification {
-    @Override
-    public void notifyUser() {
-        System.out.println("Sending an Email notification.");
+    ```java title="Step-2: Create Concrete Implementations of the Product"
+    public class SMSNotification implements Notification {
+        @Override
+        public void notifyUser() {
+            System.out.println("Sending an SMS notification.");
+        }
     }
-}
-```
 
-```java title="Step-3: Create an Abstract Factory Class"
-public abstract class NotificationFactory {
-    public abstract Notification createNotification();
-}
-```
-
-```java title="Step-4: Implement Concrete Factory Classes"
-public class SMSNotificationFactory extends NotificationFactory {
-    @Override
-    public Notification createNotification() {
-        return new SMSNotification();
+    public class EmailNotification implements Notification {
+        @Override
+        public void notifyUser() {
+            System.out.println("Sending an Email notification.");
+        }
     }
-}
+    ```
 
-public class EmailNotificationFactory extends NotificationFactory {
-    @Override
-    public Notification createNotification() {
-        return new EmailNotification();
+    ```java title="Step-3: Create an Abstract Factory Class"
+    public abstract class NotificationFactory {
+        public abstract Notification createNotification();
     }
-}
-```
+    ```
 
-```java title="Step-5: Usage in Client Code"
-public class Client {
-    public static void main(String[] args) {
-        NotificationFactory factory = new SMSNotificationFactory();
-        Notification notification = factory.createNotification();
-        notification.notifyUser();
-
-        factory = new EmailNotificationFactory();
-        notification = factory.createNotification();
-        notification.notifyUser();
-    }
-}
-```
-
----
-
-### **Spring Boot Example**
-
-Spring Boot relies heavily on **dependency injection (DI)** and **Inversion of Control (IoC)**, which means **Spring beans** can act as factory classes to produce the desired objects.
-
-#### **Example: Notification Factory with Spring Boot**
-
-```java title="Define the Product Interface and Implementations (Same as Before)"
-public interface Notification {
-    void notifyUser();
-}
-
-public class SMSNotification implements Notification {
-    @Override
-    public void notifyUser() {
-        System.out.println("Sending an SMS notification.");
-    }
-}
-
-public class EmailNotification implements Notification {
-    @Override
-    public void notifyUser() {
-        System.out.println("Sending an Email notification.");
-    }
-}
-```
-
-```java title="Create a Spring Factory Class"
-import org.springframework.stereotype.Service;
-
-@Service
-public class NotificationFactory {
-    public Notification createNotification(String type) {
-        if (type.equalsIgnoreCase("SMS")) {
+    ```java title="Step-4: Implement Concrete Factory Classes"
+    public class SMSNotificationFactory extends NotificationFactory {
+        @Override
+        public Notification createNotification() {
             return new SMSNotification();
-        } else if (type.equalsIgnoreCase("Email")) {
+        }
+    }
+
+    public class EmailNotificationFactory extends NotificationFactory {
+        @Override
+        public Notification createNotification() {
             return new EmailNotification();
         }
-        throw new IllegalArgumentException("Unknown notification type: " + type);
     }
-}
-```
+    ```
 
-!!! note
-    This class will act as the **Factory**. You can make it a Spring **`@Service` or `@Component`** bean, so Spring manages it.
+    ```java title="Step-5: Usage in Client Code"
+    public class Client {
+        public static void main(String[] args) {
+            NotificationFactory factory = new SMSNotificationFactory();
+            Notification notification = factory.createNotification();
+            notification.notifyUser();
 
-```java title="Use the Factory Class in a Spring Controller"
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
-public class NotificationController {
-
-    @Autowired
-    private NotificationFactory notificationFactory;
-
-    @GetMapping("/notify/{type}")
-    public String sendNotification(@PathVariable String type) {
-        Notification notification = notificationFactory.createNotification(type);
-        notification.notifyUser();
-        return "Notification sent: " + type;
+            factory = new EmailNotificationFactory();
+            notification = factory.createNotification();
+            notification.notifyUser();
+        }
     }
-}
-```
+    ```
 
-When you access `/notify/SMS` or `/notify/Email`, it will dynamically create and send the corresponding notification after running the spring boot application.
+???+ example "Spring Boot Example"
+
+    Spring Boot relies heavily on **dependency injection (DI)** and **Inversion of Control (IoC)**, which means **Spring beans** can act as factory classes to produce the desired objects.
+
+    #### **Example: Notification Factory with Spring Boot**
+
+    ```java title="Define the Product Interface and Implementations (Same as Before)"
+    public interface Notification {
+        void notifyUser();
+    }
+
+    public class SMSNotification implements Notification {
+        @Override
+        public void notifyUser() {
+            System.out.println("Sending an SMS notification.");
+        }
+    }
+
+    public class EmailNotification implements Notification {
+        @Override
+        public void notifyUser() {
+            System.out.println("Sending an Email notification.");
+        }
+    }
+    ```
+
+    ```java title="Create a Spring Factory Class"
+    import org.springframework.stereotype.Service;
+    // This class will act as the **Factory**. You can make it a Spring **`@Service` or `@Component`** bean, so Spring manages it.
+    @Service
+    public class NotificationFactory {
+        public Notification createNotification(String type) {
+            if (type.equalsIgnoreCase("SMS")) {
+                return new SMSNotification();
+            } else if (type.equalsIgnoreCase("Email")) {
+                return new EmailNotification();
+            }
+            throw new IllegalArgumentException("Unknown notification type: " + type);
+        }
+    }
+    ```
+
+    ```java title="Use the Factory Class in a Spring Controller"
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.web.bind.annotation.GetMapping;
+    import org.springframework.web.bind.annotation.PathVariable;
+    import org.springframework.web.bind.annotation.RestController;
+
+    @RestController
+    public class NotificationController {
+
+        @Autowired
+        private NotificationFactory notificationFactory;
+
+        @GetMapping("/notify/{type}")
+        public String sendNotification(@PathVariable String type) {
+            Notification notification = notificationFactory.createNotification(type);
+            notification.notifyUser();
+            return "Notification sent: " + type;
+        }
+    }
+    ```
+
+    When you access `/notify/SMS` or `/notify/Email`, it will dynamically create and send the corresponding notification after running the spring boot application.
 
 ---
 
