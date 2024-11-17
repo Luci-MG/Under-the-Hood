@@ -1176,30 +1176,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="How to Implement ?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#simple-java-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      Simple Java Example
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#spring-boot-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      Spring Boot Example
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -2468,30 +2444,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="How to Implement ?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#simple-java-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      Simple Java Example
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#spring-boot-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      Spring Boot Example
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -2548,24 +2500,28 @@
 <hr />
 <h2 id="what"><strong>What ?</strong><a class="headerlink" href="#what" title="Permanent link">&para;</a></h2>
 <p>The Abstract Factory pattern works as a <strong>super-factory</strong> that creates other factories. Each factory produced by the abstract factory is responsible for creating a family of related objects. This pattern is used when a system needs to create multiple families of related objects but doesn’t want to tightly couple the code to specific implementations.</p>
-<h4 id="key-characteristics"><strong>Key Characteristics</strong><a class="headerlink" href="#key-characteristics" title="Permanent link">&para;</a></h4>
+<div class="admonition info">
+<p class="admonition-title">Key Characteristics</p>
 <ul>
 <li>Encapsulates the creation logic of families of related objects.</li>
 <li>Supports <strong>product families</strong> (like buttons and scrollbars for different OS themes).</li>
 <li>Makes the system <strong>open for extension</strong> but closed for modification (Open-Closed Principle).</li>
 <li>Clients interact with the <strong>factory interface</strong> instead of the concrete classes.</li>
 </ul>
-<h4 id="class-diagram"><strong>Class Diagram</strong><a class="headerlink" href="#class-diagram" title="Permanent link">&para;</a></h4>
+</div>
+<details class="info">
+<summary>Class Diagram</summary>
 <p>Below is a conceptual <strong>UML diagram</strong> of the pattern:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>AbstractFactory
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a> ├── createProductA()
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a> └── createProductB()
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── createProductA()
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>└── createProductB()
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>ConcreteFactory1 ────&gt; ProductA1, ProductB1
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>ConcreteFactory2 ────&gt; ProductA2, ProductB2
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>Client ────────&gt; AbstractFactory, AbstractProduct
 </span></code></pre></div>
+</details>
 <hr />
 <h2 id="when-to-use"><strong>When to Use ?</strong><a class="headerlink" href="#when-to-use" title="Permanent link">&para;</a></h2>
 <ul>
@@ -2590,7 +2546,8 @@
 </ol>
 <hr />
 <h2 id="how-to-implement"><strong>How to Implement ?</strong><a class="headerlink" href="#how-to-implement" title="Permanent link">&para;</a></h2>
-<h3 id="simple-java-example"><strong>Simple Java Example</strong><a class="headerlink" href="#simple-java-example" title="Permanent link">&para;</a></h3>
+<details class="example" open="open">
+<summary>Simple Java Example</summary>
 <p>Let’s go with an <strong>example</strong> Imagine you are creating a <strong>UI component factory</strong>. Your application can switch between two themes: <strong>Dark Theme</strong> and <strong>Light Theme</strong>. Both themes provide the same types of components (buttons, text fields) but with different appearances.</p>
 <div class="language-java highlight"><span class="filename">Step-1: Define the Abstract Products</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Abstract Product: Button</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">Button</span><span class="w"> </span><span class="p">{</span>
@@ -2690,8 +2647,9 @@
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Rendering a Dark Button
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Rendering a Dark Text Field
 </span></code></pre></div></p>
-<hr />
-<h3 id="spring-boot-example"><strong>Spring Boot Example</strong><a class="headerlink" href="#spring-boot-example" title="Permanent link">&para;</a></h3>
+</details>
+<details class="example" open="open">
+<summary>Spring Boot Example</summary>
 <p>In Spring Boot, the <strong>Abstract Factory pattern</strong> can complement <strong>dependency injection (DI)</strong> by delegating object creation logic to the factory. Here’s how to <strong>implement it with Spring Boot</strong>.</p>
 <div class="language-java highlight"><span class="filename">Step-1: Define Factory Beans</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nd">@Configuration</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UIFactoryConfig</span><span class="w"> </span><span class="p">{</span>
@@ -2731,6 +2689,7 @@
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="na">app.theme</span><span class="o">=</span><span class="s">dark</span>
 </span></code></pre></div>
 <p>In this example, the theme is configured through the <code>application.properties</code> file, and the <strong>factory selection</strong> is handled by the Spring context.</p>
+</details>
 <hr />
 <h2 id="comparison-with-factory-method"><strong>Comparison with Factory Method</strong><a class="headerlink" href="#comparison-with-factory-method" title="Permanent link">&para;</a></h2>
 <table>
@@ -2790,7 +2749,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 15, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 17, 2024</span>
   </span>
 
     
