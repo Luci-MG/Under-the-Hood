@@ -171,9 +171,8 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Tech Dives: 
-    - Distributed Systems Concepts:
-      - Concurrency and Parallelism: techdives/DistrubutedSystemsConcepts/ConcurrencyParallelism.md
-      - High Availability and Fault Tolerance: techdives/DistrubutedSystemsConcepts/HighAvailabilityFaultTolerance.md
+    - Distributed Concepts:
+      - High Availability and Fault Tolerance: techdives/DistrubutedConcepts/HighAvailabilityFaultTolerance.md
     - Distributed Systems:
       - Docker & K8s Documentation: techdives/DistrubutedSystems/DockerAndK8s.md
       - Simple Storage Service - S3: techdives/DistrubutedSystems/S3.md
@@ -182,6 +181,8 @@ nav:
       - Redis: techdives/DistrubutedSystems/Redis.md
       - Cassandra: techdives/DistrubutedSystems/Cassandra.md
   - Fundamental Dives:
+    - Fundamental Concepts:
+      - Concurrency and Parallelism: fundamentaldives/FundamentalConcepts/ConcurrencyParallelism.md
     - Fundamental Principles:
       - SOLID: fundamentaldives/FundamentalPrinciples/SOLID.md
       - KISS: fundamentaldives/FundamentalPrinciples/KISS.md
