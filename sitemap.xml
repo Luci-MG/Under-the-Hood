@@ -65,6 +65,10 @@
          <lastmod>2024-11-18</lastmod>
     </url>
     <url>
+         <loc>https://luci-mg.github.io/Under-the-Hood/fundamentaldives/FundamentalConcepts/ConcurrencyParallelism/</loc>
+         <lastmod>2024-11-18</lastmod>
+    </url>
+    <url>
          <loc>https://luci-mg.github.io/Under-the-Hood/fundamentaldives/FundamentalPrinciples/DRY/</loc>
          <lastmod>2024-11-18</lastmod>
     </url>
@@ -209,6 +213,10 @@
          <lastmod>2024-11-18</lastmod>
     </url>
     <url>
+         <loc>https://luci-mg.github.io/Under-the-Hood/techdives/DistrubutedConcepts/HighAvailabilityFaultTolerance/</loc>
+         <lastmod>2024-11-18</lastmod>
+    </url>
+    <url>
          <loc>https://luci-mg.github.io/Under-the-Hood/techdives/DistrubutedSystems/DockerAndK8s/</loc>
          <lastmod>2024-11-18</lastmod>
     </url>
@@ -226,14 +234,6 @@
     </url>
     <url>
          <loc>https://luci-mg.github.io/Under-the-Hood/techdives/DistrubutedSystems/S3/</loc>
-         <lastmod>2024-11-18</lastmod>
-    </url>
-    <url>
-         <loc>https://luci-mg.github.io/Under-the-Hood/techdives/DistrubutedSystemsConcepts/ConcurrencyParallelism/</loc>
-         <lastmod>2024-11-18</lastmod>
-    </url>
-    <url>
-         <loc>https://luci-mg.github.io/Under-the-Hood/techdives/DistrubutedSystemsConcepts/HighAvailabilityFaultTolerance/</loc>
          <lastmod>2024-11-18</lastmod>
     </url>
 </urlset>
