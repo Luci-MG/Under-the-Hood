@@ -1260,36 +1260,54 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-the-decorator-pattern" class="md-nav__link">
+  <a href="#what" class="md-nav__link">
     <span class="md-ellipsis">
-      What is the Decorator Pattern?
+      What ?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#when-to-use-the-decorator-pattern" class="md-nav__link">
+  <a href="#when-to-use" class="md-nav__link">
     <span class="md-ellipsis">
-      When to Use the Decorator Pattern?
+      When to Use ?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-of-decorator-pattern-in-java" class="md-nav__link">
+  <a href="#where-not-to-use" class="md-nav__link">
     <span class="md-ellipsis">
-      Example of Decorator Pattern in Java
+      Where Not to Use ?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-use-decorator-pattern-with-spring-boot" class="md-nav__link">
+  <a href="#advantages" class="md-nav__link">
     <span class="md-ellipsis">
-      How to Use Decorator Pattern with Spring Boot?
+      Advantages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disadvantages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disadvantages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-apply" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Apply ?
     </span>
   </a>
   
@@ -1299,15 +1317,6 @@
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       Summary:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reference-links" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reference Links
     </span>
   </a>
   
@@ -2393,36 +2402,54 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-the-decorator-pattern" class="md-nav__link">
+  <a href="#what" class="md-nav__link">
     <span class="md-ellipsis">
-      What is the Decorator Pattern?
+      What ?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#when-to-use-the-decorator-pattern" class="md-nav__link">
+  <a href="#when-to-use" class="md-nav__link">
     <span class="md-ellipsis">
-      When to Use the Decorator Pattern?
+      When to Use ?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-of-decorator-pattern-in-java" class="md-nav__link">
+  <a href="#where-not-to-use" class="md-nav__link">
     <span class="md-ellipsis">
-      Example of Decorator Pattern in Java
+      Where Not to Use ?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-use-decorator-pattern-with-spring-boot" class="md-nav__link">
+  <a href="#advantages" class="md-nav__link">
     <span class="md-ellipsis">
-      How to Use Decorator Pattern with Spring Boot?
+      Advantages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disadvantages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disadvantages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-apply" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Apply ?
     </span>
   </a>
   
@@ -2432,15 +2459,6 @@
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       Summary:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reference-links" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reference Links
     </span>
   </a>
   
@@ -2480,26 +2498,49 @@
 <h1 id="decorator-design-pattern"><strong>Decorator Design Pattern</strong><a class="headerlink" href="#decorator-design-pattern" title="Permanent link">&para;</a></h1>
 <p>The <strong>Decorator Pattern</strong> is a structural design pattern that allows behavior to be added to individual objects, either statically or dynamically, without affecting the behavior of other objects from the same class. This pattern is particularly useful when you need to add functionality to objects without subclassing and in scenarios where multiple combinations of behaviors are required.</p>
 <hr />
-<h3 id="what-is-the-decorator-pattern"><strong>What is the Decorator Pattern?</strong><a class="headerlink" href="#what-is-the-decorator-pattern" title="Permanent link">&para;</a></h3>
+<h2 id="what"><strong>What ?</strong><a class="headerlink" href="#what" title="Permanent link">&para;</a></h2>
 <p>The <strong>Decorator Pattern</strong> is used to attach additional responsibilities or behaviors to an object dynamically. It wraps the original object, adding new behavior while keeping the object’s interface intact. A decorator class has a reference to the original object and implements the same interface.</p>
-<hr />
-<h4 id="key-concepts"><strong>Key Concepts:</strong><a class="headerlink" href="#key-concepts" title="Permanent link">&para;</a></h4>
+<div class="admonition info">
+<p class="admonition-title">Key Concepts</p>
 <ul>
 <li><strong>Component</strong>: The interface or abstract class that defines the original object.</li>
 <li><strong>ConcreteComponent</strong>: The actual object that implements the <code>Component</code> interface.</li>
 <li><strong>Decorator</strong>: An abstract class that implements the <code>Component</code> interface and holds a reference to a <code>Component</code> object.</li>
 <li><strong>Concrete Decorators</strong>: Subclasses of the <code>Decorator</code> that add specific functionalities.</li>
 </ul>
+</div>
 <hr />
-<h3 id="when-to-use-the-decorator-pattern"><strong>When to Use the Decorator Pattern?</strong><a class="headerlink" href="#when-to-use-the-decorator-pattern" title="Permanent link">&para;</a></h3>
+<h2 id="when-to-use"><strong>When to Use ?</strong><a class="headerlink" href="#when-to-use" title="Permanent link">&para;</a></h2>
 <ul>
-<li>When you need to <strong>add responsibilities to individual objects dynamically</strong> and without altering their structure.</li>
-<li>When you want to <strong>extend the functionality of an object at runtime</strong>, without changing the class.</li>
-<li>When <strong>multiple combinations of responsibilities</strong> are needed, and subclassing would result in too many subclasses.</li>
-<li>When you want to <strong>keep the original class unchanged</strong> but extend its behavior transparently.</li>
+<li>When you need to add responsibilities to individual objects dynamically and without altering their structure.</li>
+<li>When you want to extend the functionality of an object at runtime, without changing the class.</li>
+<li>When multiple combinations of responsibilities are needed, and subclassing would result in too many subclasses.</li>
+<li>When you want to keep the original class unchanged but extend its behavior transparently.</li>
 </ul>
 <hr />
-<h3 id="example-of-decorator-pattern-in-java"><strong>Example of Decorator Pattern in Java</strong><a class="headerlink" href="#example-of-decorator-pattern-in-java" title="Permanent link">&para;</a></h3>
+<h2 id="where-not-to-use"><strong>Where Not to Use ?</strong><a class="headerlink" href="#where-not-to-use" title="Permanent link">&para;</a></h2>
+<ul>
+<li>If too many layers of decorators are required, it can make code complex and difficult to debug.</li>
+<li>When performance is a concern, as the decorator adds overhead with each layer.</li>
+<li>If the object’s behavior doesn’t need to change dynamically, then simpler design patterns like inheritance or composition might suffice.</li>
+<li>In cases where direct modification to the existing class is possible, decorators might be overkill.</li>
+</ul>
+<hr />
+<h2 id="advantages"><strong>Advantages</strong><a class="headerlink" href="#advantages" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Open for extension, closed for modification New functionalities can be added without altering existing code.</li>
+<li>More flexible than inheritance. It allows the combination of behaviors at runtime.</li>
+<li>Helps achieve single responsibility principle since each decorator adds only one type of behavior.</li>
+</ul>
+<h2 id="disadvantages"><strong>Disadvantages</strong><a class="headerlink" href="#disadvantages" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Complexity increases with a large number of decorators.</li>
+<li>Debugging can be challenging because you need to trace through multiple layers of decorators.</li>
+</ul>
+<hr />
+<h2 id="how-to-apply"><strong>How to Apply ?</strong><a class="headerlink" href="#how-to-apply" title="Permanent link">&para;</a></h2>
+<details class="example" open="open">
+<summary>Simple Java Example</summary>
 <p>Let's consider an example where we are building a <strong>coffee shop</strong>. Different types of coffees can be enhanced with add-ons like milk, sugar, etc. Using the decorator pattern, we can apply these add-ons dynamically without subclassing.</p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Step 1: Component Interface</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">Coffee</span><span class="w"> </span><span class="p">{</span>
@@ -2584,50 +2625,31 @@
 </span><span id="__span-0-81"><a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-0-82"><a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a><span class="p">}</span>
 </span></code></pre></div>
-<p><strong>Output:</strong>
+<details class="info output">
+<summary>Info</summary>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Basic Coffee $2.0
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Basic Coffee, Milk $2.5
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Basic Coffee, Milk, Sugar $2.7
-</span></code></pre></div></p>
+</span></code></pre></div>
+</details>
+</details>
 <hr />
-<h4 id="advantages-of-the-decorator-pattern"><strong>Advantages of the Decorator Pattern:</strong><a class="headerlink" href="#advantages-of-the-decorator-pattern" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Open for extension, closed for modification</strong>: New functionalities can be added without altering existing code.</li>
-<li><strong>More flexible</strong> than inheritance. It allows the combination of behaviors at runtime.</li>
-<li>Helps achieve <strong>single responsibility principle</strong> since each decorator adds only one type of behavior.</li>
-</ul>
-<h4 id="disadvantages"><strong>Disadvantages:</strong><a class="headerlink" href="#disadvantages" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Complexity increases</strong> with a large number of decorators.</li>
-<li>Debugging can be challenging because you need to trace through multiple layers of decorators.</li>
-</ul>
-<hr />
-<h3 id="how-to-use-decorator-pattern-with-spring-boot"><strong>How to Use Decorator Pattern with Spring Boot?</strong><a class="headerlink" href="#how-to-use-decorator-pattern-with-spring-boot" title="Permanent link">&para;</a></h3>
+<details class="example" open="open">
+<summary>Spring Boot Example</summary>
 <p>In <strong>Spring Boot</strong>, the decorator pattern can be used in scenarios such as <strong>logging, monitoring, or security checks</strong>. You can implement a decorator pattern to enhance service classes without changing their core logic. Here's an example where we decorate a service class to add <strong>logging functionality</strong>.</p>
-<hr />
-<h4 id="example-of-decorator-in-spring-boot"><strong>Example of Decorator in Spring Boot</strong><a class="headerlink" href="#example-of-decorator-in-spring-boot" title="Permanent link">&para;</a></h4>
-<ol>
-<li>
-<p><strong>Component Interface (Service Layer):</strong>
-<div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">UserService</span><span class="w"> </span><span class="p">{</span>
+<div class="language-java highlight"><span class="filename">Component Interface (Service Layer)</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">UserService</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="nf">getUserDetails</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">userId</span><span class="p">);</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">}</span>
-</span></code></pre></div></p>
-</li>
-<li>
-<p><strong>Concrete Component:</strong>
-<div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nd">@Service</span>
+</span></code></pre></div>
+<div class="language-java highlight"><span class="filename">Concrete Component</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nd">@Service</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UserServiceImpl</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">UserService</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nd">@Override</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getUserDetails</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">userId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;User details for &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">userId</span><span class="p">;</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p">}</span>
-</span></code></pre></div></p>
-</li>
-<li>
-<p><strong>Decorator:</strong>
-<div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nd">@Service</span>
+</span></code></pre></div>
+<div class="language-java highlight"><span class="filename">Decorator</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nd">@Service</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LoggingUserService</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">UserService</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">UserService</span><span class="w"> </span><span class="n">userService</span><span class="p">;</span>
@@ -2642,11 +2664,8 @@
 </span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">userService</span><span class="p">.</span><span class="na">getUserDetails</span><span class="p">(</span><span class="n">userId</span><span class="p">);</span>
 </span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="p">}</span>
-</span></code></pre></div></p>
-</li>
-<li>
-<p><strong>Configuration to Use Decorator:</strong>
-<div class="language-java highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nd">@Configuration</span>
+</span></code></pre></div>
+<div class="language-java highlight"><span class="filename">Configuration to Use Decorator</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nd">@Configuration</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ServiceConfig</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="nd">@Bean</span>
@@ -2654,34 +2673,21 @@
 </span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LoggingUserService</span><span class="p">(</span><span class="n">userServiceImpl</span><span class="p">);</span>
 </span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">}</span>
-</span></code></pre></div></p>
-</li>
-</ol>
-<hr />
-<h4 id="how-it-works-in-spring-boot"><strong>How it Works in Spring Boot:</strong><a class="headerlink" href="#how-it-works-in-spring-boot" title="Permanent link">&para;</a></h4>
+</span></code></pre></div>
+<details class="info" open="open">
+<summary>How it Works in Spring Boot</summary>
 <ul>
 <li><strong><code>UserServiceImpl</code></strong> provides the basic functionality.</li>
 <li><strong><code>LoggingUserService</code></strong> acts as a decorator, adding logging before calling the original method.</li>
 <li>Spring’s <strong>DI (Dependency Injection)</strong> ensures that the decorated service is injected wherever needed.</li>
 </ul>
+</details>
+</details>
 <hr />
-<h4 id="where-not-to-use-the-decorator-pattern"><strong>Where Not to Use the Decorator Pattern?</strong><a class="headerlink" href="#where-not-to-use-the-decorator-pattern" title="Permanent link">&para;</a></h4>
-<ul>
-<li>If <strong>too many layers of decorators</strong> are required, it can make code complex and difficult to debug.</li>
-<li>When <strong>performance</strong> is a concern, as the decorator adds overhead with each layer.</li>
-<li>If the <strong>object’s behavior doesn’t need to change dynamically</strong>, then simpler design patterns like <strong>inheritance or composition</strong> might suffice.</li>
-<li>In cases where <strong>direct modification</strong> to the existing class is possible, decorators might be overkill.</li>
-</ul>
-<hr />
-<h3 id="summary"><strong>Summary:</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h3>
-<p>The <strong>Decorator Pattern</strong> is a powerful and flexible way to enhance objects with additional behaviors dynamically without altering their structure. It shines in scenarios requiring combinations of behaviors and helps maintain clean, modular code. </p>
-<p>In <strong>Spring Boot</strong>, it can be used for decorating services with additional features like <strong>logging, security, or metrics</strong>, allowing these aspects to remain separate from the core business logic.</p>
-<p>This pattern should be used thoughtfully since excessive use can introduce complexity and make debugging difficult. However, when applied correctly, it ensures that code remains extensible and adheres to the <strong>Single Responsibility Principle</strong> and <strong>Open/Closed Principle</strong>.</p>
-<hr />
-<h3 id="reference-links">Reference Links<a class="headerlink" href="#reference-links" title="Permanent link">&para;</a></h3>
-<ol>
-<li><a href="https://refactoring.guru/design-patterns/decorator">https://refactoring.guru/design-patterns/decorator</a></li>
-</ol>
+<h2 id="summary"><strong>Summary:</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>The Decorator Pattern is a powerful and flexible way to enhance objects with additional behaviors dynamically without altering their structure. It shines in scenarios requiring combinations of behaviors and helps maintain clean, modular code. </p>
+<p>In Spring Boot, it can be used for decorating services with additional features like <strong>logging, security, or metrics</strong>, allowing these aspects to remain separate from the core business logic.</p>
+<p>This pattern should be used thoughtfully since excessive use can introduce complexity and make debugging difficult. However, when applied correctly, it ensures that code remains extensible and adheres to the <strong>Single Responsibility Principle</strong> and <strong>Open Closed Principle</strong>.</p>
 <hr />
 
 
@@ -2705,7 +2711,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 31, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 18, 2024</span>
   </span>
 
     
