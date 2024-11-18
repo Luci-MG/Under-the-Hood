@@ -1,2 +1,3 @@
 # Blog
 
+## Coming soon

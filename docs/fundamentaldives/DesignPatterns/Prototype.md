@@ -8,7 +8,7 @@ The **Prototype Pattern** is a **creational design pattern** used when the cost 
 
 The **Prototype Pattern** allows cloning or copying existing instances to create new ones, ensuring that new objects are created **without going through the expensive or complex instantiation process** repeatedly.
 
-!!! note "Key Characteristics"
+!!! info "Key Characteristics"
     - Objects are created by copying or **cloning an existing prototype** object.
     - Each prototype maintains its state, and the cloned objects are **independent copies**.
     - Useful when the creation of an object is **resource-intensive** (e.g., large data loads, configurations, etc.).
