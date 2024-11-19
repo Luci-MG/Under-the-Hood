@@ -1,20 +1,28 @@
 # **Concurrency and Parallelism**
 
-Both **concurrency** and **parallelism** refer to ways a computer performs multiple tasks, but they differ in how the tasks are executed. Let's break them down, along with related concepts like **threads, processes, and programs**.
+Both **concurrency** and **parallelism** refer to ways a computer performs multiple tasks, but they differ in how the tasks are executed. Let's go through them, along with related concepts like **threads, processes, and programs**.
 
 ---
 
-## **Concurrency vs. Parallelism: Overview**
+## **What is Concurrency ?**
+Concurrency is when multiple tasks make progress within the same time frame, but not necessarily at the same exact moment. Tasks switch back and forth, sharing resources like CPU time.
 
-1. **Concurrency**:
-   - **Definition**: Concurrency is when multiple tasks make progress within the same time frame, but **not necessarily at the same exact moment**. Tasks switch back and forth, sharing resources like CPU time.
-   - **Analogy**: It’s like a chef preparing multiple dishes, working on one dish for a few minutes, switching to another, and then returning to the previous dish.
-   - **Key Point**: Focuses on dealing with multiple tasks by **time-sharing** resources.
+!!! info "Analogy" 
+    It’s like a chef preparing multiple dishes, working on one dish for a few minutes, switching to another, and then returning to the previous dish.
 
-2. **Parallelism**:
-   - **Definition**: Parallelism is when multiple tasks are executed **simultaneously**, usually on **different processors or cores**.
-   - **Analogy**: It’s like having multiple chefs, each cooking one dish at the same time.
-   - **Key Point**: Requires multiple CPUs or cores for real simultaneous execution.
+!!! note
+    Focuses on dealing with multiple tasks by **time-sharing** resources.
+
+---
+
+## **What is Parallelism ?**
+Parallelism is when multiple tasks are executed simultaneously, usually on different processors or cores.
+
+!!! info "Analogy" 
+    It’s like having multiple chefs, each cooking one dish at the same time.
+
+!!! note
+    Requires multiple CPUs or cores for real simultaneous execution.
 
 ---
 
