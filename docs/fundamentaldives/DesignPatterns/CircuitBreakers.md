@@ -75,9 +75,9 @@ Several popular libraries and frameworks make circuit breaker implementations si
 
 === "Java with Resilience4j"
 
-    Resilience4j is a library providing circuit breaker implementations.
-
     ```java
+
+    // Resilience4j is a library providing circuit breaker implementations.
     import io.github.resilience4j.circuitbreaker.CircuitBreaker;
     import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
     import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
@@ -110,9 +110,9 @@ Several popular libraries and frameworks make circuit breaker implementations si
 
 === "Python with PyBreaker"
 
-    PyBreaker is a library implementing the Circuit Breaker pattern for Python applications.
-
     ```python
+    # PyBreaker is a library implementing the Circuit Breaker pattern for Python applications.
+
     from pybreaker import CircuitBreaker, CircuitBreakerError
     import requests
 
