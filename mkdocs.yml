@@ -1,6 +1,6 @@
 # Project information
-site_name: 'Under the Hood'
-site_url: 'https://luci-mg.github.io/Under-the-Hood'
+site_name: Under the Hood
+site_url: https://luci-mg.github.io/Under-the-Hood
 site_author: Mrudhul Guda
 site_description: >-
   Dive deep into tech with in-depth explorations of patterns, languages, distributed systems, databases, their concepts and more all in one place.
