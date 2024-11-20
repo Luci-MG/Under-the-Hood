@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.45">
     
     
       
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#high-availability-ha-and-fault-tolerance-ft" class="md-skip">
+        <a href="#high-availability-and-fault-tolerance" class="md-skip">
           Skip to content
         </a>
       
@@ -589,46 +589,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-high-availability-ha" class="md-nav__link">
+  <a href="#high-availability-ha" class="md-nav__link">
     <span class="md-ellipsis">
-      1. High Availability (HA)
+      High Availability (HA)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. High Availability (HA)">
+    <nav class="md-nav" aria-label="High Availability (HA)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#key-aspects-of-high-availability" class="md-nav__link">
+  <a href="#ha-levels" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Aspects of High Availability:
+      HA Levels
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#availability-levels-measurement" class="md-nav__link">
+  <a href="#ha-use-cases" class="md-nav__link">
     <span class="md-ellipsis">
-      Availability Levels &amp; Measurement
+      HA Use Cases
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#examples-of-high-availability-use-cases" class="md-nav__link">
+  <a href="#ha-challenges" class="md-nav__link">
     <span class="md-ellipsis">
-      Examples of High Availability Use Cases:
+      HA Challenges
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#challenges-in-achieving-high-availability" class="md-nav__link">
+  <a href="#ha-when-to-use" class="md-nav__link">
     <span class="md-ellipsis">
-      Challenges in Achieving High Availability:
+      HA When to Use ?
     </span>
   </a>
   
@@ -640,55 +640,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-fault-tolerance-ft" class="md-nav__link">
+  <a href="#fault-tolerance-ft" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Fault Tolerance (FT)
+      Fault Tolerance (FT)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Fault Tolerance (FT)">
+    <nav class="md-nav" aria-label="Fault Tolerance (FT)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#key-principles-of-fault-tolerance" class="md-nav__link">
+  <a href="#ft-techniques" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Principles of Fault Tolerance:
+      FT Techniques:
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fault-tolerance-techniques" class="md-nav__link">
+  <a href="#ft-real-world-examples" class="md-nav__link">
     <span class="md-ellipsis">
-      Fault Tolerance Techniques:
+      FT Real-World Examples
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#real-world-examples-of-fault-tolerant-systems" class="md-nav__link">
+  <a href="#ft-challenges" class="md-nav__link">
     <span class="md-ellipsis">
-      Real-World Examples of Fault-Tolerant Systems:
+      FT Challenges
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#challenges-of-fault-tolerance" class="md-nav__link">
+  <a href="#ft-in-contrast-to-resilience" class="md-nav__link">
     <span class="md-ellipsis">
-      Challenges of Fault Tolerance:
+      FT in Contrast to Resilience
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fault-tolerance-in-contrast-to-resilience" class="md-nav__link">
+  <a href="#ft-when-to-use" class="md-nav__link">
     <span class="md-ellipsis">
-      Fault Tolerance in Contrast to Resilience:
+      FT When to Use ?
     </span>
   </a>
   
@@ -700,44 +700,20 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-high-availability-ha-vs-fault-tolerance-ft" class="md-nav__link">
+  <a href="#ha-vs-ft" class="md-nav__link">
     <span class="md-ellipsis">
-      3. High Availability (HA) vs. Fault Tolerance (FT):
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. High Availability (HA) vs. Fault Tolerance (FT):">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fault-tolerance-vs-high-availability" class="md-nav__link">
-    <span class="md-ellipsis">
-      Fault Tolerance vs. High Availability:
+      HA vs FT
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#when-to-use-each" class="md-nav__link">
-    <span class="md-ellipsis">
-      When to Use Each:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
-      Summary:
+      Summary
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2544,46 +2520,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-high-availability-ha" class="md-nav__link">
+  <a href="#high-availability-ha" class="md-nav__link">
     <span class="md-ellipsis">
-      1. High Availability (HA)
+      High Availability (HA)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. High Availability (HA)">
+    <nav class="md-nav" aria-label="High Availability (HA)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#key-aspects-of-high-availability" class="md-nav__link">
+  <a href="#ha-levels" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Aspects of High Availability:
+      HA Levels
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#availability-levels-measurement" class="md-nav__link">
+  <a href="#ha-use-cases" class="md-nav__link">
     <span class="md-ellipsis">
-      Availability Levels &amp; Measurement
+      HA Use Cases
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#examples-of-high-availability-use-cases" class="md-nav__link">
+  <a href="#ha-challenges" class="md-nav__link">
     <span class="md-ellipsis">
-      Examples of High Availability Use Cases:
+      HA Challenges
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#challenges-in-achieving-high-availability" class="md-nav__link">
+  <a href="#ha-when-to-use" class="md-nav__link">
     <span class="md-ellipsis">
-      Challenges in Achieving High Availability:
+      HA When to Use ?
     </span>
   </a>
   
@@ -2595,55 +2571,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-fault-tolerance-ft" class="md-nav__link">
+  <a href="#fault-tolerance-ft" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Fault Tolerance (FT)
+      Fault Tolerance (FT)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Fault Tolerance (FT)">
+    <nav class="md-nav" aria-label="Fault Tolerance (FT)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#key-principles-of-fault-tolerance" class="md-nav__link">
+  <a href="#ft-techniques" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Principles of Fault Tolerance:
+      FT Techniques:
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fault-tolerance-techniques" class="md-nav__link">
+  <a href="#ft-real-world-examples" class="md-nav__link">
     <span class="md-ellipsis">
-      Fault Tolerance Techniques:
+      FT Real-World Examples
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#real-world-examples-of-fault-tolerant-systems" class="md-nav__link">
+  <a href="#ft-challenges" class="md-nav__link">
     <span class="md-ellipsis">
-      Real-World Examples of Fault-Tolerant Systems:
+      FT Challenges
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#challenges-of-fault-tolerance" class="md-nav__link">
+  <a href="#ft-in-contrast-to-resilience" class="md-nav__link">
     <span class="md-ellipsis">
-      Challenges of Fault Tolerance:
+      FT in Contrast to Resilience
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fault-tolerance-in-contrast-to-resilience" class="md-nav__link">
+  <a href="#ft-when-to-use" class="md-nav__link">
     <span class="md-ellipsis">
-      Fault Tolerance in Contrast to Resilience:
+      FT When to Use ?
     </span>
   </a>
   
@@ -2655,44 +2631,20 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-high-availability-ha-vs-fault-tolerance-ft" class="md-nav__link">
+  <a href="#ha-vs-ft" class="md-nav__link">
     <span class="md-ellipsis">
-      3. High Availability (HA) vs. Fault Tolerance (FT):
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. High Availability (HA) vs. Fault Tolerance (FT):">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fault-tolerance-vs-high-availability" class="md-nav__link">
-    <span class="md-ellipsis">
-      Fault Tolerance vs. High Availability:
+      HA vs FT
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#when-to-use-each" class="md-nav__link">
-    <span class="md-ellipsis">
-      When to Use Each:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
-      Summary:
+      Summary
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2727,12 +2679,12 @@
   
 
 
-<h1 id="high-availability-ha-and-fault-tolerance-ft">High Availability (HA) and Fault Tolerance (FT)<a class="headerlink" href="#high-availability-ha-and-fault-tolerance-ft" title="Permanent link">&para;</a></h1>
-<h2 id="1-high-availability-ha"><strong>1. High Availability (HA)</strong><a class="headerlink" href="#1-high-availability-ha" title="Permanent link">&para;</a></h2>
+<h1 id="high-availability-and-fault-tolerance"><strong>High Availability and Fault Tolerance</strong><a class="headerlink" href="#high-availability-and-fault-tolerance" title="Permanent link">&para;</a></h1>
+<h2 id="high-availability-ha"><strong>High Availability (HA)</strong><a class="headerlink" href="#high-availability-ha" title="Permanent link">&para;</a></h2>
 <p><strong>High Availability (HA)</strong> refers to a system or infrastructure's ability to remain operational and accessible for a very high percentage of time, minimizing downtime. In essence, it's a design principle used in IT to ensure that services, applications, or systems are continuously available, even in the event of hardware failures, software issues, or unexpected disruptions. </p>
-<hr />
-<h3 id="key-aspects-of-high-availability"><strong>Key Aspects of High Availability:</strong><a class="headerlink" href="#key-aspects-of-high-availability" title="Permanent link">&para;</a></h3>
-<ol>
+<div class="admonition info">
+<p class="admonition-title">Key Aspects of High Availability</p>
+<ul>
 <li>
 <p><strong>Redundancy:</strong>  Multiple components (like servers, databases, or network paths) are set up so that if one fails, another can take over immediately without interrupting the service.  </p>
 </li>
@@ -2751,51 +2703,54 @@
 <li>
 <p><strong>Data Replication:</strong>  Critical data is often replicated across multiple locations or systems. This ensures that in case of a failure, there’s no data loss and services can continue with minimal disruption.</p>
 </li>
-</ol>
+</ul>
+</div>
 <hr />
-<h3 id="availability-levels-measurement"><strong>Availability Levels &amp; Measurement</strong><a class="headerlink" href="#availability-levels-measurement" title="Permanent link">&para;</a></h3>
+<h3 id="ha-levels"><strong>HA Levels</strong><a class="headerlink" href="#ha-levels" title="Permanent link">&para;</a></h3>
+<p>Availability is often expressed as a percentage. For instance, an uptime of 99.99% means the service is expected to be down for only 52 minutes in a year.</p>
+<div class="admonition info">
+<p class="admonition-title">Common availability standards</p>
 <ul>
-<li><strong>Availability is often expressed as a percentage</strong>. For instance, an uptime of 99.99% means the service is expected to be down for only 52 minutes in a year. Common availability standards include:</li>
 <li><strong>99% uptime</strong>: ~3.65 days of downtime per year.</li>
 <li><strong>99.9% uptime (three nines)</strong>: ~8.76 hours of downtime per year.</li>
 <li><strong>99.99% uptime (four nines)</strong>: ~52 minutes of downtime per year.</li>
 <li><strong>99.999% uptime (five nines)</strong>: ~5.26 minutes of downtime per year.</li>
 </ul>
+</div>
+<h3 id="ha-use-cases"><strong>HA Use Cases</strong><a class="headerlink" href="#ha-use-cases" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>Data Centers:</strong> Cloud providers like AWS, Microsoft Azure, and Google Cloud offer high availability zones to ensure service uptime even during hardware failures or network outages.</p>
+</li>
+<li>
+<p><strong>Web Applications:</strong> E-commerce sites (like Amazon) employ HA architecture to ensure they remain operational at all times, as any downtime directly impacts revenue.</p>
+</li>
+<li>
+<p><strong>Banking Systems:</strong>  Financial services need HA to ensure uninterrupted access to customer transactions, ATMs, and payment processing services.</p>
+</li>
+<li>
+<p><strong>Telecommunication Networks:</strong>  Cellular networks and ISPs use HA to maintain voice, data, and internet services without interruptions.</p>
+</li>
+</ul>
 <hr />
-<h3 id="examples-of-high-availability-use-cases"><strong>Examples of High Availability Use Cases:</strong><a class="headerlink" href="#examples-of-high-availability-use-cases" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p><strong>Data Centers:</strong> 
-   Cloud providers like AWS, Microsoft Azure, and Google Cloud offer high availability zones to ensure service uptime even during hardware failures or network outages.</p>
-</li>
-<li>
-<p><strong>Web Applications:</strong> 
-   E-commerce sites (like Amazon) employ HA architecture to ensure they remain operational at all times, as any downtime directly impacts revenue.</p>
-</li>
-<li>
-<p><strong>Banking Systems:</strong><br />
-   Financial services need HA to ensure uninterrupted access to customer transactions, ATMs, and payment processing services.</p>
-</li>
-<li>
-<p><strong>Telecommunication Networks:</strong><br />
-   Cellular networks and ISPs use HA to maintain voice, data, and internet services without interruptions.</p>
-</li>
-</ol>
-<hr />
-<h3 id="challenges-in-achieving-high-availability"><strong>Challenges in Achieving High Availability:</strong><a class="headerlink" href="#challenges-in-achieving-high-availability" title="Permanent link">&para;</a></h3>
+<h3 id="ha-challenges"><strong>HA Challenges</strong><a class="headerlink" href="#ha-challenges" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Cost:</strong> Implementing HA systems often requires significant investment in redundant hardware and infrastructure.</li>
 <li><strong>Complexity:</strong> Managing and maintaining multiple systems and failover mechanisms increases operational complexity.</li>
 <li><strong>Testing Failover Mechanisms:</strong> Ensuring that failover systems activate correctly in real-world scenarios requires rigorous testing.</li>
 </ul>
 <hr />
-<p>In summary, <strong>high availability ensures that critical systems are always accessible</strong> with minimal interruptions. Organizations rely on HA strategies to meet customer expectations, protect revenue, and ensure business continuity, especially in industries where even a small amount of downtime can have serious consequences.</p>
+<h3 id="ha-when-to-use"><strong>HA When to Use ?</strong><a class="headerlink" href="#ha-when-to-use" title="Permanent link">&para;</a></h3>
+<ul>
+<li>When <strong>some downtime</strong> is acceptable, as long as it's minimal (milliseconds to minutes).</li>
+<li><strong>Cost-effective</strong> for applications where availability is critical but not life-threatening (e.g., web services, banking applications, cloud platforms).</li>
+</ul>
 <hr />
-<h2 id="2-fault-tolerance-ft"><strong>2. Fault Tolerance (FT)</strong><a class="headerlink" href="#2-fault-tolerance-ft" title="Permanent link">&para;</a></h2>
+<h2 id="fault-tolerance-ft"><strong>Fault Tolerance (FT)</strong><a class="headerlink" href="#fault-tolerance-ft" title="Permanent link">&para;</a></h2>
 <p><strong>Fault Tolerance</strong> refers to the ability of a system, network, or application to continue functioning correctly even when one or more of its components fail. It ensures <strong>continuous operation</strong> without loss of service, despite hardware, software, or other types of faults occurring in the system. Fault tolerance plays a crucial role in ensuring <strong>high reliability and availability</strong> of critical systems.</p>
-<hr />
-<h3 id="key-principles-of-fault-tolerance"><strong>Key Principles of Fault Tolerance:</strong><a class="headerlink" href="#key-principles-of-fault-tolerance" title="Permanent link">&para;</a></h3>
-<ol>
+<div class="admonition info">
+<p class="admonition-title">Key Principles of Fault Tolerance</p>
+<ul>
 <li>
 <p><strong>Redundancy:</strong>  Multiple components are deployed so that if one component fails, another takes over seamlessly. Redundant systems include extra servers, power supplies, storage drives, and networks.</p>
 </li>
@@ -2811,39 +2766,44 @@
 <li>
 <p><strong>Graceful Degradation:</strong>  If a fault occurs, the system may reduce performance or disable non-essential services instead of shutting down entirely, thus ensuring the most critical functions remain operational.</p>
 </li>
-</ol>
+</ul>
+</div>
 <hr />
-<h3 id="fault-tolerance-techniques"><strong>Fault Tolerance Techniques:</strong><a class="headerlink" href="#fault-tolerance-techniques" title="Permanent link">&para;</a></h3>
+<h3 id="ft-techniques"><strong>FT Techniques:</strong><a class="headerlink" href="#ft-techniques" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Hardware Fault Tolerance:</strong></li>
+<li>
+<p><strong>Hardware Fault Tolerance:</strong></p>
+<ul>
 <li><strong>RAID (Redundant Array of Independent Disks):</strong> Data is mirrored or striped across multiple hard drives to prevent data loss from disk failure.</li>
 <li><strong>Dual Power Supplies:</strong> Servers often include multiple power supplies to prevent failure if one unit fails.</li>
-<li>
-<p><strong>Hot Swapping:</strong> Faulty components like disks or power units can be replaced without shutting down the system.</p>
+<li><strong>Hot Swapping:</strong> Faulty components like disks or power units can be replaced without shutting down the system.</li>
+</ul>
 </li>
 <li>
 <p><strong>Software Fault Tolerance:</strong></p>
-</li>
+<ul>
 <li><strong>Checkpoints and Rollbacks:</strong> Systems can save checkpoints periodically, and if an error occurs, they revert to the last known good state.</li>
-<li>
-<p><strong>Replication in Distributed Systems:</strong> Critical services are duplicated across multiple servers to ensure that if one server fails, others take over.</p>
+<li><strong>Replication in Distributed Systems:</strong> Critical services are duplicated across multiple servers to ensure that if one server fails, others take over.</li>
+</ul>
 </li>
 <li>
 <p><strong>Network Fault Tolerance:</strong></p>
-</li>
+<ul>
 <li><strong>Multiple Network Paths:</strong> Routing data over multiple paths ensures that if one link fails, another path is used.</li>
-<li>
-<p><strong>Load Balancers:</strong> They distribute network traffic across multiple servers or systems, ensuring no single point of failure.</p>
+<li><strong>Load Balancers:</strong> They distribute network traffic across multiple servers or systems, ensuring no single point of failure.</li>
+</ul>
 </li>
 <li>
 <p><strong>Error Detection and Recovery:</strong></p>
-</li>
+<ul>
 <li><strong>Watchdog Timers:</strong> Monitor system processes and restart them if they hang.</li>
 <li><strong>Checksums and Parity Checks:</strong> Verify data integrity and correct transmission errors.</li>
+</ul>
+</li>
 </ol>
 <hr />
-<h3 id="real-world-examples-of-fault-tolerant-systems"><strong>Real-World Examples of Fault-Tolerant Systems:</strong><a class="headerlink" href="#real-world-examples-of-fault-tolerant-systems" title="Permanent link">&para;</a></h3>
-<ol>
+<h3 id="ft-real-world-examples"><strong>FT Real-World Examples</strong><a class="headerlink" href="#ft-real-world-examples" title="Permanent link">&para;</a></h3>
+<ul>
 <li>
 <p><strong>Airplane Control Systems:</strong>  Modern aircraft use redundant flight control systems, so if one control unit fails, another takes over to ensure passenger safety.</p>
 </li>
@@ -2856,10 +2816,10 @@
 <li>
 <p><strong>Cloud Computing Services:</strong>  Cloud providers like AWS or Google Cloud implement fault tolerance using distributed systems, replication, and redundant storage across multiple locations.</p>
 </li>
-</ol>
+</ul>
 <hr />
-<h3 id="challenges-of-fault-tolerance"><strong>Challenges of Fault Tolerance:</strong><a class="headerlink" href="#challenges-of-fault-tolerance" title="Permanent link">&para;</a></h3>
-<ol>
+<h3 id="ft-challenges"><strong>FT Challenges</strong><a class="headerlink" href="#ft-challenges" title="Permanent link">&para;</a></h3>
+<ul>
 <li>
 <p><strong>Cost:</strong>  Building redundant systems is expensive, as it requires additional hardware, software, and management resources.</p>
 </li>
@@ -2869,25 +2829,27 @@
 <li>
 <p><strong>Performance Overhead:</strong>  Some fault tolerance techniques, like replication or checkpointing, can introduce performance bottlenecks.</p>
 </li>
-</ol>
+</ul>
 <hr />
-<h3 id="fault-tolerance-in-contrast-to-resilience"><strong>Fault Tolerance in Contrast to Resilience:</strong><a class="headerlink" href="#fault-tolerance-in-contrast-to-resilience" title="Permanent link">&para;</a></h3>
+<h3 id="ft-in-contrast-to-resilience"><strong>FT in Contrast to Resilience</strong><a class="headerlink" href="#ft-in-contrast-to-resilience" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Fault Tolerance</strong> focuses on <strong>preventing failures from disrupting operations</strong>, often through redundancy.</li>
-<li><strong>Resilience</strong> is about <strong>recovering quickly from disruptions</strong>—it accepts that some failures will occur but emphasizes rapid recovery.</li>
+<li><strong>Resilience</strong> is about <strong>recovering quickly from disruptions</strong> it accepts that some failures will occur but emphasizes rapid recovery.</li>
 </ul>
 <hr />
-<p>In summary, <strong>fault tolerance</strong> is the ability of a system to keep operating without interruption despite experiencing faults or failures. It is crucial for <strong>mission-critical systems</strong> in industries like aviation, finance, and healthcare, where downtime or errors could lead to catastrophic outcomes.</p>
-<hr />
-<h2 id="3-high-availability-ha-vs-fault-tolerance-ft"><strong>3. High Availability (HA) vs. Fault Tolerance (FT):</strong><a class="headerlink" href="#3-high-availability-ha-vs-fault-tolerance-ft" title="Permanent link">&para;</a></h2>
-<p>High Availability (HA) and Fault Tolerance (FT) are two strategies aimed at keeping systems operational, but they approach this goal differently. Here's a detailed comparison:</p>
-<h3 id="fault-tolerance-vs-high-availability"><strong>Fault Tolerance vs. High Availability:</strong><a class="headerlink" href="#fault-tolerance-vs-high-availability" title="Permanent link">&para;</a></h3>
+<h3 id="ft-when-to-use"><strong>FT When to Use ?</strong><a class="headerlink" href="#ft-when-to-use" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>High Availability (HA)</strong> ensures systems have <strong>minimal downtime</strong> by using redundancy and fast recovery (e.g., failover systems).  </li>
-<li><strong>Fault Tolerance</strong> goes a step further—it ensures that the system <strong>keeps working without any noticeable disruption</strong>, even while faults are occurring. </li>
+<li>When <strong>no downtime</strong> or service interruptions are tolerated (e.g., <strong>mission-critical systems</strong> such as airplane controls, healthcare monitoring, financial transactions).</li>
+<li>Suitable for <strong>life-critical</strong> systems where failures could lead to catastrophic outcomes.</li>
+</ul>
+<hr />
+<h2 id="ha-vs-ft"><strong>HA vs FT</strong><a class="headerlink" href="#ha-vs-ft" title="Permanent link">&para;</a></h2>
+<p>High Availability (HA) and Fault Tolerance (FT) are two strategies aimed at keeping systems operational, but they approach this goal differently. Here's a detailed comparison:</p>
+<ul>
+<li><strong>High Availability</strong> ensures systems have <strong>minimal downtime</strong> by using redundancy and fast recovery (e.g., failover systems).  </li>
+<li><strong>Fault Tolerance</strong> goes a step further it ensures that the system <strong>keeps working without any noticeable disruption</strong>, even while faults are occurring. </li>
 </ul>
 <p>In other words, high availability aims to reduce downtime, whereas fault-tolerant systems aim for <strong>zero downtime</strong>, even during failures.</p>
-<hr />
 <table>
 <thead>
 <tr>
@@ -2955,22 +2917,9 @@
 </tbody>
 </table>
 <hr />
-<h3 id="when-to-use-each"><strong>When to Use Each:</strong><a class="headerlink" href="#when-to-use-each" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>High Availability</strong>: </li>
-<li>When <strong>some downtime</strong> is acceptable, as long as it's minimal (milliseconds to minutes).</li>
-<li>
-<p><strong>Cost-effective</strong> for applications where availability is critical but not life-threatening (e.g., web services, banking applications, cloud platforms).</p>
-</li>
-<li>
-<p><strong>Fault Tolerance</strong>: </p>
-</li>
-<li>When <strong>no downtime</strong> or service interruptions are tolerated (e.g., <strong>mission-critical systems</strong> such as airplane controls, healthcare monitoring, financial transactions).</li>
-<li>Suitable for <strong>life-critical</strong> systems where failures could lead to catastrophic outcomes.</li>
-</ul>
-<hr />
-<h3 id="summary"><strong>Summary:</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h3>
-<p>In essence, <strong>High Availability</strong> focuses on <strong>minimizing downtime</strong> by recovering quickly from failures, while <strong>Fault Tolerance</strong> eliminates downtime altogether by ensuring the system continues running seamlessly. <strong>HA is less costly and easier to implement</strong>, while <strong>FT is expensive and complex</strong> but essential for critical environments where even a few seconds of downtime are unacceptable.</p>
+<h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>In summary, high availability ensures that critical systems are always accessible with minimal interruptions. Organizations rely on HA strategies to meet customer expectations, protect revenue, and ensure business continuity, especially in industries where even a small amount of downtime can have serious consequences and fault tolerance is the ability of a system to keep operating without interruption despite experiencing faults or failures. It is crucial for mission-critical systems in industries like aviation, finance, and healthcare, where downtime or errors could lead to catastrophic outcomes.</p>
+<p>In essence, High Availability focuses on minimizing downtime by recovering quickly from failures, while Fault Tolerance eliminates downtime altogether by ensuring the system continues running seamlessly. <strong>HA is less costly and easier to implement</strong>, while <strong>FT is expensive and complex</strong> but essential for critical environments where even a few seconds of downtime are unacceptable.</p>
 <hr />
 
 
@@ -2994,7 +2943,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 30, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 20, 2024</span>
   </span>
 
     
