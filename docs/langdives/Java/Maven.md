@@ -139,23 +139,6 @@ This plugin ensures the source code is compiled with **Java 8**.
 
 ---
 
-## **Maven Commands**
-
-Here are some common **Maven commands**:
-
-| **Command**                  | **Description**                                  |
-|------------------------------|--------------------------------------------------|
-| `mvn compile`                | Compiles the source code.                        |
-| `mvn test`                   | Runs unit tests.                                 |
-| `mvn package`                | Packages the code into a JAR/WAR.                |
-| `mvn install`                | Installs the artifact to the local repository.   |
-| `mvn deploy`                 | Deploys the artifact to a remote repository.     |
-| `mvn clean`                  | Cleans the `target/` directory.                  |
-| `mvn dependency:tree`        | Displays the project's dependency tree.          |
-
----
-
-
 ## **Maven Project Structure**
 
 ``` title="Maven recommended standard directory structure"
@@ -209,6 +192,22 @@ mvn -N io.takari:maven:wrapper
 
 - **Unix/Mac**: `./mvnw clean install`
 - **Windows**: `mvnw.cmd clean install`
+
+---
+
+## **Maven Commands**
+
+Here are some common **Maven commands**:
+
+| **Command**                  | **Description**                                  |
+|------------------------------|--------------------------------------------------|
+| `mvn compile`                | Compiles the source code.                        |
+| `mvn test`                   | Runs unit tests.                                 |
+| `mvn package`                | Packages the code into a JAR/WAR.                |
+| `mvn install`                | Installs the artifact to the local repository.   |
+| `mvn deploy`                 | Deploys the artifact to a remote repository.     |
+| `mvn clean`                  | Cleans the `target/` directory.                  |
+| `mvn dependency:tree`        | Displays the project's dependency tree.          |
 
 ---
 

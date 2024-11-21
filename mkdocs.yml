@@ -168,13 +168,14 @@ markdown_extensions:
 # not_in_nav: |
 #   /tutorials/**/*.md
 
+# TODO:: edit all files title to not have bold stuff
 nav:
   - Home: index.md
   - Tech Dives: 
     - Distributed Concepts:
       - High Availability and Fault Tolerance: techdives/DistrubutedConcepts/HighAvailabilityFaultTolerance.md
     - Distributed Systems:
-      - Docker & K8s Documentation: techdives/DistrubutedSystems/DockerAndK8s.md
+      - Docker & K8s Documentation: techdives/DistrubutedSystems/DockerAndK8s.md # need to edit this title
       - Simple Storage Service - S3: techdives/DistrubutedSystems/S3.md
       - Kafka: techdives/DistrubutedSystems/Kafka.md
       - Elasticsearch: techdives/DistrubutedSystems/ElasticSearch.md
@@ -205,11 +206,11 @@ nav:
   - Language Dives:
       - Java:
         - JDK, JRE, JVM: langdives/Java/JavaJDKJREJVM.md
-        - What is Maven?: langdives/Java/Maven.md
-        - What is Gradle?: langdives/Java/Gradle.md
+        - What is Maven?: langdives/Java/Maven.md # need to edit this title
+        - What is Gradle?: langdives/Java/Gradle.md # need to edit this title
         - Maven vs Gradle: langdives/Java/MavenVsGradle.md
-        - Heap-Stack: langdives/Java/JavaHeapStack.md
-        - Pass By Value: langdives/Java/JavaPassBy.md
+        - Heap-Stack: langdives/Java/JavaHeapStack.md # need to edit this title
+        - Pass By Value: langdives/Java/JavaPassBy.md # need to edit this title
         - 4 Pillars: langdives/Java/4Pillars.md
         - Access Modifiers Public, Private, Protected: langdives/Java/AccessModifPPPPP.md
         - Keywords and Terminologies: langdives/Java/KeyWordsTerminolgies.md
