@@ -1,49 +1,42 @@
-# **What is Maven ?**
+# **Maven**
 
-### 1. **Maven**
-**Apache Maven** is a **build automation and project management tool** primarily for **Java projects**. It uses **XML (pom.xml)** to describe the project's structure, dependencies, and build lifecycle. Maven focuses on the **“convention over configuration”** principle, meaning it provides a **standard way** to structure and build projects with minimal configuration.
+## **What is Maven ?**
+
+Apache Maven is a build automation and project management tool primarily for Java projects. It uses XML (pom.xml) to describe the project's structure, dependencies, and build lifecycle. Maven focuses on the *“convention over configuration”* principle, meaning it provides a standard way to structure and build projects with minimal configuration.
 
 ---
 
-### 2. **How Maven Works**
+## **How Maven Works ?**
 
-Maven revolves around the **POM (Project Object Model)**, which defines:
-- The **project metadata** (group ID, artifact ID, version).
-- The **dependencies** required for the project.
-- The **build lifecycle** and plugins to automate tasks like testing, packaging, and deploying.
 
 Maven operates using a **build lifecycle** consisting of **pre-defined phases**. When you execute a specific **phase**, all preceding phases are executed as well.
 
----
+???+ info "Maven Lifecycle Phases"
+    | **Phase**       | **Description**                              |
+    |-----------------|----------------------------------------------|
+    | `validate`      | Validates the project structure.             |
+    | `compile`       | Compiles the source code.                    |
+    | `test`          | Runs the unit tests.                         |
+    | `package`       | Packages the compiled code into a JAR or WAR.|
+    | `verify`        | Verifies the package meets specifications.   |
+    | `install`       | Installs the JAR into the local Maven repository. |
+    | `deploy`        | Deploys the artifact to a remote repository. |
 
-### 3. **Maven Project Structure**
+Maven revolves around the POM (Project Object Model), which defines:
 
-Maven encourages the use of a **standard directory structure**:
+- The project metadata (group ID, artifact ID, version).
+- The dependencies required for the project.
+- The build lifecycle and plugins to automate tasks like testing, packaging, and deploying.
 
-```
-/my-project
-│
-├── pom.xml               # Project Object Model configuration
-├── src
-│   └── main
-│       └── java          # Source code
-│   └── test
-│       └── java          # Unit tests
-└── target                # Output directory (JAR, WAR)
-```
-
-- **`src/main/java`**: Contains the application source code.
-- **`src/test/java`**: Contains unit test code.
-- **`target/`**: Contains compiled artifacts (like JARs).
+We will understand `pom.xml` in next section more.
 
 ---
 
-### 4. **Understanding `pom.xml`**
+## **Understanding `pom.xml`**
 
-The **POM (Project Object Model)** file is the **heart** of a Maven project. It defines dependencies, build plugins, and project metadata.
+The POM (Project Object Model) file is the heart of a Maven project. It defines dependencies, build plugins, and project metadata.
 
-#### **Basic Example of `pom.xml`**:
-```xml
+```xml title="Basic Example of pom.xml"
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
@@ -79,46 +72,26 @@ The **POM (Project Object Model)** file is the **heart** of a Maven project. It 
 </project>
 ```
 
----
-
-### 5. **Key Components of `pom.xml`**
-
-- **Group ID**: Represents the organization or group (e.g., `com.example`).
-- **Artifact ID**: Unique name for the project (e.g., `my-app`).
-- **Version**: Specifies the version (e.g., `1.0-SNAPSHOT`).
-- **Dependencies**: Lists external libraries needed for the project.
-- **Build Plugins**: Configures tasks such as compiling and packaging (e.g., `maven-compiler-plugin`).
+!!! info "Key Components of `pom.xml`"
+    - **Group ID**: Represents the organization or group (e.g., `com.example`).
+    - **Artifact ID**: Unique name for the project (e.g., `my-app`).
+    - **Version**: Specifies the version (e.g., `1.0-SNAPSHOT`).
+    - **Dependencies**: Lists external libraries needed for the project.
+    - **Build Plugins**: Configures tasks such as compiling and packaging (e.g., `maven-compiler-plugin`).
 
 ---
 
-### 6. **Maven Lifecycle Phases**
+## **Dependency Management**
 
-Maven follows a **build lifecycle** consisting of multiple **phases**. Each phase represents a step in the **build process**.
+Maven simplifies dependency management by automatically downloading required libraries from repositories.
 
-| **Phase**       | **Description**                              |
-|-----------------|----------------------------------------------|
-| `validate`      | Validates the project structure.             |
-| `compile`       | Compiles the source code.                    |
-| `test`          | Runs the unit tests.                         |
-| `package`       | Packages the compiled code into a JAR or WAR.|
-| `verify`        | Verifies the package meets specifications.   |
-| `install`       | Installs the JAR into the local Maven repository. |
-| `deploy`        | Deploys the artifact to a remote repository. |
+!!! info "Scopes of Dependencies"
+    - **`compile`**: Available at compile time and runtime (default scope).
+    - **`test`**: Only used for testing purposes.
+    - **`provided`**: Available at compile time but not packaged (e.g., Servlet API).
+    - **`runtime`**: Available at runtime only.
 
----
-
-### 7. **Dependency Management in Maven**
-
-Maven simplifies **dependency management** by automatically downloading required libraries from repositories.
-
-#### **Scopes of Dependencies**:
-- **`compile`**: Available at compile time and runtime (default scope).
-- **`test`**: Only used for testing purposes.
-- **`provided`**: Available at compile time but not packaged (e.g., Servlet API).
-- **`runtime`**: Available at runtime only.
-
-#### **Example Dependency Declaration**:
-```xml
+```xml title="Example Dependency Declaration"
 <dependency>
     <groupId>org.apache.commons</groupId>
     <artifactId>commons-lang3</artifactId>
@@ -128,15 +101,15 @@ Maven simplifies **dependency management** by automatically downloading required
 
 ---
 
-### 8. **Maven Repositories**
+## **Maven Repositories**
 
 Maven resolves dependencies from **repositories**:
-1. **Local Repository**: Located at `~/.m2/repository`, stores downloaded artifacts.
-2. **Central Repository**: Maven Central (public repository of libraries).
-3. **Remote Repository**: Custom/private repositories (e.g., Nexus, Artifactory).
 
-**Adding a Custom Repository**:
-```xml
+- **Local Repository**: Located at `~/.m2/repository`, stores downloaded artifacts.
+- **Central Repository**: Maven Central (public repository of libraries).
+- **Remote Repository**: Custom/private repositories (e.g., Nexus, Artifactory).
+
+```xml title="Adding a Custom Repository"
 <repositories>
     <repository>
         <id>my-repo</id>
@@ -147,12 +120,11 @@ Maven resolves dependencies from **repositories**:
 
 ---
 
-### 9. **Using Maven Plugins**
+## **Maven Plugins**
 
 Maven **plugins** extend its functionality. Plugins can handle tasks such as **compiling**, **testing**, or **packaging**.
 
-#### **Example: Maven Compiler Plugin**:
-```xml
+```xml title="Example: Maven Compiler Plugin"
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-compiler-plugin</artifactId>
@@ -167,7 +139,7 @@ This plugin ensures the source code is compiled with **Java 8**.
 
 ---
 
-### 10. **Maven Commands**
+## **Maven Commands**
 
 Here are some common **Maven commands**:
 
@@ -183,12 +155,28 @@ Here are some common **Maven commands**:
 
 ---
 
-### 11. **Multi-Module Projects in Maven**
+
+## **Maven Project Structure**
+
+``` title="Maven recommended standard directory structure"
+/my-project
+│
+├── pom.xml               # Project Object Model configuration
+├── src
+│   └── main
+│       └── java          # Source code
+│   └── test
+│       └── java          # Unit tests
+└── target                # Output directory (JAR, WAR)
+```
+
+- **`src/main/java`**: Contains the application source code.
+- **`src/test/java`**: Contains unit test code.
+- **`target/`**: Contains compiled artifacts (like JARs).
 
 Maven supports **multi-module projects**, allowing multiple related projects to be managed together.
 
-**Directory Structure**:
-```
+``` title="Directory Structure"
 /parent-project
 │
 ├── pom.xml (parent)
@@ -198,44 +186,43 @@ Maven supports **multi-module projects**, allowing multiple related projects to 
     └── pom.xml
 ```
 
-The **parent `pom.xml`** defines the modules:
-```xml
+```xml title="The parent pom.xml defines the modules:"
 <modules>
     <module>module-1</module>
     <module>module-2</module>
 </modules>
 ```
 
-Building all modules:
-```bash
+```bash title="Building all modules"
 mvn install
 ```
 
 ---
 
-### 12. **Maven Wrapper (mvnw)**
+## **Maven Wrapper (mvnw)**
 
 Similar to Gradle, Maven has a **wrapper** (`mvnw`) that ensures the project uses a specific Maven version.
 
-1. **Add Maven Wrapper**:
-   ```bash
-   mvn -N io.takari:maven:wrapper
-   ```
-2. **Use the Wrapper**:
-   - **Unix/Mac**: `./mvnw clean install`
-   - **Windows**: `mvnw.cmd clean install`
+```bash title="Add Maven Wrapper"
+mvn -N io.takari:maven:wrapper
+```
+
+- **Unix/Mac**: `./mvnw clean install`
+- **Windows**: `mvnw.cmd clean install`
 
 ---
 
-### 13. **Best Practices with Maven**
+## **Best Practices**
 
-1. **Use Maven Wrapper** for consistent builds.
-2. **Store dependencies** in a **remote repository** (like Nexus or Artifactory) for faster builds.
-3. **Define dependency scopes** carefully to avoid bloated artifacts.
-4. **Use CI/CD pipelines** (e.g., Jenkins, GitHub Actions) to automate builds and deployments.
+- Use Maven Wrapper** for consistent builds.
+- Store dependencies** in a remote repository (like Nexus or Artifactory) for faster builds.
+- Define dependency scopes** carefully to avoid bloated artifacts.
+- Use CI/CD pipelines (e.g., Jenkins, GitHub Actions) to automate builds and deployments.
 
 ---
 
-### 14. **Summary**
+## **Summary**
 
-Maven is a **mature, stable tool** that simplifies **building and managing Java applications**. Its **focus on conventions** reduces the need for complex configurations, making it ideal for **enterprise projects**. While Maven may lack some of the flexibility and speed of Gradle, it is widely used in **large organizations** for its **reliability and standardization**. For projects requiring strict conventions and extensive dependency management, Maven remains a popular choice.
+Maven is a mature, stable tool that simplifies building and managing Java applications. Its focus on conventions reduces the need for complex configurations, making it ideal for **enterprise projects**. While Maven may lack some of the flexibility and speed of Gradle, it is widely used in **large organizations** for its **reliability and standardization**. For projects requiring strict conventions and extensive dependency management, Maven remains a popular choice.
+
+---
