@@ -2,7 +2,7 @@
 
 ## **What is Gradle ?**
 
-Gradle is a modern, powerful build automation tool used for building, testing, and deploying applications. It is particularly popular in Java and Android projects due to its flexibility and performance. Gradle uses a Groovy/Kotlin-based DSL to configure and manage builds, allowing for easy customization.
+Gradle is a modern, powerful build automation tool used for building, testing, and deploying applications. It is particularly popular in Java and Android projects due to its flexibility and performance. Gradle uses a `Groovy/Kotlin-based DSL` to configure and manage builds, allowing for easy customization.
 
 ---
 
