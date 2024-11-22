@@ -209,7 +209,7 @@ nav:
         - What is Maven?: langdives/Java/Maven.md # need to edit this title
         - What is Gradle?: langdives/Java/Gradle.md # need to edit this title
         - Maven vs Gradle: langdives/Java/MavenVsGradle.md
-        - Heap-Stack: langdives/Java/JavaHeapStack.md # need to edit this title
+        - Heap-Stack: langdives/Java/JavaHeapStack.md # need to edit this title # should rename this file 
         - Pass By Value: langdives/Java/JavaPassBy.md # need to edit this title
         - 4 Pillars: langdives/Java/4Pillars.md
         - Access Modifiers Public, Private, Protected: langdives/Java/AccessModifPPPPP.md
