@@ -14,7 +14,5 @@
 Check out the live site:  <a href="https://luci-mg.github.io/Under-the-Hood/">Under the Hood</a>
 </p>
 
-<iframe src="https://luci-mg.github.io/Under-the-Hood/" width="100%" height="500px" frameborder="0"></iframe>
-
 ---
 
