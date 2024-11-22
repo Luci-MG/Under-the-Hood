@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#java-4-pillars-what-how-and-why" class="md-skip">
+        <a href="#4-pillars-what-how-and-why" class="md-skip">
           Skip to content
         </a>
       
@@ -1710,36 +1710,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-encapsulation" class="md-nav__link">
+  <a href="#encapsulation" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Encapsulation
+      Encapsulation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-inheritance" class="md-nav__link">
+  <a href="#inheritance" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Inheritance
+      Inheritance
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-polymorphism" class="md-nav__link">
+  <a href="#polymorphism" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Polymorphism
+      Polymorphism
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-abstraction" class="md-nav__link">
+  <a href="#abstraction" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Abstraction
+      Abstraction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
     </span>
   </a>
   
@@ -2429,36 +2438,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-encapsulation" class="md-nav__link">
+  <a href="#encapsulation" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Encapsulation
+      Encapsulation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-inheritance" class="md-nav__link">
+  <a href="#inheritance" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Inheritance
+      Inheritance
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-polymorphism" class="md-nav__link">
+  <a href="#polymorphism" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Polymorphism
+      Polymorphism
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-abstraction" class="md-nav__link">
+  <a href="#abstraction" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Abstraction
+      Abstraction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
     </span>
   </a>
   
@@ -2495,14 +2513,13 @@
   
 
 
-<h1 id="java-4-pillars-what-how-and-why">Java 4 Pillars - What, How, and Why ?<a class="headerlink" href="#java-4-pillars-what-how-and-why" title="Permanent link">&para;</a></h1>
-<h3 id="1-encapsulation">1. <strong>Encapsulation</strong><a class="headerlink" href="#1-encapsulation" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>What</strong>: Hiding the internal details of an object and only exposing necessary parts through public methods.</li>
-<li><strong>How</strong>:</li>
-<li>Use <strong>private</strong> variables to restrict direct access.</li>
-<li>Provide <strong>getters</strong> and <strong>setters</strong> to access and modify the data.</li>
-</ul>
+<h1 id="4-pillars-what-how-and-why"><strong>4 Pillars - What, How, and Why ?</strong><a class="headerlink" href="#4-pillars-what-how-and-why" title="Permanent link">&para;</a></h1>
+<h2 id="encapsulation"><strong>Encapsulation</strong><a class="headerlink" href="#encapsulation" title="Permanent link">&para;</a></h2>
+<p><strong>What</strong>: Hiding the internal details of an object and only exposing necessary parts through public methods.</p>
+<p><strong>Why</strong>: It helps in <strong>data hiding</strong> and ensures controlled access to variables.</p>
+<p><strong>How</strong>: Use <strong>private</strong> variables to restrict direct access and provide <strong>getters</strong> and <strong>setters</strong> to access and modify the data.</p>
+<details class="example" open="open">
+<summary>Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"> </span><span class="c1">// Encapsulated field</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
@@ -2517,16 +2534,13 @@
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">}</span>
 </span></code></pre></div>
-<ul>
-<li><strong>Why</strong>: It helps in <strong>data hiding</strong> and ensures controlled access to variables.</li>
-</ul>
-<hr />
-<h3 id="2-inheritance">2. <strong>Inheritance</strong><a class="headerlink" href="#2-inheritance" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>What</strong>: Allows a class (child/subclass) to acquire the properties and behaviors of another class (parent/superclass).</li>
-<li><strong>How</strong>:</li>
-<li>Use the <strong><code>extends</code></strong> keyword.</li>
-</ul>
+</details>
+<h2 id="inheritance"><strong>Inheritance</strong><a class="headerlink" href="#inheritance" title="Permanent link">&para;</a></h2>
+<p><strong>What</strong>: Allows a class (child/subclass) to acquire the properties and behaviors of another class (parent/superclass).</p>
+<p><strong>How</strong>: Use the <strong><code>extends</code></strong> keyword.</p>
+<p><strong>Why</strong>: Promotes <strong>code reusability</strong> and establishes a <strong>parent-child relationship</strong>.</p>
+<details class="example" open="open">
+<summary>Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">class</span> <span class="nc">Animal</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sound</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Animals make sound&quot;</span><span class="p">);</span>
@@ -2540,18 +2554,17 @@
 </span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="p">}</span>
 </span></code></pre></div>
+</details>
+<h2 id="polymorphism"><strong>Polymorphism</strong><a class="headerlink" href="#polymorphism" title="Permanent link">&para;</a></h2>
+<p><strong>What</strong>: Ability to process objects differently based on their data type or class.</p>
 <ul>
-<li><strong>Why</strong>: Promotes <strong>code reusability</strong> and establishes a <strong>parent-child relationship</strong>.</li>
-</ul>
-<hr />
-<h3 id="3-polymorphism">3. <strong>Polymorphism</strong><a class="headerlink" href="#3-polymorphism" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>What</strong>: Ability to process objects differently based on their data type or class.</li>
 <li><strong>Compile-time polymorphism</strong>: Method overloading (same method name, different parameters).</li>
 <li><strong>Runtime polymorphism</strong>: Method overriding (subclass redefines a method of the superclass).</li>
 </ul>
-<p><strong>Method Overloading</strong>:
-<div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">class</span> <span class="nc">Calculator</span><span class="w"> </span><span class="p">{</span>
+<p><strong>Why</strong>: Increases <strong>flexibility</strong> and supports <strong>dynamic method invocation</strong>.</p>
+<details class="example" open="open">
+<summary>Example</summary>
+<div class="language-java highlight"><span class="filename">Method Overloading</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">class</span> <span class="nc">Calculator</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="p">}</span>
@@ -2560,9 +2573,8 @@
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">}</span>
-</span></code></pre></div></p>
-<p><strong>Method Overriding</strong>:
-<div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">class</span> <span class="nc">Animal</span><span class="w"> </span><span class="p">{</span>
+</span></code></pre></div>
+<div class="language-java highlight"><span class="filename">Method Overriding</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">class</span> <span class="nc">Animal</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sound</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Animal makes sound&quot;</span><span class="p">);</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="p">}</span>
@@ -2574,19 +2586,15 @@
 </span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Cat meows&quot;</span><span class="p">);</span>
 </span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="p">}</span>
-</span></code></pre></div></p>
-<ul>
-<li><strong>Why</strong>: Increases <strong>flexibility</strong> and supports <strong>dynamic method invocation</strong>.</li>
-</ul>
-<hr />
-<h3 id="4-abstraction">4. <strong>Abstraction</strong><a class="headerlink" href="#4-abstraction" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>What</strong>: Hiding the complex implementation details and only exposing the essential features.</li>
-<li><strong>How</strong>:</li>
-<li>Use <strong>abstract classes</strong> and <strong>interfaces</strong>.</li>
-</ul>
-<p><strong>Abstract Class Example</strong>:
-<div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Vehicle</span><span class="w"> </span><span class="p">{</span>
+</span></code></pre></div>
+</details>
+<h2 id="abstraction"><strong>Abstraction</strong><a class="headerlink" href="#abstraction" title="Permanent link">&para;</a></h2>
+<p><strong>What</strong>: Hiding the complex implementation details and only exposing the essential features.</p>
+<p><strong>Why</strong>: Helps in achieving <strong>modularity</strong> and <strong>loose coupling</strong> between components.</p>
+<p><strong>How</strong>: Use <strong>abstract classes</strong> and <strong>interfaces</strong>.</p>
+<details class="example" open="open">
+<summary>Example</summary>
+<div class="language-java highlight"><span class="filename">Abstract Class Example</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Vehicle</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="kd">abstract</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">start</span><span class="p">();</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">}</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
@@ -2596,9 +2604,8 @@
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Car starts with a key&quot;</span><span class="p">);</span>
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="p">}</span>
-</span></code></pre></div></p>
-<p><strong>Interface Example</strong>:
-<div class="language-java highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">interface</span> <span class="nc">Animal</span><span class="w"> </span><span class="p">{</span>
+</span></code></pre></div>
+<div class="language-java highlight"><span class="filename">Interface Example</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">interface</span> <span class="nc">Animal</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">eat</span><span class="p">();</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">}</span>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
@@ -2608,10 +2615,71 @@
 </span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Dog eats bones&quot;</span><span class="p">);</span>
 </span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="p">}</span>
-</span></code></pre></div></p>
-<ul>
-<li><strong>Why</strong>: Helps in achieving <strong>modularity</strong> and <strong>loose coupling</strong> between components.</li>
-</ul>
+</span></code></pre></div>
+</details>
+<h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Aspect</strong></th>
+<th><strong>Encapsulation</strong></th>
+<th><strong>Inheritance</strong></th>
+<th><strong>Polymorphism</strong></th>
+<th><strong>Abstraction</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Definition</strong></td>
+<td>Bundling data and methods together and restricting access to data.</td>
+<td>Mechanism for a subclass to acquire properties of a parent class.</td>
+<td>Allowing methods to take different forms (overloading/overriding).</td>
+<td>Hiding implementation details while showing only essential features.</td>
+</tr>
+<tr>
+<td><strong>Focus</strong></td>
+<td>Protecting data and providing controlled access.</td>
+<td>Code reuse and establishing a parent-child hierarchy.</td>
+<td>Dynamic behavior based on object type.</td>
+<td>Simplifying complex systems by exposing only key details.</td>
+</tr>
+<tr>
+<td><strong>Achieved Through</strong></td>
+<td>Using private fields, and public getters/setters.</td>
+<td>Using the <code>extends</code> keyword to derive subclasses.</td>
+<td>Overloading (compile-time) and overriding (runtime).</td>
+<td>Using <code>abstract</code> classes or <code>interfaces</code>.</td>
+</tr>
+<tr>
+<td><strong>Key Benefit</strong></td>
+<td>Data hiding and modular code.</td>
+<td>Reduces redundancy and promotes code reuse.</td>
+<td>Flexibility and extensibility of behavior.</td>
+<td>Promotes loose coupling and modularity.</td>
+</tr>
+<tr>
+<td><strong>Access Modifiers</strong></td>
+<td>Requires <code>private</code>, <code>protected</code>, or <code>public</code>.</td>
+<td>Involves all inheritance-accessible modifiers.</td>
+<td>Leverages method visibility across class hierarchies.</td>
+<td>Abstract methods can be <code>protected</code> or <code>public</code> (not private).</td>
+</tr>
+<tr>
+<td><strong>Real-World Analogy</strong></td>
+<td>A capsule with medicine inside it hides the internal components.</td>
+<td>A child inheriting traits from their parents.</td>
+<td>A shape object behaving differently as circle/square.</td>
+<td>A remote control exposing buttons without showing internal circuits.</td>
+</tr>
+<tr>
+<td><strong>Code Dependency</strong></td>
+<td>Independent within the class.</td>
+<td>Dependent on parent-child relationship.</td>
+<td>Involves multiple forms of a single method/class.</td>
+<td>Can work with unrelated classes sharing common behavior.</td>
+</tr>
+</tbody>
+</table>
 <hr />
 
 
@@ -2635,7 +2703,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 25, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 22, 2024</span>
   </span>
 
     
