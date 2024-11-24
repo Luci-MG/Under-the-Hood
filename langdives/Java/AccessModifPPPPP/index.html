@@ -26,7 +26,7 @@
     
     
       
-        <title>Access Modifiers Public, Private, Protected - Under the Hood</title>
+        <title>Access modifiers - Under the Hood</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#breakdown-of-the-java-access-modifiers" class="md-skip">
+        <a href="#access-modifiers" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Access Modifiers Public, Private, Protected
+              Access modifiers
             
           </span>
         </div>
@@ -1641,27 +1641,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../JavaPassBy/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Pass By Value
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../4Pillars/" class="md-nav__link">
         
   
@@ -1696,7 +1675,7 @@
           
   
   <span class="md-ellipsis">
-    Access Modifiers Public, Private, Protected
+    Access modifiers
   </span>
   
 
@@ -1707,7 +1686,7 @@
         
   
   <span class="md-ellipsis">
-    Access Modifiers Public, Private, Protected
+    Access modifiers
   </span>
   
 
@@ -1731,45 +1710,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-public" class="md-nav__link">
+  <a href="#public" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Public
+      Public
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-private" class="md-nav__link">
+  <a href="#private" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Private
+      Private
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-protected" class="md-nav__link">
+  <a href="#protected" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Protected
+      Protected
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-package-private-default-access" class="md-nav__link">
+  <a href="#package-private" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Package-Private (Default Access)
+      Package-Private
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#access-summary-table" class="md-nav__link">
+  <a href="#access-summary" class="md-nav__link">
     <span class="md-ellipsis">
-      Access Summary Table
+      Access Summary
     </span>
   </a>
   
@@ -1816,7 +1795,7 @@
         
   
   <span class="md-ellipsis">
-    Primitive and Reference Types
+    Primitives References
   </span>
   
 
@@ -1838,6 +1817,27 @@
   
   <span class="md-ellipsis">
     Reference Types Indepth
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaPassBy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pass By Value
   </span>
   
 
@@ -2438,45 +2438,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-public" class="md-nav__link">
+  <a href="#public" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Public
+      Public
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-private" class="md-nav__link">
+  <a href="#private" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Private
+      Private
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-protected" class="md-nav__link">
+  <a href="#protected" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Protected
+      Protected
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-package-private-default-access" class="md-nav__link">
+  <a href="#package-private" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Package-Private (Default Access)
+      Package-Private
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#access-summary-table" class="md-nav__link">
+  <a href="#access-summary" class="md-nav__link">
     <span class="md-ellipsis">
-      Access Summary Table
+      Access Summary
     </span>
   </a>
   
@@ -2513,73 +2513,75 @@
   
 
 
-<h1 id="breakdown-of-the-java-access-modifiers">Breakdown of the Java access modifiers<a class="headerlink" href="#breakdown-of-the-java-access-modifiers" title="Permanent link">&para;</a></h1>
-<h3 id="1-public">1. <strong>Public</strong><a class="headerlink" href="#1-public" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Keyword</strong>: <code>public</code>  </li>
-<li><strong>Access</strong>: Accessible from <strong>anywhere</strong> (inside/outside the class, package, or project).  </li>
-<li><strong>Usage</strong>: Typically used for <strong>classes, methods, and variables</strong> that need global access.  </li>
-<li><strong>Example</strong>: 
-  <div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyClass</span><span class="w"> </span><span class="p">{</span>
+<h1 id="access-modifiers"><strong>Access modifiers</strong><a class="headerlink" href="#access-modifiers" title="Permanent link">&para;</a></h1>
+<h2 id="public"><strong>Public</strong><a class="headerlink" href="#public" title="Permanent link">&para;</a></h2>
+<p><strong>Keyword</strong>: <code>public</code><br />
+<strong>Access</strong>: Accessible from <strong>anywhere</strong> (inside/outside the class, package, or project).<br />
+<strong>Usage</strong>: Typically used for <strong>classes, methods, and variables</strong> that need global access.  </p>
+<details class="example" open="open">
+<summary>Example</summary>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyClass</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">display</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Public method&quot;</span><span class="p">);</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">}</span>
-</span></code></pre></div></li>
-</ul>
-<hr />
-<h3 id="2-private">2. <strong>Private</strong><a class="headerlink" href="#2-private" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Keyword</strong>: <code>private</code>  </li>
-<li><strong>Access</strong>: Accessible <strong>only within the same class</strong>.  </li>
-<li><strong>Usage</strong>: Used to <strong>hide class fields or methods</strong>, following the principle of <strong>encapsulation</strong>.  </li>
-<li><strong>Example</strong>: 
-  <div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyClass</span><span class="w"> </span><span class="p">{</span>
+</span></code></pre></div>
+</details>
+<h2 id="private"><strong>Private</strong><a class="headerlink" href="#private" title="Permanent link">&para;</a></h2>
+<p><strong>Keyword</strong>: <code>private</code><br />
+<strong>Access</strong>: Accessible <strong>only within the same class</strong>.<br />
+<strong>Usage</strong>: Used to <strong>hide class fields or methods</strong>, following the principle of <strong>encapsulation</strong>.  </p>
+<details class="example" open="open">
+<summary>Example</summary>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyClass</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="c1">// Not accessible outside this class</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">display</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Private method&quot;</span><span class="p">);</span>
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
-</span></code></pre></div></li>
-</ul>
-<hr />
-<h3 id="3-protected">3. <strong>Protected</strong><a class="headerlink" href="#3-protected" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Keyword</strong>: <code>protected</code>  </li>
-<li><strong>Access</strong>: Accessible <strong>within the same package</strong> and <strong>by subclasses (even if outside the package)</strong>.  </li>
-<li><strong>Usage</strong>: Useful when extending classes across packages.  </li>
-<li><strong>Example</strong>: 
-  <div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyClass</span><span class="w"> </span><span class="p">{</span>
+</span></code></pre></div>
+</details>
+<h2 id="protected"><strong>Protected</strong><a class="headerlink" href="#protected" title="Permanent link">&para;</a></h2>
+<p><strong>Keyword</strong>: <code>protected</code><br />
+<strong>Access</strong>: Accessible <strong>within the same package</strong> and <strong>by subclasses (even if outside the package)</strong>.<br />
+<strong>Usage</strong>: Useful when extending classes across packages.  </p>
+<details class="example" open="open">
+<summary>Example</summary>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyClass</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">display</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Protected method&quot;</span><span class="p">);</span>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">}</span>
-</span></code></pre></div></li>
-<li><strong>Note</strong>: If accessed by a subclass in a <strong>different package</strong>, it must be through inheritance (not directly via an instance).</li>
-</ul>
-<hr />
-<h3 id="4-package-private-default-access">4. <strong>Package-Private (Default Access)</strong><a class="headerlink" href="#4-package-private-default-access" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Keyword</strong>: <em>No keyword</em>  </li>
-<li><strong>Access</strong>: Accessible only <strong>within the same package</strong>.  </li>
-<li><strong>Usage</strong>: Used for classes and members that <strong>don’t need to be accessed outside their package</strong>.  </li>
-<li><strong>Example</strong>:
-  <div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">class</span> <span class="nc">MyClass</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// No access modifier, so it&#39;s package-private</span>
+</span></code></pre></div>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If accessed by a subclass in a <strong>different package</strong>, it must be through inheritance (not directly via an instance).</p>
+</div>
+<h2 id="package-private"><strong>Package-Private</strong><a class="headerlink" href="#package-private" title="Permanent link">&para;</a></h2>
+<p><strong>Keyword</strong>: <em>No keyword</em>  (Default Access)<br />
+<strong>Access</strong>: Accessible only <strong>within the same package</strong>.<br />
+<strong>Usage</strong>: Used for classes and members that <strong>don’t need to be accessed outside their package</strong>.  </p>
+<details class="example" open="open">
+<summary>Example</summary>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">class</span> <span class="nc">MyClass</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// No access modifier, so it&#39;s package-private</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">display</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Package-private method&quot;</span><span class="p">);</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p">}</span>
-</span></code></pre></div></li>
-<li><strong>Note</strong>: Package-private is the default if no modifier is specified.</li>
-</ul>
-<hr />
-<h3 id="access-summary-table">Access Summary Table<a class="headerlink" href="#access-summary-table" title="Permanent link">&para;</a></h3>
+</span></code></pre></div>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Package-private is the default if no modifier is specified.</p>
+</div>
+<h2 id="access-summary"><strong>Access Summary</strong><a class="headerlink" href="#access-summary" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2644,7 +2646,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 25, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 24, 2024</span>
   </span>
 
     

@@ -18,7 +18,7 @@
         <link rel="prev" href="../PrimitiveReferenceTypes/">
       
       
-        <link rel="next" href="../Collections-JCF/">
+        <link rel="next" href="../JavaPassBy/">
       
       
       <link rel="icon" href="../../../assets/favicon.png">
@@ -1641,27 +1641,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../JavaPassBy/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Pass By Value
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../4Pillars/" class="md-nav__link">
         
   
@@ -1687,7 +1666,7 @@
         
   
   <span class="md-ellipsis">
-    Access Modifiers Public, Private, Protected
+    Access modifiers
   </span>
   
 
@@ -1729,7 +1708,7 @@
         
   
   <span class="md-ellipsis">
-    Primitive and Reference Types
+    Primitives References
   </span>
   
 
@@ -1794,151 +1773,118 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#in-depth-explanation-of-reference-types-in-java" class="md-nav__link">
+  <a href="#intro" class="md-nav__link">
     <span class="md-ellipsis">
-      In-Depth Explanation of Reference Types in Java
+      Intro
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="In-Depth Explanation of Reference Types in Java">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#how-reference-types-work-internally" class="md-nav__link">
-    <span class="md-ellipsis">
-      How Reference Types Work Internally
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#1-string-in-java-immutability-and-string-pool" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. String in Java – Immutability and String Pool
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-arrays-reference-handling" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Arrays – Reference Handling
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-classes-and-objects-reference-behavior" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Classes and Objects – Reference Behavior
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-wrapper-classes-autoboxing-and-reference-behavior" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Wrapper Classes – Autoboxing and Reference Behavior
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-reference-copy-vs-deep-copy" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Reference Copy vs. Deep Copy
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#null-reference-and-nullpointerexception" class="md-nav__link">
-    <span class="md-ellipsis">
-      Null Reference and NullPointerException
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#garbage-collection-and-references" class="md-nav__link">
-    <span class="md-ellipsis">
-      Garbage Collection and References
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#key-takeaways" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Takeaways
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-string-pool-is-implemented-in-java" class="md-nav__link">
+  <a href="#string" class="md-nav__link">
     <span class="md-ellipsis">
-      How String Pool is Implemented in Java
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="How String Pool is Implemented in Java">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#internally-hash-based-structure-pseudocode" class="md-nav__link">
-    <span class="md-ellipsis">
-      Internally: Hash-Based Structure Pseudocode
+      String
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#string-pool-usage-example-with-intern" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#arrays" class="md-nav__link">
     <span class="md-ellipsis">
-      String Pool Usage Example with intern()
+      Arrays
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#why-use-hash-table-for-the-pool" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#classes-and-objects" class="md-nav__link">
     <span class="md-ellipsis">
-      Why Use Hash Table for the Pool?
+      Classes and Objects
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#key-takeaways_1" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#wrapper-classes" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Takeaways:
+      Wrapper Classes
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
+  <a href="#reference-and-deep-copy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference and Deep Copy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nullnullpointerexception" class="md-nav__link">
+    <span class="md-ellipsis">
+      Null/NullPointerException
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#garbage-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Garbage Collection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#string-pool-in-depth" class="md-nav__link">
+    <span class="md-ellipsis">
+      String Pool In Depth
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="String Pool In Depth">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-use-hash-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Use Hash Table ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string-pool-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      String pool Summary
     </span>
   </a>
   
@@ -1953,6 +1899,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaPassBy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pass By Value
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -2549,151 +2516,118 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#in-depth-explanation-of-reference-types-in-java" class="md-nav__link">
+  <a href="#intro" class="md-nav__link">
     <span class="md-ellipsis">
-      In-Depth Explanation of Reference Types in Java
+      Intro
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="In-Depth Explanation of Reference Types in Java">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#how-reference-types-work-internally" class="md-nav__link">
-    <span class="md-ellipsis">
-      How Reference Types Work Internally
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#1-string-in-java-immutability-and-string-pool" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. String in Java – Immutability and String Pool
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-arrays-reference-handling" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Arrays – Reference Handling
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-classes-and-objects-reference-behavior" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Classes and Objects – Reference Behavior
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-wrapper-classes-autoboxing-and-reference-behavior" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Wrapper Classes – Autoboxing and Reference Behavior
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-reference-copy-vs-deep-copy" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Reference Copy vs. Deep Copy
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#null-reference-and-nullpointerexception" class="md-nav__link">
-    <span class="md-ellipsis">
-      Null Reference and NullPointerException
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#garbage-collection-and-references" class="md-nav__link">
-    <span class="md-ellipsis">
-      Garbage Collection and References
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#key-takeaways" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Takeaways
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-string-pool-is-implemented-in-java" class="md-nav__link">
+  <a href="#string" class="md-nav__link">
     <span class="md-ellipsis">
-      How String Pool is Implemented in Java
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="How String Pool is Implemented in Java">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#internally-hash-based-structure-pseudocode" class="md-nav__link">
-    <span class="md-ellipsis">
-      Internally: Hash-Based Structure Pseudocode
+      String
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#string-pool-usage-example-with-intern" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#arrays" class="md-nav__link">
     <span class="md-ellipsis">
-      String Pool Usage Example with intern()
+      Arrays
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#why-use-hash-table-for-the-pool" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#classes-and-objects" class="md-nav__link">
     <span class="md-ellipsis">
-      Why Use Hash Table for the Pool?
+      Classes and Objects
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#key-takeaways_1" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#wrapper-classes" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Takeaways:
+      Wrapper Classes
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
+  <a href="#reference-and-deep-copy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference and Deep Copy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nullnullpointerexception" class="md-nav__link">
+    <span class="md-ellipsis">
+      Null/NullPointerException
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#garbage-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Garbage Collection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#string-pool-in-depth" class="md-nav__link">
+    <span class="md-ellipsis">
+      String Pool In Depth
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="String Pool In Depth">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-use-hash-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Use Hash Table ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string-pool-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      String pool Summary
     </span>
   </a>
   
@@ -2735,77 +2669,63 @@
   
 
 
-<h1 id="reference-types-in-depth">Reference Types In Depth.<a class="headerlink" href="#reference-types-in-depth" title="Permanent link">&para;</a></h1>
-<p>How <strong>memory management, object references, and behaviors</strong> work in Java, with a focus on <strong>String handling</strong> and other reference types like <strong>arrays, classes, and wrapper objects</strong>.</p>
+<h1 id="reference-types-in-depth"><strong>Reference Types In Depth.</strong><a class="headerlink" href="#reference-types-in-depth" title="Permanent link">&para;</a></h1>
+<p>Let's deep dive to understand How memory management, object references, and behaviors work in Java, with a focus on <strong>String handling</strong> and other reference types like <strong>arrays, classes, and wrapper objects</strong>.</p>
 <hr />
-<h2 id="in-depth-explanation-of-reference-types-in-java"><strong>In-Depth Explanation of Reference Types in Java</strong><a class="headerlink" href="#in-depth-explanation-of-reference-types-in-java" title="Permanent link">&para;</a></h2>
-<h3 id="how-reference-types-work-internally"><strong>How Reference Types Work Internally</strong><a class="headerlink" href="#how-reference-types-work-internally" title="Permanent link">&para;</a></h3>
+<h2 id="intro"><strong>Intro</strong><a class="headerlink" href="#intro" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Primitive types</strong> store values directly in <strong>stack memory</strong>.</li>
 <li><strong>Reference types</strong> store <strong>references (addresses)</strong> to objects located in <strong>heap memory</strong>.</li>
 <li>When you assign a reference type (e.g., <code>String</code> or an array), <strong>only the reference (address)</strong> is copied, not the actual data. This means <strong>multiple references can point to the same object</strong>.</li>
 </ul>
 <hr />
-<h3 id="1-string-in-java-immutability-and-string-pool"><strong>1. String in Java – Immutability and String Pool</strong><a class="headerlink" href="#1-string-in-java-immutability-and-string-pool" title="Permanent link">&para;</a></h3>
-<p>The <strong><code>String</code></strong> class in Java is a special reference type with some unique behaviors.</p>
-<h4 id="string-immutability"><strong>String Immutability</strong><a class="headerlink" href="#string-immutability" title="Permanent link">&para;</a></h4>
-<ul>
-<li>Strings are <strong>immutable</strong>: once a <code>String</code> object is created, it cannot be changed.</li>
-<li>Any modification on a <code>String</code> results in the creation of a <strong>new object</strong> in memory.</li>
-</ul>
-<h4 id="where-strings-are-stored"><strong>Where Strings are Stored?</strong><a class="headerlink" href="#where-strings-are-stored" title="Permanent link">&para;</a></h4>
-<ol>
-<li><strong>String Pool (Interned Strings)</strong>:  </li>
-<li>A <strong>special memory area inside the heap</strong> used to store string literals.</li>
-<li>
-<p>If a string literal like <code>"Hello"</code> is created, Java first checks the <strong>string pool</strong> to see if it already exists. If it does, it returns the reference from the pool. If not, the string is added to the pool.</p>
-</li>
-<li>
-<p><strong>Heap Memory</strong>:  </p>
-</li>
-<li>When you use the <strong><code>new</code> keyword</strong>, a new <code>String</code> object is always created in the <strong>heap memory</strong>.</li>
-<li>Even if the same string already exists in the <strong>string pool</strong>, the <code>new</code> keyword forces the creation of a <strong>separate instance</strong> in the heap.</li>
-</ol>
-<hr />
-<p><strong>Example:</strong>
+<h2 id="string"><strong>String</strong><a class="headerlink" href="#string" title="Permanent link">&para;</a></h2>
+<p>The <strong><code>String</code></strong> class in Java is a special reference type with some unique behaviors. Strings are <strong>immutable</strong> once a <code>String</code> object is created, it cannot be changed. Any modification on a <code>String</code> results in the creation of a <strong>new object</strong> in memory.</p>
+<p><strong>String Pool (Interned Strings)</strong>:<br />
+ A special memory area inside the heap used to store string literals. If a string literal like <code>"Hello"</code> is created, Java first checks the string pool to see if it already exists. If it does, it returns the reference from the pool. If not, the string is added to the pool.</p>
+<details class="example" open="open">
+<summary>Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">String</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// Stored in the String Pool</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">String</span><span class="w"> </span><span class="n">s2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// s2 points to the same object as s1</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">s2</span><span class="p">);</span><span class="w">  </span><span class="c1">// true (same reference)</span>
-</span></code></pre></div></p>
-<h4 id="using-new-keyword-with-strings"><strong>Using <code>new</code> Keyword with Strings</strong><a class="headerlink" href="#using-new-keyword-with-strings" title="Permanent link">&para;</a></h4>
-<ul>
-<li>When you use <code>new String()</code>, Java <strong>forces the creation of a new object</strong> in heap even if the same string exists in the pool.</li>
-</ul>
-<p><strong>Example:</strong>
-<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">String</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">);</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">String</span><span class="w"> </span><span class="n">s2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello&quot;</span><span class="p">;</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">s2</span><span class="p">);</span><span class="w">  </span><span class="c1">// false (different references)</span>
-</span></code></pre></div></p>
-<p><strong>Summary</strong>:<br />
-- <code>"Hello"</code> uses <strong>String Pool</strong>.
-- <code>new String("Hello")</code> creates a <strong>new object</strong> outside the pool in the heap.</p>
+</span></code></pre></div>
+</details>
+<p><strong>Heap Memory</strong>: <br />
+When you use the <code>new</code> keyword, a new <code>String</code> object is always created in the heap memory. Even if the same string already exists in the string pool, the <code>new</code> keyword forces the creation of a separate instance in the heap.</p>
+<details class="example" open="open">
+<summary>Example</summary>
+<p><div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">String</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// creates a new object outside the pool in the heap.</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">String</span><span class="w"> </span><span class="n">s2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Stored in the String Pool</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">s2</span><span class="p">);</span><span class="w">  </span><span class="c1">// false (different references)</span>
+</span></code></pre></div>
+When you use <code>new String()</code>, Java forces the creation of a new object in heap even if the same string exists in the pool.</p>
+</details>
 <hr />
-<h3 id="2-arrays-reference-handling"><strong>2. Arrays – Reference Handling</strong><a class="headerlink" href="#2-arrays-reference-handling" title="Permanent link">&para;</a></h3>
-<p>Arrays are reference types, meaning <strong>the array variable stores a reference</strong> to the memory location where the array data is stored.</p>
-<p><strong>Example:</strong>
+<h2 id="arrays"><strong>Arrays</strong><a class="headerlink" href="#arrays" title="Permanent link">&para;</a></h2>
+<p>Arrays are reference types, meaning the array variable stores a reference to the memory location where the array data is stored.</p>
+<details class="example" open="open">
+<summary>Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">arr1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">arr2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arr1</span><span class="p">;</span><span class="w">  </span><span class="c1">// arr2 now references the same array as arr1</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">arr2</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w">  </span><span class="c1">// Modifies the original array</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">arr1</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span><span class="w">  </span><span class="c1">// Output: 10 (both arr1 and arr2 reference the same array)</span>
-</span></code></pre></div></p>
-<h4 id="how-array-references-work"><strong>How Array References Work:</strong><a class="headerlink" href="#how-array-references-work" title="Permanent link">&para;</a></h4>
+</span></code></pre></div>
+</details>
+<p><strong>How Array References Work:</strong></p>
 <ul>
-<li><code>arr1</code> and <code>arr2</code> point to the <strong>same memory location</strong> in the heap.</li>
-<li>If you change the array via <code>arr2</code>, the change will reflect in <code>arr1</code> because both refer to the <strong>same object</strong>.</li>
+<li><code>arr1</code> and <code>arr2</code> point to the same memory location in the heap.</li>
+<li>If you change the array via <code>arr2</code>, the change will reflect in <code>arr1</code> because both refer to the same object.</li>
 </ul>
 <hr />
-<h3 id="3-classes-and-objects-reference-behavior"><strong>3. Classes and Objects – Reference Behavior</strong><a class="headerlink" href="#3-classes-and-objects-reference-behavior" title="Permanent link">&para;</a></h3>
-<p>When you create an object using <code>new</code>, the <strong>reference variable</strong> points to the object in heap memory.</p>
-<p><strong>Example:</strong>
+<h2 id="classes-and-objects"><strong>Classes and Objects</strong><a class="headerlink" href="#classes-and-objects" title="Permanent link">&para;</a></h2>
+<p>When you create an object using <code>new</code>, the reference variable points to the object in heap memory.</p>
+<details class="example" open="open">
+<summary>Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">class</span> <span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">}</span>
@@ -2817,16 +2737,18 @@
 </span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">p2</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Bob&quot;</span><span class="p">;</span>
 </span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
 </span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">p1</span><span class="p">.</span><span class="na">name</span><span class="p">);</span><span class="w">  </span><span class="c1">// Output: Bob (both references point to the same object)</span>
-</span></code></pre></div></p>
-<h4 id="how-references-work-with-objects"><strong>How References Work with Objects:</strong><a class="headerlink" href="#how-references-work-with-objects" title="Permanent link">&para;</a></h4>
+</span></code></pre></div>
+</details>
+<p><strong>How References Work with Objects:</strong></p>
 <ul>
 <li><code>p1</code> and <code>p2</code> point to the <strong>same Person object</strong>. Changing the object via <code>p2</code> affects <code>p1</code>.</li>
 <li>This is how <strong>shallow copies</strong> work — only the reference is copied, not the object itself.</li>
 </ul>
 <hr />
-<h3 id="4-wrapper-classes-autoboxing-and-reference-behavior"><strong>4. Wrapper Classes – Autoboxing and Reference Behavior</strong><a class="headerlink" href="#4-wrapper-classes-autoboxing-and-reference-behavior" title="Permanent link">&para;</a></h3>
+<h2 id="wrapper-classes"><strong>Wrapper Classes</strong><a class="headerlink" href="#wrapper-classes" title="Permanent link">&para;</a></h2>
 <p>Wrapper classes (<code>Integer</code>, <code>Double</code>, <code>Boolean</code>, etc.) wrap primitive types into objects. These are reference types, and Java performs <strong>autoboxing/unboxing</strong> to convert between primitive types and wrapper objects.</p>
-<p><strong>Example:</strong>
+<details class="example" open="open">
+<summary>Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">Integer</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">Integer</span><span class="w"> </span><span class="n">num2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
@@ -2836,92 +2758,83 @@
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">Integer</span><span class="w"> </span><span class="n">num4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">200</span><span class="p">;</span>
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">num3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">num4</span><span class="p">);</span><span class="w">  </span><span class="c1">// false (new objects for values beyond 127)</span>
-</span></code></pre></div></p>
-<h4 id="wrapper-caching"><strong>Wrapper Caching</strong><a class="headerlink" href="#wrapper-caching" title="Permanent link">&para;</a></h4>
+</span></code></pre></div>
+</details>
+<p><strong>Wrapper Caching</strong></p>
 <ul>
 <li>Java caches <code>Integer</code> objects in the <strong>range -128 to 127</strong> for performance.</li>
 <li>Beyond this range, <strong>new objects</strong> are created.</li>
 </ul>
 <hr />
-<h3 id="5-reference-copy-vs-deep-copy"><strong>5. Reference Copy vs. Deep Copy</strong><a class="headerlink" href="#5-reference-copy-vs-deep-copy" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Shallow Copy</strong>: Copies only the <strong>reference</strong>, so both variables refer to the same object.</li>
-<li><strong>Deep Copy</strong>: Creates a <strong>new object</strong> with the same data.</li>
-</ul>
-<p><strong>Example of Shallow Copy:</strong>
+<h2 id="reference-and-deep-copy"><strong>Reference and Deep Copy</strong><a class="headerlink" href="#reference-and-deep-copy" title="Permanent link">&para;</a></h2>
+<p><strong>Shallow Copy</strong>: Copies only the <strong>reference</strong>, so both variables refer to the same object.</p>
+<details class="example" open="open">
+<summary>Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">original</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">shallowCopy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">original</span><span class="p">;</span><span class="w">  </span><span class="c1">// Points to the same array</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">shallowCopy</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">original</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span><span class="w">  </span><span class="c1">// Output: 100</span>
-</span></code></pre></div></p>
-<p><strong>Example of Deep Copy:</strong>
+</span></code></pre></div>
+</details>
+<p><strong>Deep Copy</strong>: Creates a <strong>new object</strong> with the same data.</p>
+<details class="example" open="open">
+<summary>Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">original</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">deepCopy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">original</span><span class="p">.</span><span class="na">clone</span><span class="p">();</span><span class="w">  </span><span class="c1">// Creates a new array</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">deepCopy</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">original</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span><span class="w">  </span><span class="c1">// Output: 1</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
+</details>
 <hr />
-<h3 id="null-reference-and-nullpointerexception"><strong>Null Reference and <code>NullPointerException</code></strong><a class="headerlink" href="#null-reference-and-nullpointerexception" title="Permanent link">&para;</a></h3>
-<ul>
-<li>When a reference is <strong>not initialized</strong>, it holds the value <strong><code>null</code></strong>.</li>
-<li>Accessing a field or method on a <strong><code>null</code> reference</strong> throws a <strong><code>NullPointerException</code></strong>.</li>
-</ul>
-<p><strong>Example:</strong>
+<h2 id="nullnullpointerexception"><strong>Null/<code>NullPointerException</code></strong><a class="headerlink" href="#nullnullpointerexception" title="Permanent link">&para;</a></h2>
+<p>When a reference is <strong>not initialized</strong>, it holds the value <strong><code>null</code></strong>. Accessing a field or method on a <strong><code>null</code> reference</strong> throws a <strong><code>NullPointerException</code></strong>.</p>
+<details class="example" open="open">
+<summary>Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">Person</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="na">name</span><span class="p">);</span><span class="w">  </span><span class="c1">// Throws NullPointerException</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
+</details>
 <hr />
-<h3 id="garbage-collection-and-references"><strong>Garbage Collection and References</strong><a class="headerlink" href="#garbage-collection-and-references" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Java uses <strong>Garbage Collection</strong> to manage memory.</li>
-<li>When no references point to an object, it becomes <strong>eligible for garbage collection</strong>.</li>
-</ul>
+<h2 id="garbage-collection"><strong>Garbage Collection</strong><a class="headerlink" href="#garbage-collection" title="Permanent link">&para;</a></h2>
+<p>Java uses <strong>Garbage Collection</strong> to manage memory. When no references point to an object, it becomes <strong>eligible for garbage collection</strong>.</p>
+<details class="example" open="open">
+<summary>Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">Person</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">();</span><span class="w">  </span><span class="c1">// Object created</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">  </span><span class="c1">// Now eligible for garbage collection</span>
 </span></code></pre></div>
+</details>
 <hr />
-<h3 id="key-takeaways"><strong>Key Takeaways</strong><a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h3>
-<ol>
+<h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<ul>
 <li><strong>Strings</strong>: Immutable, stored in the <strong>String Pool</strong> if created with literals. <code>new String()</code> creates a separate object.</li>
 <li><strong>Arrays</strong>: Reference types, so multiple variables can point to the same array object.</li>
 <li><strong>Classes</strong>: Objects are referenced in memory; multiple references can point to the same object.</li>
 <li><strong>Wrapper Classes</strong>: Use caching for certain ranges (e.g., <code>Integer</code> values from -128 to 127).</li>
 <li><strong>Garbage Collection</strong>: Objects are eligible for garbage collection when no active references point to them.</li>
-</ol>
-<hr />
-<p>The <strong>String Pool</strong> (also called the <strong>intern pool</strong>) in Java is implemented using a <strong>Hash Table-like data structure</strong> internally. Let’s explore the design and behavior behind this structure:</p>
-<hr />
-<h2 id="how-string-pool-is-implemented-in-java"><strong>How String Pool is Implemented in Java</strong><a class="headerlink" href="#how-string-pool-is-implemented-in-java" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>Hash Table Concept:</strong>  </li>
-<li>The <strong>String Pool</strong> uses a <strong>Hash Map-like structure</strong> internally, where the <strong>key</strong> is the string literal, and the <strong>value</strong> is a reference to the interned string in the pool.</li>
-<li>
-<p>This ensures <strong>fast lookups</strong> and <strong>deduplication</strong> of identical strings because hash-based structures allow <strong>O(1) average-time complexity</strong> for lookup operations.</p>
-</li>
-<li>
-<p><strong>Behavior of String Pool:</strong></p>
-</li>
-<li>
-<p>If a new string literal is created, the pool:</p>
-<ul>
-<li><strong>Checks</strong> if the string already exists (by computing its hash).</li>
-<li>If the string <strong>exists</strong>, it returns the <strong>existing reference</strong>.</li>
-<li>If not, the string is <strong>added to the pool</strong>.</li>
 </ul>
+<hr />
+<h2 id="string-pool-in-depth"><strong>String Pool In Depth</strong><a class="headerlink" href="#string-pool-in-depth" title="Permanent link">&para;</a></h2>
+<p>The <strong>String Pool</strong> (also called the <strong>intern pool</strong>) in Java is implemented using a Hash Table-like data structure internally. Let’s explore the design and behavior behind this structure:</p>
+<h3 id="internals"><strong>Internals</strong><a class="headerlink" href="#internals" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>Hash Table Concept:</strong><br />
+The <strong>String Pool</strong> uses a Hash Map-like structure internally, where the key is the string literal, and the value is a reference to the interned string in the pool. This ensures fast lookups and deduplication of identical strings because hash-based structures allow O(1) average-time complexity for lookup operations.</p>
 </li>
 <li>
-<p><strong>Rehashing and Thread Safety:</strong>  </p>
+<p><strong>Behavior of String Pool:</strong>
+If a new string literal is created, the pool <strong>Checks</strong> if the string already exists (by computing its hash), If the string exists, it returns the existing reference. If not, the string is added to the pool.</p>
 </li>
-<li>The interned pool is <strong>part of the JVM's heap</strong> and managed by the <strong>Java String class</strong>.</li>
-<li><strong>Since Java 7</strong>, the pool is <strong>stored in the heap</strong> instead of the <strong>PermGen</strong> space to allow better memory management.</li>
-<li>The pool structure is <strong>thread-safe</strong>, meaning multiple threads can safely use the pool.</li>
-</ol>
-<hr />
-<h3 id="internally-hash-based-structure-pseudocode"><strong>Internally: Hash-Based Structure Pseudocode</strong><a class="headerlink" href="#internally-hash-based-structure-pseudocode" title="Permanent link">&para;</a></h3>
-<p>Here’s a simplified conceptual pseudocode to show how the pool works internally:</p>
-<div class="language-java highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">class</span> <span class="nc">StringPool</span><span class="w"> </span><span class="p">{</span>
+<li>
+<p><strong>Rehashing and Thread Safety:</strong><br />
+The interned pool is part of the JVM's heap and managed by the Java String class. <strong>Since Java 7</strong>, the pool is stored in the heap instead of the PermGen space to allow better memory management. The pool structure is thread-safe, meaning multiple threads can safely use the pool.</p>
+</li>
+</ul>
+<details class="example" open="open">
+<summary>Simplified conceptual pseudocode Example</summary>
+<p><div class="language-java highlight"><span class="filename">How the pool works internally</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">class</span> <span class="nc">StringPool</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">intern</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">str</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -2934,11 +2847,11 @@
 </span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="p">}</span>
 </span></code></pre></div>
-<ul>
-<li>When calling <code>String.intern()</code>, Java <strong>interns the string</strong>, meaning it adds the string to the pool if it's not already present.</li>
-</ul>
-<hr />
-<h3 id="string-pool-usage-example-with-intern"><strong>String Pool Usage Example with <code>intern()</code></strong><a class="headerlink" href="#string-pool-usage-example-with-intern" title="Permanent link">&para;</a></h3>
+- When calling <code>String.intern()</code>, Java <strong>interns the string</strong>, meaning it adds the string to the pool if it's not already present.</p>
+</details>
+<details class="example" open="open">
+<summary>String Pool Usage Example</summary>
+</details>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">);</span>
@@ -2950,27 +2863,23 @@
 </span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="p">}</span>
 </span></code></pre></div>
-<hr />
-<h3 id="why-use-hash-table-for-the-pool"><strong>Why Use Hash Table for the Pool?</strong><a class="headerlink" href="#why-use-hash-table-for-the-pool" title="Permanent link">&para;</a></h3>
+<h3 id="why-use-hash-table"><strong>Why Use Hash Table ?</strong><a class="headerlink" href="#why-use-hash-table" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Fast Lookups:</strong> A hash table allows <strong>constant time complexity (O(1))</strong> for lookups.</li>
-<li><strong>Efficient Memory Management:</strong> Strings are immutable, so duplicate strings are avoided, improving memory usage.</li>
-<li><strong>Thread Safety:</strong> The JVM ensures that the pool is <strong>safe for concurrent access</strong>, so multiple threads can use the intern pool efficiently.</li>
+<li>A hash table allows <strong>constant time complexity (O(1))</strong> for faster lookups.</li>
+<li>Strings are immutable, so duplicate strings are avoided, improving memory usage so efficient meemory management.</li>
+<li>The JVM ensures that the pool is <strong>safe for concurrent access</strong>, so multiple threads can use the intern pool efficiently.</li>
 </ul>
-<hr />
-<h3 id="key-takeaways_1"><strong>Key Takeaways:</strong><a class="headerlink" href="#key-takeaways_1" title="Permanent link">&para;</a></h3>
-<ol>
+<div class="admonition note">
+<p class="admonition-title">Key Takeaways</p>
+<ul>
 <li><strong>Since Java 7</strong>, the string pool has been moved to the <strong>heap</strong>, so it grows dynamically with the application’s memory needs.</li>
 <li><strong>Before Java 7</strong>, the pool was in <strong>PermGen</strong> space, which had a fixed size and could lead to <code>OutOfMemoryError</code> if too many strings were interned.</li>
 <li><strong>Interning Costs:</strong> Calling <code>intern()</code> on every string can <strong>increase the overhead</strong> slightly (because of the hash lookup). It’s only beneficial for <strong>reducing memory usage</strong> when you expect many repeated strings.</li>
-</ol>
-<hr />
-<h3 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h3>
-<ul>
-<li>The <strong>String Pool</strong> is implemented using a <strong>Hash Table-like data structure</strong>.</li>
-<li>This allows for <strong>efficient string reuse</strong> through fast lookups and ensures <strong>no duplicate literals</strong> are created.</li>
-<li>Strings added via literals or <code>intern()</code> are stored in the pool, with <strong>existing references returned</strong> on subsequent requests.</li>
 </ul>
+</div>
+<h3 id="string-pool-summary"><strong>String pool Summary</strong><a class="headerlink" href="#string-pool-summary" title="Permanent link">&para;</a></h3>
+<p>The <strong>String Pool</strong> is implemented using a <strong>Hash Table-like data structure</strong>, This allows for efficient string reuse through fast lookups and ensures no duplicate literals are created. Strings added via literals or <code>intern()</code> are stored in the pool, with existing references returned on subsequent requests.</p>
+<hr />
 
 
 
@@ -2993,7 +2902,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 26, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 24, 2024</span>
   </span>
 
     
@@ -3061,7 +2970,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../PrimitiveReferenceTypes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Primitive and Reference Types">
+          <a href="../PrimitiveReferenceTypes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Primitives References">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3071,20 +2980,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Primitive and Reference Types
+                Primitives References
               </div>
             </div>
           </a>
         
         
           
-          <a href="../Collections-JCF/" class="md-footer__link md-footer__link--next" aria-label="Next: Collections JCF">
+          <a href="../JavaPassBy/" class="md-footer__link md-footer__link--next" aria-label="Next: Pass By Value">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Collections JCF
+                Pass By Value
               </div>
             </div>
             <div class="md-footer__button md-icon">
