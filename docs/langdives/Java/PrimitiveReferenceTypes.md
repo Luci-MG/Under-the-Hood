@@ -1,6 +1,6 @@
-# Primitive Types and Reference Types.
+# **Primitive and Reference Types**
 
-### **Primitive Types in Java**  
+## **Primitive Types**  
 Java has **8 primitive data types** that store simple values directly in memory.
 
 | **Type**   | **Size**       | **Default Value** | **Range**                                | **Example**             |
@@ -14,22 +14,21 @@ Java has **8 primitive data types** that store simple values directly in memory.
 | `char`     | 2 bytes (16 bits) | '\u0000'        | Unicode characters (0 to 65,535)         | `char c = 'A';`         |
 | `boolean`  | 1 bit (virtual)   | false           | true or false                           | `boolean b = true;`     |
 
----
 
-### **Reference Types in Java**  
+## **Reference Types**  
 Reference types store **references (addresses)** to objects in memory, unlike primitive types that store values directly.
 
-1. **`String`**:  Represents a sequence of characters.
+- **`String`**:  Represents a sequence of characters.
    ```java
    String str = "Hello, World!";
    ```
 
-2. **Arrays**:  Collections of elements of the same type.
+- **Arrays**:  Collections of elements of the same type.
    ```java
    int[] numbers = {1, 2, 3};
    ```
 
-3. **Classes and Objects**:  Custom data types representing real-world entities.
+- **Classes and Objects**:  Custom data types representing real-world entities.
    ```java
    class Person {
        String name;
@@ -37,21 +36,22 @@ Reference types store **references (addresses)** to objects in memory, unlike pr
    Person p = new Person();
    ```
 
-4. **Interfaces**:  Contracts that classes can implement.
+- **Interfaces**:  Contracts that classes can implement.
    ```java
    interface Animal {
        void sound();
    }
    ```
 
-5. **Enums**:  Special classes that define a set of constants.
+- **Enums**:  Special classes that define a set of constants.
    ```java
    enum Day {
        MONDAY, TUESDAY, WEDNESDAY;
    }
    ```
 
-6. **Wrapper Classes**:  Used to convert primitive types into objects (auto-boxing/unboxing).
+- **Wrapper Classes**:  Used to convert primitive types into objects (auto-boxing/unboxing).
+
    | **Primitive** | **Wrapper Class** |
    |---------------|-------------------|
    | `byte`        | `Byte`            |
@@ -63,9 +63,8 @@ Reference types store **references (addresses)** to objects in memory, unlike pr
    | `char`        | `Character`       |
    | `boolean`     | `Boolean`         |
 
----
 
-### **Difference Between Primitive and Reference Types**  
+## **Differences**  
 
 | **Aspect**           | **Primitive Types**                         | **Reference Types**                            |
 |----------------------|----------------------------------------------|-----------------------------------------------|

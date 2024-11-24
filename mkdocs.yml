@@ -210,12 +210,12 @@ nav:
         - What is Gradle?: langdives/Java/Gradle.md # need to edit this title
         - Maven vs Gradle: langdives/Java/MavenVsGradle.md
         - Heap-Stack: langdives/Java/JavaHeapStack.md # need to edit this title # should rename this file 
-        - Pass By Value: langdives/Java/JavaPassBy.md # need to edit this title
         - 4 Pillars: langdives/Java/4Pillars.md
-        - Access Modifiers Public, Private, Protected: langdives/Java/AccessModifPPPPP.md
+        - Access modifiers: langdives/Java/AccessModifPPPPP.md
         - Keywords and Terminologies: langdives/Java/KeyWordsTerminolgies.md
-        - Primitive and Reference Types: langdives/Java/PrimitiveReferenceTypes.md
+        - Primitives References: langdives/Java/PrimitiveReferenceTypes.md
         - Reference Types Indepth: langdives/Java/ReferenceTypesInDepth.md
+        - Pass By Value: langdives/Java/JavaPassBy.md # need to edit this title
         - Collections JCF: langdives/Java/Collections-JCF.md
         - Streams and Lambas: langdives/Java/StreamsLambdas.md
         - Threads: langdives/Java/Threads.md
