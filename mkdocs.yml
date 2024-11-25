@@ -110,6 +110,9 @@ extra:
       link: https://www.instagram.com/_m._._.g/
     # - icon: fontawesome/brands/facebook-f
     #   link: https://facebook.com/lucifer.iitbbs
+  extra:
+  version:
+    provider: mike
 
 # Extensions
 markdown_extensions:

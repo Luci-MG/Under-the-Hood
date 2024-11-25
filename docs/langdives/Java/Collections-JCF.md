@@ -1,222 +1,199 @@
 # **Java Collections Framework**
 
-### **Categories of Collections**
-1. **List**: Ordered, allows duplicates.
-2. **Set**: Unordered, no duplicates.
-3. **Queue/Deque**: FIFO or LIFO order.
-4. **Map**: Stores key-value pairs.
-5. **Utility Collections**: Collections with special behavior, e.g., `Collections.synchronizedList()`.
+## **Categories of Collections**
+- **List**: Ordered, allows duplicates.
+- **Set**: Unordered, no duplicates.
+- **Queue/Deque**: FIFO or LIFO order.
+- **Map**: Stores key-value pairs.
+- **Utility Collections**: Collections with special behavior, e.g., `Collections.synchronizedList()`.
 
 ---
 
-## **1. List Implementations**
+## **List**
 
-### **1.1 ArrayList**
-- **Description**: A resizable array, fast random access.
-- **Backed By**: **Array**
-- **Use Case**: When **random access** is needed and insertions are rare.
+### **ArrayList**
+A resizable array, fast random access. It's backed by **Array**, When **random access** is needed and insertions are rare you can use this.
   
-#### **Operations & Complexities**
+**Operations & Complexities**
+
 - **Access by Index**: `O(1)`  
 - **Insertion (end)**: `O(1)` (amortized)  
 - **Insertion (middle)**: `O(n)`  
 - **Space Complexity**: **`O(n)`**  
 
-#### **Thread Safety**:  
-- **Not synchronized**, use `Collections.synchronizedList()` for thread safety.
+**Thread Safety**:  Not synchronized, use `Collections.synchronizedList()` for thread safety.
 
-#### **Code Example:**
-```java
-List<String> list = new ArrayList<>();
-list.add("Apple");
-list.get(0);  // Fast access
-```
+???+ example
+      ```java
+      List<String> list = new ArrayList<>();
+      list.add("Apple");
+      list.get(0);  // Fast access
+      ```
 
----
+### **LinkedList**
+A Doubly linked list, better at frequent insertions and deletions. It's backed by **Doubly Linked List**, When **insertion/deletion** in the middle is frequent you can use this.
 
-### **1.2 LinkedList**
-- **Description**: Doubly linked list, better at frequent insertions and deletions.
-- **Backed By**: **Doubly Linked List**
-- **Use Case**: When **insertion/deletion** in the middle is frequent.
+**Operations & Complexities**
 
-#### **Operations & Complexities**
 - **Access by Index**: `O(n)`  
 - **Insertion/Deletion**: `O(1)` (at head or tail)  
 - **Space Complexity**: **`O(n)`**
 
-#### **Thread Safety**:  
-- **Not synchronized**.
+**Thread Safety**: Not synchronized.
 
-#### **Code Example:**
-```java
-List<String> list = new LinkedList<>();
-list.add("Banana");
-list.addFirst("Apple");  // O(1) insertion at head
-```
+???+ example
+      ```java
+      List<String> list = new LinkedList<>();
+      list.add("Banana");
+      list.addFirst("Apple");  // O(1) insertion at head
+      ```
 
 ---
 
-## **2. Set Implementations**
+## **Set**
 
-### **2.1 HashSet**
-- **Description**: Unordered, no duplicates, backed by **Hash Table**.
-- **Use Case**: When you need **fast lookups** and no duplicates.
+### **HashSet**
+It's Unordered, no duplicates, backed by **Hash Table**. You can use this When you need **fast lookups** and no duplicates.
 
-#### **Operations & Complexities**
+**Operations & Complexities**
+
 - **Add/Remove/Contains**: `O(1)` (on average)  
 - **Space Complexity**: **`O(n)`**
 
-#### **Thread Safety**:  
-- **Not synchronized**, use `Collections.synchronizedSet()`.
+**Thread Safety**: Not synchronized, use `Collections.synchronizedSet()`.
 
-#### **Code Example:**
-```java
-Set<String> set = new HashSet<>();
-set.add("Cat");
-set.add("Dog");
-```
+???+ example
+      ```java
+      Set<String> set = new HashSet<>();
+      set.add("Cat");
+      set.add("Dog");
+      ```
 
----
+### **LinkedHashSet**
+This maintains **insertion order**, backed by a **Hash Table + Linked List**. You can use this when you need **order-preserving** behavior.
 
-### **2.2 LinkedHashSet**
-- **Description**: Maintains **insertion order**, backed by a **Hash Table + Linked List**.
-- **Use Case**: When you need **order-preserving** behavior.
+**Operations & Complexities**: Same as **HashSet** (`O(1)` operations) but with **slightly higher overhead** due to linked list maintenance.
 
-#### **Operations & Complexities**
-- Same as **HashSet** (`O(1)` operations) but with **slightly higher overhead** due to linked list maintenance.
+???+ example
+      ```java
+      Set<String> set = new LinkedHashSet<>();
+      set.add("Apple");
+      set.add("Banana");
+      ```
 
-#### **Code Example:**
-```java
-Set<String> set = new LinkedHashSet<>();
-set.add("Apple");
-set.add("Banana");
-```
 
----
+### **TreeSet**
+A Sorted set, backed by **Red-Black Tree**, When you need **sorted data**.
 
-### **2.3 TreeSet**
-- **Description**: Sorted set, backed by **Red-Black Tree**.
-- **Use Case**: When you need **sorted data**.
+**Operations & Complexities**
 
-#### **Operations & Complexities**
 - **Add/Remove/Contains**: `O(log n)`  
 - **Space Complexity**: **`O(n)`**
 
-#### **Thread Safety**:  
-- **Not synchronized**.
+**Thread Safety**: Not synchronized.
 
-#### **Code Example:**
-```java
-Set<Integer> set = new TreeSet<>();
-set.add(5);
-set.add(1);  // Sorted automatically
-```
+???+ example
+      ```java
+      Set<Integer> set = new TreeSet<>();
+      set.add(5);
+      set.add(1);  // Sorted automatically
+      ```
 
 ---
 
-## **3. Queue and Deque Implementations**
+## **Queue/Deque**
 
-### **3.1 PriorityQueue**
-- **Description**: Elements are ordered based on their **natural order** or a **custom comparator**.
-- **Backed By**: **Binary Heap**
-- **Use Case**: When **priority-based retrieval** is needed.
+### **PriorityQueue**
+Elements are ordered based on their **natural order** or a **custom comparator**. It's backed by **Binary Heap**, When **priority-based retrieval** is needed.
 
-#### **Operations & Complexities**
+**Operations & Complexities**
+
 - **Insertion**: `O(log n)`  
 - **Access (peek)**: `O(1)`  
 - **Remove (poll)**: `O(log n)`  
 
-#### **Code Example:**
-```java
-Queue<Integer> queue = new PriorityQueue<>();
-queue.add(10);
-queue.add(5);  // 5 will be at the top
-```
+???+ example
+      ```java
+      Queue<Integer> queue = new PriorityQueue<>();
+      queue.add(10);
+      queue.add(5);  // 5 will be at the top
+      ```
 
----
+### **ArrayDeque**
+Resizable-array-backed deque, allows adding/removing from both ends, When you need both stack and queue operations.
 
-### **3.2 ArrayDeque**
-- **Description**: **Resizable-array-backed deque**, allows adding/removing from both ends.
-- **Use Case**: When you need **both stack and queue operations**.
+**Operations & Complexities**
 
-#### **Operations & Complexities**
 - **Add/Remove (head/tail)**: `O(1)`  
 - **Space Complexity**: **`O(n)`**
 
-#### **Code Example:**
-```java
-Deque<String> deque = new ArrayDeque<>();
-deque.addFirst("First");
-deque.addLast("Last");
-```
+???+ example
+      ```java
+      Deque<String> deque = new ArrayDeque<>();
+      deque.addFirst("First");
+      deque.addLast("Last");
+      ```
 
 ---
 
-## **4. Map Implementations**
+## **Map**
 
-### **4.1 HashMap**
-- **Description**: Stores **key-value pairs**, backed by **Hash Table**.
-- **Use Case**: Fast lookups for key-value pairs.
+### **HashMap**
+Stores **key-value pairs**, backed by **Hash Table**, Fast lookups for key-value pairs.
 
-#### **Operations & Complexities**
+**Operations & Complexities**
+
 - **Get/Put/Remove**: `O(1)` (average)  
 - **Space Complexity**: **`O(n)`**
 
-#### **Thread Safety**:  
-- **Not synchronized**, use `ConcurrentHashMap` for thread-safe operations.
+**Thread Safety**: Not synchronized, use `ConcurrentHashMap` for thread-safe operations.
 
-#### **Code Example:**
-```java
-Map<String, Integer> map = new HashMap<>();
-map.put("Apple", 1);
-map.put("Banana", 2);
-```
+???+ example
+      ```java
+      Map<String, Integer> map = new HashMap<>();
+      map.put("Apple", 1);
+      map.put("Banana", 2);
+      ```
 
----
+### **LinkedHashMap**
+Maintains insertion order, backed by **Hash Table + Linked List**, When **ordering of entries** matters.
 
-### **4.2 LinkedHashMap**
-- **Description**: Maintains insertion order, backed by **Hash Table + Linked List**.
-- **Use Case**: When **ordering of entries** matters.
+???+ example
+      ```java
+      Map<String, Integer> map = new LinkedHashMap<>();
+      map.put("Apple", 1);
+      map.put("Banana", 2);  // Maintains insertion order
+      ```
 
-#### **Code Example:**
-```java
-Map<String, Integer> map = new LinkedHashMap<>();
-map.put("Apple", 1);
-map.put("Banana", 2);  // Maintains insertion order
-```
+### **TreeMap**
+Sorted map, backed by **Red-Black Tree**, When you need a **sorted key-value store**.
 
----
+**Operations & Complexities**: **Get/Put/Remove**: `O(log n)`  
 
-### **4.3 TreeMap**
-- **Description**: Sorted map, backed by **Red-Black Tree**.
-- **Use Case**: When you need a **sorted key-value store**.
-
-#### **Operations & Complexities**
-- **Get/Put/Remove**: `O(log n)`  
-
-#### **Code Example:**
-```java
-Map<Integer, String> map = new TreeMap<>();
-map.put(3, "Three");
-map.put(1, "One");  // Sorted by key
-```
+???+ example
+      ```java
+      Map<Integer, String> map = new TreeMap<>();
+      map.put(3, "Three");
+      map.put(1, "One");  // Sorted by key
+      ```
 
 ---
 
-## **5. Synchronized Collections and Thread Safety Issues**
+## **Synchronized Collections**
 
-1. **Synchronized Wrappers**:  
-   Use `Collections.synchronizedList()` or `Collections.synchronizedSet()` to make collections thread-safe.
-   ```java
-   List<String> list = Collections.synchronizedList(new ArrayList<>());
-   ```
+**Synchronized Wrappers**:  
+Use `Collections.synchronizedList()` or `Collections.synchronizedSet()` to make collections thread-safe.
+???+ example
+      ```java
+      List<String> list = Collections.synchronizedList(new ArrayList<>());
+      ```
 
-2. **Concurrent Collections**:  
-   Use **`ConcurrentHashMap`**, **`CopyOnWriteArrayList`**, or **`BlockingQueue`** for better thread-safe alternatives.
+**Concurrent Collections**:  
+Use **`ConcurrentHashMap`**, **`CopyOnWriteArrayList`**, or **`BlockingQueue`** for better thread-safe alternatives.
 
 ---
 
-## **Space and Time Complexity Table**
+## **Summary**
 
 | **Collection**         | **Type**          | **Backed By**               | **Access Time**     | **Insertion Time**      | **Deletion Time** | **Thread Safety** | **Use Case**                            |
 |------------------------|-------------------|-----------------------------|---------------------|-------------------------|------------------|------------------|-----------------------------------------|
