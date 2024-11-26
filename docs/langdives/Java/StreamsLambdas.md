@@ -58,6 +58,7 @@ A method reference is a shorthand way of writing a lambda when a method already 
             - It behaves just like the lambda `name -> System.out.println(name)` but is cleaner.
 
 Use **method references** when:
+
 - A lambda calls an **existing method** directly without modifying the input.
 - It improves **readability** of the code.
 
