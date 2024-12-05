@@ -1,21 +1,20 @@
-# Locking.
+# **Locking**.
 
 Locking is an essential concept in multithreaded programming to prevent race conditions and ensure thread safety. When multiple threads access shared resources, locks ensure that only one thread accesses the critical section at a time.
 
-This deep dive covers synchronized blocks, reentrant locks, read-write locks, deadlock scenarios, atomic classes, and modern Java utilities — everything related to locking in Java.
+This article covers synchronized blocks, reentrant locks, read-write locks, deadlock scenarios, atomic classes, and modern Java utilities — everything related to locking in Java.
 
 ---
 
-## 1. **What is Locking?**
+## **What is Locking?**
 
-- **Locking** is a way to ensure that **only one thread at a time** executes a critical section or modifies a shared resource.
-- Without proper locks, multiple threads may interfere with each other, leading to **data inconsistency** or **unexpected behavior** (race conditions).
+**Locking** is a way to ensure that **only one thread at a time** executes a critical section or modifies a shared resource, Without proper locks, multiple threads may interfere with each other, leading to data inconsistency or unexpected behavior (race conditions).
 
 Java offers various **locking mechanisms**, from **synchronized blocks** to **explicit locks** like `ReentrantLock`.
 
 ---
 
-## **2. What is `ReentrantLock`?**
+## **What is `ReentrantLock` ?**
 
 The **`ReentrantLock`** class, introduced in **Java 5**, offers more control over thread synchronization than the `synchronized` keyword. It allows for advanced locking techniques such as **fairness policies**, **tryLock**, and **interruptible locks**. Let’s explore everything about `ReentrantLock`, including its use cases, internal mechanisms, and best practices.
 
