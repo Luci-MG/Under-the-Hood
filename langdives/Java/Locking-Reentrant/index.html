@@ -1968,7 +1968,7 @@
         <li class="md-nav__item">
   <a href="#what-is-locking" class="md-nav__link">
     <span class="md-ellipsis">
-      What is Locking?
+      What is Locking ?
     </span>
   </a>
   
@@ -2495,7 +2495,7 @@
         <li class="md-nav__item">
   <a href="#what-is-locking" class="md-nav__link">
     <span class="md-ellipsis">
-      What is Locking?
+      What is Locking ?
     </span>
   </a>
   
@@ -2623,7 +2623,7 @@
 <p>Locking is an essential concept in multithreaded programming to prevent race conditions and ensure thread safety. When multiple threads access shared resources, locks ensure that only one thread accesses the critical section at a time.</p>
 <p>This article covers reentrant locks.</p>
 <hr />
-<h2 id="what-is-locking"><strong>What is Locking?</strong><a class="headerlink" href="#what-is-locking" title="Permanent link">&para;</a></h2>
+<h2 id="what-is-locking"><strong>What is Locking ?</strong><a class="headerlink" href="#what-is-locking" title="Permanent link">&para;</a></h2>
 <p><strong>Locking</strong> is a way to ensure that <strong>only one thread at a time</strong> executes a critical section or modifies a shared resource, Without proper locks, multiple threads may interfere with each other, leading to data inconsistency or unexpected behavior (race conditions).</p>
 <p>Java offers various <strong>locking mechanisms</strong>, from <strong>synchronized blocks</strong> to <strong>explicit locks</strong> like <code>ReentrantLock</code>.</p>
 <hr />
@@ -2689,7 +2689,7 @@
 </details>
 <hr />
 <h2 id="how-it-works-internally"><strong>How it Works Internally ?</strong><a class="headerlink" href="#how-it-works-internally" title="Permanent link">&para;</a></h2>
-<p><strong>Lock Acquisition:</strong> When a thread calls <code>lock()</code>, it tries to acquire the lock. If the lock is available, the thread proceeds; otherwise, it <strong>blocks</strong> until the lock becomes available.</p>
+<p><strong>Lock Acquisition:</strong> When a thread calls <code>lock()</code>, it tries to acquire the lock. If the lock is available, the thread proceeds otherwise, it <strong>blocks</strong> until the lock becomes available.</p>
 <p><strong>Reentrancy:</strong> A thread that holds the lock can acquire the lock again without blocking. This is useful when a thread *nters a method that also calls another synchronized method or block that requires the same lock.</p>
 <p><strong>Fair vs Unfair Locking:</strong></p>
 <ul>
