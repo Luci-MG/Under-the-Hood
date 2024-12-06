@@ -2,7 +2,7 @@
 
 Locking is an essential concept in multithreaded programming to prevent race conditions and ensure thread safety. When multiple threads access shared resources, locks ensure that only one thread accesses the critical section at a time.
 
-This article covers synchronized blocks, reentrant locks, read-write locks, deadlock scenarios, atomic classes, and modern Java utilities everything related to locking in Java.
+This article covers synchronized blocks.
 
 ---
 
