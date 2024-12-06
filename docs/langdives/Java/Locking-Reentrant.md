@@ -6,7 +6,7 @@ This article covers reentrant locks.
 
 ---
 
-## **What is Locking?**
+## **What is Locking ?**
 
 **Locking** is a way to ensure that **only one thread at a time** executes a critical section or modifies a shared resource, Without proper locks, multiple threads may interfere with each other, leading to data inconsistency or unexpected behavior (race conditions).
 
@@ -78,7 +78,7 @@ The **`ReentrantLock`** class, introduced in **Java 5**, offers more control ove
 
 ## **How it Works Internally ?**
 
-**Lock Acquisition:** When a thread calls `lock()`, it tries to acquire the lock. If the lock is available, the thread proceeds; otherwise, it **blocks** until the lock becomes available.
+**Lock Acquisition:** When a thread calls `lock()`, it tries to acquire the lock. If the lock is available, the thread proceeds otherwise, it **blocks** until the lock becomes available.
 
 **Reentrancy:** A thread that holds the lock can acquire the lock again without blocking. This is useful when a thread *nters a method that also calls another synchronized method or block that requires the same lock.
 
