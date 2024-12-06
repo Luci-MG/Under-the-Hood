@@ -2598,8 +2598,8 @@
 <p>Java offers various <strong>locking mechanisms</strong>, from <strong>synchronized blocks</strong> to <strong>explicit locks</strong> like <code>ReentrantLock</code> and <code>ReentrantReadWriteLock</code>.</p>
 <hr />
 <h2 id="what-is-reentrantreadwritelock"><strong>What is <code>ReentrantReadWriteLock</code>?</strong><a class="headerlink" href="#what-is-reentrantreadwritelock" title="Permanent link">&para;</a></h2>
-<p>The <code>ReentrantReadWriteLock</code> is a specialized lock from Java’s <code>java.util.concurrent.locks</code> package, designed to improve performance in concurrent systems by separating read and write operations. It provides more efficient locking behavior when the majority of operations are <strong>read-only</strong>, allowing <strong>multiple readers</strong> to access the shared resource simultaneously but <strong>blocking writers</strong> until all reading operations are complete.</p>
-<p>A <strong><code>ReentrantReadWriteLock</code></strong> maintains two types of locks:</p>
+<p>The <code>ReentrantReadWriteLock</code> is a specialized lock from Java’s <code>java.util.concurrent.locks</code> package, designed to improve performance in concurrent systems by separating read and write operations. It provides more efficient locking behavior when the majority of operations are read-only, allowing multiple readers to access the shared resource simultaneously but blocking writers until all reading operations are complete.</p>
+<p>A <code>ReentrantReadWriteLock</code> maintains two types of locks:</p>
 <ul>
 <li><strong>Read Lock</strong>: Multiple threads can acquire the <strong>read lock</strong> simultaneously if no thread holds the <strong>write lock</strong>.</li>
 <li><strong>Write Lock</strong>: Allows only <strong>one thread</strong> to acquire the lock. All readers and other writers are blocked until the write operation completes.</li>
@@ -2691,7 +2691,7 @@
 <h2 id="common-problems"><strong>Common Problems</strong><a class="headerlink" href="#common-problems" title="Permanent link">&para;</a></h2>
 <details class="danger" open="open">
 <summary>Write Starvation</summary>
-<p>In scenarios with <strong>frequent readers</strong>, a <strong>writer may starve</strong> because readers keep acquiring the read lock, delaying the writer indefinitely.</p>
+<p>In scenarios with frequent readers, a writer may starve because readers keep acquiring the read lock, delaying the writer indefinitely.</p>
 <div class="admonition success">
 <p class="admonition-title">Solution</p>
 <p>Use a <strong>fair lock</strong></p>
@@ -2702,7 +2702,7 @@
 </details>
 <details class="danger" open="open">
 <summary>DeadLock</summary>
-<p>If a <strong>read lock and write lock</strong> are acquired <strong>in an inconsistent order</strong> across multiple threads, it can lead to <strong>deadlock</strong>.</p>
+<p>If a read lock and write lock are acquired in an inconsistent order across multiple threads, it can lead to deadlock.</p>
 <div class="admonition example">
 <p class="admonition-title">Deadlock example</p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">Thread</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="n">Acquire</span><span class="w"> </span><span class="n">write</span><span class="w"> </span><span class="n">lock</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Attempt</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">acquire</span><span class="w"> </span><span class="n">read</span><span class="w"> </span><span class="nf">lock</span><span class="w"> </span><span class="p">(</span><span class="n">blocks</span><span class="p">)</span>
@@ -2712,14 +2712,14 @@
 <div class="admonition success">
 <p class="admonition-title">Solution</p>
 <ul>
-<li>Ensure <strong>consistent lock ordering</strong> across all threads.</li>
-<li>Avoid <strong>nested locks</strong> when using both read and write locks.</li>
+<li>Ensure consistent lock ordering across all threads.</li>
+<li>Avoid nested locks when using both read and write locks.</li>
 </ul>
 </div>
 </details>
 <details class="danger" open="open">
 <summary>Performance Degradation with Too Many Write Operations</summary>
-<p>If there are <strong>frequent write operations</strong>, the system behaves similarly to using a <strong>normal ReentrantLock</strong>, as <strong>readers must wait</strong> for writers to release the lock.</p>
+<p>If there are frequent write operations, the system behaves similarly to using a normal ReentrantLock, as readers must wait for writers to release the lock.</p>
 <div class="admonition success">
 <p class="admonition-title">Solution</p>
 <p>Use lock-free data structures (like <code>AtomicReference</code>) or ReadWriteLock only when reads significantly outnumber writes.</p>
@@ -2745,26 +2745,26 @@
 <h2 id="when-to-use"><strong>When to Use ?</strong><a class="headerlink" href="#when-to-use" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
-<p>Read-heavy Workloads, Use when the <strong>majority of operations are reads</strong> and only a few writes occur.</p>
+<p>Read-heavy Workloads, when the majority of operations are reads and only a few writes occur.</p>
 </li>
 <li>
-<p>Improved Performance over <code>ReentrantLock</code>, In scenarios where <strong>multiple threads need to read data simultaneously</strong>, <code>ReentrantReadWriteLock</code> improves performance by allowing concurrent reads.</p>
+<p>Improved Performance over <code>ReentrantLock</code>, In scenarios where multiple threads need to read data simultaneously, <code>ReentrantReadWriteLock</code> improves performance by allowing concurrent reads.</p>
 </li>
 <li>
-<p>When You Need to Separate Read and Write Operations, Use it to <strong>prevent blocking</strong> readers unnecessarily during write operations.</p>
+<p>When You Need to Separate Read and Write Operations, use it to prevent blocking readers unnecessarily during write operations.</p>
 </li>
 </ul>
 <hr />
 <h2 id="when-not-to-use"><strong>When Not to Use ?</strong><a class="headerlink" href="#when-not-to-use" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
-<p>Write-heavy Applications, If writes occur frequently, the <strong>write lock will block readers</strong>, negating the benefits of the read-write separation.</p>
+<p>Write-heavy Applications, If writes occur frequently, the write lock will block readers, negating the benefits of the read-write separation.</p>
 </li>
 <li>
-<p>Simple Synchronization Requirements, If your application doesn’t require complex locking behavior, use <strong><code>synchronized</code></strong> or <strong><code>ReentrantLock</code></strong> instead.</p>
+<p>Simple Synchronization Requirements, If your application doesn’t require complex locking behavior, use <code>synchronized</code> or <code>ReentrantLock</code> instead.</p>
 </li>
 <li>
-<p>Lock-free Alternatives Available, Consider <strong>atomic classes</strong> or <strong>concurrent data structures</strong> (e.g., <code>ConcurrentHashMap</code>) if they meet your needs.</p>
+<p>Lock-free Alternatives Available, consider atomic classes or concurrent data structures (e.g., <code>ConcurrentHashMap</code>) if they meet your needs.</p>
 </li>
 </ul>
 <hr />
@@ -2777,7 +2777,7 @@
 <p>Minimize the Duration of Locks, Avoid holding read or write locks longer than necessary to <strong>reduce contention</strong>.</p>
 </li>
 <li>
-<p>Use Lock Downgrading Cautiously, Always acquire the <strong>read lock before releasing the write lock</strong> to avoid inconsistencies.</p>
+<p>Use Lock Downgrading Cautiously, Always acquire the read lock before releasing the write lock to avoid inconsistencies.</p>
 </li>
 <li>
 <p>Monitor Lock Usage, Use tools like <strong>VisualVM</strong> or <strong>JConsole</strong> to monitor thread activity and detect potential contention or deadlocks.</p>
@@ -2788,8 +2788,7 @@
 </ul>
 <hr />
 <h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
-<p><code>ReentrantReadWriteLock</code> is a powerful tool that allows multiple threads to read concurrently while ensuring exclusive access for writes. However, it is most effective in read-heavy scenarios. Understanding potential issues like write starvation, deadlocks, and performance degradation is essential for using this lock effectively.</p>
-<p>By following best practices like consistent lock ordering, minimizing lock duration, and monitoring lock usage, you can avoid common pitfalls and maximize the performance benefits of <code>ReentrantReadWriteLock</code>.</p>
+<p><code>ReentrantReadWriteLock</code> is a powerful tool that allows multiple threads to read concurrently while ensuring exclusive access for writes. However, it is most effective in read-heavy scenarios. Understanding potential issues like write starvation, deadlocks, and performance degradation is essential for using this lock effectively, by following best practices like consistent lock ordering, minimizing lock duration, and monitoring lock usage, you can avoid common pitfalls and maximize the performance benefits of <code>ReentrantReadWriteLock</code>.</p>
 <hr />
 
 

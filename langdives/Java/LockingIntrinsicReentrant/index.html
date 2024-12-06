@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#synchronized-vs-reentrantlock-in-java" class="md-skip">
+        <a href="#synchronized-vs-reentrantlock" class="md-skip">
           Skip to content
         </a>
       
@@ -1987,9 +1987,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#when-to-use-synchronized-vs-reentrantlock" class="md-nav__link">
+  <a href="#differences" class="md-nav__link">
     <span class="md-ellipsis">
-      When to Use synchronized vs ReentrantLock
+      Differences
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use ?
     </span>
   </a>
   
@@ -2415,9 +2424,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#when-to-use-synchronized-vs-reentrantlock" class="md-nav__link">
+  <a href="#differences" class="md-nav__link">
     <span class="md-ellipsis">
-      When to Use synchronized vs ReentrantLock
+      Differences
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use ?
     </span>
   </a>
   
@@ -2463,7 +2481,8 @@
   
 
 
-<h1 id="synchronized-vs-reentrantlock-in-java"><strong><code>synchronized</code> vs <code>ReentrantLock</code> in Java</strong><a class="headerlink" href="#synchronized-vs-reentrantlock-in-java" title="Permanent link">&para;</a></h1>
+<h1 id="synchronized-vs-reentrantlock"><strong><code>synchronized</code> vs <code>ReentrantLock</code></strong><a class="headerlink" href="#synchronized-vs-reentrantlock" title="Permanent link">&para;</a></h1>
+<h2 id="differences"><strong>Differences</strong><a class="headerlink" href="#differences" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2571,7 +2590,7 @@
 </tbody>
 </table>
 <hr />
-<h3 id="when-to-use-synchronized-vs-reentrantlock"><strong>When to Use <code>synchronized</code> vs <code>ReentrantLock</code></strong><a class="headerlink" href="#when-to-use-synchronized-vs-reentrantlock" title="Permanent link">&para;</a></h3>
+<h2 id="when-to-use"><strong>When to Use ?</strong><a class="headerlink" href="#when-to-use" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2603,11 +2622,12 @@
 </tbody>
 </table>
 <hr />
-<h3 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h3>
+<h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <p>Both <strong><code>synchronized</code></strong> and <strong><code>ReentrantLock</code></strong> have their own strengths and use cases. Use <code>synchronized</code> for <strong>simpler, lower-level concurrency needs</strong>, and <strong><code>ReentrantLock</code></strong> when you need <strong>more control, fairness, or advanced features</strong> like <strong>non-blocking locking</strong> and <strong>condition variables</strong>. </p>
 <p>In general:
 - <strong><code>synchronized</code></strong> is easier to use and less error-prone.
 - <strong><code>ReentrantLock</code></strong> is more powerful and flexible, but with more overhead and complexity.</p>
+<hr />
 
 
 
@@ -2630,7 +2650,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 27, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 6, 2024</span>
   </span>
 
     
