@@ -1,4 +1,6 @@
-# **`synchronized` vs `ReentrantLock` in Java**
+# **`synchronized` vs `ReentrantLock`**
+
+## **Differences**
 
 | **Feature**                         | **`synchronized`**                              | **`ReentrantLock`**                              |
 |-------------------------------------|------------------------------------------------|------------------------------------------------|
@@ -24,7 +26,7 @@
 
 ---
 
-### **When to Use `synchronized` vs `ReentrantLock`**
+## **When to Use ?**
 
 | **Use `synchronized`**                          | **Use `ReentrantLock`**                        |
 |------------------------------------------------|------------------------------------------------|
@@ -36,10 +38,12 @@
 
 ---
 
-### **Summary**
+## **Summary**
 
 Both **`synchronized`** and **`ReentrantLock`** have their own strengths and use cases. Use `synchronized` for **simpler, lower-level concurrency needs**, and **`ReentrantLock`** when you need **more control, fairness, or advanced features** like **non-blocking locking** and **condition variables**. 
 
 In general:
 - **`synchronized`** is easier to use and less error-prone.
 - **`ReentrantLock`** is more powerful and flexible, but with more overhead and complexity.
+
+---
