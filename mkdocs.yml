@@ -215,7 +215,7 @@ nav:
         - Heap-Stack: langdives/Java/JavaHeapStack.md # need to edit this title # should rename this file 
         - 4 Pillars: langdives/Java/4Pillars.md
         - Access modifiers: langdives/Java/AccessModifPPPPP.md
-        - Keywords and Terminologies: langdives/Java/KeyWordsTerminolgies.md
+        - Keywords/Terminologies: langdives/Java/KeyWordsTerminolgies.md
         - Primitives References: langdives/Java/PrimitiveReferenceTypes.md
         - Reference Types Indepth: langdives/Java/ReferenceTypesInDepth.md
         - Pass By Value: langdives/Java/JavaPassBy.md # need to edit this title
@@ -228,18 +228,20 @@ nav:
         - Intrinsic Locking: langdives/Java/Locking-Intrinsic.md
         - Reentrant Locking: langdives/Java/Locking-Reentrant.md
         - Intrinsic vs Reentrant Locking: langdives/Java/LockingIntrinsicReentrant.md
-        - Reentrant Read Write Locking: langdives/Java/Locking-ReentrantReadWrite.md
+        - ReentrantRW Locking: langdives/Java/Locking-ReentrantReadWrite.md
         - DeadLock: langdives/Java/Locking-Issues-DeadLock.md
         - LiveLock: langdives/Java/Locking-Issues-LiveLock.md
         - Starvation: langdives/Java/Locking-Issues-Starvation.md
         - Other Locking issues: langdives/Java/Locking-Issues-Others.md
         - Garbage Collection(rs): langdives/Java/GarbageCollection.md
-        - Spring: langdives/Java/Spring/Spring.md
+        - Java 8 vs 11 vs 17 vs 21: langdives/Java/Java8vs11vs17vs21.md
+      - Spring: 
+        - langdives/Java/Spring/index.md
         - Spring Core Framework: langdives/Java/Spring/SpringCoreFramework.md
         - Spring Boot: langdives/Java/Spring/SpringBoot.md
-        - All Spring Boot Annotations: langdives/Java/Spring/SpringAnnotations.md
-        - Spring Framework vs Spring Boot: langdives/Java/Spring/SpringFrameworkVsSpringBoot.md
-        - Java 8 vs 11 vs 17 vs 21: langdives/Java/Java8vs11vs17vs21.md
+        - Spring Boot Annotations: langdives/Java/Spring/SpringAnnotations.md
+        - Spring Framework vs Boot: langdives/Java/Spring/SpringFrameworkVsSpringBoot.md
+        
   - Blog:
     - blog/index.md
   - Change Log: changelog/index.md

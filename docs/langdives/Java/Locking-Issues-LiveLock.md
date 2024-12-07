@@ -141,7 +141,7 @@ Using timeouts helps threads avoid indefinite waiting. If a thread cannot acquir
     }
     ```
 
-    !!! note "Why it works ?"
+    !!! info "Why it works ?"
         If a thread fails to acquire the lock within 1 second, it backs off instead of trying indefinitely.
 
 
@@ -208,7 +208,7 @@ A back-off strategy makes threads wait for a random amount of time before retryi
     }
     ```
 
-    !!! note "Why it works ?"
+    !!! info "Why it works ?"
         The random back-off time prevents threads from retrying in lockstep, avoiding livelock.
 
 ### **Avoid Excessive Yielding**
