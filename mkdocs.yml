@@ -209,16 +209,16 @@ nav:
   - Language Dives:
       - Java:
         - JDK, JRE, JVM: langdives/Java/JavaJDKJREJVM.md
-        - What is Maven?: langdives/Java/Maven.md # need to edit this title
-        - What is Gradle?: langdives/Java/Gradle.md # need to edit this title
+        - What is Maven?: langdives/Java/Maven.md # TODO:: need to edit this title
+        - What is Gradle?: langdives/Java/Gradle.md # TODO:: need to edit this title
         - Maven vs Gradle: langdives/Java/MavenVsGradle.md
-        - Heap-Stack: langdives/Java/JavaHeapStack.md # need to edit this title # should rename this file 
+        - Heap-Stack: langdives/Java/JavaHeapStack.md # TODO:: need to edit this title # should rename this file 
         - 4 Pillars: langdives/Java/4Pillars.md
         - Access modifiers: langdives/Java/AccessModifPPPPP.md
         - Keywords/Terminologies: langdives/Java/KeyWordsTerminolgies.md
         - Primitives References: langdives/Java/PrimitiveReferenceTypes.md
         - Reference Types Indepth: langdives/Java/ReferenceTypesInDepth.md
-        - Pass By Value: langdives/Java/JavaPassBy.md # need to edit this title
+        - Pass By Value: langdives/Java/JavaPassBy.md # TODO:: need to edit this title
         - Collections JCF: langdives/Java/Collections-JCF.md
         - Streams and Lambas: langdives/Java/StreamsLambdas.md
         - Threads: langdives/Java/Threads.md
