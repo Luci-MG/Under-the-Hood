@@ -1393,6 +1393,8 @@
       
         
       
+        
+      
     
     
       
@@ -1437,16 +1439,6 @@
   
     
     
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
       
         
       
@@ -1691,7 +1683,7 @@
         
   
   <span class="md-ellipsis">
-    Keywords and Terminologies
+    Keywords/Terminologies
   </span>
   
 
@@ -1964,7 +1956,7 @@
         
   
   <span class="md-ellipsis">
-    Reentrant Read Write Locking
+    ReentrantRW Locking
   </span>
   
 
@@ -2073,7 +2065,7 @@
         <li class="md-nav__item">
   <a href="#what-is-starvation" class="md-nav__link">
     <span class="md-ellipsis">
-      What is Starvation?
+      What is Starvation ?
     </span>
   </a>
   
@@ -2089,19 +2081,73 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-of-starvation-with-unfair-lock" class="md-nav__link">
+  <a href="#example-of-starvation" class="md-nav__link">
     <span class="md-ellipsis">
-      Example of Starvation with Unfair Lock
+      Example of Starvation
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Example of Starvation with Unfair Lock">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-avoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Avoid ?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How to Avoid ?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#explanation" class="md-nav__link">
+  <a href="#use-fair-locks" class="md-nav__link">
     <span class="md-ellipsis">
-      Explanation
+      Use Fair Locks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-priority-based-scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Avoid Priority-Based Scheduling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backoff-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backoff Strategies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-thread-pools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Thread Pools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-long-critical-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Avoid Long Critical Sections
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-condition-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Condition Variables
     </span>
   </a>
   
@@ -2113,78 +2159,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-avoid-starvation" class="md-nav__link">
+  <a href="#best-practices" class="md-nav__link">
     <span class="md-ellipsis">
-      How to Avoid Starvation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="How to Avoid Starvation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-use-fair-locks" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Use Fair Locks
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-avoid-priority-based-thread-scheduling" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Avoid Priority-Based Thread Scheduling
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-backoff-strategies-and-randomized-delays" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Backoff Strategies and Randomized Delays
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-use-thread-pools-and-executor-framework" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Use Thread Pools and Executor Framework
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-avoid-long-critical-sections" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Avoid Long Critical Sections
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-use-condition-variables-for-better-control" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Use Condition Variables for Better Control
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary-best-practices-to-avoid-starvation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Summary: Best Practices to Avoid Starvation
+      Best Practices
     </span>
   </a>
   
@@ -2257,11 +2234,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../Spring/Spring/" class="md-nav__link">
+      <a href="../Java8vs11vs17vs21/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Spring
+    Java 8 vs 11 vs 17 vs 21
   </span>
   
 
@@ -2269,6 +2246,78 @@
     </li>
   
 
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../Spring/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Spring
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Spring
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
               
             
               
@@ -2324,7 +2373,7 @@
         
   
   <span class="md-ellipsis">
-    All Spring Boot Annotations
+    Spring Boot Annotations
   </span>
   
 
@@ -2345,28 +2394,7 @@
         
   
   <span class="md-ellipsis">
-    Spring Framework vs Spring Boot
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Java8vs11vs17vs21/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Java 8 vs 11 vs 17 vs 21
+    Spring Framework vs Boot
   </span>
   
 
@@ -2528,7 +2556,7 @@
         <li class="md-nav__item">
   <a href="#what-is-starvation" class="md-nav__link">
     <span class="md-ellipsis">
-      What is Starvation?
+      What is Starvation ?
     </span>
   </a>
   
@@ -2544,19 +2572,73 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-of-starvation-with-unfair-lock" class="md-nav__link">
+  <a href="#example-of-starvation" class="md-nav__link">
     <span class="md-ellipsis">
-      Example of Starvation with Unfair Lock
+      Example of Starvation
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Example of Starvation with Unfair Lock">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-avoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Avoid ?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How to Avoid ?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#explanation" class="md-nav__link">
+  <a href="#use-fair-locks" class="md-nav__link">
     <span class="md-ellipsis">
-      Explanation
+      Use Fair Locks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-priority-based-scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Avoid Priority-Based Scheduling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backoff-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backoff Strategies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-thread-pools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Thread Pools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-long-critical-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Avoid Long Critical Sections
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-condition-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Condition Variables
     </span>
   </a>
   
@@ -2568,78 +2650,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-avoid-starvation" class="md-nav__link">
+  <a href="#best-practices" class="md-nav__link">
     <span class="md-ellipsis">
-      How to Avoid Starvation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="How to Avoid Starvation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-use-fair-locks" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Use Fair Locks
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-avoid-priority-based-thread-scheduling" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Avoid Priority-Based Thread Scheduling
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-backoff-strategies-and-randomized-delays" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Backoff Strategies and Randomized Delays
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-use-thread-pools-and-executor-framework" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Use Thread Pools and Executor Framework
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-avoid-long-critical-sections" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Avoid Long Critical Sections
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-use-condition-variables-for-better-control" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Use Condition Variables for Better Control
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary-best-practices-to-avoid-starvation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Summary: Best Practices to Avoid Starvation
+      Best Practices
     </span>
   </a>
   
@@ -2685,45 +2698,35 @@
   
 
 
-<h1 id="issues-with-locking-starvation">Issues with Locking - Starvation<a class="headerlink" href="#issues-with-locking-starvation" title="Permanent link">&para;</a></h1>
+<h1 id="issues-with-locking-starvation"><strong>Issues with Locking - Starvation</strong><a class="headerlink" href="#issues-with-locking-starvation" title="Permanent link">&para;</a></h1>
 <p>Locking mechanisms in Java, while essential for ensuring thread safety in multithreaded applications, can introduce various issues if not used properly. </p>
-<p>In this section, we’ll explore how starvation occur, how to prevent them, and practical examples of various techniques to detect and resolve starvation.</p>
-<h2 id="what-is-starvation"><strong>What is Starvation?</strong><a class="headerlink" href="#what-is-starvation" title="Permanent link">&para;</a></h2>
-<p><strong>Starvation</strong> is a condition where <strong>low-priority threads are unable to gain access to resources</strong> because <strong>higher-priority threads or unfair scheduling policies monopolize CPU time or locks</strong>. As a result, the low-priority thread <strong>starves</strong> and never gets the chance to run, even though it is ready to execute.</p>
-<p>This issue can manifest in <strong>multithreaded programs</strong> when locks or resources are continuously granted to specific threads, leaving others waiting indefinitely. It can occur not only due to CPU scheduling but also due to <strong>improper locking strategies</strong>, <strong>unfair algorithms</strong>, or <strong>resource starvation</strong>.</p>
+<p>In this article, we’ll explore how starvation occur, how to prevent them, and practical examples of various techniques to detect and resolve starvation.</p>
+<h2 id="what-is-starvation"><strong>What is Starvation ?</strong><a class="headerlink" href="#what-is-starvation" title="Permanent link">&para;</a></h2>
+<p>Starvation is a condition where low-priority threads are unable to gain access to resources because higher-priority threads or unfair scheduling policies monopolize CPU time or locks. As a result, the low-priority thread starves and never gets the chance to run, even though it is ready to execute.</p>
+<p>This issue can manifest in multithreaded programs when locks or resources are continuously granted to specific threads, leaving others waiting indefinitely. It can occur not only due to CPU scheduling but also due to improper locking strategies, unfair algorithms, or resource starvation.</p>
 <hr />
 <h2 id="causes-of-starvation"><strong>Causes of Starvation</strong><a class="headerlink" href="#causes-of-starvation" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>Unfair Locking Mechanism:</strong></li>
+<ul>
 <li>
-<p>When using <strong>unfair locks</strong>, the lock may always favor threads that request it recently over those that have been waiting longer. </p>
+<p>Unfair Locking Mechanism, When using unfair locks, the lock may always favor threads that request it recently over those that have been waiting longer. </p>
 </li>
 <li>
-<p><strong>Priority Inversion:</strong></p>
+<p>Priority Inversion, High-priority threads monopolize the CPU and low-priority threads rarely get scheduled. This is especially problematic in priority-based scheduling systems.</p>
 </li>
 <li>
-<p><strong>High-priority threads monopolize the CPU</strong> and low-priority threads rarely get scheduled. This is especially problematic in priority-based scheduling systems.</p>
+<p>Thread Contention and Resource Starvation, Too many threads competing for a limited number of resources (like I/O or locks), some threads may always be able to acquire the resources, leaving others waiting indefinitely.</p>
 </li>
 <li>
-<p><strong>Thread Contention and Resource Starvation:</strong></p>
-</li>
-<li><strong>Too many threads</strong> competing for a limited number of resources (like I/O or locks).</li>
-<li>
-<p>Some threads may always be able to acquire the resources, leaving others waiting indefinitely.</p>
+<p>Busy-Waiting Loops, Threads that continuously request resources or repeatedly try to acquire locks without releasing the CPU can cause other threads to starve.</p>
 </li>
 <li>
-<p><strong>Busy-Waiting Loops:</strong> </p>
+<p>Thread Prioritization in Java, If threads have different priorities, the JVM might schedule higher-priority threads more frequently, leading to starvation of lower-priority threads.</p>
 </li>
-<li>
-<p>Threads that continuously request resources or repeatedly try to acquire locks without releasing the CPU can cause other threads to starve.</p>
-</li>
-<li>
-<p><strong>Thread Prioritization in Java:</strong></p>
-</li>
-<li>If threads have different <strong>priorities</strong>, the JVM might schedule higher-priority threads more frequently, leading to <strong>starvation of lower-priority threads</strong>.</li>
-</ol>
+</ul>
 <hr />
-<h2 id="example-of-starvation-with-unfair-lock"><strong>Example of Starvation with Unfair Lock</strong><a class="headerlink" href="#example-of-starvation-with-unfair-lock" title="Permanent link">&para;</a></h2>
+<h2 id="example-of-starvation"><strong>Example of Starvation</strong><a class="headerlink" href="#example-of-starvation" title="Permanent link">&para;</a></h2>
+<details class="example" open="open">
+<summary>Starvation with Unfair Lock Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.locks.ReentrantLock</span><span class="p">;</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">StarvationDemo</span><span class="w"> </span><span class="p">{</span>
@@ -2756,17 +2759,21 @@
 </span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="p">}</span>
 </span></code></pre></div>
-<h3 id="explanation"><strong>Explanation</strong><a class="headerlink" href="#explanation" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title">Explanation</p>
 <ul>
-<li>In this example:</li>
-<li>The <strong>ReentrantLock</strong> is <strong>unfair</strong> by default.</li>
-<li>The <strong>high-priority thread</strong> has a better chance of acquiring the lock repeatedly.</li>
-<li>The <strong>low-priority thread</strong> may never acquire the lock, resulting in <strong>starvation</strong>.</li>
+<li>The ReentrantLock is unfair by default.</li>
+<li>The high-priority thread has a better chance of acquiring the lock repeatedly.</li>
+<li>The low-priority thread may never acquire the lock, resulting in starvation.</li>
 </ul>
+</div>
+</details>
 <hr />
-<h2 id="how-to-avoid-starvation"><strong>How to Avoid Starvation</strong><a class="headerlink" href="#how-to-avoid-starvation" title="Permanent link">&para;</a></h2>
-<h3 id="1-use-fair-locks">1. <strong>Use Fair Locks</strong><a class="headerlink" href="#1-use-fair-locks" title="Permanent link">&para;</a></h3>
-<p>Using <strong>fair locks</strong> ensures that the <strong>longest-waiting thread</strong> gets the lock first. This prevents <strong>threads from skipping the queue</strong> and ensures <strong>all threads get a chance</strong> to execute.</p>
+<h2 id="how-to-avoid"><strong>How to Avoid ?</strong><a class="headerlink" href="#how-to-avoid" title="Permanent link">&para;</a></h2>
+<h3 id="use-fair-locks"><strong>Use Fair Locks</strong><a class="headerlink" href="#use-fair-locks" title="Permanent link">&para;</a></h3>
+<p>Using fair locks ensures that the longest-waiting thread gets the lock first. This prevents threads from skipping the queue and ensures all threads get a chance to execute.</p>
+<details class="example" open="open">
+<summary>Fair Lock Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.locks.ReentrantLock</span><span class="p">;</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FairLockDemo</span><span class="w"> </span><span class="p">{</span>
@@ -2799,20 +2806,20 @@
 </span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="p">}</span>
 </span></code></pre></div>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <ul>
-<li><strong>With the fair lock</strong> enabled, the <strong>thread that waits the longest</strong> gets access to the lock first.</li>
-<li>This prevents <strong>starvation</strong> and ensures <strong>fairness</strong> among threads.</li>
+<li>With the fair lock enabled, the thread that waits the longest gets access to the lock first.</li>
+<li>This prevents starvation and ensures fairness among threads.</li>
 </ul>
-<hr />
-<h3 id="2-avoid-priority-based-thread-scheduling">2. <strong>Avoid Priority-Based Thread Scheduling</strong><a class="headerlink" href="#2-avoid-priority-based-thread-scheduling" title="Permanent link">&para;</a></h3>
-<p>Although Java allows you to assign <strong>priorities to threads</strong>, the <strong>JVM’s thread scheduler</strong> may not always honor them consistently. It’s generally recommended to <strong>avoid relying on thread priorities</strong> for critical tasks.</p>
-<ul>
-<li>If you need to control thread scheduling, <strong>use fair locks or condition variables</strong> instead of thread priorities.</li>
-</ul>
-<hr />
-<h3 id="3-backoff-strategies-and-randomized-delays">3. <strong>Backoff Strategies and Randomized Delays</strong><a class="headerlink" href="#3-backoff-strategies-and-randomized-delays" title="Permanent link">&para;</a></h3>
-<p>Using <strong>backoff strategies</strong> (delays) between retries can help <strong>reduce contention</strong> for resources. This ensures that <strong>no thread monopolizes the CPU</strong> by continuously attempting to acquire a resource.</p>
-<p><strong>Example: Backoff Strategy</strong>
+</div>
+<h3 id="avoid-priority-based-scheduling"><strong>Avoid Priority-Based Scheduling</strong><a class="headerlink" href="#avoid-priority-based-scheduling" title="Permanent link">&para;</a></h3>
+<p>Although Java allows you to assign priorities to threads, the JVM’s thread scheduler may not always honor them consistently. It’s generally recommended to avoid relying on thread priorities for critical tasks, If you need to control thread scheduling, use fair locks or condition variables instead of thread priorities.</p>
+<h3 id="backoff-strategies"><strong>Backoff Strategies</strong><a class="headerlink" href="#backoff-strategies" title="Permanent link">&para;</a></h3>
+<p>Using backoff strategies (delays) between retries can help reduce contention for resources. This ensures that no thread monopolizes the CPU by continuously attempting to acquire a resource.</p>
+<details class="example" open="open">
+<summary>Backoff Strategy Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.locks.ReentrantLock</span><span class="p">;</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BackoffDemo</span><span class="w"> </span><span class="p">{</span>
@@ -2846,14 +2853,16 @@
 </span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">        </span><span class="n">t2</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
 </span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="p">}</span>
-</span></code></pre></div></p>
-<ul>
-<li><strong>Random delays</strong> ensure that threads do not engage in <strong>busy-waiting loops</strong>, reducing contention and improving fairness.</li>
-</ul>
-<hr />
-<h3 id="4-use-thread-pools-and-executor-framework">4. <strong>Use Thread Pools and Executor Framework</strong><a class="headerlink" href="#4-use-thread-pools-and-executor-framework" title="Permanent link">&para;</a></h3>
-<p>When dealing with <strong>many concurrent tasks</strong>, using a <strong>thread pool</strong> ensures that threads are <strong>fairly scheduled</strong> and <strong>resources are shared efficiently</strong>. </p>
-<p><strong>Example: Using ThreadPoolExecutor</strong>
+</span></code></pre></div>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Random delays ensure that threads do not engage in busy-waiting loops, reducing contention and improving fairness.</p>
+</div>
+<h3 id="use-thread-pools"><strong>Use Thread Pools</strong><a class="headerlink" href="#use-thread-pools" title="Permanent link">&para;</a></h3>
+<p>When dealing with many concurrent tasks, using a thread pool ensures that threads are fairly scheduled and resources are shared efficiently. </p>
+<details class="example" open="open">
+<summary>Using ThreadPoolExecutor Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.ExecutorService</span><span class="p">;</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.Executors</span><span class="p">;</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
@@ -2872,19 +2881,21 @@
 </span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">        </span><span class="n">executor</span><span class="p">.</span><span class="na">shutdown</span><span class="p">();</span>
 </span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="p">}</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Using thread pools avoids creating too many threads and ensures fair resource sharing.</p>
+</div>
+<h3 id="avoid-long-critical-sections"><strong>Avoid Long Critical Sections</strong><a class="headerlink" href="#avoid-long-critical-sections" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Using thread pools</strong> avoids creating too many threads and <strong>ensures fair resource sharing</strong>.</li>
+<li>If a thread holds a lock for too long, it can cause starvation for other threads.</li>
+<li>Split large critical sections into smaller synchronized blocks to reduce lock contention.</li>
 </ul>
-<hr />
-<h3 id="5-avoid-long-critical-sections">5. <strong>Avoid Long Critical Sections</strong><a class="headerlink" href="#5-avoid-long-critical-sections" title="Permanent link">&para;</a></h3>
-<ul>
-<li>If a thread holds a <strong>lock for too long</strong>, it can cause <strong>starvation</strong> for other threads.</li>
-<li><strong>Split large critical sections</strong> into smaller synchronized blocks to <strong>reduce lock contention</strong>.</li>
-</ul>
-<hr />
-<h3 id="6-use-condition-variables-for-better-control">6. <strong>Use Condition Variables for Better Control</strong><a class="headerlink" href="#6-use-condition-variables-for-better-control" title="Permanent link">&para;</a></h3>
-<p>Instead of relying on priorities or busy-waiting, use <strong><code>Condition</code> objects</strong> with <strong>ReentrantLock</strong> to manage thread coordination efficiently.</p>
+<h3 id="use-condition-variables"><strong>Use Condition Variables</strong><a class="headerlink" href="#use-condition-variables" title="Permanent link">&para;</a></h3>
+<p>Instead of relying on priorities or busy-waiting, use <code>Condition</code> objects with ReentrantLock to manage thread coordination efficiently.</p>
+<details class="example" open="open">
+<summary>Condition Variables Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.locks.Condition</span><span class="p">;</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.locks.Lock</span><span class="p">;</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.locks.ReentrantLock</span><span class="p">;</span>
@@ -2922,22 +2933,25 @@
 </span><span id="__span-4-35"><a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-4-36"><a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="p">}</span>
 </span></code></pre></div>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Using conditions helps avoid busy-waiting and ensures efficient thread signaling.</p>
+</div>
+<hr />
+<h2 id="best-practices"><strong>Best Practices</strong><a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Using <strong>conditions</strong> helps <strong>avoid busy-waiting</strong> and ensures <strong>efficient thread signaling</strong>.</li>
+<li>Use Fair Locks to prevent thread starvation.</li>
+<li>Avoid priority-based thread scheduling for critical operations.</li>
+<li>Implement backoff strategies to reduce contention.</li>
+<li>Use thread pools to manage threads efficiently.</li>
+<li>Minimize the time spent holding locks by breaking up large critical sections.</li>
+<li>Use Condition variables for better control of thread synchronization.</li>
 </ul>
 <hr />
-<h2 id="summary-best-practices-to-avoid-starvation"><strong>Summary: Best Practices to Avoid Starvation</strong><a class="headerlink" href="#summary-best-practices-to-avoid-starvation" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>Use Fair Locks</strong> to prevent thread starvation.</li>
-<li><strong>Avoid priority-based thread scheduling</strong> for critical operations.</li>
-<li>Implement <strong>backoff strategies</strong> to reduce contention.</li>
-<li>Use <strong>thread pools</strong> to manage threads efficiently.</li>
-<li><strong>Minimize the time spent holding locks</strong> by breaking up large critical sections.</li>
-<li>Use <strong>Condition variables</strong> for better control of thread synchronization.</li>
-</ol>
-<hr />
 <h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
-<p>Starvation is a subtle but serious issue in <strong>multithreaded programs</strong>, particularly when some threads are prioritized over others or when resources are monopolized by specific threads. By using <strong>fair locks, thread pools, backoff strategies, and avoiding long critical sections</strong>.</p>
+<p>Starvation is a subtle but serious issue in multithreaded programs, particularly when some threads are prioritized over others or when resources are monopolized by specific threads. By using fair locks, thread pools, backoff strategies, and avoiding long critical sections.</p>
+<hr />
 
 
 
@@ -2960,7 +2974,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 27, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 7, 2024</span>
   </span>
 
     
