@@ -2,8 +2,6 @@
 
 A comprehensive list of Spring Boot annotations, covering core Spring Boot, configuration, web, data, testing, and more. I'll organize them by categories with keys (annotation names) and values (purpose/use cases) for easy reference.
 
----
-
 ## **Core Annotations**
 | **Annotation**               | **Purpose/Use Case**                                                                                           |
 |------------------------------|----------------------------------------------------------------------------------------------------------------|
@@ -15,7 +13,6 @@ A comprehensive list of Spring Boot annotations, covering core Spring Boot, conf
 | `@Import`                     | Imports additional configuration classes. |
 | `@ImportResource`             | Loads bean definitions from external XML configuration files. |
 
----
 
 ## **Web and REST Annotations**
 | **Annotation**               | **Purpose/Use Case**                                                                                           |
@@ -38,7 +35,6 @@ A comprehensive list of Spring Boot annotations, covering core Spring Boot, conf
 | `@SessionAttributes`          | Declares session-scoped model attributes. |
 | `@CrossOrigin`                | Enables cross-origin requests (CORS) for specific endpoints. |
 
----
 
 ## **JPA, JDBC Annotations**
 | **Annotation**               | **Purpose/Use Case**                                                                                           |
@@ -59,7 +55,6 @@ A comprehensive list of Spring Boot annotations, covering core Spring Boot, conf
 | `@Repository`                | Marks a class as a data repository. |
 | `@EnableTransactionManagement`| Enables declarative transaction management. |
 
----
 
 ## **Security Annotations**
 | **Annotation**               | **Purpose/Use Case**                                                                                           |
@@ -72,7 +67,6 @@ A comprehensive list of Spring Boot annotations, covering core Spring Boot, conf
 | `@RolesAllowed`               | Specifies which roles are allowed to access a method. |
 | `@WithMockUser`               | Simulates a user for testing security. |
 
----
 
 ## **Testing Annotations**
 | **Annotation**               | **Purpose/Use Case**                                                                                           |
@@ -86,7 +80,6 @@ A comprehensive list of Spring Boot annotations, covering core Spring Boot, conf
 | `@BeforeEach`                | Runs before each test method in a test class. |
 | `@AfterEach`                 | Runs after each test method in a test class. |
 
----
 
 ## **Profiles Annotations**
 | **Annotation**               | **Purpose/Use Case**                                                                                           |
@@ -98,7 +91,6 @@ A comprehensive list of Spring Boot annotations, covering core Spring Boot, conf
 | `@PropertySource`            | Loads properties from an external file. |
 | `@Environment`               | Provides access to the current environment settings. |
 
----
 
 ## **Actuator & Metrics Annotations**
 | **Annotation**               | **Purpose/Use Case**                                                                                           |
@@ -111,7 +103,6 @@ A comprehensive list of Spring Boot annotations, covering core Spring Boot, conf
 | `@Gauge`                     | Exposes a gauge metric to Actuator. |
 | `@Metered`                   | Marks a method to be counted as a metric (deprecated in favor of `@Timed`). |
 
----
 
 ## **Microservices Annotations**
 | **Annotation**               | **Purpose/Use Case**                                                                                           |
@@ -122,7 +113,6 @@ A comprehensive list of Spring Boot annotations, covering core Spring Boot, conf
 | `@Retryable`                 | Enables retry logic for a method. |
 | `@LoadBalanced`              | Enables load balancing for REST clients. |
 
----
 
 ## **Miscellaneous Annotations**
 | **Annotation**               | **Purpose/Use Case**                                                                                           |
@@ -134,7 +124,6 @@ A comprehensive list of Spring Boot annotations, covering core Spring Boot, conf
 | `@Cacheable`                 | Caches the result of a method. |
 | `@CacheEvict`                | Evicts entries from a cache. |
 
----
 
 ## **Summary**
 
