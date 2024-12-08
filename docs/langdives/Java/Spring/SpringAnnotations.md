@@ -1,10 +1,10 @@
-# Spring Annotations.
+# **Spring Annotations**
 
-A **comprehensive list of Spring Boot annotations**, covering **core Spring Boot, configuration, web, data, testing, and more**. I'll organize them by categories with **keys (annotation names)** and **values (purpose/use cases)** for easy reference.
+A comprehensive list of Spring Boot annotations, covering core Spring Boot, configuration, web, data, testing, and more. I'll organize them by categories with keys (annotation names) and values (purpose/use cases) for easy reference.
 
 ---
 
-## **1. Core Annotations in Spring Boot**
+## **Core Annotations**
 | **Annotation**               | **Purpose/Use Case**                                                                                           |
 |------------------------------|----------------------------------------------------------------------------------------------------------------|
 | `@SpringBootApplication`      | Main entry point for a Spring Boot application. Combines `@Configuration`, `@ComponentScan`, and `@EnableAutoConfiguration`. |
@@ -17,7 +17,7 @@ A **comprehensive list of Spring Boot annotations**, covering **core Spring Boot
 
 ---
 
-## **2. Web and REST Annotations**
+## **Web and REST Annotations**
 | **Annotation**               | **Purpose/Use Case**                                                                                           |
 |------------------------------|----------------------------------------------------------------------------------------------------------------|
 | `@RestController`             | Marks a class as a REST API controller. Combines `@Controller` and `@ResponseBody`. |
@@ -40,7 +40,7 @@ A **comprehensive list of Spring Boot annotations**, covering **core Spring Boot
 
 ---
 
-## **3. Data Access (JPA, JDBC) Annotations**
+## **JPA, JDBC Annotations**
 | **Annotation**               | **Purpose/Use Case**                                                                                           |
 |------------------------------|----------------------------------------------------------------------------------------------------------------|
 | `@Entity`                    | Marks a class as a JPA entity. |
@@ -61,7 +61,7 @@ A **comprehensive list of Spring Boot annotations**, covering **core Spring Boot
 
 ---
 
-## **4. Security Annotations**
+## **Security Annotations**
 | **Annotation**               | **Purpose/Use Case**                                                                                           |
 |------------------------------|----------------------------------------------------------------------------------------------------------------|
 | `@EnableWebSecurity`          | Enables Spring Security for web applications. |
@@ -74,7 +74,7 @@ A **comprehensive list of Spring Boot annotations**, covering **core Spring Boot
 
 ---
 
-## **5. Spring Boot Testing Annotations**
+## **Testing Annotations**
 | **Annotation**               | **Purpose/Use Case**                                                                                           |
 |------------------------------|----------------------------------------------------------------------------------------------------------------|
 | `@SpringBootTest`             | Runs integration tests for a Spring Boot application. Loads the full application context. |
@@ -88,7 +88,7 @@ A **comprehensive list of Spring Boot annotations**, covering **core Spring Boot
 
 ---
 
-## **6. Configuration and Profiles Annotations**
+## **Profiles Annotations**
 | **Annotation**               | **Purpose/Use Case**                                                                                           |
 |------------------------------|----------------------------------------------------------------------------------------------------------------|
 | `@ConfigurationProperties`   | Binds external configuration properties to a Java bean. |
@@ -100,7 +100,7 @@ A **comprehensive list of Spring Boot annotations**, covering **core Spring Boot
 
 ---
 
-## **7. Actuator and Metrics Annotations**
+## **Actuator & Metrics Annotations**
 | **Annotation**               | **Purpose/Use Case**                                                                                           |
 |------------------------------|----------------------------------------------------------------------------------------------------------------|
 | `@Endpoint`                  | Defines a custom Actuator endpoint. |
@@ -113,7 +113,7 @@ A **comprehensive list of Spring Boot annotations**, covering **core Spring Boot
 
 ---
 
-## **8. Spring Cloud and Microservices Annotations**
+## **Microservices Annotations**
 | **Annotation**               | **Purpose/Use Case**                                                                                           |
 |------------------------------|----------------------------------------------------------------------------------------------------------------|
 | `@EnableDiscoveryClient`     | Enables service registration with Eureka, Consul, or Zookeeper. |
@@ -124,7 +124,7 @@ A **comprehensive list of Spring Boot annotations**, covering **core Spring Boot
 
 ---
 
-## **9. Miscellaneous Annotations**
+## **Miscellaneous Annotations**
 | **Annotation**               | **Purpose/Use Case**                                                                                           |
 |------------------------------|----------------------------------------------------------------------------------------------------------------|
 | `@Conditional`               | Conditionally registers a bean based on custom logic. |
