@@ -1,4 +1,4 @@
-# Locking.
+# **Locking**
 
 Locking is an essential concept in multithreaded programming to prevent race conditions and ensure thread safety. When multiple threads access shared resources, locks ensure that only one thread accesses the critical section at a time.
 
