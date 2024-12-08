@@ -138,6 +138,6 @@ A comprehensive list of Spring Boot annotations, covering core Spring Boot, conf
 
 ## **Summary**
 
-This is a **comprehensive list of all major Spring Boot annotations**, categorized by their functionality. With these annotations, Spring Boot makes it easier to develop applications by reducing boilerplate code, automating configuration, and offering powerful tools for testing, security, and microservices development.
+This is a comprehensive list of all major Spring Boot annotations, categorized by their functionality. With these annotations, Spring Boot makes it easier to develop applications by reducing boilerplate code, automating configuration, and offering powerful tools for testing, security, and microservices development.
 
 ---

@@ -1,8 +1,8 @@
-# Difference Between Spring Framework and Spring Boot.
+# **Difference B/W Spring Framework & Boot**
 
-A **detailed comparison table** that covers **all possible differences between Spring Boot and Spring Framework**. This comparison covers everything from **setup, configuration, embedded servers, web applications, testing, microservices support**, and much more.
+A detailed comparison table that covers all possible differences between Spring Boot and Spring Framework. This comparison covers everything from setup, configuration, embedded servers, web applications, testing, microservices support, and much more.
 
----
+## **Differences**
 
 | **Category**                      | **Spring Framework**                                               | **Spring Boot**                                                   |
 |------------------------------------|--------------------------------------------------------------------|--------------------------------------------------------------------|
@@ -42,16 +42,18 @@ A **detailed comparison table** that covers **all possible differences between S
 | **Backward Compatibility**        | Must manually update configurations when upgrading versions.       | Provides **backward compatibility** with most Spring projects. |
 | **Community and Ecosystem**       | Large community and extensive ecosystem.                           | Built on top of Spring Framework with additional tools for modern development. |
 
----
+## **Summary**
 
-## **Summary of Key Differences:**
+**Spring Boot simplifies Spring Framework** by:
 
-- **Spring Boot simplifies Spring Framework** by:
   - Automating configuration.
   - Providing embedded servers.
   - Offering out-of-the-box starters for common features.
-- **Spring Framework** gives more control and flexibility but at the cost of **manual setup and configuration**.
-- **Spring Boot** is optimized for **rapid development**, especially for **microservices** and **cloud-native** applications.
-- **Spring Framework** is still relevant for **legacy applications** or when fine-grained control is necessary.
+
+**Spring Framework** gives more control and flexibility but at the cost of manual setup and configuration.
+
+**Spring Boot** is optimized for rapid development, especially for microservices and cloud-native applications.
+
+**Spring Framework** is still relevant for legacy applications or when fine-grained control is necessary.
 
 ---
