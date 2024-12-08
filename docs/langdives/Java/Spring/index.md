@@ -9,7 +9,6 @@ Spring is a popular, open-source Java-based framework used to create enterprise-
 - Promote loosely coupled and testable code.
 - Offer modularity through different projects (Spring Data, Spring Security, Spring MVC, etc.).
 
-
 ## **Ecosystem Overview**
 
 The Spring ecosystem consists of various projects for different use cases:
