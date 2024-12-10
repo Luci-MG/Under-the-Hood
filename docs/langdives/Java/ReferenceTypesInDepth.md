@@ -199,18 +199,18 @@ The interned pool is part of the JVM's heap and managed by the Java String class
     - When calling `String.intern()`, Java **interns the string**, meaning it adds the string to the pool if it's not already present.
 
 ???+ example "String Pool Usage Example"
-```java
-public class Main {
-    public static void main(String[] args) {
-        String s1 = new String("Hello");
-        String s2 = s1.intern();  // Adds "Hello" to the pool, if not already present
+    ```java
+    public class Main {
+        public static void main(String[] args) {
+            String s1 = new String("Hello");
+            String s2 = s1.intern();  // Adds "Hello" to the pool, if not already present
 
-        String s3 = "Hello";  // Uses the interned string from the pool
+            String s3 = "Hello";  // Uses the interned string from the pool
 
-        System.out.println(s2 == s3);  // true (same reference from the pool)
+            System.out.println(s2 == s3);  // true (same reference from the pool)
+        }
     }
-}
-```
+    ```
 
 ### **Why Use Hash Table ?**
 
