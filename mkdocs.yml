@@ -178,7 +178,7 @@ nav:
     - Distributed Concepts:
       - High Availability and Fault Tolerance: techdives/DistrubutedConcepts/HighAvailabilityFaultTolerance.md
     - Distributed Systems:
-      - Docker & K8s Documentation: techdives/DistrubutedSystems/DockerAndK8s.md # need to edit this title
+      - Docker & K8s : techdives/DistrubutedSystems/DockerAndK8s.md # need to edit this title
       - Simple Storage Service - S3: techdives/DistrubutedSystems/S3.md
       - Kafka: techdives/DistrubutedSystems/Kafka.md
       - Elasticsearch: techdives/DistrubutedSystems/ElasticSearch.md

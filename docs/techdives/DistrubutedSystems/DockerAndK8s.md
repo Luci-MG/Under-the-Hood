@@ -1,36 +1,33 @@
 # **Docker and Kubernetes**
 
-## **1. Overview of Docker and Kubernetes**
+## **Overview**
 
 ### **Docker**
-- **Definition**:  
-  Docker is a platform that enables developers to build, package, and run applications in lightweight containers. It ensures applications are portable and can run consistently across different environments, from development to production.  
+Docker is a platform that enables developers to build, package, and run applications in lightweight containers. It ensures applications are portable and can run consistently across different environments, from development to production.  
    
-- **Key Concepts**:
-  - **Containers**:  Encapsulate applications with all their dependencies, ensuring consistency across systems. Containers share the host OS kernel, making them more lightweight than traditional virtual machines.
-  - **Images**:  Immutable templates used to create containers, typically defined in a `Dockerfile`. Images are layered and reusable.
-  - **Docker Compose**:  A tool to define and manage multi-container Docker applications via a single YAML file, simplifying orchestration on a single machine.
-
----
+!!! note "Key Components"
+    - **Containers**:  Encapsulate applications with all their dependencies, ensuring consistency across systems. Containers share the host OS kernel, making them more lightweight than traditional virtual machines.
+    - **Images**:  Immutable templates used to create containers, typically defined in a `Dockerfile`. Images are layered and reusable.
+    - **Docker Compose**:  A tool to define and manage multi-container Docker applications via a single YAML file, simplifying orchestration on a single machine.
 
 ### **Kubernetes**
-- **Definition**:  
-  Kubernetes (often abbreviated as K8s) is an open-source platform for automating the deployment, scaling, and management of containerized applications. It abstracts away the complexity of running containers at scale across multiple machines.
+Kubernetes (often abbreviated as K8s) is an open-source platform for automating the deployment, scaling, and management of containerized applications. It abstracts away the complexity of running containers at scale across multiple machines.
 
-- **Key Components**:
-  - **Pods**:  The smallest deployable units in Kubernetes. A Pod can host one or more tightly coupled containers.
-  - **Services**:  Define stable network endpoints for Pods, enabling communication between components in the cluster.
-  - **Cluster**:  A group of nodes managed by a control plane that runs applications as Pods across multiple machines for load balancing and reliability.
+!!! note "Key Components"
+    - **Pods**:  The smallest deployable units in Kubernetes. A Pod can host one or more tightly coupled containers.
+    - **Services**:  Define stable network endpoints for Pods, enabling communication between components in the cluster.
+    - **Cluster**:  A group of nodes managed by a control plane that runs applications as Pods across multiple machines for load balancing and reliability.
 
 ---
 
-## **2. Hierarchy and Relationship Between Docker and Kubernetes**
+## **Hierarchy and Relationship**
 
-### **Docker vs. Kubernetes**
-- **Docker**: Focused on building, packaging, and running containers. It handles application-level concerns.
-- **Kubernetes**: Focuses on orchestrating, scaling, and managing containers across distributed environments.
+### **Docker vs Kubernetes**
+**Docker**: Focused on building, packaging, and running containers. It handles application-level concerns.
 
-### **How Docker and Kubernetes Work Together**
+**Kubernetes**: Focuses on orchestrating, scaling, and managing containers across distributed environments.
+
+### **How they Work Together**
 - **Container Runtime**: Kubernetes uses Docker as one of its container runtimes, though other options like **containerd** or **CRI-O** are available.
 - **Complementary Roles**: Docker handles container creation, while Kubernetes ensures containers are deployed and managed across the entire cluster efficiently.
 
