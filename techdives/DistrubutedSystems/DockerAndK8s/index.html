@@ -744,9 +744,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-using-docker-with-kubernetes" class="md-nav__link">
+  <a href="#using-docker-with-kubernetes" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Using Docker with Kubernetes
+      Using Docker with Kubernetes
     </span>
   </a>
   
@@ -2707,9 +2707,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-using-docker-with-kubernetes" class="md-nav__link">
+  <a href="#using-docker-with-kubernetes" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Using Docker with Kubernetes
+      Using Docker with Kubernetes
     </span>
   </a>
   
@@ -2871,9 +2871,9 @@
 <div class="admonition note">
 <p class="admonition-title">Key Components</p>
 <ul>
-<li><strong>Containers</strong>:  Encapsulate applications with all their dependencies, ensuring consistency across systems. Containers share the host OS kernel, making them more lightweight than traditional virtual machines.</li>
-<li><strong>Images</strong>:  Immutable templates used to create containers, typically defined in a <code>Dockerfile</code>. Images are layered and reusable.</li>
-<li><strong>Docker Compose</strong>:  A tool to define and manage multi-container Docker applications via a single YAML file, simplifying orchestration on a single machine.</li>
+<li>Containers:  Encapsulate applications with all their dependencies, ensuring consistency across systems. Containers share the host OS kernel, making them more lightweight than traditional virtual machines.</li>
+<li>Images:  Immutable templates used to create containers, typically defined in a <code>Dockerfile</code>. Images are layered and reusable.</li>
+<li>Docker Compose:  A tool to define and manage multi-container Docker applications via a single YAML file, simplifying orchestration on a single machine.</li>
 </ul>
 </div>
 <h3 id="kubernetes"><strong>Kubernetes</strong><a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h3>
@@ -2881,53 +2881,42 @@
 <div class="admonition note">
 <p class="admonition-title">Key Components</p>
 <ul>
-<li><strong>Pods</strong>:  The smallest deployable units in Kubernetes. A Pod can host one or more tightly coupled containers.</li>
-<li><strong>Services</strong>:  Define stable network endpoints for Pods, enabling communication between components in the cluster.</li>
-<li><strong>Cluster</strong>:  A group of nodes managed by a control plane that runs applications as Pods across multiple machines for load balancing and reliability.</li>
+<li>Pods:  The smallest deployable units in Kubernetes. A Pod can host one or more tightly coupled containers.</li>
+<li>Services:  Define stable network endpoints for Pods, enabling communication between components in the cluster.</li>
+<li>Cluster:  A group of nodes managed by a control plane that runs applications as Pods across multiple machines for load balancing and reliability.</li>
 </ul>
 </div>
 <hr />
 <h2 id="hierarchy-and-relationship"><strong>Hierarchy and Relationship</strong><a class="headerlink" href="#hierarchy-and-relationship" title="Permanent link">&para;</a></h2>
 <h3 id="docker-vs-kubernetes"><strong>Docker vs Kubernetes</strong><a class="headerlink" href="#docker-vs-kubernetes" title="Permanent link">&para;</a></h3>
-<p><strong>Docker</strong>: Focused on building, packaging, and running containers. It handles application-level concerns.</p>
-<p><strong>Kubernetes</strong>: Focuses on orchestrating, scaling, and managing containers across distributed environments.</p>
+<p>Docker focuses on building, packaging, and running containers. It handles application-level concerns whereas Kubernetes focuses on orchestrating, scaling, and managing containers across distributed environments.</p>
 <h3 id="how-they-work-together"><strong>How they Work Together</strong><a class="headerlink" href="#how-they-work-together" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Container Runtime</strong>: Kubernetes uses Docker as one of its container runtimes, though other options like <strong>containerd</strong> or <strong>CRI-O</strong> are available.</li>
-<li><strong>Complementary Roles</strong>: Docker handles container creation, while Kubernetes ensures containers are deployed and managed across the entire cluster efficiently.</li>
+<li>Container Runtime: Kubernetes uses Docker as one of its container runtimes, though other options like containerd or CRI-O are available.</li>
+<li>Complementary Roles: Docker handles container creation, while Kubernetes ensures containers are deployed and managed across the entire cluster efficiently.</li>
 </ul>
-<hr />
-<h2 id="3-using-docker-with-kubernetes"><strong>3. Using Docker with Kubernetes</strong><a class="headerlink" href="#3-using-docker-with-kubernetes" title="Permanent link">&para;</a></h2>
+<h2 id="using-docker-with-kubernetes">Using Docker with Kubernetes<a class="headerlink" href="#using-docker-with-kubernetes" title="Permanent link">&para;</a></h2>
+<details class="info" open="open">
+<summary>Steps</summary>
+<p>Create a Dockerfile for your application and build the image
+  <div class="language-bash highlight"><span class="filename">Step-1: Build Docker Images</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>my-app:latest<span class="w"> </span>.
+</span></code></pre></div></p>
+<p>Store the image in a registry (e.g., Docker Hub)
+  <div class="language-bash highlight"><span class="filename">Step-2: Push to Registry</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker<span class="w"> </span>push<span class="w"> </span>my-app:latest
+</span></code></pre></div></p>
+<p>Use the built Docker image in a Kubernetes Deployment YAML file and apply it with:
+  <div class="language-bash highlight"><span class="filename">Deploy on Kubernetes</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>deployment.yaml
+</span></code></pre></div></p>
+</details>
+<h2 id="4-creating-and-managing-docker-and-kubernetes-components-individually">4. Creating and Managing Docker and Kubernetes Components Individually<a class="headerlink" href="#4-creating-and-managing-docker-and-kubernetes-components-individually" title="Permanent link">&para;</a></h2>
+<h3 id="creating-docker-components">Creating Docker Components<a class="headerlink" href="#creating-docker-components" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p><strong>Build Docker Images</strong>:<br />
-   Create a Dockerfile for your application and build the image:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>my-app:latest<span class="w"> </span>.
-</span></code></pre></div></p>
-</li>
-<li>
-<p><strong>Push to Registry</strong>:<br />
-   Store the image in a registry (e.g., Docker Hub):
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker<span class="w"> </span>push<span class="w"> </span>my-app:latest
-</span></code></pre></div></p>
-</li>
-<li>
-<p><strong>Deploy on Kubernetes</strong>:<br />
-   Use the built Docker image in a Kubernetes Deployment YAML file and apply it with:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>deployment.yaml
-</span></code></pre></div></p>
-</li>
-</ol>
-<hr />
-<h2 id="4-creating-and-managing-docker-and-kubernetes-components-individually"><strong>4. Creating and Managing Docker and Kubernetes Components Individually</strong><a class="headerlink" href="#4-creating-and-managing-docker-and-kubernetes-components-individually" title="Permanent link">&para;</a></h2>
-<h3 id="creating-docker-components"><strong>Creating Docker Components</strong><a class="headerlink" href="#creating-docker-components" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p><strong>Install Docker</strong>:<br />
+<p>Install Docker:<br />
    Follow <a href="https://docs.docker.com/get-docker/">Docker’s official installation guide</a> for your operating system.</p>
 </li>
 <li>
-<p><strong>Create a Dockerfile</strong>:<br />
+<p>Create a Dockerfile:<br />
    Example:
    <div class="language-Dockerfile highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.9</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
@@ -2937,18 +2926,18 @@
 </span></code></pre></div></p>
 </li>
 <li>
-<p><strong>Build and Run Docker Containers</strong>:</p>
+<p>Build and Run Docker Containers:</p>
 </li>
-<li><strong>Build Image</strong>:
+<li>Build Image:
      <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>my-app:latest<span class="w"> </span>.
 </span></code></pre></div></li>
 <li>
-<p><strong>Run Container</strong>:
+<p>Run Container:
      <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">5000</span>:5000<span class="w"> </span>my-app:latest
 </span></code></pre></div></p>
 </li>
 <li>
-<p><strong>Use Docker Compose</strong>:</p>
+<p>Use Docker Compose:</p>
 </li>
 <li>Define services in a <code>docker-compose.yml</code>:
      <div class="language-yaml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.8&#39;</span>
@@ -2963,18 +2952,18 @@
 </span></code></pre></div></li>
 </ol>
 <hr />
-<h3 id="creating-kubernetes-components"><strong>Creating Kubernetes Components</strong><a class="headerlink" href="#creating-kubernetes-components" title="Permanent link">&para;</a></h3>
+<h3 id="creating-kubernetes-components">Creating Kubernetes Components<a class="headerlink" href="#creating-kubernetes-components" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p><strong>Install Kubernetes</strong>:<br />
-   Use <strong>Minikube</strong> for local development or create a production cluster using cloud providers like GKE, AKS, or EKS.</p>
+<p>Install Kubernetes:<br />
+   Use Minikube for local development or create a production cluster using cloud providers like GKE, AKS, or EKS.</p>
 </li>
 <li>
-<p><strong>Define Kubernetes Resources</strong>:<br />
+<p>Define Kubernetes Resources:<br />
    Create YAML manifests for Deployments and Services.</p>
 </li>
 <li>
-<p><strong>Deployment YAML</strong>:
+<p>Deployment YAML:
      <div class="language-yaml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nt">metadata</span><span class="p">:</span>
@@ -2997,7 +2986,7 @@
 </span></code></pre></div></p>
 </li>
 <li>
-<p><strong>Service YAML</strong>:
+<p>Service YAML:
      <div class="language-yaml highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nt">metadata</span><span class="p">:</span>
@@ -3012,121 +3001,121 @@
 </span></code></pre></div></p>
 </li>
 <li>
-<p><strong>Deploy to Kubernetes</strong>:
+<p>Deploy to Kubernetes:
    <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>deployment.yaml
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>service.yaml
 </span></code></pre></div></p>
 </li>
 </ol>
 <hr />
-<h2 id="5-deployment-scenarios"><strong>5. Deployment Scenarios</strong><a class="headerlink" href="#5-deployment-scenarios" title="Permanent link">&para;</a></h2>
-<h3 id="single-machine-deployment"><strong>Single Machine Deployment</strong><a class="headerlink" href="#single-machine-deployment" title="Permanent link">&para;</a></h3>
+<h2 id="5-deployment-scenarios">5. Deployment Scenarios<a class="headerlink" href="#5-deployment-scenarios" title="Permanent link">&para;</a></h2>
+<h3 id="single-machine-deployment">Single Machine Deployment<a class="headerlink" href="#single-machine-deployment" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
-<p><strong>With Docker Compose</strong>:<br />
+<p>With Docker Compose:<br />
   Define services in <code>docker-compose.yml</code> and run:
   <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>docker-compose<span class="w"> </span>up
 </span></code></pre></div></p>
 </li>
 <li>
-<p><strong>With Kubernetes (Using Minikube)</strong>:  </p>
+<p>With Kubernetes (Using Minikube):  </p>
 </li>
 <li>Install Minikube and create a cluster.</li>
 <li>Apply your Kubernetes manifests with <code>kubectl</code>.</li>
 </ul>
-<h3 id="multiple-machines-deployment"><strong>Multiple Machines Deployment</strong><a class="headerlink" href="#multiple-machines-deployment" title="Permanent link">&para;</a></h3>
+<h3 id="multiple-machines-deployment">Multiple Machines Deployment<a class="headerlink" href="#multiple-machines-deployment" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Using Docker Swarm</strong>:  </li>
+<li>Using Docker Swarm:  </li>
 <li>Initialize the Swarm cluster:<br />
     <div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>docker<span class="w"> </span>swarm<span class="w"> </span>init
 </span></code></pre></div></li>
 <li>
-<p>Use <strong>overlay networks</strong> for service communication across nodes.</p>
+<p>Use overlay networks for service communication across nodes.</p>
 </li>
 <li>
-<p><strong>Using Kubernetes</strong>:  </p>
+<p>Using Kubernetes:  </p>
 </li>
 <li>Set up a Kubernetes cluster using cloud providers.</li>
 <li>Use Kubernetes services to enable seamless inter-pod communication.</li>
 </ul>
 <hr />
-<h2 id="6-communication-between-services"><strong>6. Communication Between Services</strong><a class="headerlink" href="#6-communication-between-services" title="Permanent link">&para;</a></h2>
+<h2 id="6-communication-between-services">6. Communication Between Services<a class="headerlink" href="#6-communication-between-services" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Single Machine Communication</strong>:</li>
-<li><strong>Docker Compose</strong>: Services communicate using their service names as hostnames.</li>
+<li>Single Machine Communication:</li>
+<li>Docker Compose: Services communicate using their service names as hostnames.</li>
 <li>
-<p><strong>Kubernetes</strong>: Pods use <strong>DNS names</strong> or <strong>Service endpoints</strong> to communicate.</p>
+<p>Kubernetes: Pods use DNS names or Service endpoints to communicate.</p>
 </li>
 <li>
-<p><strong>Multiple Machines Communication</strong>:</p>
+<p>Multiple Machines Communication:</p>
 </li>
-<li><strong>Docker Swarm</strong>: Overlay networks allow services on different nodes to interact.</li>
-<li><strong>Kubernetes</strong>: The flat networking model enables Pods to communicate across nodes transparently.</li>
+<li>Docker Swarm: Overlay networks allow services on different nodes to interact.</li>
+<li>Kubernetes: The flat networking model enables Pods to communicate across nodes transparently.</li>
 </ul>
 <hr />
-<h2 id="7-key-differences-between-docker-compose-and-kubernetes"><strong>7. Key Differences Between Docker Compose and Kubernetes</strong><a class="headerlink" href="#7-key-differences-between-docker-compose-and-kubernetes" title="Permanent link">&para;</a></h2>
+<h2 id="7-key-differences-between-docker-compose-and-kubernetes">7. Key Differences Between Docker Compose and Kubernetes<a class="headerlink" href="#7-key-differences-between-docker-compose-and-kubernetes" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th><strong>Aspect</strong></th>
-<th><strong>Docker Compose</strong></th>
-<th><strong>Kubernetes</strong></th>
+<th>Aspect</th>
+<th>Docker Compose</th>
+<th>Kubernetes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Purpose</strong></td>
+<td>Purpose</td>
 <td>Local development and testing</td>
 <td>Production orchestration</td>
 </tr>
 <tr>
-<td><strong>Configuration</strong></td>
+<td>Configuration</td>
 <td>Single <code>docker-compose.yml</code> file</td>
 <td>Multiple YAML files for resources</td>
 </tr>
 <tr>
-<td><strong>Scaling</strong></td>
+<td>Scaling</td>
 <td>Manual</td>
 <td>Automated scaling with <code>kubectl scale</code></td>
 </tr>
 <tr>
-<td><strong>High Availability</strong></td>
+<td>High Availability</td>
 <td>Limited</td>
 <td>Built-in redundancy and self-healing</td>
 </tr>
 <tr>
-<td><strong>Use Case</strong></td>
+<td>Use Case</td>
 <td>Simple applications on one machine</td>
 <td>Complex workloads across clusters</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="8-additional-considerations"><strong>8. Additional Considerations</strong><a class="headerlink" href="#8-additional-considerations" title="Permanent link">&para;</a></h2>
+<h2 id="8-additional-considerations">8. Additional Considerations<a class="headerlink" href="#8-additional-considerations" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Persistent Storage</strong>:</li>
-<li><strong>Docker</strong>: Use <strong>Docker volumes</strong> to store persistent data.</li>
+<li>Persistent Storage:</li>
+<li>Docker: Use Docker volumes to store persistent data.</li>
 <li>
-<p><strong>Kubernetes</strong>: Use <strong>Persistent Volumes (PV)</strong> and <strong>Persistent Volume Claims (PVC)</strong>.</p>
+<p>Kubernetes: Use Persistent Volumes (PV) and Persistent Volume Claims (PVC).</p>
 </li>
 <li>
-<p><strong>Monitoring and Logging</strong>:</p>
+<p>Monitoring and Logging:</p>
 </li>
 <li>
-<p>Use <strong>Prometheus</strong> and <strong>Grafana</strong> in Kubernetes for comprehensive monitoring.</p>
+<p>Use Prometheus and Grafana in Kubernetes for comprehensive monitoring.</p>
 </li>
 <li>
-<p><strong>CI/CD Integration</strong>:</p>
+<p>CI/CD Integration:</p>
 </li>
-<li>Integrate Docker and Kubernetes into pipelines using tools like <strong>Jenkins</strong> or <strong>GitLab CI</strong> for automated builds and deployments.</li>
+<li>Integrate Docker and Kubernetes into pipelines using tools like Jenkins or GitLab CI for automated builds and deployments.</li>
 </ul>
 <hr />
-<h2 id="9-how-to-use-docker-compose-to-get-the-application-from-github-and-build-the-docker-image"><strong>9. How to Use Docker Compose to Get the Application from GitHub and Build the Docker Image</strong><a class="headerlink" href="#9-how-to-use-docker-compose-to-get-the-application-from-github-and-build-the-docker-image" title="Permanent link">&para;</a></h2>
+<h2 id="9-how-to-use-docker-compose-to-get-the-application-from-github-and-build-the-docker-image">9. How to Use Docker Compose to Get the Application from GitHub and Build the Docker Image<a class="headerlink" href="#9-how-to-use-docker-compose-to-get-the-application-from-github-and-build-the-docker-image" title="Permanent link">&para;</a></h2>
 <hr />
-<h3 id="getting-from-github-and-using-docker-compose-build-context"><strong>Getting from Github and using Docker Compose Build Context</strong><a class="headerlink" href="#getting-from-github-and-using-docker-compose-build-context" title="Permanent link">&para;</a></h3>
-<p>Docker Compose can also use the <strong>build context</strong> to pull code directly from <strong>GitHub</strong> when creating an image. Here’s how:</p>
+<h3 id="getting-from-github-and-using-docker-compose-build-context">Getting from Github and using Docker Compose Build Context<a class="headerlink" href="#getting-from-github-and-using-docker-compose-build-context" title="Permanent link">&para;</a></h3>
+<p>Docker Compose can also use the build context to pull code directly from GitHub when creating an image. Here’s how:</p>
 <ol>
-<li><strong>Create a <code>docker-compose.yml</code> with GitHub Repository as the Build Context:</strong></li>
+<li>Create a <code>docker-compose.yml</code> with GitHub Repository as the Build Context:</li>
 </ol>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.8&#39;</span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nt">services</span><span class="p">:</span>
@@ -3138,148 +3127,148 @@
 </span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;5000:5000&quot;</span>
 </span></code></pre></div>
 <ol>
-<li><strong>Run Docker Compose to Build and Start the Container:</strong></li>
+<li>Run Docker Compose to Build and Start the Container:</li>
 </ol>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>docker-compose<span class="w"> </span>up<span class="w"> </span>--build
 </span></code></pre></div>
-<p><strong>Note:</strong><br />
-- This method works <strong>only if the GitHub repository is public</strong>. For private repositories, you’ll need to provide authentication (e.g., via SSH keys or GitHub tokens).
+<p>Note:<br />
+- This method works only if the GitHub repository is public. For private repositories, you’ll need to provide authentication (e.g., via SSH keys or GitHub tokens).
 - Docker will pull the latest version from the specified GitHub repository and build the image based on the <code>Dockerfile</code> in the repository.</p>
 <hr />
-<h2 id="10-silly-and-practical-questions-numbered"><strong>10. Silly and Practical Questions (Numbered)</strong><a class="headerlink" href="#10-silly-and-practical-questions-numbered" title="Permanent link">&para;</a></h2>
+<h2 id="10-silly-and-practical-questions-numbered">10. Silly and Practical Questions (Numbered)<a class="headerlink" href="#10-silly-and-practical-questions-numbered" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p><strong>Can I use a Docker Compose file with Kubernetes?</strong><br />
-   Not directly. Kubernetes doesn’t understand Docker Compose syntax, but there are tools like <strong>Kompose</strong> that can convert Docker Compose files into Kubernetes YAML files.</p>
+<p>Can I use a Docker Compose file with Kubernetes?<br />
+   Not directly. Kubernetes doesn’t understand Docker Compose syntax, but there are tools like Kompose that can convert Docker Compose files into Kubernetes YAML files.</p>
 </li>
 <li>
-<p><strong>What happens if I try to run a Docker Compose file inside a Kubernetes cluster?</strong><br />
+<p>What happens if I try to run a Docker Compose file inside a Kubernetes cluster?<br />
    It won’t work. Kubernetes will look at you confused (figuratively), because it expects YAML manifests with its own syntax, not a <code>docker-compose.yml</code>.</p>
 </li>
 <li>
-<p><strong>Why do Kubernetes YAML files look scarier than Docker Compose files?</strong><br />
+<p>Why do Kubernetes YAML files look scarier than Docker Compose files?<br />
    Kubernetes YAML files are more complex because they handle more advanced scenarios like scaling, networking, and rolling updates, which Docker Compose doesn’t attempt to address.</p>
 </li>
 <li>
-<p><strong>Do I need to uninstall Docker if I switch to Kubernetes?</strong><br />
+<p>Do I need to uninstall Docker if I switch to Kubernetes?<br />
    Nope! Docker is still useful for building and testing images locally, even if you’re deploying to Kubernetes. In fact, Kubernetes can use Docker as a container runtime.</p>
 </li>
 <li>
-<p><strong>Will Docker containers fight with Kubernetes Pods if they run on the same machine?</strong><br />
+<p>Will Docker containers fight with Kubernetes Pods if they run on the same machine?<br />
    Nope, they’ll coexist peacefully. Docker containers and Kubernetes Pods can run side by side without conflict. They’re friends, not rivals!</p>
 </li>
 <li>
-<p><strong>Can I copy-paste my Docker Compose file into Kubernetes and hope it works?</strong><br />
-   Sorry, no shortcuts here. You need to convert the Compose file into Kubernetes resources, either manually or using tools like <strong>Kompose</strong>.</p>
+<p>Can I copy-paste my Docker Compose file into Kubernetes and hope it works?<br />
+   Sorry, no shortcuts here. You need to convert the Compose file into Kubernetes resources, either manually or using tools like Kompose.</p>
 </li>
 <li>
-<p><strong>Is Docker Compose faster than Kubernetes because it has fewer YAML files?</strong><br />
+<p>Is Docker Compose faster than Kubernetes because it has fewer YAML files?<br />
    Yes, Docker Compose is faster to set up for local development because it’s simpler. But for production-scale orchestration, Kubernetes is much more powerful.</p>
 </li>
 <li>
-<p><strong>How do I know if my container is happy inside a Kubernetes Pod?</strong><br />
+<p>How do I know if my container is happy inside a Kubernetes Pod?<br />
    Check with this command:
    <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods
 </span></code></pre></div>
    If the status is <code>Running</code>, your container is content. If you see <code>CrashLoopBackOff</code>, it’s definitely not happy!</p>
 </li>
 <li>
-<p><strong>Can I use Kubernetes without the cloud, or will it complain?</strong><br />
-   You can use <strong>Minikube</strong> or <strong>kind (Kubernetes in Docker)</strong> to run Kubernetes locally on your machine. No cloud required.</p>
+<p>Can I use Kubernetes without the cloud, or will it complain?<br />
+   You can use Minikube or kind (Kubernetes in Docker) to run Kubernetes locally on your machine. No cloud required.</p>
 </li>
 <li>
-<p><strong>What’s the difference between <code>docker-compose up</code> and <code>kubectl apply -f</code>?</strong>  </p>
+<p>What’s the difference between <code>docker-compose up</code> and <code>kubectl apply -f</code>?  </p>
 <ul>
 <li><code>docker-compose up</code>: Starts containers defined in a <code>docker-compose.yml</code> file.  </li>
 <li><code>kubectl apply -f</code>: Deploys resources (like Pods, Deployments) described in a Kubernetes YAML file to your cluster.</li>
 </ul>
 </li>
 <li>
-<p><strong>Do I still need to learn Docker Swarm if I already know Kubernetes?</strong><br />
+<p>Do I still need to learn Docker Swarm if I already know Kubernetes?<br />
     Not really. Docker Swarm is simpler but not as widely used in production as Kubernetes. Kubernetes has become the de facto standard.</p>
 </li>
 <li>
-<p><strong>Can a single Pod run multiple Docker Compose services?</strong><br />
+<p>Can a single Pod run multiple Docker Compose services?<br />
     Yes! A Pod can run multiple containers, similar to how Docker Compose runs multiple services. However, in Kubernetes, these containers should be tightly coupled (e.g., sharing resources).</p>
 </li>
 <li>
-<p><strong>If Docker Compose is easier, why do people torture themselves with Kubernetes?</strong><br />
-    Kubernetes offers features like <strong>scaling</strong>, <strong>self-healing</strong>, and <strong>load balancing</strong>. It’s overkill for simple projects but essential for large, distributed applications.</p>
+<p>If Docker Compose is easier, why do people torture themselves with Kubernetes?<br />
+    Kubernetes offers features like scaling, self-healing, and load balancing. It’s overkill for simple projects but essential for large, distributed applications.</p>
 </li>
 <li>
-<p><strong>Is Kubernetes just a fancy way of saying, “I don’t want to use Docker Compose”?</strong><br />
+<p>Is Kubernetes just a fancy way of saying, “I don’t want to use Docker Compose”?<br />
     Not exactly. Docker Compose is great for local setups, while Kubernetes is a powerful orchestration tool for running applications across multiple nodes at scale.</p>
 </li>
 <li>
-<p><strong>What’s the difference between a Pod and a Container? Can I use the words interchangeably?</strong><br />
-    Not quite. A <strong>Pod</strong> is a wrapper that can contain one or more containers. Pods are the smallest deployable unit in Kubernetes, but a container is just an isolated environment for running applications.</p>
+<p>What’s the difference between a Pod and a Container? Can I use the words interchangeably?<br />
+    Not quite. A Pod is a wrapper that can contain one or more containers. Pods are the smallest deployable unit in Kubernetes, but a container is just an isolated environment for running applications.</p>
 </li>
 <li>
-<p><strong>If a container crashes in Kubernetes, does Kubernetes get sad?</strong><br />
+<p>If a container crashes in Kubernetes, does Kubernetes get sad?<br />
     Nope! Kubernetes will restart the container automatically. That’s part of its self-healing magic.</p>
 </li>
 <li>
-<p><strong>Will my application break if I use a Docker image from 2015?</strong><br />
+<p>Will my application break if I use a Docker image from 2015?<br />
     It might! Older images could have compatibility issues or security vulnerabilities. Use them only if you’re sure they still meet your needs.</p>
 </li>
 <li>
-<p><strong>Is Kubernetes allergic to Windows, or will it run happily there?</strong><br />
+<p>Is Kubernetes allergic to Windows, or will it run happily there?<br />
     Kubernetes supports Windows nodes, but the experience is smoother with Linux. Most people deploy Kubernetes on Linux-based clusters.</p>
 </li>
 <li>
-<p><strong>Can I use both Docker and Kubernetes at the same time? Or will it cause chaos?</strong><br />
+<p>Can I use both Docker and Kubernetes at the same time? Or will it cause chaos?<br />
     Yes, you can use both. Build your containers with Docker, push them to a registry, and deploy them with Kubernetes. No chaos – just smooth workflows.</p>
 </li>
 <li>
-<p><strong>Why can’t Docker Compose just learn scaling and take over Kubernetes' job?</strong><br />
+<p>Why can’t Docker Compose just learn scaling and take over Kubernetes' job?<br />
     Docker Compose is intentionally lightweight and simple. Adding Kubernetes-like features would complicate it and defeat its original purpose.</p>
 </li>
 <li>
-<p><strong>How much YAML is too much YAML?</strong><br />
+<p>How much YAML is too much YAML?<br />
     If you start dreaming in YAML, it’s probably too much. But seriously, Kubernetes relies heavily on YAML, so learning to manage it effectively is key.</p>
 </li>
 <li>
-<p><strong>Can Kubernetes work without YAML files? (Please say yes!)</strong><br />
+<p>Can Kubernetes work without YAML files? (Please say yes!)<br />
     Unfortunately, no. YAML files are essential for defining resources in Kubernetes. You can use Helm charts to simplify it, but YAML is unavoidable.</p>
 </li>
 <li>
-<p><strong>What happens if I forget to push my Docker image before deploying with Kubernetes?</strong><br />
+<p>What happens if I forget to push my Docker image before deploying with Kubernetes?<br />
     Your deployment will fail because Kubernetes won’t find the image in the registry. Always remember to push!</p>
 </li>
 <li>
-<p><strong>Can I use <code>kubectl</code> commands on Docker containers?</strong><br />
+<p>Can I use <code>kubectl</code> commands on Docker containers?<br />
     Nope. <code>kubectl</code> is specifically for managing Kubernetes resources. Use <code>docker</code> commands for Docker containers.</p>
 </li>
 <li>
-<p><strong>Is Kubernetes only for tech wizards, or can normal humans use it too?</strong><br />
+<p>Is Kubernetes only for tech wizards, or can normal humans use it too?<br />
     Normal humans can use it too! The learning curve is steep, but with practice, anyone can master it.</p>
 </li>
 <li>
-<p><strong>Do I need to sacrifice sleep to understand Kubernetes?</strong><br />
+<p>Do I need to sacrifice sleep to understand Kubernetes?<br />
     Maybe at first. But once you get the hang of it, Kubernetes will become your friend, and sleep will return.</p>
 </li>
 <li>
-<p><strong>Can a Docker container tell the difference between running on Kubernetes and Docker Compose?</strong><br />
+<p>Can a Docker container tell the difference between running on Kubernetes and Docker Compose?<br />
     Nope! The container itself doesn’t care where it’s running. As long as it gets its dependencies and configuration, it’ll happily run anywhere.</p>
 </li>
 <li>
-<p><strong>Can I run two Docker Compose files on one machine?</strong><br />
+<p>Can I run two Docker Compose files on one machine?<br />
    Yes, use the <code>-p</code> option to specify different project names for each Compose file.</p>
 </li>
 <li>
-<p><strong>Can services communicate across multiple machines?</strong><br />
+<p>Can services communicate across multiple machines?<br />
    Yes, with Docker Swarm or Kubernetes, services can communicate across machines using overlay networks or Kubernetes networking.</p>
 </li>
 <li>
-<p><strong>Is Docker Compose suitable for production?</strong><br />
+<p>Is Docker Compose suitable for production?<br />
    Not recommended for large-scale production. Use Kubernetes or Docker Swarm instead.</p>
 </li>
 <li>
-<p><strong>How do I set up Kubernetes on a single machine?</strong><br />
-   Use <strong>Minikube</strong> to run a local Kubernetes cluster.</p>
+<p>How do I set up Kubernetes on a single machine?<br />
+   Use Minikube to run a local Kubernetes cluster.</p>
 </li>
 <li>
-<p><strong>What file formats are used by Docker and Kubernetes?</strong><br />
+<p>What file formats are used by Docker and Kubernetes?<br />
    Docker uses <code>Dockerfile</code> and <code>docker-compose.yml</code>. Kubernetes uses YAML files for resources like Deployments and Services.</p>
 </li>
 </ol>
@@ -3306,7 +3295,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 14, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 15, 2024</span>
   </span>
 
     
