@@ -175,6 +175,8 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Tech Dives: 
+    - General Concepts:
+      - Git: techdives/GeneralConcepts/git.md
     - Distributed Concepts:
       - High Availability and Fault Tolerance: techdives/DistrubutedConcepts/HighAvailabilityFaultTolerance.md
     - Distributed Systems:
