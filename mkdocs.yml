@@ -174,18 +174,6 @@ markdown_extensions:
 # TODO:: edit all files title to not have bold stuff
 nav:
   - Home: index.md
-  - Tech Dives: 
-    - General Concepts:
-      - Git: techdives/GeneralConcepts/git.md
-    - Distributed Concepts:
-      - High Availability and Fault Tolerance: techdives/DistrubutedConcepts/HighAvailabilityFaultTolerance.md
-    - Distributed Systems:
-      - Docker & K8s : techdives/DistrubutedSystems/DockerAndK8s.md # need to edit this title
-      - Simple Storage Service - S3: techdives/DistrubutedSystems/S3.md
-      - Kafka: techdives/DistrubutedSystems/Kafka.md
-      - Elasticsearch: techdives/DistrubutedSystems/ElasticSearch.md
-      - Redis: techdives/DistrubutedSystems/Redis.md
-      - Cassandra: techdives/DistrubutedSystems/Cassandra.md
   - Fundamental Dives:
     - Fundamental Concepts:
       - Concurrency and Parallelism: fundamentaldives/FundamentalConcepts/ConcurrencyParallelism.md
@@ -243,7 +231,18 @@ nav:
         - Spring Boot: langdives/Java/Spring/SpringBoot.md
         - Spring Boot Annotations: langdives/Java/Spring/SpringAnnotations.md
         - Spring Framework vs Boot: langdives/Java/Spring/SpringFrameworkVsSpringBoot.md
-        
+  - Tech Dives: 
+    - General Concepts:
+      - Git: techdives/GeneralConcepts/git.md
+    - Distributed Concepts:
+      - High Availability and Fault Tolerance: techdives/DistrubutedConcepts/HighAvailabilityFaultTolerance.md
+    - Distributed Systems:
+      - Docker & K8s : techdives/DistrubutedSystems/DockerAndK8s.md # need to edit this title
+      - Simple Storage Service - S3: techdives/DistrubutedSystems/S3.md
+      - Kafka: techdives/DistrubutedSystems/Kafka.md
+      - Elasticsearch: techdives/DistrubutedSystems/ElasticSearch.md
+      - Redis: techdives/DistrubutedSystems/Redis.md
+      - Cassandra: techdives/DistrubutedSystems/Cassandra.md
   - Blog:
     - blog/index.md
   - Change Log: changelog/index.md
