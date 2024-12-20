@@ -53,9 +53,9 @@ A method reference is a shorthand way of writing a lambda when a method already 
       names.forEach(System.out::println);  // Method reference
       ```
 
-      ???+ info "Explanation"
-            - `System.out::println` is a **method reference** to the `println()` method of `System.out`.
-            - It behaves just like the lambda `name -> System.out.println(name)` but is cleaner.
+???+ info "Explanation"
+      - `System.out::println` is a **method reference** to the `println()` method of `System.out`.
+      - It behaves just like the lambda `name -> System.out.println(name)` but is cleaner.
 
 Use **method references** when:
 
