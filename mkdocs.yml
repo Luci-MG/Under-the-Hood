@@ -66,8 +66,8 @@ theme:
         icon: material/toggle-switch-off
         name: Switch to system preference
   font:
-    text: Roboto
-    code: Roboto Mono
+    text: Noto Sans Oriya
+    code: Noto Sans Mono
   favicon: assets/favicon.png
   logo: assets/favicon.png
   icon:
@@ -198,7 +198,7 @@ nav:
       - Circuit Breakers: fundamentaldives/DesignPatterns/CircuitBreakers.md
   - Language Dives:
       - Java:
-        - JDK, JRE, JVM: langdives/Java/JavaJDKJREJVM.md
+        - JDK, JRE, JVM: langdives/Java/JDK-JRE-JVM.md
         - What is Maven?: langdives/Java/Maven.md # TODO:: need to edit this title
         - What is Gradle?: langdives/Java/Gradle.md # TODO:: need to edit this title
         - Maven vs Gradle: langdives/Java/MavenVsGradle.md
