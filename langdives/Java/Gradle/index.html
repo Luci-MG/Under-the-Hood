@@ -26,7 +26,7 @@
     
     
       
-        <title>What is Gradle? - Under the Hood</title>
+        <title>Gradle - Under the Hood</title>
       
     
     
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              What is Gradle?
+              Gradle
             
           </span>
         </div>
@@ -301,7 +301,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../JDK-JRE-JVM.md" class="md-tabs__link">
+        <a href="../JDK-JRE-JVM/" class="md-tabs__link">
           
   
     
@@ -1218,7 +1218,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../JDK-JRE-JVM.md" class="md-nav__link">
+      <a href="../JDK-JRE-JVM/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1243,7 +1243,7 @@
         
   
   <span class="md-ellipsis">
-    What is Maven?
+    Maven
   </span>
   
 
@@ -1273,7 +1273,7 @@
           
   
   <span class="md-ellipsis">
-    What is Gradle?
+    Gradle
   </span>
   
 
@@ -1284,7 +1284,7 @@
         
   
   <span class="md-ellipsis">
-    What is Gradle?
+    Gradle
   </span>
   
 
@@ -1326,9 +1326,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#gradle-build-scripts" class="md-nav__link">
+  <a href="#gradle-build" class="md-nav__link">
     <span class="md-ellipsis">
-      Gradle Build Scripts
+      Gradle Build
     </span>
   </a>
   
@@ -1347,15 +1347,6 @@
   <a href="#dependency-management" class="md-nav__link">
     <span class="md-ellipsis">
       Dependency Management
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#plugins-in-gradle" class="md-nav__link">
-    <span class="md-ellipsis">
-      Plugins in Gradle
     </span>
   </a>
   
@@ -2665,9 +2656,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#gradle-build-scripts" class="md-nav__link">
+  <a href="#gradle-build" class="md-nav__link">
     <span class="md-ellipsis">
-      Gradle Build Scripts
+      Gradle Build
     </span>
   </a>
   
@@ -2686,15 +2677,6 @@
   <a href="#dependency-management" class="md-nav__link">
     <span class="md-ellipsis">
       Dependency Management
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#plugins-in-gradle" class="md-nav__link">
-    <span class="md-ellipsis">
-      Plugins in Gradle
     </span>
   </a>
   
@@ -2804,9 +2786,10 @@
 <h1 id="gradle"><strong>Gradle</strong><a class="headerlink" href="#gradle" title="Permanent link">&para;</a></h1>
 <h2 id="what-is-gradle"><strong>What is Gradle ?</strong><a class="headerlink" href="#what-is-gradle" title="Permanent link">&para;</a></h2>
 <p>Gradle is a modern, powerful build automation tool used for building, testing, and deploying applications. It is particularly popular in Java and Android projects due to its flexibility and performance. Gradle uses a <code>Groovy/Kotlin-based DSL</code> to configure and manage builds, allowing for easy customization.</p>
-<hr />
 <h2 id="how-gradle-works"><strong>How Gradle Works ?</strong><a class="headerlink" href="#how-gradle-works" title="Permanent link">&para;</a></h2>
-<p>Gradle organizes builds using a <strong>Directed Acyclic Graph (DAG)</strong> of tasks, ensuring that tasks are executed only when necessary. The build process has three phases:</p>
+<p>Gradle organizes builds using a <em>Directed Acyclic Graph (DAG)</em> of tasks, ensuring that tasks are executed only when necessary.</p>
+<div class="admonition abstract">
+<p class="admonition-title">The Build process has Three phases</p>
 <div class="admonition info">
 <p class="admonition-title">Initialization Phase</p>
 <ul>
@@ -2827,16 +2810,18 @@
 <li>Executes the required tasks in the correct sequence according to the task dependencies.</li>
 </ul>
 </div>
-<hr />
-<h2 id="gradle-build-scripts"><strong>Gradle Build Scripts</strong><a class="headerlink" href="#gradle-build-scripts" title="Permanent link">&para;</a></h2>
-<p>Gradle build configuration is done in the <strong><code>build.gradle</code></strong> file. This file uses <strong>Groovy</strong> or <strong>Kotlin DSL</strong> to describe:</p>
+</div>
+<h2 id="gradle-build"><strong>Gradle Build</strong><a class="headerlink" href="#gradle-build" title="Permanent link">&para;</a></h2>
+<p>Gradle build configuration is done in the <code>build.gradle</code> file. This file uses Groovy or Kotlin DSL to describe:</p>
 <ul>
 <li>Dependencies required for the project.</li>
 <li>Repositories where the dependencies will be fetched from.</li>
 <li>Plugins to extend functionality.</li>
 <li>Custom tasks to automate various steps.</li>
 </ul>
-<div class="language-groovy highlight"><span class="filename">Example build.gradle</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">plugins</span><span class="w"> </span><span class="o">{</span>
+<div class="admonition example">
+<p class="admonition-title"><code>build.gradle</code> Example</p>
+<div class="language-groovy highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">plugins</span><span class="w"> </span><span class="o">{</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="s1">&#39;java&#39;</span><span class="w">        </span><span class="c1">// Apply Java plugin</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="s1">&#39;application&#39;</span><span class="w"> </span><span class="c1">// Allow running the app from CLI</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="o">}</span>
@@ -2851,10 +2836,10 @@
 </span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="o">}</span>
 </span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
 </span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">application</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="n">mainClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;com.example.HelloWorld&#39;</span><span class="w">  </span><span class="c1">// Entry point of the app</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="n">mainClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;com.example.UnderTheHood&#39;</span><span class="w">  </span><span class="c1">// Entry point of the app</span>
 </span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="o">}</span>
 </span></code></pre></div>
-<hr />
+</div>
 <h2 id="understanding-buildgradle"><strong>Understanding <code>build.gradle</code></strong><a class="headerlink" href="#understanding-buildgradle" title="Permanent link">&para;</a></h2>
 <div class="admonition abstract">
 <p class="admonition-title">Plugins Section</p>
@@ -2864,8 +2849,13 @@
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="o">}</span>
 </span></code></pre></div>
 <ul>
-<li>This section applies <strong>Gradle plugins</strong>. In the example, the <code>java</code> plugin sets up the project to be built as a <strong>Java application</strong>.</li>
-<li>The <code>application</code> plugin simplifies running the application with <code>gradle run</code>.</li>
+<li>This section applies Gradle plugins. </li>
+<li>Gradle provides an ecosystem of plugins to extend functionality</li>
+<li><code>java</code>: Adds support for Java projects.</li>
+<li><code>application</code>: Allows running applications directly from Gradle with <code>gradle run</code>.</li>
+<li><code>maven-publish</code>: Publishes artifacts to Maven repositories.</li>
+<li><code>android</code>: Used for Android app development.</li>
+<li>In the example, the <code>java</code> plugin sets up the project to be built as a Java application.</li>
 </ul>
 </div>
 <div class="admonition abstract">
@@ -2876,7 +2866,7 @@
 </span></code></pre></div>
 <ul>
 <li>This section tells Gradle where to download dependencies from.</li>
-<li><strong><code>mavenCentral()</code></strong> is a popular repository that hosts many open-source libraries.</li>
+<li><code>mavenCentral()</code> is a popular repository that hosts many open-source libraries.</li>
 </ul>
 </div>
 <div class="admonition abstract">
@@ -2887,152 +2877,134 @@
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="o">}</span>
 </span></code></pre></div>
 <ul>
-<li>Here, Gradle manages <strong>external libraries</strong> required by your project.</li>
-<li><strong><code>implementation</code></strong>: Adds a runtime dependency.</li>
-<li><strong><code>testImplementation</code></strong>: Adds a dependency for testing purposes.</li>
+<li>Gradle manages external libraries required by your project.</li>
+<li><code>implementation</code>: Adds a runtime dependency.</li>
+<li><code>testImplementation</code>: Adds a dependency for testing purposes.</li>
 </ul>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">Application Configuration</p>
 <div class="language-groovy highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">application</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">mainClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;com.example.HelloWorld&#39;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">mainClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;com.example.UnderTheHood&#39;</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="o">}</span>
 </span></code></pre></div>
 <ul>
-<li>This specifies the <strong>main class</strong> to be run when using the <code>gradle run</code> command.</li>
+<li>This specifies the main class to be run when using the <code>gradle run</code> command.</li>
 </ul>
 </div>
-<hr />
 <h2 id="dependency-management"><strong>Dependency Management</strong><a class="headerlink" href="#dependency-management" title="Permanent link">&para;</a></h2>
 <p>Gradle allows automatic dependency management. Dependencies (like libraries and frameworks) are fetched from repositories such as:</p>
 <ul>
 <li><strong>Maven Central</strong>: A public repository.</li>
-<li><strong>JCenter</strong>: (Now deprecated) Another widely-used repository.</li>
+<li><strong>JCenter</strong>: (Now deprecated) Another widely used repository.</li>
 <li><strong>Custom repositories</strong>: Can be local or remote (e.g., Artifactory, Nexus).</li>
 </ul>
-<p>Gradle <strong>resolves dependencies in the following order</strong>:</p>
-<ol>
+<p>Gradle resolves dependencies in the following order:</p>
+<ul>
 <li><strong>Local Cache</strong>: Located in <code>~/.gradle/caches/</code>.</li>
 <li><strong>Local Maven Repository</strong>: If <code>mavenLocal()</code> is specified (<code>~/.m2/repository/</code>).</li>
-<li><strong>Remote Repositories</strong>: Downloads dependencies from <strong>Maven Central</strong> or other remote repositories if not found locally.</li>
-</ol>
-<div class="language-bash highlight"><span class="filename">Offline Mode</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Forces Gradle to use only the **local cache** </span>
+<li><strong>Remote Repositories</strong>: Downloads dependencies from Maven Central or other remote repositories if not found locally.</li>
+</ul>
+<div class="language-bash highlight"><span class="filename">Offline Mode</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Forces Gradle to use only the local cache </span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1"># and does not try to access remote repositories.</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>gradle<span class="w"> </span>build<span class="w"> </span>--offline
 </span></code></pre></div>
-<hr />
-<h2 id="plugins-in-gradle"><strong>Plugins in Gradle</strong><a class="headerlink" href="#plugins-in-gradle" title="Permanent link">&para;</a></h2>
-<p>Gradle provides an ecosystem of <strong>plugins</strong> to extend functionality. </p>
-<ul>
-<li><strong>Java Plugin</strong>: Adds support for Java projects.</li>
-<li><strong>Application Plugin</strong>: Allows running applications directly from Gradle.</li>
-<li><strong>Maven Publish Plugin</strong>: Publishes artifacts to Maven repositories.</li>
-<li><strong>Android Plugin</strong>: Used for Android app development.</li>
-</ul>
-<p>Plugins are defined in the <code>build.gradle</code> file:
-<div class="language-groovy highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">plugins</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="s1">&#39;java&#39;</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="s1">&#39;maven-publish&#39;</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="o">}</span>
-</span></code></pre></div></p>
-<hr />
 <h2 id="custom-tasks"><strong>Custom Tasks</strong><a class="headerlink" href="#custom-tasks" title="Permanent link">&para;</a></h2>
-<p>Gradle allows developers to <strong>create custom tasks</strong> to automate specific workflows.</p>
+<p>Gradle allows developers to create custom tasks to automate specific workflows.</p>
 <details class="example" open="open">
-<summary>Example</summary>
-<div class="language-groovy highlight"><span class="filename">Custom Task</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">task</span><span class="w"> </span><span class="n">hello</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">doLast</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">        </span><span class="n">println</span><span class="w"> </span><span class="s1">&#39;Hello, Gradle!&#39;</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="o">}</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="o">}</span>
+<summary>Custom Tasks Example</summary>
+<div class="language-groovy highlight"><span class="filename">Create Custom Task</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">task</span><span class="w"> </span><span class="n">uth</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">doLast</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">        </span><span class="n">println</span><span class="w"> </span><span class="s1">&#39;Hello, UnderTheHood ;)&#39;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="o">}</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="o">}</span>
 </span></code></pre></div>
-<div class="language-bash highlight"><span class="filename">Run the task</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>gradle<span class="w"> </span>hello
+<div class="language-bash highlight"><span class="filename">Run the Custom task</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>gradle<span class="w"> </span>uth
 </span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Hello, Gradle!
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Hello, UnderTheHood ;)
+</span></code></pre></div>
+<p>Custom tasks can be chained and made dependent on other tasks:</p>
+<div class="language-groovy highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">task</span><span class="w"> </span><span class="n">compileCode</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">dependsOn</span><span class="w"> </span><span class="n">clean</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="n">doLast</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">        </span><span class="n">println</span><span class="w"> </span><span class="s1">&#39;Compiling code...&#39;</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="o">}</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="o">}</span>
 </span></code></pre></div>
 </details>
-<p>Custom tasks can be <strong>chained</strong> and made dependent on other tasks:</p>
-<div class="language-groovy highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">task</span><span class="w"> </span><span class="n">compileCode</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">dependsOn</span><span class="w"> </span><span class="n">clean</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="n">doLast</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">        </span><span class="n">println</span><span class="w"> </span><span class="s1">&#39;Compiling code...&#39;</span>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="o">}</span>
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="o">}</span>
-</span></code></pre></div>
-<hr />
 <h2 id="publishing-artifacts"><strong>Publishing Artifacts</strong><a class="headerlink" href="#publishing-artifacts" title="Permanent link">&para;</a></h2>
-<p>You can <strong>publish your project’s artifacts</strong> (e.g., JARs) to <strong>Maven Local or Remote repositories</strong> using the <code>maven-publish</code> plugin.</p>
-<div class="language-groovy highlight"><span class="filename">Apply Maven Publish Plugin</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">plugins</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="s1">&#39;maven-publish&#39;</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="o">}</span>
+<p>You can publish your project’s artifacts (e.g., JARs) to Maven Local or Remote repositories using the <code>maven-publish</code> plugin.</p>
+<div class="admonition example">
+<p class="admonition-title">Local Maven Publish Example</p>
+<div class="language-groovy highlight"><span class="filename">Apply Maven Publish Plugin</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">plugins</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="s1">&#39;maven-publish&#39;</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="o">}</span>
 </span></code></pre></div>
-<div class="language-groovy highlight"><span class="filename">Configure Publishing in build.gradle</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">publishing</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="n">publications</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">        </span><span class="n">mavenJava</span><span class="o">(</span><span class="n">MavenPublication</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">            </span><span class="n">from</span><span class="w"> </span><span class="n">components</span><span class="o">.</span><span class="na">java</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">        </span><span class="o">}</span>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">    </span><span class="o">}</span>
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">    </span><span class="n">repositories</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">        </span><span class="n">mavenLocal</span><span class="o">()</span><span class="w">  </span><span class="c1">// Publish to local Maven repository (~/.m2/repository)</span>
-</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">    </span><span class="o">}</span>
-</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="o">}</span>
+<div class="language-groovy highlight"><span class="filename">Configure Publishing in build.gradle</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">publishing</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="n">publications</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">        </span><span class="n">mavenJava</span><span class="o">(</span><span class="n">MavenPublication</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">            </span><span class="n">from</span><span class="w"> </span><span class="n">components</span><span class="o">.</span><span class="na">java</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">        </span><span class="o">}</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">    </span><span class="o">}</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">    </span><span class="n">repositories</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">        </span><span class="n">mavenLocal</span><span class="o">()</span><span class="w">  </span><span class="c1">// Publish to local Maven repository (~/.m2/repository)</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="o">}</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="o">}</span>
 </span></code></pre></div>
-<div class="language-bash highlight"><span class="filename">Publish the Artifact</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># This will install the JAR into your local Maven repository.</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>gradle<span class="w"> </span>publishToMavenLocal
+<div class="language-bash highlight"><span class="filename">Publish the Artifact</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># This will install the JAR into your local Maven repository.</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>gradle<span class="w"> </span>publishToMavenLocal
 </span></code></pre></div>
-<hr />
+</div>
 <h2 id="gradle-project-structure"><strong>Gradle Project Structure</strong><a class="headerlink" href="#gradle-project-structure" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><span class="filename">Gradle recommended standard directory structure</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>/my-project
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>│
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>├── build.gradle          # Build configuration file
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>├── settings.gradle       # Project settings file
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>├── src
-</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>│   └── main
-</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>│       └── java          # Source code
-</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>│   └── test
-</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>│       └── java          # Unit tests
-</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>└── build                 # Output directory (JAR, WAR)
+<div class="language-text highlight"><span class="filename">Gradle recommended standard directory structure</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>/my-project
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>│
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>├── build.gradle          # Build configuration file
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>├── settings.gradle       # Project settings file
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>├── src
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>│   └── main
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>│       └── java          # Source code
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>│   └── test
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>│       └── java          # Unit tests
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>└── build                 # Output directory (JAR, WAR)
 </span></code></pre></div>
 <ul>
 <li><strong><code>src/main/java</code></strong>: Contains the application source code.</li>
 <li><strong><code>src/test/java</code></strong>: Contains unit test code.</li>
 <li><strong><code>build/</code></strong>: Contains compiled artifacts (like JARs).</li>
 </ul>
-<p>Gradle supports <strong>multi-module projects</strong> where different modules are part of the same build.</p>
-<div class="language-text highlight"><span class="filename">Example Multi-Project Structure</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>/root-project
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>│
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>├── build.gradle            # Root project configuration
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>├── settings.gradle         # Lists sub-projects
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>├── module-1/
-</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>│   └── build.gradle        # Configuration for module 1
-</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>└── module-2/
-</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>    └── build.gradle        # Configuration for module 2
+<p>Gradle supports multi-module projects where different modules are part of the same build.</p>
+<div class="language-text highlight"><span class="filename">Example Multi-Project Structure</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>/root-project
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>│
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>├── build.gradle            # Root project configuration
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>├── settings.gradle         # Lists sub-projects
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>├── module-1/
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>│   └── build.gradle        # Configuration for module 1
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>└── module-2/
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>    └── build.gradle        # Configuration for module 2
 </span></code></pre></div>
-<div class="language-groovy highlight"><span class="filename">settings.gradle</span><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">rootProject</span><span class="o">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;multi-project-example&#39;</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">include</span><span class="w"> </span><span class="s1">&#39;module-1&#39;</span><span class="o">,</span><span class="w"> </span><span class="s1">&#39;module-2&#39;</span>
+<div class="language-groovy highlight"><span class="filename">settings.gradle</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">rootProject</span><span class="o">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;multi-project-example&#39;</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">include</span><span class="w"> </span><span class="s1">&#39;module-1&#39;</span><span class="o">,</span><span class="w"> </span><span class="s1">&#39;module-2&#39;</span>
 </span></code></pre></div>
-<div class="language-bash highlight"><span class="filename">Running the build</span><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># This will build all modules in the correct order.</span>
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>gradle<span class="w"> </span>build
+<div class="language-bash highlight"><span class="filename">Running the build</span><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># This will build all modules in the correct order.</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>gradle<span class="w"> </span>build
 </span></code></pre></div>
-<hr />
 <h2 id="gradle-wrapper"><strong>Gradle Wrapper</strong><a class="headerlink" href="#gradle-wrapper" title="Permanent link">&para;</a></h2>
-<p>The <strong>Gradle Wrapper</strong> is a feature that allows a project to include a <strong>specific Gradle version</strong> along with scripts to execute builds. This ensures that anyone working on the project uses the <strong>same Gradle version</strong> without requiring a manual installation.</p>
-<p>The <strong>Gradle Wrapper</strong> consists of:</p>
+<p>The Gradle Wrapper is a feature that allows a project to include a specific Gradle version along with scripts to execute builds. This ensures that anyone working on the project uses the same Gradle version without requiring a manual installation.</p>
+<p>The Gradle Wrapper consists of:</p>
 <ul>
-<li>A set of <strong>shell scripts</strong> (Unix: <code>gradlew</code>, Windows: <code>gradlew.bat</code>).</li>
-<li>A <strong>configuration file</strong> (<code>gradle/wrapper/gradle-wrapper.properties</code>) that specifies the Gradle version to use.</li>
-<li>A <strong>JAR file</strong> (<code>gradle-wrapper.jar</code>) that downloads Gradle if needed.</li>
+<li>A set of shell scripts (Unix: <code>gradlew</code>, Windows: <code>gradlew.bat</code>).</li>
+<li>A configuration file (<code>gradle/wrapper/gradle-wrapper.properties</code>) that specifies the Gradle version to use.</li>
+<li>A JAR file (<code>gradle-wrapper.jar</code>) that downloads Gradle if needed.</li>
 </ul>
 <h3 id="why-use-wrapper"><strong>Why Use Wrapper ?</strong><a class="headerlink" href="#why-use-wrapper" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Ensures that all team members use the <strong>same Gradle version</strong>.</li>
+<li>Ensures that all team members use the same Gradle version.</li>
 <li>Simplifies onboarding – contributors do not need to install Gradle manually.</li>
-<li>Useful for <strong>CI/CD pipelines</strong> to avoid version mismatches.</li>
-<li>Works <strong>offline</strong> after the first download by caching Gradle versions locally.</li>
+<li>Useful for CI/CD pipelines to avoid version mismatches.</li>
+<li>Works offline after the first download by caching Gradle versions locally.</li>
 </ul>
-<hr />
 <h2 id="gradle-commands"><strong>Gradle Commands</strong><a class="headerlink" href="#gradle-commands" title="Permanent link">&para;</a></h2>
-<p>Here are some essential <strong>Gradle commands</strong> for working with projects:</p>
+<p>Here are some essential Gradle commands for working with projects:</p>
 <table>
 <thead>
 <tr>
@@ -3071,23 +3043,21 @@
 </tr>
 </tbody>
 </table>
-<hr />
 <h2 id="performance-benefits"><strong>Performance Benefits</strong><a class="headerlink" href="#performance-benefits" title="Permanent link">&para;</a></h2>
 <p>Gradle is designed for speed and efficiency</p>
 <ul>
-<li><strong>Incremental Builds</strong>: Only recompiles <strong>changed files</strong>, speeding up builds.</li>
-<li><strong>Build Cache</strong>: Gradle reuses <strong>outputs of previous builds</strong> if nothing has changed.</li>
-<li><strong>Parallel Execution</strong>: Gradle can execute tasks in <strong>parallel</strong> when there are no dependencies between them.</li>
+<li><strong>Incremental Builds</strong>: Only recompiles changed files, speeding up builds.</li>
+<li><strong>Build Cache</strong>: Gradle reuses outputs of previous builds if nothing has changed.</li>
+<li><strong>Parallel Execution</strong>: Gradle can execute tasks in parallel when there are no dependencies between them.</li>
 </ul>
-<hr />
 <h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <p>Gradle provides several advantages for <strong>modern projects</strong></p>
 <ul>
 <li><strong>Flexibility</strong>: Customizable tasks and plugins allow you to tailor builds to your needs.</li>
 <li><strong>Speed</strong>: Incremental builds and build caching reduce build times.</li>
 <li><strong>Dependency Management</strong>: Easy integration with Maven repositories.</li>
-<li><strong>Scalability</strong>: Suitable for <strong>multi-project builds</strong> and large teams.</li>
-<li><strong>Extensibility</strong>: Works well for <strong>Java, Android, and multi-language projects</strong>.</li>
+<li><strong>Scalability</strong>: Suitable for multi-project builds and large teams.</li>
+<li><strong>Extensibility</strong>: Works well for Java, Android, and multi-language projects.</li>
 </ul>
 <hr />
 
@@ -3112,7 +3082,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 21, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 21, 2024</span>
   </span>
 
     
@@ -3180,7 +3150,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../Maven/" class="md-footer__link md-footer__link--prev" aria-label="Previous: What is Maven?">
+          <a href="../Maven/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Maven">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3190,7 +3160,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                What is Maven?
+                Maven
               </div>
             </div>
           </a>
