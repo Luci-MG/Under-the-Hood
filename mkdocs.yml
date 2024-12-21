@@ -199,8 +199,8 @@ nav:
   - Language Dives:
       - Java:
         - JDK, JRE, JVM: langdives/Java/JDK-JRE-JVM.md
-        - What is Maven?: langdives/Java/Maven.md # TODO:: need to edit this title
-        - What is Gradle?: langdives/Java/Gradle.md # TODO:: need to edit this title
+        - Maven: langdives/Java/Maven.md 
+        - Gradle: langdives/Java/Gradle.md
         - Maven vs Gradle: langdives/Java/MavenVsGradle.md
         - Heap-Stack: langdives/Java/JavaHeapStack.md # TODO:: need to edit this title # should rename this file 
         - 4 Pillars: langdives/Java/4Pillars.md
