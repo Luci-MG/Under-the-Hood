@@ -936,18 +936,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#with-spring-boot" class="md-nav__link">
+  <a href="#in-spring-boot" class="md-nav__link">
     <span class="md-ellipsis">
-      With Spring Boot
+      In Spring Boot
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#comparisons" class="md-nav__link">
+  <a href="#comparison" class="md-nav__link">
     <span class="md-ellipsis">
-      Comparisons
+      Comparison
     </span>
   </a>
   
@@ -2756,18 +2756,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#with-spring-boot" class="md-nav__link">
+  <a href="#in-spring-boot" class="md-nav__link">
     <span class="md-ellipsis">
-      With Spring Boot
+      In Spring Boot
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#comparisons" class="md-nav__link">
+  <a href="#comparison" class="md-nav__link">
     <span class="md-ellipsis">
-      Comparisons
+      Comparison
     </span>
   </a>
   
@@ -2821,43 +2821,38 @@
 
 <h1 id="singleton-design-pattern"><strong>Singleton Design Pattern</strong><a class="headerlink" href="#singleton-design-pattern" title="Permanent link">&para;</a></h1>
 <h2 id="what"><strong>What ?</strong><a class="headerlink" href="#what" title="Permanent link">&para;</a></h2>
-<p>The <strong>Singleton Pattern</strong> is a <strong>creational design pattern</strong> that ensures a class has <strong>only one instance</strong> and provides a global access point to that instance. </p>
-<div class="admonition info">
-<p class="admonition-title">Key Characteristics</p>
+<p>The Singleton Pattern is a creational design pattern that ensures a class has only one instance and provides a global access point to that instance. </p>
+<div class="admonition tip">
 <ul>
 <li><strong>Single instance</strong>: Only one object of the class is created.</li>
 <li><strong>Global access</strong>: Provides a global point of access to that instance.</li>
 </ul>
 </div>
-<p>Singleton is useful when exactly <strong>one instance of a class is needed</strong> across the system, like for logging, configuration, database connection pools, etc.</p>
-<hr />
+<p>Singleton is useful when exactly one instance of a class is needed across the system, like for logging, configuration, database connection pools, etc.</p>
 <h2 id="when-to-use"><strong>When to Use ?</strong><a class="headerlink" href="#when-to-use" title="Permanent link">&para;</a></h2>
 <ul>
 <li>When an object holds configuration settings for the application.</li>
 <li>When only one connection pool should be active throughout the system.</li>
-<li>Ensures that all parts of the application use the same logging instance.</li>
+<li>Needed to Ensure that all parts of the application use the same logging instance.</li>
 <li>When a cache should be available throughout the application.</li>
 </ul>
-<hr />
 <h2 id="when-not-to-use"><strong>When Not to Use ?</strong><a class="headerlink" href="#when-not-to-use" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Singleton is limited to the JVM instance, so it won't work across multiple servers such as distributed systems.</li>
-<li>If the singleton object holds state, it can lead to <strong>thread contention</strong> in cases like High concurrency applications.</li>
+<li>If the singleton object holds state, it can lead to thread contention in cases like High concurrency applications.</li>
 <li>Singleton classes are difficult to test because their state is shared across tests, leading to unpredictable behavior.</li>
 </ul>
-<hr />
 <h2 id="why-use"><strong>Why Use ?</strong><a class="headerlink" href="#why-use" title="Permanent link">&para;</a></h2>
 <ul>
 <li>As Only one instance is created, reducing memory overhead so memory efficiency </li>
 <li>Ensures a consistent state throughout the application since all code accesses the same instance.</li>
 <li>Provides a way to access a shared resource or service from anywhere in the code.</li>
 </ul>
-<hr />
 <h2 id="how-to-implement"><strong>How to Implement ?</strong><a class="headerlink" href="#how-to-implement" title="Permanent link">&para;</a></h2>
 <h3 id="eager-initialization"><strong>Eager Initialization</strong><a class="headerlink" href="#eager-initialization" title="Permanent link">&para;</a></h3>
 <p>The instance is created when the class is loaded. This is the simplest way, but it doesn’t support lazy loading.</p>
-<details class="example" open="open">
-<summary>Eager Initialization Example</summary>
+<details class="example">
+<summary>Eager Initialization Implementation</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EagerSingleton</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">EagerSingleton</span><span class="w"> </span><span class="n">INSTANCE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EagerSingleton</span><span class="p">();</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
@@ -2871,14 +2866,13 @@
 </span></code></pre></div>
 </details>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
+<p class="admonition-title">When to Use Eager</p>
 <p>When the instance is required throughout the application, and we are okay with it being created at startup.</p>
 </div>
-<hr />
 <h3 id="lazy-initialization"><strong>Lazy Initialization</strong><a class="headerlink" href="#lazy-initialization" title="Permanent link">&para;</a></h3>
-<p>The instance is created only when needed (on first access). But this version <strong>is not thread-safe</strong>.</p>
-<details class="example" open="open">
-<summary>Lazy Initialization Example</summary>
+<p>The instance is created only when needed (on first access). But this version is not thread-safe.</p>
+<details class="example">
+<summary>Lazy Initialization Implementation</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LazySingleton</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">LazySingleton</span><span class="w"> </span><span class="n">instance</span><span class="p">;</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
@@ -2893,15 +2887,14 @@
 </span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Not suitable for multithreaded environments.</p>
+<div class="admonition warning">
+<p class="admonition-title">Issue with Lazy</p>
+<p>Lazy Initialization is not suitable for multithreaded environments.</p>
 </div>
-<hr />
 <h3 id="using-synchronized"><strong>Using Synchronized</strong><a class="headerlink" href="#using-synchronized" title="Permanent link">&para;</a></h3>
 <p>This solves the issue of thread safety by synchronizing the access method.</p>
-<details class="example" open="open">
-<summary>Synchronized Example</summary>
+<details class="example">
+<summary>Synchronized Implementation</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ThreadSafeSingleton</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">ThreadSafeSingleton</span><span class="w"> </span><span class="n">instance</span><span class="p">;</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
@@ -2916,15 +2909,14 @@
 </span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition warning">
+<p class="admonition-title">Issue with Synchronized</p>
 <p>Performance overhead due to synchronization.</p>
 </div>
-<hr />
 <h3 id="double-checked-locking"><strong>Double-Checked Locking</strong><a class="headerlink" href="#double-checked-locking" title="Permanent link">&para;</a></h3>
 <p>This improves the performance by reducing the overhead of synchronized block.</p>
-<details class="example" open="open">
-<summary>Double-Checked Locking Example</summary>
+<details class="example">
+<summary>Double-Checked Locking Implementation</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DoubleCheckedLockingSingleton</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">volatile</span><span class="w"> </span><span class="n">DoubleCheckedLockingSingleton</span><span class="w"> </span><span class="n">instance</span><span class="p">;</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
@@ -2943,11 +2935,10 @@
 </span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<hr />
 <h3 id="bill-pugh-singleton"><strong>Bill Pugh Singleton</strong><a class="headerlink" href="#bill-pugh-singleton" title="Permanent link">&para;</a></h3>
-<p>This approach leverages <strong>static inner classes</strong>, which ensures thread safety and lazy loading without synchronization overhead.</p>
-<details class="example" open="open">
-<summary>Bill Pugh Example</summary>
+<p>This approach leverages static inner classes, which ensures thread safety and lazy loading without synchronization overhead.</p>
+<details class="example">
+<summary>Bill Pugh Singleton Implementation</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BillPughSingleton</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">BillPughSingleton</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
@@ -2962,15 +2953,13 @@
 </span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition success">
 <p>Best Practice</p>
 </div>
-<hr />
 <h3 id="enum-singleton"><strong>Enum Singleton</strong><a class="headerlink" href="#enum-singleton" title="Permanent link">&para;</a></h3>
 <p>This approach is the most concise and prevents issues with serialization and reflection attacks.</p>
-<details class="example" open="open">
-<summary>Enum Initialization Example</summary>
+<details class="example">
+<summary>Enum Singleton Implementation</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">enum</span><span class="w"> </span><span class="n">EnumSingleton</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">INSTANCE</span><span class="p">;</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
@@ -2980,14 +2969,12 @@
 </span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition success">
 <p>Recommended</p>
 </div>
-<hr />
-<h3 id="with-spring-boot"><strong>With Spring Boot</strong><a class="headerlink" href="#with-spring-boot" title="Permanent link">&para;</a></h3>
-<p>In <strong>Spring Boot</strong>, Spring’s <strong>IoC container</strong> (Inversion of Control) makes singleton beans by default. Each bean in Spring is, by default, a singleton. So, <strong>you don’t need to explicitly implement the Singleton pattern</strong>. Instead, you annotate the class with <code>@Component</code> or <code>@Service</code>, and Spring ensures that only one instance is created and managed.</p>
-<details class="example" open="open">
+<h3 id="in-spring-boot"><strong>In Spring Boot</strong><a class="headerlink" href="#in-spring-boot" title="Permanent link">&para;</a></h3>
+<p>In Spring Boot, Spring’s IoC container (Inversion of Control) makes singleton beans by default. Each bean in Spring is, by default, a singleton. So, you don’t need to explicitly implement the Singleton pattern. Instead, you annotate the class with <code>@Component</code> or <code>@Service</code>, and Spring ensures that only one instance is created and managed.</p>
+<details class="example">
 <summary>Spring Boot Example</summary>
 <div class="language-java highlight"><span class="filename">How to init in a Spring Boot application</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Component</span><span class="p">;</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
@@ -3022,10 +3009,9 @@
 </details>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Spring manages the lifecycle and thread safety for you, ensuring it behaves like a Singleton without extra code.</p>
+<p>Spring manages lifecycle and thread safety for you, ensuring it behaves like a Singleton without extra code.</p>
 </div>
-<hr />
-<h3 id="comparisons"><strong>Comparisons</strong><a class="headerlink" href="#comparisons" title="Permanent link">&para;</a></h3>
+<h3 id="comparison"><strong>Comparison</strong><a class="headerlink" href="#comparison" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -3081,7 +3067,6 @@
 </tr>
 </tbody>
 </table>
-<hr />
 <h2 id="potential-issues"><strong>Potential Issues</strong><a class="headerlink" href="#potential-issues" title="Permanent link">&para;</a></h2>
 <ul>
 <li>If not implemented correctly, it can lead to thread synchronization issues.</li>
@@ -3089,13 +3074,12 @@
 <li>Code becomes tightly coupled to the singleton instance, reducing flexibility.</li>
 <li>It’s harder to mock or replace singletons in unit tests, leading to less modular code.</li>
 </ul>
-<hr />
 <h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
-<p>The <strong>Singleton Pattern</strong> is a powerful tool when used appropriately. However, misuse can lead to tightly coupled code, concurrency issues, and testing difficulties. If you are working with Spring Boot, <strong>rely on Spring’s built-in singleton beans</strong> instead of implementing your own singleton logic. Where thread safety, serialization, or distributed behavior is required, choose the appropriate Singleton implementation like <strong>Enum Singleton</strong> or <strong>Bill Pugh Singleton</strong>.</p>
+<p>The Singleton Pattern is a powerful tool when used appropriately. However, misuse can lead to tightly coupled code, concurrency issues, and testing difficulties. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>By default, <strong>a single instance of the bean</strong> is created and <strong>shared across the entire application</strong> (singleton scope). If two or more components use the same bean, they will refer to <strong>the same instance</strong>.</p>
-<p>However, if you need a new instance every time a bean is requested, you can change the scope to <code>prototype</code>. But be mindful Spring’s singleton scope simplifies things like caching and state consistency, while prototype beans may introduce complexity.</p>
+<p>If you are working with Spring Boot, rely on Spring’s built-in singleton beans instead of implementing your own singleton logic. Where thread safety, serialization, or distributed behavior is required, choose the appropriate Singleton implementation like Enum Singleton or Bill Pugh Singleton. </p>
+<p>By default, a single instance of the bean is created and shared across the entire application (singleton scope). If two or more components use the same bean, they will refer to the same instance. However, if you need a new instance every time a bean is requested, you can change the scope to <code>prototype</code>. But be mindful Spring’s singleton scope simplifies things like caching and state consistency, while prototype beans may introduce complexity.</p>
 </div>
 <hr />
 
@@ -3120,7 +3104,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 17, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 22, 2024</span>
   </span>
 
     

@@ -2682,45 +2682,36 @@
 
 
 <h1 id="factory-design-method"><strong>Factory Design Method</strong><a class="headerlink" href="#factory-design-method" title="Permanent link">&para;</a></h1>
-<p>The <strong>Factory Method Pattern</strong> is one of the most widely used <strong>creational design patterns</strong>. It helps in the creation of objects without specifying the exact class of the object that will be created. </p>
-<hr />
 <h2 id="what"><strong>What ?</strong><a class="headerlink" href="#what" title="Permanent link">&para;</a></h2>
-<p><strong>Factory Method</strong> is a creational design pattern that provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created.</p>
-<p>The Factory Method Pattern defines an interface for creating an object but <strong>lets subclasses decide which class to instantiate</strong>. This pattern <strong>delegates the responsibility of object creation to subclasses</strong> rather than using a direct constructor call.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You provide a <strong>"factory" method</strong> that the client code calls to get the object, but the actual object that gets created is determined at runtime (based on some logic).</p>
+<p>Factory Method is a creational design pattern that provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created (decide which class to instantiate). This pattern delegates the responsibility of object creation to subclasses rather than using a direct constructor call, It is one of the most widely used creational design patterns, It helps in the creation of objects without specifying the exact class of the object that will be created.</p>
+<div class="admonition tip">
+<p>You provide a "factory" method that the client code calls to get the object, but the actual object that gets created is determined at runtime (based on some logic).</p>
 </div>
-<hr />
 <h2 id="when-to-use"><strong>When to Use ?</strong><a class="headerlink" href="#when-to-use" title="Permanent link">&para;</a></h2>
 <ul>
 <li>When you don't know in advance which class to instantiate (i.e., you want the logic to determine the object type dynamically).</li>
-<li>When you need flexibility in creating objects but want to avoid tight coupling with specific classes.</li>
-<li>When new types of objects might be introduced in the future without breaking existing code.</li>
+<li>When you need flexibility in creating objects but want to avoid tight coupling.</li>
+<li>When new types of objects might be introduced in the future without breaking code.</li>
 <li>When working with complex object creation logic (e.g., when object creation requires conditional logic).</li>
 </ul>
-<hr />
 <h2 id="when-not-to-use"><strong>When Not to Use ?</strong><a class="headerlink" href="#when-not-to-use" title="Permanent link">&para;</a></h2>
 <ul>
-<li>When <strong>only a single type of object</strong> needs to be created (Factory adds unnecessary complexity).</li>
-<li>If object creation does not require <strong>polymorphism</strong> or <strong>dynamism</strong>, and the same class instantiation works fine.</li>
-<li>When performance is critical, as Factory Method can introduce <strong>overhead</strong> by adding extra layers of abstraction.</li>
+<li>When only a single type of object needs to be created (Factory adds unnecessary complexity).</li>
+<li>If object creation does not require polymorphism or dynamism, and the same class instantiation works fine.</li>
+<li>When performance is critical, as Factory Method can introduce overhead by adding extra layers of abstraction.</li>
 </ul>
-<hr />
 <h2 id="where-it-shines"><strong>Where it Shines ?</strong><a class="headerlink" href="#where-it-shines" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Many frameworks (like JDBC, Hibernate, etc.) rely on Factory Method to return specific instances without the client needing to know the class type.</li>
 <li>When there are multiple subclasses of a product and only one of them needs to be instantiated at runtime.</li>
 <li>If new product types might be introduced in the future, the pattern provides an easy way to extend.</li>
 </ul>
-<hr />
 <h2 id="advantages"><strong>Advantages</strong><a class="headerlink" href="#advantages" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Loose coupling:</strong> The controller doesn't need to know the exact type of object being created.</li>
-<li><strong>Flexibility:</strong> You can add new types of notifications without modifying the controller logic.</li>
-<li><strong>Testability:</strong> The factory can be easily <strong>mocked or stubbed</strong> during unit tests.</li>
+<li>Loose coupling, The controller doesn't need to know exact type of object being created.</li>
+<li>Flexibility, You can add new types of notifications without modifying the controller logic.</li>
+<li>Testability, The factory can be easily mocked or stubbed during unit tests.</li>
 </ul>
-<hr />
 <h2 id="structure"><strong>Structure</strong><a class="headerlink" href="#structure" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Product Interface:</strong> Defines the interface for the object being created.</li>
@@ -2728,10 +2719,9 @@
 <li><strong>Creator:</strong> Declares the factory method which returns an object of type Product.</li>
 <li><strong>Concrete Creator:</strong> Overrides the factory method to return a specific product instance.</li>
 </ol>
-<hr />
 <h2 id="how-to-implement"><strong>How To Implement ?</strong><a class="headerlink" href="#how-to-implement" title="Permanent link">&para;</a></h2>
-<details class="example" open="open">
-<summary>Simple Java Example</summary>
+<details class="example">
+<summary>Structured Example</summary>
 <div class="language-java highlight"><span class="filename">Step-1: Define a Product Interface</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">Notification</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">notifyUser</span><span class="p">();</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">}</span>
@@ -2781,10 +2771,10 @@
 </span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<details class="example" open="open">
+<details class="example">
 <summary>Spring Boot Example</summary>
-<p>Spring Boot relies heavily on <strong>dependency injection (DI)</strong> and <strong>Inversion of Control (IoC)</strong>, which means <strong>Spring beans</strong> can act as factory classes to produce the desired objects.</p>
-<h4 id="example-notification-factory-with-spring-boot"><strong>Example: Notification Factory with Spring Boot</strong><a class="headerlink" href="#example-notification-factory-with-spring-boot" title="Permanent link">&para;</a></h4>
+<p>Spring Boot relies heavily on dependency injection (DI) and Inversion of Control (IoC), which means Spring beans can act as factory classes to produce the desired objects.</p>
+<h4 id="example-notification-factory-with-spring-boot"><strong>Example:</strong> Notification Factory with Spring Boot<a class="headerlink" href="#example-notification-factory-with-spring-boot" title="Permanent link">&para;</a></h4>
 <div class="language-java highlight"><span class="filename">Define the Product Interface and Implementations (Same as Before)</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">Notification</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">notifyUser</span><span class="p">();</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">}</span>
@@ -2838,12 +2828,11 @@
 </span></code></pre></div>
 <p>When you access <code>/notify/SMS</code> or <code>/notify/Email</code>, it will dynamically create and send the corresponding notification after running the spring boot application.</p>
 </details>
-<hr />
 <h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <p>The Factory Pattern enables dynamic object creation without specifying exact classes, reducing coupling and improving maintainability. It uses a factory method to determine which class to instantiate. In Spring Boot, this pattern integrates seamlessly through factory beans and dependency injection, providing flexible and condition-based object creation.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Factory Method is especially helpful in <strong>modular systems</strong> where new functionalities might be added frequently, and we want to <strong>minimize the impact of changes</strong> to existing code.</p>
+<p>Factory Method is especially helpful in modular systems where new functionalities might be added frequently, and we want to minimize the impact of changes to existing code.</p>
 </div>
 <hr />
 
@@ -2868,7 +2857,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 17, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 22, 2024</span>
   </span>
 
     
