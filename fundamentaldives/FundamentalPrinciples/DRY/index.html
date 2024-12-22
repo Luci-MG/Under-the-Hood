@@ -754,9 +754,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-use-dry" class="md-nav__link">
+  <a href="#how-to-use-example" class="md-nav__link">
     <span class="md-ellipsis">
-      How to Use DRY ?
+      How to Use Example ?
     </span>
   </a>
   
@@ -2605,9 +2605,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-use-dry" class="md-nav__link">
+  <a href="#how-to-use-example" class="md-nav__link">
     <span class="md-ellipsis">
-      How to Use DRY ?
+      How to Use Example ?
     </span>
   </a>
   
@@ -2646,15 +2646,13 @@
 
 
 <h1 id="dry-principle"><strong>DRY Principle</strong><a class="headerlink" href="#dry-principle" title="Permanent link">&para;</a></h1>
-<p>The <strong>DRY Principle</strong> stands for <strong>Don’t Repeat Yourself</strong>. It is a fundamental software development principle aimed at reducing repetition of code and logic. The main idea is that duplication introduces potential risks, if you need to update logic in multiple places, you might forget some, leading to bugs and inconsistencies. When applied well, it improves <strong>maintainability, scalability, and clarity</strong>.</p>
-<hr />
 <h2 id="what"><strong>What ?</strong><a class="headerlink" href="#what" title="Permanent link">&para;</a></h2>
-<div class="admonition info">
+<p>The DRY Principle stands for <em>Don’t Repeat Yourself</em>. It is a fundamental software development principle aimed at reducing repetition of code and logic. The main idea is that duplication introduces potential risks, if you need to update logic in multiple places, you might forget some, leading to bugs and inconsistencies. When applied well, it improves maintainability, scalability, and clarity, yupp something that lot of codebases misses.</p>
+<div class="admonition tip">
 <p>"Every piece of knowledge must have a single, unambiguous, authoritative representation within a system."</p>
 </div>
 <p>In other words, the DRY principle encourages developers to write modular, reusable code and avoid duplicating the same functionality in multiple places.
 It encourages us to minimize redundancy and write code that does one thing well, making our lives (and the lives of those who maintain our code) much easier.</p>
-<hr />
 <h2 id="when-to-use"><strong>When to Use ?</strong><a class="headerlink" href="#when-to-use" title="Permanent link">&para;</a></h2>
 <ul>
 <li>When similar code is being reused across multiple places.</li>
@@ -2663,25 +2661,22 @@ It encourages us to minimize redundancy and write code that does one thing well,
 <li>In design patterns or utility classes Extract common behavior to avoid redundancy.</li>
 <li>Database queries, APIs, and validations Avoid repeated queries or repeated validation code.</li>
 </ul>
-<hr />
 <h2 id="why-to-use"><strong>Why to Use ?</strong><a class="headerlink" href="#why-to-use" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Improved Maintainability with no duplication, you only need to update code in one place, reducing the risk of errors.</li>
 <li>Reduced Bug Risks When code is repeated, a bug in one place may go unnoticed in others. DRY ensures consistent logic across the codebase.</li>
 <li>Better Code Readability as redundant code makes it hard to focus on the real logic. Extracting common behavior enhances clarity.</li>
 <li>Easier Refactoring as DRY simplifies the process of changing logic. Code is modular and avoids unnecessary redundancy.</li>
-<li>Encourages Reusability using DRY often leads to <strong>utility classes, helper methods, or shared components</strong> that can be reused across projects.</li>
+<li>Encourages Reusability using DRY often leads to utility classes, helper methods, or shared components that can be reused across projects.</li>
 </ul>
-<hr />
 <h2 id="when-not-to-use"><strong>When Not to Use ?</strong><a class="headerlink" href="#when-not-to-use" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Over-abstracting</strong> can lead to tightly coupled code. If two pieces of code look similar but serve <strong>different purposes</strong>, it might not be a good idea to merge them.</li>
-<li>In <strong>micro-optimizations</strong>: If extracting code results in decreased performance or introduces complexity, it’s better to keep things simple.</li>
+<li>Over-abstracting can lead to tightly coupled code. If two pieces of code look similar but serve different purposes, it might not be a good idea to merge them.</li>
+<li>Don't in micro-optimizations, If extracting code results in decreased performance or introduces complexity, it’s better to keep things simple.</li>
 </ul>
-<hr />
-<h2 id="how-to-use-dry"><strong>How to Use DRY ?</strong><a class="headerlink" href="#how-to-use-dry" title="Permanent link">&para;</a></h2>
+<h2 id="how-to-use-example"><strong>How to Use Example ?</strong><a class="headerlink" href="#how-to-use-example" title="Permanent link">&para;</a></h2>
 <p>Let's cover an example where we apply DRY principle to refactor duplicated logic into reusable.</p>
-<details class="example">
+<details class="danger">
 <summary>Without DRY (Code Duplication) Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderService</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
@@ -2716,14 +2711,14 @@ It encourages us to minimize redundancy and write code that does one thing well,
 <details class="info" open="open">
 <summary>Explanation</summary>
 <ul>
-<li>The <strong>validation logic</strong> is duplicated across multiple methods (<code>placeOrder</code>, <code>cancelOrder</code>, and <code>updateOrder</code>).</li>
+<li>The validation logic is duplicated across multiple methods (<code>placeOrder</code>, <code>cancelOrder</code>, and <code>updateOrder</code>).</li>
 <li>If we want to change the validation rule, we need to update all the occurrences.</li>
 <li>This is a maintenance burden and prone to bugs.</li>
 </ul>
 </details>
 </details>
 <p>We can extract the common logic into a reusable private method to apply the DRY principle.</p>
-<details class="example">
+<details class="success">
 <summary>With DRY (Refactored Code) Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderService</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
@@ -2763,15 +2758,14 @@ It encourages us to minimize redundancy and write code that does one thing well,
 <details class="info" open="open">
 <summary>Explanation</summary>
 <ul>
-<li>We <strong>removed the duplicated validation code</strong> and moved it into <strong>dedicated reusable methods</strong> (<code>validateOrderId</code> and <code>validateQuantity</code>).</li>
-<li>Now, if we need to change the validation logic, we only have to update it in <strong>one place</strong>.</li>
-<li>The code is <strong>easier to read, maintain, and extend</strong>.</li>
+<li>We removed the duplicated validation code and moved it into <strong>dedicated reusable methods</strong> (<code>validateOrderId</code> and <code>validateQuantity</code>).</li>
+<li>Now, if we need to change the validation logic, we only have to update it in one place.</li>
+<li>The code is easier to read, maintain, and extend.</li>
 </ul>
 </details>
 </details>
-<hr />
 <h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
-<p>The DRY principle ensures that <strong>code duplication is minimized</strong> for easier maintenance and improved consistency. In our example, we extracted common validation logic to <strong>private methods</strong>, adhering to DRY and making the code more maintainable. However, always be careful to avoid <strong>over-abstraction</strong>, as not all code repetition is bad. The goal is to achieve <strong>a balance between simplicity and reusability</strong>.</p>
+<p>The DRY principle ensures that code duplication is minimized for easier maintenance and improved consistency. In our example, we extracted common validation logic to private methods, adhering to DRY and making the code more maintainable. However, always be careful to avoid over-abstraction, as not all code repetition is bad. The goal is to achieve a balance between simplicity and reusability.</p>
 <hr />
 
 
@@ -2795,7 +2789,7 @@ It encourages us to minimize redundancy and write code that does one thing well,
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 16, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 22, 2024</span>
   </span>
 
     

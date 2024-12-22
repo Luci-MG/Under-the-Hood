@@ -744,7 +744,7 @@
         <li class="md-nav__item">
   <a href="#how-to-use-example" class="md-nav__link">
     <span class="md-ellipsis">
-      How to Use ? Example
+      How to Use Example ?
     </span>
   </a>
   
@@ -2625,7 +2625,7 @@
         <li class="md-nav__item">
   <a href="#how-to-use-example" class="md-nav__link">
     <span class="md-ellipsis">
-      How to Use ? Example
+      How to Use Example ?
     </span>
   </a>
   
@@ -2664,15 +2664,12 @@
 
 
 <h1 id="kiss-principle"><strong>KISS Principle</strong><a class="headerlink" href="#kiss-principle" title="Permanent link">&para;</a></h1>
-<p>The <strong>KISS Principle</strong> stands for <strong>"Keep It Simple, Stupid"</strong>. It’s a design principle that emphasizes simplicity, stating that <strong>systems and code work best if they are kept simple rather than made unnecessarily complex</strong>. The main idea is to avoid over-engineering and unnecessary complications, which can introduce more bugs, make the code harder to maintain, and increase development time.</p>
-<hr />
 <h2 id="what"><strong>What ?</strong><a class="headerlink" href="#what" title="Permanent link">&para;</a></h2>
+<p>The KISS Principle stands for <em>"Keep It Simple, Stupid"</em>. It’s a design principle that emphasizes simplicity, stating that systems and code work best if they are kept simple rather than made unnecessarily complex. The main idea is to avoid over-engineering and unnecessary complications, which can introduce more bugs, make the code harder to maintain, and increase development time.</p>
 <p>KISS encourages developers to create code or solutions that are easy to understand, maintain, and modify. The idea is not to use complicated approaches or unnecessary abstractions when a simpler, more straightforward approach will do.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition tip">
 <p>“Simple” here doesn’t mean incomplete or simplistic it means clear, focused, and straightforward.</p>
 </div>
-<hr />
 <h2 id="when-to-use"><strong>When to Use ?</strong><a class="headerlink" href="#when-to-use" title="Permanent link">&para;</a></h2>
 <ul>
 <li>When you’re writing code that other developers (or future you) will need to understand.</li>
@@ -2681,7 +2678,6 @@
 <li>When performance and maintainability are both important.</li>
 <li>When solving common, straightforward problems (CRUD operations, data validation, etc.).</li>
 </ul>
-<hr />
 <h2 id="why-to-use"><strong>Why to Use ?</strong><a class="headerlink" href="#why-to-use" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Improves code readability as Simple code is easier to read and understand.</li>
@@ -2690,7 +2686,6 @@
 <li>Encourages reusability as Simple, well-factored code is more likely to be reusable.</li>
 <li>Reduces development time as Simple code can be implemented and tested faster.</li>
 </ul>
-<hr />
 <h2 id="where-not-to-use"><strong>Where Not to Use ?</strong><a class="headerlink" href="#where-not-to-use" title="Permanent link">&para;</a></h2>
 <p>While simplicity is valuable, there are situations where the KISS principle might not apply fully. Over-simplifying can sometimes lead to problems.</p>
 <ul>
@@ -2699,19 +2694,17 @@
 <li>In large-scale software projects, abstractions (even though they introduce some complexity) are necessary to manage dependencies and maintain modularity.</li>
 <li>Security systems often require additional layers of checks and validation that might seem complex. Simplifying such code could introduce vulnerabilities.</li>
 </ul>
-<hr />
 <h2 id="how-to-use-in-practice"><strong>How to Use in Practice ?</strong><a class="headerlink" href="#how-to-use-in-practice" title="Permanent link">&para;</a></h2>
-<ol>
+<ul>
 <li>Implement the most straightforward solution to a problem first.</li>
 <li>If the code grows complex, break it down into smaller, manageable pieces.</li>
 <li>Don’t use design patterns or abstractions unless they add real value.</li>
 <li>Use standard, well-known patterns unless there is a strong reason to deviate.</li>
 <li>Clear names for variables, methods, and classes contribute to simplicity.</li>
-</ol>
-<hr />
-<h2 id="how-to-use-example"><strong>How to Use ? Example</strong><a class="headerlink" href="#how-to-use-example" title="Permanent link">&para;</a></h2>
-<p>Let's Consider a example where we want to check if a number is <strong>even</strong> or <strong>odd</strong>.</p>
-<details class="example">
+</ul>
+<h2 id="how-to-use-example"><strong>How to Use Example ?</strong><a class="headerlink" href="#how-to-use-example" title="Permanent link">&para;</a></h2>
+<p>Let's Consider a example where we want to check if a number is even or odd.</p>
+<details class="danger">
 <summary>Non-KISS Complex Code</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">NumberUtils</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isEven</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -2734,13 +2727,13 @@
 <details class="info" open="open">
 <summary>Explanation</summary>
 <ul>
-<li>This version introduces <strong>unnecessary complexity</strong> by creating a separate method <code>isDivisibleByTwo</code>.</li>
+<li>This version introduces unnecessary complexity by creating a separate method <code>isDivisibleByTwo</code>.</li>
 <li>It complicates the readability without adding value.</li>
 <li>While technically correct, the design violates the KISS principle because the same functionality could have been achieved more simply.</li>
 </ul>
 </details>
 </details>
-<details class="example">
+<details class="success">
 <summary>KISS Simpler Code</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">NumberUtils</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isEven</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -2755,15 +2748,14 @@
 <details class="info" open="open">
 <summary>Explanation</summary>
 <ul>
-<li>This version keeps things <strong>simple</strong> and easy to understand. </li>
-<li>The code is <strong>self-explanatory</strong> without unnecessary indirection.</li>
+<li>This version keeps things simple and easy to understand. </li>
+<li>The code is self-explanatory without unnecessary indirection.</li>
 <li>It follows the KISS principle by doing the task in the <strong>simplest way possible</strong> while still being clear and functional.</li>
 </ul>
 </details>
 </details>
-<hr />
 <h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
-<p>The <strong>KISS principle</strong> encourages developers to create <strong>simple, maintainable, and readable code</strong>. In Java (or any programming language), it means avoiding unnecessary complexity. However, KISS must be balanced some projects or scenarios require complexity to meet performance, modularity, or security needs. Ultimately, applying KISS is about <strong>striking the right balance</strong> making the solution as simple as possible, but not simpler than necessary.</p>
+<p>The KISS principle encourages developers to create simple, maintainable, and readable code, it means avoiding unnecessary complexity. However, KISS must be balanced some projects or scenarios require complexity to meet performance, modularity, or security needs. In the end, applying KISS is about striking the right balance making the solution as simple as possible, but not simpler than necessary.</p>
 <hr />
 
 
@@ -2787,7 +2779,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 16, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 22, 2024</span>
   </span>
 
     

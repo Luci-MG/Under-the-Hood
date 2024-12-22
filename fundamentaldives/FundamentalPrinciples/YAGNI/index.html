@@ -793,9 +793,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#simple-java-example" class="md-nav__link">
+  <a href="#how-to-use-example" class="md-nav__link">
     <span class="md-ellipsis">
-      Simple Java Example
+      How to Use Example ?
     </span>
   </a>
   
@@ -2641,9 +2641,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#simple-java-example" class="md-nav__link">
+  <a href="#how-to-use-example" class="md-nav__link">
     <span class="md-ellipsis">
-      Simple Java Example
+      How to Use Example ?
     </span>
   </a>
   
@@ -2682,11 +2682,11 @@
 
 
 <h1 id="yagni-principle"><strong>YAGNI Principle</strong><a class="headerlink" href="#yagni-principle" title="Permanent link">&para;</a></h1>
-<p>Always implement things when you actually need them, never when you just foresee that you might need them.</p>
-<hr />
 <h2 id="what"><strong>What ?</strong><a class="headerlink" href="#what" title="Permanent link">&para;</a></h2>
-<p><strong>YAGNI</strong> stands for <strong>"You Aren’t Gonna Need It."</strong> It is one of the core principles of <strong>Extreme Programming (XP)</strong> and <strong>Agile development</strong>. The principle advises developers <strong>not to add any functionality or code until it is truly needed</strong>. Essentially, YAGNI promotes simplicity and avoids speculative development.</p>
-<hr />
+<p>YAGNI stands for <em>"You Aren’t Gonna Need It."</em> It is one of the core principles of Extreme Programming (XP) and Agile development. The principle advises developers not to add any functionality or code until it is truly needed. Essentially, YAGNI promotes simplicity and avoids speculative development.</p>
+<div class="admonition tip">
+<p>Always implement things when you actually need them, never when you just foresee you might need them.</p>
+</div>
 <h2 id="why-use"><strong>Why Use ?</strong><a class="headerlink" href="#why-use" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Reduces Complexity as unused code can make the codebase harder to maintain.</li>
@@ -2695,14 +2695,12 @@
 <li>Improves Focus as Teams stay focused on current requirements.</li>
 <li>Prevents Waste as You avoid wasting resources on unused or unnecessary functionality.</li>
 </ul>
-<hr />
 <h2 id="when-to-use"><strong>When to Use ?</strong><a class="headerlink" href="#when-to-use" title="Permanent link">&para;</a></h2>
 <ul>
 <li>During the early stages of software development when requirements are still evolving.</li>
 <li>In Agile or lean development methodologies, where the focus is on delivering working software quickly and iteratively.</li>
 <li>When planning features or writing code always ask, “Do we need this now?” If not, avoid implementing it.</li>
 </ul>
-<hr />
 <h2 id="when-not-to-use"><strong>When Not to Use ?</strong><a class="headerlink" href="#when-not-to-use" title="Permanent link">&para;</a></h2>
 <ul>
 <li>When designing core architecture You still need some foresight to design scalable systems. For example, if your product will likely need scalability soon, adding some basic support might be necessary. A good architecture sometimes requires forward-thinking to avoid technical debt.</li>
@@ -2711,7 +2709,6 @@
 <li>In infrastructure planning Systems like databases and message queues need to be built for the scale they might soon reach.</li>
 <li>In performance-critical applications, you might need to optimize upfront rather than waiting for problems to arise.</li>
 </ul>
-<hr />
 <h2 id="how-to-apply"><strong>How to Apply ?</strong><a class="headerlink" href="#how-to-apply" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Focus on immediate requirements Write only the code needed to solve the problem at hand.</li>
@@ -2719,7 +2716,6 @@
 <li>Review code regularly ensures developers are not adding speculative code.</li>
 <li>Practice Test Driven Development (TDD).</li>
 </ul>
-<hr />
 <h2 id="advantages"><strong>Advantages</strong><a class="headerlink" href="#advantages" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Faster Development By focusing only on what is necessary, development cycles are shorter.</li>
@@ -2727,10 +2723,9 @@
 <li>Lower Costs, Saves time, resources, and effort.</li>
 <li>Improved Team Efficiency Developers stay focused on real requirements.</li>
 </ul>
-<hr />
-<h2 id="simple-java-example"><strong>Simple Java Example</strong><a class="headerlink" href="#simple-java-example" title="Permanent link">&para;</a></h2>
-<p>Lets go through a simple example in Java to illustrate <strong>YAGNI in practice</strong>.</p>
-<details class="example">
+<h2 id="how-to-use-example"><strong>How to Use Example ?</strong><a class="headerlink" href="#how-to-use-example" title="Permanent link">&para;</a></h2>
+<p>Lets go through a simple example to illustrate YAGNI in practice.</p>
+<details class="danger">
 <summary>Without YAGNI Example</summary>
 <div class="language-java highlight"><span class="filename">Adding Unnecessary Functionality</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UserService</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
@@ -2772,11 +2767,11 @@
 <ul>
 <li>A <code>deleteUser()</code> method.</li>
 <li>A <code>sendEmailNotification()</code> method.</li>
-<li>These methods were <strong>added prematurely</strong>, based on an assumption that they <strong>might</strong> be needed. This is a violation of the <strong>YAGNI principle</strong>. </li>
+<li>These methods were added prematurely, based on an assumption that they might be needed. This is a violation of the YAGNI principle. </li>
 </ul>
 </details>
 </details>
-<details class="example">
+<details class="success">
 <summary>Applying YAGNI</summary>
 <div class="language-java highlight"><span class="filename">Only Implement What is Needed Now</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UserService</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
@@ -2800,15 +2795,14 @@
 <details class="info" open="open">
 <summary>Explanation</summary>
 <ul>
-<li>We only implement the <strong>necessary functionality</strong> retrieving a user by ID.</li>
+<li>We only implement the necessary functionality retrieving a user by ID.</li>
 <li>We avoid premature code like <code>deleteUser()</code> or <code>sendEmailNotification()</code>.</li>
-<li>If, in the future, we do need a <code>deleteUser()</code> or notification feature, we can implement it <strong>when it becomes necessary</strong>.</li>
+<li>If, in the future, we do need a <code>deleteUser()</code> or notification feature, we can implement it when it becomes necessary.</li>
 </ul>
 </details>
 </details>
-<hr />
 <h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
-<p>The <strong>YAGNI principle</strong> encourages developers to focus on <strong>delivering only the required features</strong> at a given point in time, avoiding speculative development that may never be used. This approach fosters <strong>simplicity, maintainability, and efficiency</strong> in the codebase. However, it should be applied carefully there are scenarios (like architecture or security) where anticipating needs is necessary, When used properly, YAGNI helps teams build better software, faster, and with fewer headaches down the line.</p>
+<p>The YAGNI principle encourages developers to focus on delivering only the required features at a given point in time, avoiding speculative development that may never be used. This approach fosters simplicity, maintainability, and efficiency in the codebase. However, it should be applied carefully there are scenarios (like architecture or security) where anticipating needs is necessary, When used properly, YAGNI helps teams build better software, faster, and with fewer headaches down the line.</p>
 <hr />
 
 
@@ -2832,7 +2826,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 17, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 22, 2024</span>
   </span>
 
     
