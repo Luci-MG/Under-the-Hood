@@ -1,9 +1,9 @@
 # **SOLID Principles**
 
 ## **Single Responsibility Principle**  
-A class should have only **one reason to change**. This means that each class should focus on a **single responsibility** or feature.
+A class should have only one reason to change. This means that each class should focus on a single responsibility or feature.
 
-??? example "Violation Example"
+??? danger "Violation Example"
     ```java
     // Violates SRP: User class has multiple responsibilities.
     public class User {
@@ -22,7 +22,7 @@ A class should have only **one reason to change**. This means that each class sh
     }
     ```
 
-??? example "Fixed Example"
+??? Success "Fixed Example"
     ```java 
     // Separate responsibilities into different classes.
     public class User {
@@ -48,9 +48,9 @@ A class should have only **one reason to change**. This means that each class sh
 ---
 
 ## **Open Closed Principle**  
-Software components (classes, functions, etc.) should be **open for extension but closed for modification**. You shouldn’t modify existing code to add new behavior instead, extend it.
+Software components (classes, functions, etc.) should be open for extension but closed for modification. You shouldn’t modify existing code to add new behavior instead, extend it.
 
-??? example "Violation Example"
+??? danger "Violation Example"
     ```java
     // Violates OCP: PaymentProcessor needs to be modified for new payment types.
     public class PaymentProcessor {
@@ -64,7 +64,7 @@ Software components (classes, functions, etc.) should be **open for extension bu
     }
     ```
 
-??? example "Fixed Example"
+??? success "Fixed Example"
     ```java
     // Use an interface for extensibility.
     interface PaymentMethod {
@@ -93,9 +93,9 @@ Software components (classes, functions, etc.) should be **open for extension bu
 ---
 
 ## **Liskov Substitution Principle**  
-Subclasses should be **substitutable** for their base class without altering the correctness of the program.
+Subclasses should be substitutable for their base class without altering the correctness of the program.
 
-??? example "Violation Example"
+??? danger "Violation Example"
     ```java
     // Violates LSP: Square changes the behavior of Rectangle.
     class Rectangle {
@@ -129,7 +129,7 @@ Subclasses should be **substitutable** for their base class without altering the
     }
     ```
 
-??? example "Fixed Example"
+??? success "Fixed Example"
     ```java
     // Use separate classes to maintain correct behavior.
     class Shape {
@@ -169,11 +169,11 @@ Subclasses should be **substitutable** for their base class without altering the
 ---
 
 ## **Interface Segregation Principle**
-A client should not be forced to implement interfaces that it **does not use**. Instead, **smaller, more specific interfaces** should be preferred.
+A client should not be forced to implement interfaces that it does not use. Instead, smaller, more specific interfaces should be preferred.
 
-??? example "Violation Example"
+??? danger "Violation Example"
     ```java
-    // Violates ISP: Car needs to implement unnecessary methods.
+    // Violates ISP: Cat(r) needs to implement unnecessary methods.
     interface Vehicle {
         void drive();
         void fly();
@@ -193,7 +193,7 @@ A client should not be forced to implement interfaces that it **does not use**. 
     }
     ```
 
-??? example "Fixed Example"
+??? success "Fixed Example"
     ```java
     // Use separate interfaces for each capability.
     interface Drivable {
@@ -227,9 +227,9 @@ A client should not be forced to implement interfaces that it **does not use**. 
 ---
 
 ## **Dependency Inversion Principle**
-High-level modules should not depend on low-level modules. **Both should depend on abstractions**.
+High-level modules should not depend on low-level modules. Both should depend on abstractions.
 
-??? example "Violation Example"
+??? danger "Violation Example"
     ```java
     // Violates DIP: High-level class depends on a specific implementation.
     class SQLDatabase {
@@ -251,7 +251,7 @@ High-level modules should not depend on low-level modules. **Both should depend 
     }
     ```
 
-??? example "Fixed Example"
+??? success "Fixed Example"
     ```java
     // Depend on an abstraction instead of a specific implementation.
     interface Database {
