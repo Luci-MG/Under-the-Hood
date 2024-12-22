@@ -1,3 +1,5 @@
+[//]: # (TODO:: Need to add examples in other Language )
+
 # **SOLID Principles**
 
 ## **Single Responsibility Principle**  
@@ -45,7 +47,6 @@ A class should have only one reason to change. This means that each class should
     }
     ```
 
----
 
 ## **Open Closed Principle**  
 Software components (classes, functions, etc.) should be open for extension but closed for modification. You shouldn’t modify existing code to add new behavior instead, extend it.
@@ -90,7 +91,6 @@ Software components (classes, functions, etc.) should be open for extension but 
     }
     ```
 
----
 
 ## **Liskov Substitution Principle**  
 Subclasses should be substitutable for their base class without altering the correctness of the program.
@@ -166,7 +166,6 @@ Subclasses should be substitutable for their base class without altering the cor
     }
     ```
 
----
 
 ## **Interface Segregation Principle**
 A client should not be forced to implement interfaces that it does not use. Instead, smaller, more specific interfaces should be preferred.
@@ -224,7 +223,6 @@ A client should not be forced to implement interfaces that it does not use. Inst
     }
     ```
 
----
 
 ## **Dependency Inversion Principle**
 High-level modules should not depend on low-level modules. Both should depend on abstractions.
@@ -283,7 +281,6 @@ High-level modules should not depend on low-level modules. Both should depend on
     }
     ```
 
----
 
 ## **Summary**
 
