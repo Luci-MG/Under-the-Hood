@@ -1,49 +1,36 @@
 # **Factory Design Method**
 
-The **Factory Method Pattern** is one of the most widely used **creational design patterns**. It helps in the creation of objects without specifying the exact class of the object that will be created. 
-
-
----
-
 ## **What ?**
 
-**Factory Method** is a creational design pattern that provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created.
+Factory Method is a creational design pattern that provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created (decide which class to instantiate). This pattern delegates the responsibility of object creation to subclasses rather than using a direct constructor call, It is one of the most widely used creational design patterns, It helps in the creation of objects without specifying the exact class of the object that will be created.
 
-The Factory Method Pattern defines an interface for creating an object but **lets subclasses decide which class to instantiate**. This pattern **delegates the responsibility of object creation to subclasses** rather than using a direct constructor call.
+!!! tip ""
+    You provide a "factory" method that the client code calls to get the object, but the actual object that gets created is determined at runtime (based on some logic).
 
-!!! note
-    You provide a **"factory" method** that the client code calls to get the object, but the actual object that gets created is determined at runtime (based on some logic).
-
----
 
 ## **When to Use ?**
 - When you don't know in advance which class to instantiate (i.e., you want the logic to determine the object type dynamically).
-- When you need flexibility in creating objects but want to avoid tight coupling with specific classes.
-- When new types of objects might be introduced in the future without breaking existing code.
+- When you need flexibility in creating objects but want to avoid tight coupling.
+- When new types of objects might be introduced in the future without breaking code.
 - When working with complex object creation logic (e.g., when object creation requires conditional logic).
 
----
 
 ## **When Not to Use ?**
-- When **only a single type of object** needs to be created (Factory adds unnecessary complexity).
-- If object creation does not require **polymorphism** or **dynamism**, and the same class instantiation works fine.
-- When performance is critical, as Factory Method can introduce **overhead** by adding extra layers of abstraction.
+- When only a single type of object needs to be created (Factory adds unnecessary complexity).
+- If object creation does not require polymorphism or dynamism, and the same class instantiation works fine.
+- When performance is critical, as Factory Method can introduce overhead by adding extra layers of abstraction.
 
----
 
 ## **Where it Shines ?**
 - Many frameworks (like JDBC, Hibernate, etc.) rely on Factory Method to return specific instances without the client needing to know the class type.
 - When there are multiple subclasses of a product and only one of them needs to be instantiated at runtime.
 - If new product types might be introduced in the future, the pattern provides an easy way to extend.
 
----
 
 ## **Advantages**
-- **Loose coupling:** The controller doesn't need to know the exact type of object being created.
-- **Flexibility:** You can add new types of notifications without modifying the controller logic.
-- **Testability:** The factory can be easily **mocked or stubbed** during unit tests.
-
----
+- Loose coupling, The controller doesn't need to know exact type of object being created.
+- Flexibility, You can add new types of notifications without modifying the controller logic.
+- Testability, The factory can be easily mocked or stubbed during unit tests.
 
 
 ## **Structure**
@@ -53,11 +40,10 @@ The Factory Method Pattern defines an interface for creating an object but **let
 3. **Creator:** Declares the factory method which returns an object of type Product.
 4. **Concrete Creator:** Overrides the factory method to return a specific product instance.
 
----
 
 ## **How To Implement ?**
 
-???+ example "Simple Java Example"
+??? example "Structured Example"
 
     ```java title="Step-1: Define a Product Interface"
     public interface Notification {
@@ -117,11 +103,11 @@ The Factory Method Pattern defines an interface for creating an object but **let
     }
     ```
 
-???+ example "Spring Boot Example"
+??? example "Spring Boot Example"
 
-    Spring Boot relies heavily on **dependency injection (DI)** and **Inversion of Control (IoC)**, which means **Spring beans** can act as factory classes to produce the desired objects.
+    Spring Boot relies heavily on dependency injection (DI) and Inversion of Control (IoC), which means Spring beans can act as factory classes to produce the desired objects.
 
-    #### **Example: Notification Factory with Spring Boot**
+    #### **Example:** Notification Factory with Spring Boot
 
     ```java title="Define the Product Interface and Implementations (Same as Before)"
     public interface Notification {
@@ -182,13 +168,12 @@ The Factory Method Pattern defines an interface for creating an object but **let
 
     When you access `/notify/SMS` or `/notify/Email`, it will dynamically create and send the corresponding notification after running the spring boot application.
 
----
 
 ## **Summary**
 
 The Factory Pattern enables dynamic object creation without specifying exact classes, reducing coupling and improving maintainability. It uses a factory method to determine which class to instantiate. In Spring Boot, this pattern integrates seamlessly through factory beans and dependency injection, providing flexible and condition-based object creation.
 
 !!! note
-    Factory Method is especially helpful in **modular systems** where new functionalities might be added frequently, and we want to **minimize the impact of changes** to existing code.
+    Factory Method is especially helpful in modular systems where new functionalities might be added frequently, and we want to minimize the impact of changes to existing code.
 
 ---

@@ -92,7 +92,7 @@ Let's Consider a example where we want to check if a number is even or odd.
     ???+ info "Explanation"
         - This version keeps things simple and easy to understand. 
         - The code is self-explanatory without unnecessary indirection.
-        - It follows the KISS principle by doing the task in the **simplest way possible** while still being clear and functional.
+        - It follows the KISS principle by doing the task in the simplest way possible while still being clear and functional.
 
 
 ## **Summary**

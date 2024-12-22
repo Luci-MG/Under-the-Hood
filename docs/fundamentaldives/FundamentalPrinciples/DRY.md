@@ -121,7 +121,7 @@ We can extract the common logic into a reusable private method to apply the DRY 
     ```
 
     ???+ info "Explanation"
-        - We removed the duplicated validation code and moved it into **dedicated reusable methods** (`validateOrderId` and `validateQuantity`).
+        - We removed the duplicated validation code and moved it into dedicated reusable methods (`validateOrderId` and `validateQuantity`).
         - Now, if we need to change the validation logic, we only have to update it in one place.
         - The code is easier to read, maintain, and extend.
 
