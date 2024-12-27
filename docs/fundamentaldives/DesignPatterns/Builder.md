@@ -1,22 +1,18 @@
-# **Builder Design Pattern**
-
-The **Builder Pattern** is a **creational design pattern** that allows the construction of complex objects step by step. It separates the construction process from the actual object, giving more control over the construction process.
-
----
+# **Builder Design**
 
 ## **What ?**
 
-The **Builder Pattern** simplifies the creation of complex objects with many optional fields by enabling incremental construction through method chaining, avoiding constructors with numerous parameters. It's ideal for objects requiring various configurations or optional parameters.
+The Builder Pattern is a creational design pattern that allows the construction of complex objects step by step. It separates the construction process from the actual object, giving more control over the construction process.
 
----
+This Pattern simplifies the creation of complex objects with many optional fields by enabling incremental construction through method chaining, avoiding constructors with numerous parameters. It's ideal for objects requiring various configurations or optional parameters.
+
 
 ## **When to Use ?**
-- When the class has **many fields** (especially optional ones).
-- When you want to **avoid telescoping constructors** (having constructors with increasing numbers of parameters).
-- When an object must be **immutable** but needs complex construction logic.
-- When you want to **ensure a clear, readable way to build an object**, rather than calling constructors directly.
+- When the class has many fields (especially optional ones).
+- When you want to avoid telescoping constructors (having constructors with increasing numbers of parameters).
+- When an object must be immutable but needs complex construction logic.
+- When you want to ensure a clear, readable way to build an object, rather than calling constructors directly.
 
----
 
 ## **Why Use ?**
 - Improves Code Readability by avoiding large constructors by using chained methods.
@@ -24,14 +20,11 @@ The **Builder Pattern** simplifies the creation of complex objects with many opt
 - Increases Flexibility by supporting different configurations while keeping the same building logic.
 - Clear Separation of Logic Like The construction logic stays in the builder, while the object remains a simple data container.
 
----
-
 ## **Where Not to Use ?**
-- If the object is **simple** with only a few attributes, using a builder can overcomplicate things.
-- When performance is critical—since creating the builder involves some **extra overhead** (though minimal).
-- If **immutability** is not necessary, simpler setter methods might suffice.
+- If the object is simple with only a few attributes, using a builder can overcomplicate things.
+- When performance is critical—since creating the builder involves some extra overhead (though minimal).
+- If immutability is not necessary, simpler setter methods might suffice.
 
----
 
 ## **Advantages**
 - Clear and readable object construction.
@@ -39,13 +32,12 @@ The **Builder Pattern** simplifies the creation of complex objects with many opt
 - Flexible Object Creation supports optional parameters without overloading constructors.
 - Easier Maintenance with new fields can be easily added without modifying existing constructors.
 
----
 
 ## **How to Implement ?**
 
-???+ example "Simple Java Example"
+??? example "Simple Example"
 
-    Below is a basic **Java example** demonstrating the pattern. Assume we need to build a `Car` object with several optional fields.
+    Below is a basic Java example demonstrating the pattern. Assume we need to build a `Car` object with several optional fields.
 
     ```java title="Simple Builder Implementation"
     public class Car {
@@ -142,9 +134,9 @@ The **Builder Pattern** simplifies the creation of complex objects with many opt
     Car [make=Tesla, model=Model S, color=Red, year=2023, automatic=true]
     ```
 
-???+ example "Spring Boot Example"
+??? example "Spring Boot Example"
 
-    In **Spring Boot**, you often need to build objects like **DTOs, configurations, or entities** with complex structures. Using the Builder Pattern can make object construction more manageable, especially when working with **REST APIs**.
+    In Spring Boot, you often need to build objects like DTOs, configurations, or entities with complex structures. Using the Builder Pattern can make object construction more manageable, especially when working with REST APIs.
 
     ```java title="Using Builder Pattern for DTOs in Spring Boot"
     // Let's assume a UserDTO object for API responses.
@@ -205,7 +197,7 @@ The **Builder Pattern** simplifies the creation of complex objects with many opt
 
     This approach ensures that the object returned from the API is constructed cleanly with only the necessary fields set.
 
-???+ example "Alternative Ways"
+??? example "Alternative Ways"
 
     **Telescoping Constructors**
     Multiple overloaded constructors for different parameter combinations but Not ideal for readability and maintainability.
@@ -226,13 +218,11 @@ The **Builder Pattern** simplifies the creation of complex objects with many opt
     car.setColor("Red");
     ```
 
----
-
 ## **Summary**
 
-The **Builder Pattern** is an elegant way to handle object creation, especially when dealing with many fields or optional parameters. It ensures **code readability, immutability, and flexibility** while avoiding the need for numerous constructors. However, it should be used only when **necessary**, as simple objects may not benefit from it.
+The Builder Pattern is an elegant way to handle object creation, especially when dealing with many fields or optional parameters. It ensures code readability, immutability, and flexibility while avoiding the need for numerous constructors. However, it should be used only when necessary, as simple objects may not benefit from it.
 
 !!! note
-    In **Spring Boot**, the Builder Pattern can be effectively used for creating **DTOs** and other complex objects, improving both code readability and maintenance. This pattern fits well when dealing with **REST API responses** or **configuration settings**, ensuring your objects are built in a clear, consistent manner.
+    In Spring Boot, the Builder Pattern can be effectively used for creating DTOs and other complex objects, improving both code readability and maintenance. This pattern fits well when dealing with REST API responses or configuration settings, ensuring your objects are built in a clear, consistent manner.
 
 ---
