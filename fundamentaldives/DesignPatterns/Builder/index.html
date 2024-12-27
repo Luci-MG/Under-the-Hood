@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#builder-design-pattern" class="md-skip">
+        <a href="#builder-design" class="md-skip">
           Skip to content
         </a>
       
@@ -2663,20 +2663,17 @@
   
 
 
-<h1 id="builder-design-pattern"><strong>Builder Design Pattern</strong><a class="headerlink" href="#builder-design-pattern" title="Permanent link">&para;</a></h1>
-<p>The <strong>Builder Pattern</strong> is a <strong>creational design pattern</strong> that allows the construction of complex objects step by step. It separates the construction process from the actual object, giving more control over the construction process.</p>
-<hr />
+<h1 id="builder-design"><strong>Builder Design</strong><a class="headerlink" href="#builder-design" title="Permanent link">&para;</a></h1>
 <h2 id="what"><strong>What ?</strong><a class="headerlink" href="#what" title="Permanent link">&para;</a></h2>
-<p>The <strong>Builder Pattern</strong> simplifies the creation of complex objects with many optional fields by enabling incremental construction through method chaining, avoiding constructors with numerous parameters. It's ideal for objects requiring various configurations or optional parameters.</p>
-<hr />
+<p>The Builder Pattern is a creational design pattern that allows the construction of complex objects step by step. It separates the construction process from the actual object, giving more control over the construction process.</p>
+<p>This Pattern simplifies the creation of complex objects with many optional fields by enabling incremental construction through method chaining, avoiding constructors with numerous parameters. It's ideal for objects requiring various configurations or optional parameters.</p>
 <h2 id="when-to-use"><strong>When to Use ?</strong><a class="headerlink" href="#when-to-use" title="Permanent link">&para;</a></h2>
 <ul>
-<li>When the class has <strong>many fields</strong> (especially optional ones).</li>
-<li>When you want to <strong>avoid telescoping constructors</strong> (having constructors with increasing numbers of parameters).</li>
-<li>When an object must be <strong>immutable</strong> but needs complex construction logic.</li>
-<li>When you want to <strong>ensure a clear, readable way to build an object</strong>, rather than calling constructors directly.</li>
+<li>When the class has many fields (especially optional ones).</li>
+<li>When you want to avoid telescoping constructors (having constructors with increasing numbers of parameters).</li>
+<li>When an object must be immutable but needs complex construction logic.</li>
+<li>When you want to ensure a clear, readable way to build an object, rather than calling constructors directly.</li>
 </ul>
-<hr />
 <h2 id="why-use"><strong>Why Use ?</strong><a class="headerlink" href="#why-use" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Improves Code Readability by avoiding large constructors by using chained methods.</li>
@@ -2684,14 +2681,12 @@
 <li>Increases Flexibility by supporting different configurations while keeping the same building logic.</li>
 <li>Clear Separation of Logic Like The construction logic stays in the builder, while the object remains a simple data container.</li>
 </ul>
-<hr />
 <h2 id="where-not-to-use"><strong>Where Not to Use ?</strong><a class="headerlink" href="#where-not-to-use" title="Permanent link">&para;</a></h2>
 <ul>
-<li>If the object is <strong>simple</strong> with only a few attributes, using a builder can overcomplicate things.</li>
-<li>When performance is critical—since creating the builder involves some <strong>extra overhead</strong> (though minimal).</li>
-<li>If <strong>immutability</strong> is not necessary, simpler setter methods might suffice.</li>
+<li>If the object is simple with only a few attributes, using a builder can overcomplicate things.</li>
+<li>When performance is critical—since creating the builder involves some extra overhead (though minimal).</li>
+<li>If immutability is not necessary, simpler setter methods might suffice.</li>
 </ul>
-<hr />
 <h2 id="advantages"><strong>Advantages</strong><a class="headerlink" href="#advantages" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Clear and readable object construction.</li>
@@ -2699,11 +2694,10 @@
 <li>Flexible Object Creation supports optional parameters without overloading constructors.</li>
 <li>Easier Maintenance with new fields can be easily added without modifying existing constructors.</li>
 </ul>
-<hr />
 <h2 id="how-to-implement"><strong>How to Implement ?</strong><a class="headerlink" href="#how-to-implement" title="Permanent link">&para;</a></h2>
-<details class="example" open="open">
-<summary>Simple Java Example</summary>
-<p>Below is a basic <strong>Java example</strong> demonstrating the pattern. Assume we need to build a <code>Car</code> object with several optional fields.</p>
+<details class="example">
+<summary>Simple Example</summary>
+<p>Below is a basic Java example demonstrating the pattern. Assume we need to build a <code>Car</code> object with several optional fields.</p>
 <div class="language-java highlight"><span class="filename">Simple Builder Implementation</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Car</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="c1">// Required fields</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">make</span><span class="p">;</span>
@@ -2794,9 +2788,9 @@
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Car [make=Tesla, model=Model S, color=Red, year=2023, automatic=true]
 </span></code></pre></div></p>
 </details>
-<details class="example" open="open">
+<details class="example">
 <summary>Spring Boot Example</summary>
-<p>In <strong>Spring Boot</strong>, you often need to build objects like <strong>DTOs, configurations, or entities</strong> with complex structures. Using the Builder Pattern can make object construction more manageable, especially when working with <strong>REST APIs</strong>.</p>
+<p>In Spring Boot, you often need to build objects like DTOs, configurations, or entities with complex structures. Using the Builder Pattern can make object construction more manageable, especially when working with REST APIs.</p>
 <div class="language-java highlight"><span class="filename">Using Builder Pattern for DTOs in Spring Boot</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Let&#39;s assume a UserDTO object for API responses.</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UserDTO</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="p">;</span>
@@ -2852,7 +2846,7 @@
 </span></code></pre></div>
 <p>This approach ensures that the object returned from the API is constructed cleanly with only the necessary fields set.</p>
 </details>
-<details class="example" open="open">
+<details class="example">
 <summary>Alternative Ways</summary>
 <p><strong>Telescoping Constructors</strong>
 Multiple overloaded constructors for different parameter combinations but Not ideal for readability and maintainability.</p>
@@ -2868,12 +2862,11 @@ Useful for mutable objects but doesn’t guarantee immutability but less readabl
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">car</span><span class="p">.</span><span class="na">setColor</span><span class="p">(</span><span class="s">&quot;Red&quot;</span><span class="p">);</span>
 </span></code></pre></div>
 </details>
-<hr />
 <h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
-<p>The <strong>Builder Pattern</strong> is an elegant way to handle object creation, especially when dealing with many fields or optional parameters. It ensures <strong>code readability, immutability, and flexibility</strong> while avoiding the need for numerous constructors. However, it should be used only when <strong>necessary</strong>, as simple objects may not benefit from it.</p>
+<p>The Builder Pattern is an elegant way to handle object creation, especially when dealing with many fields or optional parameters. It ensures code readability, immutability, and flexibility while avoiding the need for numerous constructors. However, it should be used only when necessary, as simple objects may not benefit from it.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In <strong>Spring Boot</strong>, the Builder Pattern can be effectively used for creating <strong>DTOs</strong> and other complex objects, improving both code readability and maintenance. This pattern fits well when dealing with <strong>REST API responses</strong> or <strong>configuration settings</strong>, ensuring your objects are built in a clear, consistent manner.</p>
+<p>In Spring Boot, the Builder Pattern can be effectively used for creating DTOs and other complex objects, improving both code readability and maintenance. This pattern fits well when dealing with REST API responses or configuration settings, ensuring your objects are built in a clear, consistent manner.</p>
 </div>
 <hr />
 
@@ -2898,7 +2891,7 @@ Useful for mutable objects but doesn’t guarantee immutability but less readabl
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 17, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 27, 2024</span>
   </span>
 
     
