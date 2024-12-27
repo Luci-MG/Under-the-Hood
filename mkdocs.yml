@@ -184,7 +184,7 @@ nav:
       - YAGNI: fundamentaldives/FundamentalPrinciples/YAGNI.md
     - Design Patterns:
       - Singleton: fundamentaldives/DesignPatterns/Singleton.md
-      - Factory Method: fundamentaldives/DesignPatterns/FactoryMethod.md
+      - Factory Method: fundamentaldives/DesignPatterns/FactoryMethod.md # TODO:: rename the file and title
       - Abstract Factory: fundamentaldives/DesignPatterns/AbstractFactory.md
       - Builder: fundamentaldives/DesignPatterns/Builder.md
       - Prototype: fundamentaldives/DesignPatterns/Prototype.md

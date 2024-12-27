@@ -1,4 +1,4 @@
-# **Singleton Design Pattern**
+# **Singleton**
 
 ## **What ?**
 

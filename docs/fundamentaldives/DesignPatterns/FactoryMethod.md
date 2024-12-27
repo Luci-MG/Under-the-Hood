@@ -1,4 +1,4 @@
-# **Factory Design Method**
+# **Factory Method**
 
 ## **What ?**
 
