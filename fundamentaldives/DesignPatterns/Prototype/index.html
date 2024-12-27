@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#prototype-design-pattern" class="md-skip">
+        <a href="#prototype" class="md-skip">
           Skip to content
         </a>
       
@@ -2627,45 +2627,41 @@
   
 
 
-<h1 id="prototype-design-pattern"><strong>Prototype Design Pattern</strong><a class="headerlink" href="#prototype-design-pattern" title="Permanent link">&para;</a></h1>
-<p>The <strong>Prototype Pattern</strong> is a <strong>creational design pattern</strong> used when the cost of creating a new object is expensive or complicated. Instead of creating new instances from scratch, this pattern suggests <strong>cloning existing objects</strong> to produce new ones.</p>
-<hr />
+<h1 id="prototype"><strong>Prototype</strong><a class="headerlink" href="#prototype" title="Permanent link">&para;</a></h1>
 <h2 id="what"><strong>What ?</strong><a class="headerlink" href="#what" title="Permanent link">&para;</a></h2>
-<p>The <strong>Prototype Pattern</strong> allows cloning or copying existing instances to create new ones, ensuring that new objects are created <strong>without going through the expensive or complex instantiation process</strong> repeatedly.</p>
+<p>The Prototype Pattern is a creational design pattern used when the cost of creating a new object is expensive or complicated. Instead of creating new instances from scratch, this pattern suggests cloning existing objects to produce new ones.</p>
+<p>The pattern allows cloning or copying existing instances to create new ones, ensuring that new objects are created without going through the expensive or complex instantiation process repeatedly.</p>
 <div class="admonition info">
 <p class="admonition-title">Key Characteristics</p>
 <ul>
-<li>Objects are created by copying or <strong>cloning an existing prototype</strong> object.</li>
-<li>Each prototype maintains its state, and the cloned objects are <strong>independent copies</strong>.</li>
-<li>Useful when the creation of an object is <strong>resource-intensive</strong> (e.g., large data loads, configurations, etc.).</li>
-<li><strong>Shallow Copy:</strong> Only the references of the fields are copied, not the objects themselves.</li>
-<li><strong>Deep Copy:</strong> A full independent copy of all nested objects is created.</li>
+<li>Objects are created by copying or cloning an existing prototype object.</li>
+<li>Each prototype maintains its state, and the cloned objects are independent copies.</li>
+<li>Useful when the creation of an object is resource-intensive (e.g., large data loads, configurations, etc.).</li>
+<li>Shallow Copy: Only the references of the fields are copied, not the objects themselves.</li>
+<li>Deep Copy: A full independent copy of all nested objects is created.</li>
 </ul>
 </div>
-<hr />
 <h2 id="when-to-use"><strong>When to Use ?</strong><a class="headerlink" href="#when-to-use" title="Permanent link">&para;</a></h2>
 <ul>
 <li>When creating an object is expensive e.g., reading a database, complex object initialization, or network-intensive setup.</li>
-<li>When you want to avoid creating <strong>new instances</strong> and prefer copying existing objects.</li>
+<li>When you want to avoid creating new instances and prefer copying existing objects.</li>
 <li>When your code requires many objects of a similar type, where only slight modifications are made to the original object.</li>
 <li>When the class structure or object creation is complex and involves multiple configurations (e.g., with builders, factories, etc.).</li>
-<li>When you need <strong>stateless beans</strong> that are short-lived and used temporarily.</li>
-<li>When objects need to be <strong>created dynamically</strong> (e.g., user session-based objects).</li>
+<li>When you need stateless beans that are short-lived and used temporarily.</li>
+<li>When objects need to be created dynamically (e.g., user session-based objects).</li>
 </ul>
-<hr />
 <h2 id="where-not-to-use"><strong>Where Not to Use ?</strong><a class="headerlink" href="#where-not-to-use" title="Permanent link">&para;</a></h2>
 <ul>
-<li>When <strong>creating a new instance is inexpensive</strong> and straightforward.</li>
-<li>When <strong>object state changes frequently</strong>, as the cloned object may quickly become stale or out-of-sync with the original.</li>
-<li><strong>If immutable objects</strong> are required, as the whole point of this pattern is to create modifiable, independent copies.</li>
-<li>For <strong>singleton beans</strong> or objects that must be shared across the application.</li>
+<li>When creating a new instance is inexpensive and straightforward.</li>
+<li>When object state changes frequently, as the cloned object may quickly become stale or out-of-sync with the original.</li>
+<li>If immutable objects are required, as the whole point of this pattern is to create modifiable, independent copies.</li>
+<li>For singleton beans or objects that must be shared across the application.</li>
 <li>When object creation is cheap, and cloning provides no significant benefit.</li>
 </ul>
-<hr />
 <h2 id="how-to-implement"><strong>How to Implement ?</strong><a class="headerlink" href="#how-to-implement" title="Permanent link">&para;</a></h2>
-<p>In Java, the <strong>Prototype Pattern</strong> is implemented by making the class implement the <strong><code>Cloneable</code></strong> interface and <strong>overriding the <code>clone()</code></strong> method from the <code>Object</code> class.</p>
-<details class="example" open="open">
-<summary>Simple Java Example</summary>
+<details class="example">
+<summary>Simple Example</summary>
+<p>In Java, the Prototype Pattern is implemented by making the class implement the <code>Cloneable</code> interface and overriding the <code>clone()</code> method from the <code>Object</code> class.</p>
 <div class="language-java highlight"><span class="filename">Example of Prototype in Java</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">class</span> <span class="nc">Address</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">street</span><span class="p">;</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">city</span><span class="p">;</span>
@@ -2737,7 +2733,7 @@
 </span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a><span class="p">}</span>
 </span></code></pre></div>
-<details class="info">
+<details class="info" open="open">
 <summary>Output</summary>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Original: Employee: Alice, Address: 123 Street, New York
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Shallow Copy: Employee: Alice, Address: 123 Street, New York
@@ -2749,7 +2745,7 @@
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>Deep Copy: Employee: Alice, Address: 123 Street, New York
 </span></code></pre></div>
 </details>
-<details class="info">
+<details class="info" open="open">
 <summary>Explanation</summary>
 <ul>
 <li><strong>Shallow Copy</strong> (<code>clone()</code>): Modifying the original affects the copy (since both reference the same <code>Address</code> object).</li>
@@ -2757,9 +2753,9 @@
 </ul>
 </details>
 </details>
-<details class="example" open="open">
+<details class="example">
 <summary>Spring Boot Example</summary>
-<p>Spring Framework allows defining <strong>prototype-scoped beans</strong>. Each time you request a bean with the prototype scope, Spring returns a new instance, effectively following the <strong>Prototype Pattern</strong>.</p>
+<p>Spring Framework allows defining prototype-scoped beans. Each time you request a bean with the prototype scope, Spring returns a new instance, effectively following the Prototype Pattern.</p>
 <h4 id="how-to-use-prototype-scope-in-spring-boot">How to Use Prototype Scope in Spring Boot<a class="headerlink" href="#how-to-use-prototype-scope-in-spring-boot" title="Permanent link">&para;</a></h4>
 <ol>
 <li>Add <code>@Scope</code> annotation to the bean definition.</li>
@@ -2796,7 +2792,7 @@
 </span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="p">}</span>
 </span></code></pre></div>
-<details class="info">
+<details class="info" open="open">
 <summary>Output</summary>
 <p>When you run this application and hit the <code>/employees</code> endpoint, you will see:
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>New Employee instance created.
@@ -2805,9 +2801,8 @@
 <p>This shows that a <strong>new instance is created each time</strong> a prototype-scoped bean is injected.</p>
 </details>
 </details>
-<hr />
-<h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
-<p>The <strong>Prototype Pattern</strong> offers an elegant way to clone existing objects, saving the overhead of complex object creation. It fits well when objects are <strong>expensive to create</strong> or <strong>share the same initial configuration</strong>. With <strong>Java's cloning mechanisms</strong> and <strong>Spring Boot's prototype scope</strong>, it is easy to implement. However, care must be taken when handling deep versus shallow copies, and the pattern should be avoided when objects are inexpensive to create.</p>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>The Prototype Pattern offers an elegant way to clone existing objects, saving the overhead of complex object creation. It fits well when objects are expensive to create or share the same initial configuration. With Java's cloning mechanisms and Spring Boot's prototype scope, it is easy to implement. However, care must be taken when handling deep versus shallow copies, and the pattern should be avoided when objects are inexpensive to create.</p>
 <hr />
 
 
@@ -2831,7 +2826,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 18, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 27, 2024</span>
   </span>
 
     
