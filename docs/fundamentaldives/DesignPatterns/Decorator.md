@@ -1,12 +1,12 @@
-# **Decorator Design Pattern**
+[//]: # (TODO:: Need to add examples in other Language )
 
-The **Decorator Pattern** is a structural design pattern that allows behavior to be added to individual objects, either statically or dynamically, without affecting the behavior of other objects from the same class. This pattern is particularly useful when you need to add functionality to objects without subclassing and in scenarios where multiple combinations of behaviors are required.
-
----
+# **Decorator**
 
 ## **What ?**
 
-The **Decorator Pattern** is used to attach additional responsibilities or behaviors to an object dynamically. It wraps the original object, adding new behavior while keeping the object’s interface intact. A decorator class has a reference to the original object and implements the same interface.
+The Decorator Pattern is a structural design pattern that allows behavior to be added to individual objects, either statically or dynamically, without affecting the behavior of other objects from the same class. This pattern is particularly useful when you need to add functionality to objects without subclassing and in scenarios where multiple combinations of behaviors are required.
+
+This pattern is used to attach additional responsibilities or behaviors to an object dynamically. It wraps the original object, adding new behavior while keeping the object’s interface intact. A decorator class has a reference to the original object and implements the same interface.
 
 !!! info "Key Concepts"
     - **Component**: The interface or abstract class that defines the original object.
@@ -14,7 +14,6 @@ The **Decorator Pattern** is used to attach additional responsibilities or behav
     - **Decorator**: An abstract class that implements the `Component` interface and holds a reference to a `Component` object.
     - **Concrete Decorators**: Subclasses of the `Decorator` that add specific functionalities.
 
----
 
 ## **When to Use ?**
 
@@ -23,7 +22,6 @@ The **Decorator Pattern** is used to attach additional responsibilities or behav
 - When multiple combinations of responsibilities are needed, and subclassing would result in too many subclasses.
 - When you want to keep the original class unchanged but extend its behavior transparently.
 
----
 
 ## **Where Not to Use ?**
 
@@ -32,7 +30,6 @@ The **Decorator Pattern** is used to attach additional responsibilities or behav
 - If the object’s behavior doesn’t need to change dynamically, then simpler design patterns like inheritance or composition might suffice.
 - In cases where direct modification to the existing class is possible, decorators might be overkill.
 
----
 
 ## **Advantages**
 
@@ -40,17 +37,18 @@ The **Decorator Pattern** is used to attach additional responsibilities or behav
 - More flexible than inheritance. It allows the combination of behaviors at runtime.
 - Helps achieve single responsibility principle since each decorator adds only one type of behavior.
 
+
 ## **Disadvantages**
 
 - Complexity increases with a large number of decorators.
 - Debugging can be challenging because you need to trace through multiple layers of decorators.
 
----
+
 ## **How to Apply ?**
 
-???+ example "Simple Java Example"
+??? example "Simple Example"
 
-    Let's consider an example where we are building a **coffee shop**. Different types of coffees can be enhanced with add-ons like milk, sugar, etc. Using the decorator pattern, we can apply these add-ons dynamically without subclassing.
+    Let's consider an example where we are building a coffee shop. Different types of coffees can be enhanced with add-ons like milk, sugar, etc. Using the decorator pattern, we can apply these add-ons dynamically without subclassing.
 
     ```java
     // Step 1: Component Interface
@@ -137,18 +135,16 @@ The **Decorator Pattern** is used to attach additional responsibilities or behav
     }
     ```
 
-    ??? info Output
-        ```
-        Basic Coffee $2.0
-        Basic Coffee, Milk $2.5
-        Basic Coffee, Milk, Sugar $2.7
-        ```
+    ``` title="Output"
+    Basic Coffee $2.0
+    Basic Coffee, Milk $2.5
+    Basic Coffee, Milk, Sugar $2.7
+    ```
 
----
 
-???+ example "Spring Boot Example"
+??? example "Spring Boot Example"
 
-    In **Spring Boot**, the decorator pattern can be used in scenarios such as **logging, monitoring, or security checks**. You can implement a decorator pattern to enhance service classes without changing their core logic. Here's an example where we decorate a service class to add **logging functionality**.
+    In Spring Boot, the decorator pattern can be used in scenarios such as logging, monitoring, or security checks. You can implement a decorator pattern to enhance service classes without changing their core logic. Here's an example where we decorate a service class to add logging functionality.
 
     ```java title="Component Interface (Service Layer)"
     public interface UserService {
@@ -196,19 +192,16 @@ The **Decorator Pattern** is used to attach additional responsibilities or behav
     ```
 
     ???+ info "How it Works in Spring Boot"
-        - **`UserServiceImpl`** provides the basic functionality.
-        - **`LoggingUserService`** acts as a decorator, adding logging before calling the original method.
+        - `UserServiceImpl` provides the basic functionality.
+        - `LoggingUserService` acts as a decorator, adding logging before calling the original method.
         - Spring’s **DI (Dependency Injection)** ensures that the decorated service is injected wherever needed.
 
----
-
-
-## **Summary:**
+## **Summary**
 
 The Decorator Pattern is a powerful and flexible way to enhance objects with additional behaviors dynamically without altering their structure. It shines in scenarios requiring combinations of behaviors and helps maintain clean, modular code. 
 
-In Spring Boot, it can be used for decorating services with additional features like **logging, security, or metrics**, allowing these aspects to remain separate from the core business logic.
+In Spring Boot, it can be used for decorating services with additional features like logging, security, or metrics, allowing these aspects to remain separate from the core business logic.
 
-This pattern should be used thoughtfully since excessive use can introduce complexity and make debugging difficult. However, when applied correctly, it ensures that code remains extensible and adheres to the **Single Responsibility Principle** and **Open Closed Principle**.
+This pattern should be used thoughtfully since excessive use can introduce complexity and make debugging difficult. However, when applied correctly, it ensures that code remains extensible and adheres to the Single Responsibility Principle and Open Closed Principle.
 
 ---

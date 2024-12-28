@@ -63,7 +63,7 @@ This pattern allows you to treat a group of objects in the same way as a single 
 
 ## **How to Apply ?**
 
-???+ example "Simple Example"
+??? example "Simple Example"
 
     ```java
     // 1. Component Interface
@@ -126,12 +126,11 @@ This pattern allows you to treat a group of objects in the same way as a single 
     }
     ```
 
-    ??? info "Output"
-        ```
-        Department Details:
-        John works as Developer
-        Doe works as Tester
-        ```
+    ``` title="Output"
+    Department Details:
+    John works as Developer
+    Doe works as Tester
+    ```
 
 ??? example "Spring Boot Example"
 
@@ -221,13 +220,12 @@ This pattern allows you to treat a group of objects in the same way as a single 
     }
     ```
 
-    ???+ info "Sample Output when calling `/categories/example`"
 
-        ```
-        Category: Electronics
-        Product: Laptop
-        Product: Phone
-        ```
+    ``` title="Sample Output when calling /categories/example"
+    Category: Electronics
+    Product: Laptop
+    Product: Phone
+    ```
 
     ???+ note "Spring Boot Considerations"
 

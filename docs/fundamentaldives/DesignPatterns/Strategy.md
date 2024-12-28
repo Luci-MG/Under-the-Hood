@@ -1,42 +1,39 @@
-# **Strategy Design Pattern**
+[//]: # (TODO:: Need to add examples in other Language )
+
+# **Strategy**
+
+## **What ?** 
+
+The Strategy Pattern is a behavioral design pattern that allows you to define a family of algorithms, encapsulate each one, and make them interchangeable. It lets the algorithm vary independently from clients that use it, promoting flexibility, scalability, and separation of concerns. 
 
 In simpler terms, It enables selecting a specific algorithm at runtime based on the context, without modifying the client code. 
 
----
-
-## **What ?  
-The **Strategy Pattern** is a **behavioral design pattern** that allows you to define a family of algorithms, encapsulate each one, and make them interchangeable. It lets the algorithm vary independently from clients that use it, promoting **flexibility, scalability, and separation of concerns**. 
-
----
 
 ## **When to Use?**
-- When you have **multiple algorithms** or behaviors that can be applied to an object and want to switch between them dynamically.
-- When you need to **avoid conditional logic** (like many `if-else` or `switch` statements).
-- When you want to **decouple** the code that uses the algorithm from the actual implementation of the algorithm.
-- When a class has multiple related behaviors, and you want to **configure them at runtime**.
+- When you have multiple algorithms or behaviors that can be applied to an object and want to switch between them dynamically.
+- When you need to avoid conditional logic (like many `if-else` or `switch` statements).
+- When you want to decouple the code that uses the algorithm from the actual implementation of the algorithm.
+- When a class has multiple related behaviors, and you want to configure them at runtime.
 
----
 
 ## **Why to Use ?**
-- **Avoids code duplication** by eliminating repeated conditional logic.
-- **Adheres to the Open/Closed principle** (open for extension, closed for modification).
-- Promotes **modularity and testability** since algorithms are in separate classes.
-- **Simplifies maintenance** by isolating algorithms from the business logic.
+- Avoids code duplication by eliminating repeated conditional logic.
+- Adheres to the Open/Closed principle (open for extension, closed for modification).
+- Promotes modularity and testability since algorithms are in separate classes.
+- Simplifies maintenance by isolating algorithms from the business logic.
   
----
 
 ## **When Not to Use?**
-- If the algorithms are not likely to change or only one behavior is needed, adding this pattern would add **unnecessary complexity**.
-- When performance is critical, and switching algorithms frequently incurs **overhead**.
-- If the algorithms are trivial and simple, the **extra classes and abstractions** may not be worth the effort.
+- If the algorithms are not likely to change or only one behavior is needed, adding this pattern would add unnecessary complexity.
+- When performance is critical, and switching algorithms frequently incurs overhead.
+- If the algorithms are trivial and simple, the extra classes and abstractions may not be worth the effort.
 
----
 
 ## **How to Implement ?**
 
-???+ example "Simple Java Example"
+??? example "Simple Example"
 
-    Let’s implement a **payment system** that allows different payment methods using the Strategy Pattern. We will define multiple payment strategies (like **Credit Card** and **PayPal**) and switch between them dynamically.
+    Let’s implement a payment system that allows different payment methods using the Strategy Pattern. We will define multiple payment strategies (like Credit Card and PayPal) and switch between them dynamically.
 
     ```java title="Step-1: Create the Strategy Interface"
     // PaymentStrategy.java
@@ -109,13 +106,12 @@ The **Strategy Pattern** is a **behavioral design pattern** that allows you to d
     }
     ```
 
----
 
-???+ example "Spring Boot Example"
+??? example "Spring Boot Example"
 
-    In a **Spring Boot** application, the Strategy Pattern can be applied by injecting different strategy implementations using **Spring’s dependency injection**.
+    In a Spring Boot application, the Strategy Pattern can be applied by injecting different strategy implementations using Spring’s dependency injection.
 
-    Let's build a simple **notification service** where the user can choose between sending notifications via **Email or SMS**.
+    Let's build a simple notification service where the user can choose between sending notifications via Email or SMS.
 
     ```java title="Create the Strategy Interface"
     // NotificationStrategy.java
@@ -206,13 +202,12 @@ The **Strategy Pattern** is a **behavioral design pattern** that allows you to d
     ```
 
     ??? info "How It Works"
-        - **NotificationContext** uses a **Map of NotificationStrategy beans**, where the key is the bean name (like `email` or `sms`).
-        - **Spring Boot automatically injects the strategies** with the `@Service` annotation.
-        - In the **controller**, the appropriate strategy is selected based on the URL path (`/notify/email` or `/notify/sms`).
+        - NotificationContext uses a Map of NotificationStrategy beans, where the key is the bean name (like `email` or `sms`).
+        - Spring Boot automatically injects the strategies with the `@Service` annotation.
+        - In the **controller, the appropriate strategy is selected based on the URL path (`/notify/email` or `/notify/sms`).
 
----
 
-???+ example "Alternative Ways"
+??? example "Alternative Ways"
 
     **Using Enum-based Strategies:**  If the algorithms are simple and limited, you can use an `enum` with methods for strategy logic.
 
@@ -251,9 +246,8 @@ The **Strategy Pattern** is a **behavioral design pattern** that allows you to d
     }
     ```
 
----
 
 ## **Summary**
-The **Strategy Pattern** is a powerful way to manage dynamic behavior selection in a clean and decoupled way. In a Spring Boot application, you can easily integrate it by using **dependency injection**. However, it’s essential to use the pattern wisely to avoid unnecessary complexity or overhead. Use it when multiple behaviors or algorithms need to vary independently without modifying client code. Avoid using it if the added complexity is not justified.
+The Strategy Pattern is a powerful way to manage dynamic behavior selection in a clean and decoupled way. In a Spring Boot application, you can easily integrate it by using dependency injection. However, it’s essential to use the pattern wisely to avoid unnecessary complexity or overhead. Use it when multiple behaviors or algorithms need to vary independently without modifying client code. Avoid using it if the added complexity is not justified.
 
 ---

@@ -1,20 +1,20 @@
-# **Iterator Design Pattern**
+[//]: # (TODO:: Need to add examples in other Language )
 
-The **Iterator pattern** is a **behavioral design pattern** that allows sequential access to elements of a collection without exposing its underlying structure. The goal is to provide a way to access the elements of an aggregate object (such as an array, list, or set) one by one, **without needing to understand how the collection is implemented**.
+# **Iterator**
 
----
+The Iterator pattern is a behavioral design pattern that allows sequential access to elements of a collection without exposing its underlying structure. The goal is to provide a way to access the elements of an aggregate object (such as an array, list, or set) one by one, without needing to understand how the collection is implemented.
+
 
 ## **What ?**
 
 Iterator is a behavioral design pattern that lets you traverse elements of a collection without exposing its underlying representation (list, stack, tree, etc.).
 
 !!! info "Key Components"
-    - **Iterator**: An interface that defines methods for traversing elements (e.g., `hasNext()`, `next()`).
-    - **Concrete Iterator**: A class implementing the `Iterator` interface for specific collections.
-    - **Aggregate**: An interface that defines a method to return an iterator (e.g., `iterator()`).
-    - **Concrete Aggregate**: A collection (like List, Set, or Custom Collection) that returns a concrete iterator for traversal.
+    - Iterator: An interface that defines methods for traversing elements (e.g., `hasNext()`, `next()`).
+    - Concrete Iterator: A class implementing the `Iterator` interface for specific collections.
+    - Aggregate: An interface that defines a method to return an iterator (e.g., `iterator()`).
+    - Concrete Aggregate: A collection (like List, Set, or Custom Collection) that returns a concrete iterator for traversal.
 
----
 
 ## **When to Use ?**
 - When you need to traverse a collection without exposing its internal structure.
@@ -23,31 +23,27 @@ Iterator is a behavioral design pattern that lets you traverse elements of a col
 - Helpful when designing read-only views over complex collections.
 - If you need multiple ways to traverse the collection (e.g., forward, reverse, or filtered).
 
----
 
 ## **When Not to Use ?**
 - If the collection is small and performance is critical, an iterator might introduce overhead.
 - When direct access to elements is more efficient or easier (e.g., in simple arrays or lists).
 
----
 
 ## **Advantages**
 - Separation of concerns the client doesn’t need to know the internal structure of the collection.
 - Multiple traversal strategies can implement different types of iterators (e.g., reverse iterator).
 - Simplifies collections makes it easier to work with complex structures like trees or graphs.
 
----
 
 ## **DisAdvantages**
 - Performance overhead if not managed properly, iterators can add unnecessary overhead.
 - Limited control over collection Iterators typically provide read-only access.
 - Concurrency issues Modifying a collection while iterating over it may throw `ConcurrentModificationException`.
 
----
 
 ## **How to Implement ?**
 
-???+ example "Sample Java Example"
+??? example "Sample Example"
 
     Let's go through with a simple Java example of a custom iterator for a list of strings.
 
@@ -113,7 +109,7 @@ Iterator is a behavioral design pattern that lets you traverse elements of a col
     }
     ```
 
-???+ example "Using Java’s Built-in Iterators"
+??? example "Using Java’s Built-in Iterators"
     Java already provides built-in iterators for its collection framework (`Iterator`, `ListIterator`, and `Spliterator`).
 
     ```java title="Example with Java’s Built-in Iterator"
@@ -136,7 +132,7 @@ Iterator is a behavioral design pattern that lets you traverse elements of a col
     }
     ```
 
-???+ example "Spring Boot Example"
+??? example "Spring Boot Example"
 
     Spring Boot doesn’t explicitly use the **Iterator pattern** as part of its core framework, but it does utilize **Iterators** internally (e.g., when dealing with `ApplicationContext` beans or data access layers). You can integrate the **Iterator pattern** within Spring Boot to handle collections of objects such as configurations, database entities, or APIs.
 
@@ -213,9 +209,8 @@ Iterator is a behavioral design pattern that lets you traverse elements of a col
 
     When you access `http://localhost:8080/books`, it will print the list of books using the iterator after running the application
 
----
 
 ## **Summary**
-The **Iterator pattern** is a powerful way to **decouple iteration logic** from collections, ensuring a **clean separation of concerns**. It’s useful in Java projects where complex or multiple ways of traversal are required. When integrated into **Spring Boot**, the pattern can be applied to iterate over configurations, data models, or APIs efficiently.
+The Iterator pattern is a powerful way to decouple iteration logic from collections, ensuring a clean separation of concerns. It’s useful in Java projects where complex or multiple ways of traversal are required. When integrated into Spring Boot, the pattern can be applied to iterate over configurations, data models, or APIs efficiently.
 
 ---
