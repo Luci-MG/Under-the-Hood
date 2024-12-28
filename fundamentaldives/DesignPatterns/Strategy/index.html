@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#strategy-design-pattern" class="md-skip">
+        <a href="#strategy" class="md-skip">
           Skip to content
         </a>
       
@@ -1069,7 +1069,7 @@
         <li class="md-nav__item">
   <a href="#what" class="md-nav__link">
     <span class="md-ellipsis">
-      **What ?
+      What ?
     </span>
   </a>
   
@@ -2571,7 +2571,7 @@
         <li class="md-nav__item">
   <a href="#what" class="md-nav__link">
     <span class="md-ellipsis">
-      **What ?
+      What ?
     </span>
   </a>
   
@@ -2645,39 +2645,34 @@
   
 
 
-<h1 id="strategy-design-pattern"><strong>Strategy Design Pattern</strong><a class="headerlink" href="#strategy-design-pattern" title="Permanent link">&para;</a></h1>
+<h1 id="strategy"><strong>Strategy</strong><a class="headerlink" href="#strategy" title="Permanent link">&para;</a></h1>
+<h2 id="what"><strong>What ?</strong><a class="headerlink" href="#what" title="Permanent link">&para;</a></h2>
+<p>The Strategy Pattern is a behavioral design pattern that allows you to define a family of algorithms, encapsulate each one, and make them interchangeable. It lets the algorithm vary independently from clients that use it, promoting flexibility, scalability, and separation of concerns. </p>
 <p>In simpler terms, It enables selecting a specific algorithm at runtime based on the context, without modifying the client code. </p>
-<hr />
-<h2 id="what">**What ?<a class="headerlink" href="#what" title="Permanent link">&para;</a></h2>
-<p>The <strong>Strategy Pattern</strong> is a <strong>behavioral design pattern</strong> that allows you to define a family of algorithms, encapsulate each one, and make them interchangeable. It lets the algorithm vary independently from clients that use it, promoting <strong>flexibility, scalability, and separation of concerns</strong>. </p>
-<hr />
 <h2 id="when-to-use"><strong>When to Use?</strong><a class="headerlink" href="#when-to-use" title="Permanent link">&para;</a></h2>
 <ul>
-<li>When you have <strong>multiple algorithms</strong> or behaviors that can be applied to an object and want to switch between them dynamically.</li>
-<li>When you need to <strong>avoid conditional logic</strong> (like many <code>if-else</code> or <code>switch</code> statements).</li>
-<li>When you want to <strong>decouple</strong> the code that uses the algorithm from the actual implementation of the algorithm.</li>
-<li>When a class has multiple related behaviors, and you want to <strong>configure them at runtime</strong>.</li>
+<li>When you have multiple algorithms or behaviors that can be applied to an object and want to switch between them dynamically.</li>
+<li>When you need to avoid conditional logic (like many <code>if-else</code> or <code>switch</code> statements).</li>
+<li>When you want to decouple the code that uses the algorithm from the actual implementation of the algorithm.</li>
+<li>When a class has multiple related behaviors, and you want to configure them at runtime.</li>
 </ul>
-<hr />
 <h2 id="why-to-use"><strong>Why to Use ?</strong><a class="headerlink" href="#why-to-use" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Avoids code duplication</strong> by eliminating repeated conditional logic.</li>
-<li><strong>Adheres to the Open/Closed principle</strong> (open for extension, closed for modification).</li>
-<li>Promotes <strong>modularity and testability</strong> since algorithms are in separate classes.</li>
-<li><strong>Simplifies maintenance</strong> by isolating algorithms from the business logic.</li>
+<li>Avoids code duplication by eliminating repeated conditional logic.</li>
+<li>Adheres to the Open/Closed principle (open for extension, closed for modification).</li>
+<li>Promotes modularity and testability since algorithms are in separate classes.</li>
+<li>Simplifies maintenance by isolating algorithms from the business logic.</li>
 </ul>
-<hr />
 <h2 id="when-not-to-use"><strong>When Not to Use?</strong><a class="headerlink" href="#when-not-to-use" title="Permanent link">&para;</a></h2>
 <ul>
-<li>If the algorithms are not likely to change or only one behavior is needed, adding this pattern would add <strong>unnecessary complexity</strong>.</li>
-<li>When performance is critical, and switching algorithms frequently incurs <strong>overhead</strong>.</li>
-<li>If the algorithms are trivial and simple, the <strong>extra classes and abstractions</strong> may not be worth the effort.</li>
+<li>If the algorithms are not likely to change or only one behavior is needed, adding this pattern would add unnecessary complexity.</li>
+<li>When performance is critical, and switching algorithms frequently incurs overhead.</li>
+<li>If the algorithms are trivial and simple, the extra classes and abstractions may not be worth the effort.</li>
 </ul>
-<hr />
 <h2 id="how-to-implement"><strong>How to Implement ?</strong><a class="headerlink" href="#how-to-implement" title="Permanent link">&para;</a></h2>
-<details class="example" open="open">
-<summary>Simple Java Example</summary>
-<p>Let’s implement a <strong>payment system</strong> that allows different payment methods using the Strategy Pattern. We will define multiple payment strategies (like <strong>Credit Card</strong> and <strong>PayPal</strong>) and switch between them dynamically.</p>
+<details class="example">
+<summary>Simple Example</summary>
+<p>Let’s implement a payment system that allows different payment methods using the Strategy Pattern. We will define multiple payment strategies (like Credit Card and PayPal) and switch between them dynamically.</p>
 <div class="language-java highlight"><span class="filename">Step-1: Create the Strategy Interface</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// PaymentStrategy.java</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">PaymentStrategy</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">pay</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">amount</span><span class="p">);</span>
@@ -2742,11 +2737,10 @@
 </span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<hr />
-<details class="example" open="open">
+<details class="example">
 <summary>Spring Boot Example</summary>
-<p>In a <strong>Spring Boot</strong> application, the Strategy Pattern can be applied by injecting different strategy implementations using <strong>Spring’s dependency injection</strong>.</p>
-<p>Let's build a simple <strong>notification service</strong> where the user can choose between sending notifications via <strong>Email or SMS</strong>.</p>
+<p>In a Spring Boot application, the Strategy Pattern can be applied by injecting different strategy implementations using Spring’s dependency injection.</p>
+<p>Let's build a simple notification service where the user can choose between sending notifications via Email or SMS.</p>
 <div class="language-java highlight"><span class="filename">Create the Strategy Interface</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// NotificationStrategy.java</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">NotificationStrategy</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">sendNotification</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
@@ -2828,14 +2822,13 @@
 <details class="info">
 <summary>How It Works</summary>
 <ul>
-<li><strong>NotificationContext</strong> uses a <strong>Map of NotificationStrategy beans</strong>, where the key is the bean name (like <code>email</code> or <code>sms</code>).</li>
-<li><strong>Spring Boot automatically injects the strategies</strong> with the <code>@Service</code> annotation.</li>
-<li>In the <strong>controller</strong>, the appropriate strategy is selected based on the URL path (<code>/notify/email</code> or <code>/notify/sms</code>).</li>
+<li>NotificationContext uses a Map of NotificationStrategy beans, where the key is the bean name (like <code>email</code> or <code>sms</code>).</li>
+<li>Spring Boot automatically injects the strategies with the <code>@Service</code> annotation.</li>
+<li>In the **controller, the appropriate strategy is selected based on the URL path (<code>/notify/email</code> or <code>/notify/sms</code>).</li>
 </ul>
 </details>
 </details>
-<hr />
-<details class="example" open="open">
+<details class="example">
 <summary>Alternative Ways</summary>
 <p><strong>Using Enum-based Strategies:</strong>  If the algorithms are simple and limited, you can use an <code>enum</code> with methods for strategy logic.</p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">enum</span><span class="w"> </span><span class="n">Operation</span><span class="w"> </span><span class="p">{</span>
@@ -2869,9 +2862,8 @@
 </span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<hr />
 <h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
-<p>The <strong>Strategy Pattern</strong> is a powerful way to manage dynamic behavior selection in a clean and decoupled way. In a Spring Boot application, you can easily integrate it by using <strong>dependency injection</strong>. However, it’s essential to use the pattern wisely to avoid unnecessary complexity or overhead. Use it when multiple behaviors or algorithms need to vary independently without modifying client code. Avoid using it if the added complexity is not justified.</p>
+<p>The Strategy Pattern is a powerful way to manage dynamic behavior selection in a clean and decoupled way. In a Spring Boot application, you can easily integrate it by using dependency injection. However, it’s essential to use the pattern wisely to avoid unnecessary complexity or overhead. Use it when multiple behaviors or algorithms need to vary independently without modifying client code. Avoid using it if the added complexity is not justified.</p>
 <hr />
 
 
@@ -2895,7 +2887,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 18, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 28, 2024</span>
   </span>
 
     

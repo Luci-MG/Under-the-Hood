@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#facade-design-pattern" class="md-skip">
+        <a href="#facade" class="md-skip">
           Skip to content
         </a>
       
@@ -2681,16 +2681,14 @@
   
 
 
-<h1 id="facade-design-pattern"><strong>Facade Design Pattern</strong><a class="headerlink" href="#facade-design-pattern" title="Permanent link">&para;</a></h1>
-<p>The <strong>Facade Pattern</strong> is a structural design pattern commonly used to provide a simple, unified interface to a complex subsystem of classes, libraries, or frameworks. This pattern makes a complex library or system easier to use by hiding the underlying complexities and exposing only the functionality that is relevant for the client.</p>
-<hr />
+<h1 id="facade"><strong>Facade</strong><a class="headerlink" href="#facade" title="Permanent link">&para;</a></h1>
+<p>The Facade Pattern is a structural design pattern commonly used to provide a simple, unified interface to a complex subsystem of classes, libraries, or frameworks. This pattern makes a complex library or system easier to use by hiding the underlying complexities and exposing only the functionality that is relevant for the client.</p>
 <h2 id="what"><strong>What ?</strong><a class="headerlink" href="#what" title="Permanent link">&para;</a></h2>
 <ul>
-<li>The <strong>Facade Pattern</strong> defines a higher-level interface that makes a system easier to use by hiding its complexity.</li>
-<li>It provides a <strong>single interface</strong> or <strong>entry point</strong> to a group of related classes or modules.</li>
+<li>The Facade Pattern defines a higher-level interface that makes a system easier to use by hiding its complexity.</li>
+<li>It provides a single interface or entry point to a group of related classes or modules.</li>
 <li>It simplifies interactions between the client and complex subsystems.</li>
 </ul>
-<hr />
 <h2 id="how-to-create"><strong>How to Create ?</strong><a class="headerlink" href="#how-to-create" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Identify a complex subsystem that needs simplification.</li>
@@ -2699,7 +2697,6 @@
 <li>Delegate requests from the Facade class to the appropriate subsystem components.</li>
 <li>Hide the internal complexity of subsystems from the client.</li>
 </ul>
-<hr />
 <h2 id="when-to-use"><strong>When to Use ?</strong><a class="headerlink" href="#when-to-use" title="Permanent link">&para;</a></h2>
 <ul>
 <li>When you need to provide a simpler interface to a complex subsystem.</li>
@@ -2707,7 +2704,6 @@
 <li>When you make changes to the subsystems won’t impact the client code since the facade hides those details.</li>
 <li>When you have multiple clients that need to interact with a system in a unified way.</li>
 </ul>
-<hr />
 <h2 id="where-not-to-use"><strong>Where Not to Use ?</strong><a class="headerlink" href="#where-not-to-use" title="Permanent link">&para;</a></h2>
 <ul>
 <li>If the system is already simple No need to add an extra abstraction layer.</li>
@@ -2715,7 +2711,6 @@
 <li>When high performance is critical If adding the facade introduces unnecessary overhead.</li>
 <li>Too many Facades can be anti-pattern overusing facades may cause code to become harder to maintain by hiding too much behind layers of abstraction.</li>
 </ul>
-<hr />
 <h2 id="advantages"><strong>Advantages</strong><a class="headerlink" href="#advantages" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Simplifies code usage Reduces the number of classes exposed to the client.</li>
@@ -2723,18 +2718,16 @@
 <li>Improves maintainability Changes in subsystems don’t affect the client directly.</li>
 <li>Reduces dependencies Decouples the client from internal subsystems.</li>
 </ul>
-<hr />
 <h2 id="disadvantages"><strong>Disadvantages</strong><a class="headerlink" href="#disadvantages" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Over-abstraction Might hide too much, making it hard to access specific functionality.</li>
 <li>Performance overhead If not designed well, adding a facade might introduce latency.</li>
 <li>Risk of becoming an anti-pattern Overuse can lead to poorly maintainable code due to excessive abstraction layers.</li>
 </ul>
-<hr />
 <h2 id="how-to-apply"><strong>How to Apply ?</strong><a class="headerlink" href="#how-to-apply" title="Permanent link">&para;</a></h2>
-<details class="example" open="open">
-<summary>Simple Java Example</summary>
-<p>Let's go through a simple Java example demonstrating a Facade pattern for a <strong>Home Theater System</strong>:</p>
+<details class="example">
+<summary>Simple Example</summary>
+<p>Let's go through a simple Java example demonstrating a Facade pattern for a Home Theater System:</p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Subsystem classes</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">class</span> <span class="nc">Amplifier</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">on</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Amplifier is ON.&quot;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
@@ -2792,9 +2785,7 @@
 </span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="p">}</span>
 </span></code></pre></div>
-<details class="info">
-<summary>Output</summary>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Setting up movie...
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Setting up movie...
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Amplifier is ON.
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Projector is ON.
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>Playing movie.
@@ -2803,21 +2794,20 @@
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>Projector is OFF.
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>Amplifier is OFF.
 </span></code></pre></div>
-</details>
-<details class="info">
+<details class="info" open="open">
 <summary>Explanation:</summary>
 <ul>
 <li>Subsystem classes (Amplifier, DVDPlayer, Projector) have their own logic.</li>
 <li>Facade class (HomeTheaterFacade) abstracts the interactions between these subsystems and provides a simple interface for the client.</li>
-<li>The client only needs to call the <strong>watchMovie()</strong> and <strong>endMovie()</strong> methods without worrying about the complex setup logic.</li>
+<li>The client only needs to call the watchMovie() and endMovie() methods without worrying about the complex setup logic.</li>
 </ul>
 </details>
 </details>
-<details class="example" open="open">
+<details class="example">
 <summary>Spring Boot Example</summary>
-<p>In <strong>Spring Boot</strong>, the Facade pattern can be applied to <strong>services or controllers</strong> to hide the complexity of business logic or external systems. For example, a facade class can wrap multiple service calls or integrate external APIs to provide a simplified interface to the client (like a REST controller).</p>
-<p>Let's go through a example of how to apply the Facade pattern in a <strong>Spring Boot</strong> application.</p>
-<p><strong>Scenario</strong>: A <strong>Payment System</strong> interacts with several services (like PaymentGatewayService, NotificationService, and OrderService). We create a PaymentFacade to simplify the interaction.</p>
+<p>In Spring Boot, the Facade pattern can be applied to services or controllers to hide the complexity of business logic or external systems. For example, a facade class can wrap multiple service calls or integrate external APIs to provide a simplified interface to the client (like a REST controller).</p>
+<p>Let's go through a example of how to apply the Facade pattern in a Spring Boot application.</p>
+<p><strong>Example Scenario</strong>: A Payment System interacts with several services (like PaymentGatewayService, NotificationService, and OrderService). We create a PaymentFacade to simplify the interaction.</p>
 <div class="language-java highlight"><span class="filename">Step-1: Subsystem Services</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nd">@Service</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PaymentGatewayService</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">processPayment</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">orderId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -2881,18 +2871,17 @@
 </span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="p">}</span>
 </span></code></pre></div>
-<details class="info">
+<details class="info" open="open">
 <summary>Explanation</summary>
 <ul>
-<li><strong>PaymentFacade</strong>: Acts as the Facade, simplifying the interactions between <code>PaymentGatewayService</code>, <code>OrderService</code>, and <code>NotificationService</code>.</li>
-<li><strong>Controller</strong>: Uses the <code>PaymentFacade</code> to expose a single endpoint for making payments.</li>
+<li>PaymentFacade: Acts as the Facade, simplifying the interactions between <code>PaymentGatewayService</code>, <code>OrderService</code>, and <code>NotificationService</code>.</li>
+<li>Controller: Uses the <code>PaymentFacade</code> to expose a single endpoint for making payments.</li>
 <li>This ensures that the controller does not need to handle complex business logic and can focus only on handling HTTP requests.</li>
 </ul>
 </details>
 </details>
-<hr />
 <h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
-<p>The <strong>Facade Pattern</strong> is a powerful tool for simplifying interactions with complex systems. It is especially useful when working with <strong>large subsystems or external APIs</strong>, as it encapsulates the internal workings and provides a <strong>simple interface</strong> to clients. In a <strong>Spring Boot</strong> application, you can use it to manage complex <strong>business logic</strong> or interactions with <strong>multiple services</strong> within a single, cohesive facade. However, it should be used judiciously to avoid <strong>over-abstraction</strong> or unnecessary complexity.</p>
+<p>The Facade Pattern is a powerful tool for simplifying interactions with complex systems. It is especially useful when working with large subsystems or external APIs, as it encapsulates the internal workings and provides a simple interface to clients. In a Spring Boot application, you can use it to manage complex business logic or interactions with multiple services within a single, cohesive facade. However, it should be used judiciously to avoid over-abstraction or unnecessary complexity.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <h4 id="this-pattern-is-best-used-when">This pattern is best used when:<a class="headerlink" href="#this-pattern-is-best-used-when" title="Permanent link">&para;</a></h4>
@@ -2905,7 +2894,7 @@
 - Performance is a key concern.
 </code></pre></div>
 </div>
-<p>This makes the Facade pattern a valuable asset in both <strong>object-oriented design</strong> and <strong>modern frameworks</strong> like Spring Boot.</p>
+<p>This makes the Facade pattern a valuable asset in both object-oriented design and modern frameworks like Spring Boot.</p>
 <hr />
 
 
@@ -2929,7 +2918,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 18, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 28, 2024</span>
   </span>
 
     

@@ -2735,7 +2735,7 @@
 <li>Avoid unnecessary depth Keep your object hierarchy shallow to prevent performance issues with recursive calls.</li>
 </ul>
 <h2 id="how-to-apply"><strong>How to Apply ?</strong><a class="headerlink" href="#how-to-apply" title="Permanent link">&para;</a></h2>
-<details class="example" open="open">
+<details class="example">
 <summary>Simple Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// 1. Component Interface</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">interface</span> <span class="nc">Component</span><span class="w"> </span><span class="p">{</span>
@@ -2796,13 +2796,10 @@
 </span><span id="__span-1-57"><a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-1-58"><a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a><span class="p">}</span>
 </span></code></pre></div>
-<details class="info">
-<summary>Output</summary>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Department Details:
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Department Details:
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>John works as Developer
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Doe works as Tester
 </span></code></pre></div>
-</details>
 </details>
 <details class="example">
 <summary>Spring Boot Example</summary>
@@ -2889,13 +2886,10 @@
 </span><span id="__span-3-75"><a id="__codelineno-3-75" name="__codelineno-3-75" href="#__codelineno-3-75"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-3-76"><a id="__codelineno-3-76" name="__codelineno-3-76" href="#__codelineno-3-76"></a><span class="p">}</span>
 </span></code></pre></div>
-<details class="info" open="open">
-<summary>Sample Output when calling <code>/categories/example</code></summary>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Category: Electronics
+<div class="language-text highlight"><span class="filename">Sample Output when calling /categories/example</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Category: Electronics
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Product: Laptop
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>Product: Phone
 </span></code></pre></div>
-</details>
 <details class="note" open="open">
 <summary>Spring Boot Considerations</summary>
 <ul>
