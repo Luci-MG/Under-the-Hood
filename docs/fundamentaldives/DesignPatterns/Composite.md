@@ -1,20 +1,28 @@
-# **Composite Design Pattern**
+[//]: # (TODO:: Need to add examples in other Language )
 
-The **Composite Pattern** is a structural design pattern used in software design to represent part whole hierarchies. It enables you to build complex object structures by treating both individual objects and compositions of objects uniformly.
-
----
+# **Composite**
 
 ## **What ?**
-The Composite pattern allows you to treat a group of objects in the same way as a single object. This is especially useful when building **tree structures** (like directories or UI components). 
+
+The Composite Pattern is a structural design pattern used in software design to represent part whole hierarchies. It enables you to build complex object structures by treating both individual objects and compositions of objects uniformly.
+
+This pattern allows you to treat a group of objects in the same way as a single object. This is especially useful when building tree structures (like directories or UI components). 
 
 !!! info "Key Concepts"
-    The idea is to define a **common interface** for all the objects, whether simple or complex, so they can be treated uniformly.
+    The idea is to define a common interface for all the objects, whether simple or complex, so they can be treated uniformly.
 
     - **Component**: A base interface for both leaf objects and composite objects.
     - **Leaf**: An individual object that doesn't contain other objects.
     - **Composite**: A container of other `Component` objects. It may contain both Leafs and other Composites.
 
----
+    !!! tip "Basic Structure UML"
+
+        ```
+        Component (Interface or Abstract class)
+        ├── Leaf (Concrete class)
+        └── Composite (Concrete class containing Components)
+        ```
+
 
 ## **When ?**
 - When you have a tree structure. eg: Filesystem, organizational hierarchies, UI components (panels, buttons, etc.).
@@ -22,16 +30,13 @@ The Composite pattern allows you to treat a group of objects in the same way as 
 - When you want to avoid if-else checks to determine if an object is an individual or a container.
 - When you want objects to dynamically add children.
 
----
-
 
 ## **Where Not to Use ?**
 
-- If your object structure is **flat** without any hierarchy.
+- If your object structure is flat without any hierarchy.
 - If objects have no relation to one another, there’s no need for such complexity.
 - If performance is critical and deep hierarchies could result in expensive recursive calls.
 
----
 
 ## **Why Use ?**
 
@@ -40,7 +45,6 @@ The Composite pattern allows you to treat a group of objects in the same way as 
 - You can add new types of components without modifying existing code (Open-Closed Principle).
 - Reduces Conditional Logic Avoids if-else statements by treating all objects uniformly.
 
----
 
 ## **Ways to Create ?**
 
@@ -49,7 +53,6 @@ The Composite pattern allows you to treat a group of objects in the same way as 
 - With Builders Use a Builder pattern to assemble the composite structure dynamically.
 - Immutable Composites Create composite objects where elements are added only through constructor injection to prevent accidental changes.
 
----
 
 ## **How to Use Effectively?**
 
@@ -57,19 +60,10 @@ The Composite pattern allows you to treat a group of objects in the same way as 
 - Leverage abstraction Ensure you design a robust `Component` interface for both Leafs and Composites.
 - Avoid unnecessary depth Keep your object hierarchy shallow to prevent performance issues with recursive calls.
 
----
 
 ## **How to Apply ?**
 
-??? info "UML of Basic Structure with Interface or Abstract class"
-
-    ```
-    Component (Interface or Abstract class)
-    ├── Leaf (Concrete class)
-    └── Composite (Concrete class containing Components)
-    ```
-
-???+ example "Simple Java Example"
+???+ example "Simple Example"
 
     ```java
     // 1. Component Interface
@@ -139,7 +133,7 @@ The Composite pattern allows you to treat a group of objects in the same way as 
         Doe works as Tester
         ```
 
-???+ example "Spring Boot Example"
+??? example "Spring Boot Example"
 
     In Spring Boot, the Composite pattern can fit into cases where you model tree-based structures in your business logic, such as:
 
@@ -227,7 +221,7 @@ The Composite pattern allows you to treat a group of objects in the same way as 
     }
     ```
 
-    ??? info "Sample Output when calling `/categories/example`"
+    ???+ info "Sample Output when calling `/categories/example`"
 
         ```
         Category: Electronics
@@ -237,15 +231,13 @@ The Composite pattern allows you to treat a group of objects in the same way as 
 
     ???+ note "Spring Boot Considerations"
 
-        - **Use in Controllers**: You can use the composite pattern to model responses from REST endpoints.
-        - **Use in Services**: Combine multiple services (leaf and composite) in a unified API.
-        - **Use with JPA Entities**: If your entities are hierarchical, you can apply the Composite pattern with relationships (e.g., `@OneToMany`).
-
----
+        - Use in Controllers: You can use the composite pattern to model responses from REST endpoints.
+        - Use in Services: Combine multiple services (leaf and composite) in a unified API.
+        - Use with JPA Entities: If your entities are hierarchical, you can apply the Composite pattern with relationships (e.g., `@OneToMany`).
 
 
 ## **Summary**
 
-The Composite Pattern is a powerful structural pattern for managing **hierarchical, tree-like structures**. It allows **uniform handling** of individual and composite objects, making it ideal for UI elements, filesystems, or business domains with nested elements. When integrating with **Spring Boot**, it works well in **controllers, services**, or **JPA entities** for modeling hierarchical data. However, avoid using it when there’s no hierarchy or when performance is critical (deep recursion). Use it wisely, and it can help you **reduce complexity** and **simplify your code**.
+The Composite Pattern is a powerful structural pattern for managing hierarchical, tree-like structures. It allows uniform handling of individual and composite objects, making it ideal for UI elements, filesystems, or business domains with nested elements. When integrating with Spring Boot, it works well in controllers, services, or JPA entities for modeling hierarchical data. However, avoid using it when there’s no hierarchy or when performance is critical (deep recursion). Use it wisely, and it can help you reduce complexity and simplify your code.
 
 ---
