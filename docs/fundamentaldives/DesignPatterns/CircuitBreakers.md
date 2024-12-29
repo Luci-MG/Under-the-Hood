@@ -1,11 +1,8 @@
 # **Circuit Breakers**
-Circuit breakers in software are a powerful pattern for managing failures, improving system reliability, and ensuring smooth operation of distributed systems.
 
 ## **What ?**
 
-In software, a **circuit breaker** is a design pattern used to prevent cascading failures and manage service availability. If a service call repeatedly fails, the circuit breaker "trips" and prevents further attempts, allowing the system to recover gracefully. This pattern mimics the behavior of electrical circuit breakers.
-
----
+A circuit breaker is a design pattern used to prevent cascading failures and manage service availability. If a service call repeatedly fails, the circuit breaker "trips" and prevents further attempts, allowing the system to recover gracefully. This pattern mimics the behavior of electrical circuit breakers.
 
 ## **Why is it Needed ?**
 
@@ -14,28 +11,23 @@ In software, a **circuit breaker** is a design pattern used to prevent cascading
 - **Latency reduction**: Avoid waiting indefinitely on unresponsive services.
 - **Network management**: Protects against service exhaustion from too many retries.
 
-!!! info "Real-world scenario"
-    If **Service A** depends on **Service B** but Service B becomes unavailable, Service A will receive failures continuously. A circuit breaker prevents Service A from overloading itself and Service B by failing fast.
+!!! abstract "Real-world scenario"
+    If Service A depends on Service B but Service B becomes unavailable, Service A will receive failures continuously. A circuit breaker prevents Service A from overloading itself and Service B by failing fast.
 
----
 
 ## **Types of Circuit Breakers**
 
-There are multiple **models** of circuit breakers to choose from depending on use case:
+There are multiple models of circuit breakers to choose from depending on use case:
 
-- **Count-based Circuit Breaker**
-    - Trips if a predefined number of failures occur.
-    - Example: If there are 3 consecutive failed requests, the breaker opens.
+**Count-based Circuit Breaker**
+    - Trips if a predefined number of failures occur, eg: If there are 3 consecutive failed requests, the breaker opens.
 
-- **Time-based Circuit Breaker**
-    - Monitors failures within a **window of time** and trips if the failure threshold is met.
-    - Example: If 5 requests out of 10 fail within 1 minute, it opens.
+**Time-based Circuit Breaker**
+    - Monitors failures within a window of time and trips if the failure threshold is met, eg: If 5 requests out of 10 fail within 1 minute, it opens.
 
-- **Sliding Window Circuit Breaker**
-    - A **rolling window** of requests over time determines if the circuit trips.
-    - Useful when failure patterns are sporadic.
+**Sliding Window Circuit Breaker**
+    - A rolling window of requests over time determines if the circuit trips, Useful when failure patterns are sporadic.
 
----
 
 ## **How Does it Work?**
 
@@ -58,7 +50,6 @@ The basic mechanics of a circuit breaker involve three states:
     Closed -> (failure threshold reached) -> Open -> (timeout) -> Half-Open -> (success) -> Closed
     ```
 
----
 
 ## **Use Cases**
 
@@ -67,7 +58,6 @@ The basic mechanics of a circuit breaker involve three states:
 - **API Gateways**: Protect external APIs from crashing under heavy traffic.
 - **Circuit Breakers in UI**: Stop retrying user requests that target a failing backend.
 
----
 
 ## **Implementation**
 
@@ -133,7 +123,6 @@ Several popular libraries and frameworks make circuit breaker implementations si
         print("Circuit is open. Service unavailable.")
     ```
 
----
 
 ## **Advanced Topics**
 
@@ -157,7 +146,6 @@ Circuit breakers need to be **monitored** to ensure they perform correctly. You 
 - Manually disconnect network connections to force failures.
 - Use mock services to test the transition between breaker states.
 
----
 
 ## **Summary**
 
