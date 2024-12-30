@@ -2771,28 +2771,20 @@
     - A rolling window of requests over time determines if the circuit trips, Useful when failure patterns are sporadic.</p>
 <h2 id="how-does-it-work"><strong>How Does it Work?</strong><a class="headerlink" href="#how-does-it-work" title="Permanent link">&para;</a></h2>
 <p>The basic mechanics of a circuit breaker involve three states:</p>
-<ul>
-<li>
 <p><strong>Closed State</strong> </p>
 <ul>
 <li>All requests are passed through.</li>
-<li>If failures exceed the threshold, it trips to the <strong>Open state</strong>.</li>
+<li>If failures exceed the threshold, it trips to the Open state.</li>
 </ul>
-</li>
-<li>
 <p><strong>Open State</strong></p>
 <ul>
 <li>No requests are forwarded to the target service.</li>
-<li>Calls return a <strong>fallback response</strong> or <strong>error</strong> immediately.</li>
+<li>Calls return a fallback response or error immediately.</li>
 </ul>
-</li>
-<li>
 <p><strong>Half-Open State</strong></p>
 <ul>
-<li>The breaker allows <strong>limited requests</strong> to check if the service has recovered.</li>
-<li>If requests succeed, it switches back to <strong>Closed</strong>. If not, it returns to <strong>Open</strong>.</li>
-</ul>
-</li>
+<li>The breaker allows limited requests to check if the service has recovered.</li>
+<li>If requests succeed, it switches back to Closed. If not, it returns to Open.</li>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">State Transition Flow</p>
@@ -2801,8 +2793,8 @@
 </div>
 <h2 id="use-cases"><strong>Use Cases</strong><a class="headerlink" href="#use-cases" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>E-commerce</strong>: Payment gateways failing temporarily; switch to fallback payment options.</li>
-<li><strong>Microservices</strong>: A microservice becomes unresponsive; the breaker prevents excessive load.</li>
+<li><strong>E-commerce</strong>: Payment gateways failing temporarily switch to fallback payment options.</li>
+<li><strong>Microservices</strong>: A microservice becomes unresponsive breaker prevents excessive load.</li>
 <li><strong>API Gateways</strong>: Protect external APIs from crashing under heavy traffic.</li>
 <li><strong>Circuit Breakers in UI</strong>: Stop retrying user requests that target a failing backend.</li>
 </ul>
@@ -2869,11 +2861,11 @@
 </div>
 <h2 id="advanced-topics"><strong>Advanced Topics</strong><a class="headerlink" href="#advanced-topics" title="Permanent link">&para;</a></h2>
 <h3 id="monitoring-and-metrics"><strong>Monitoring and Metrics</strong><a class="headerlink" href="#monitoring-and-metrics" title="Permanent link">&para;</a></h3>
-<p>Circuit breakers need to be <strong>monitored</strong> to ensure they perform correctly. You can integrate them with monitoring tools like <strong>Prometheus</strong> or <strong>Grafana</strong>. Many libraries offer hooks to capture metrics such as</p>
+<p>Circuit breakers need to be monitored to ensure they perform correctly. You can integrate them with monitoring tools like Prometheus or Grafana. Many libraries offer hooks to capture metrics such as</p>
 <ul>
-<li><strong>Failure rate</strong>  </li>
-<li><strong>Open/closed/half-open state transitions</strong>  </li>
-<li><strong>Request success/failure ratios</strong></li>
+<li>Failure rate</li>
+<li>Open/closed/half-open state transitions</li>
+<li>Request success/failure ratios</li>
 </ul>
 <h3 id="tuning-the-circuit-breaker"><strong>Tuning the Circuit Breaker</strong><a class="headerlink" href="#tuning-the-circuit-breaker" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2883,7 +2875,7 @@
 </ul>
 <h3 id="testing-circuit-breakers"><strong>Testing Circuit Breakers</strong><a class="headerlink" href="#testing-circuit-breakers" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Chaos Engineering</strong> tools like <strong>Gremlin</strong> or <strong>Simian Army</strong>.</li>
+<li>Chaos Engineering tools like Gremlin or Simian Army.</li>
 <li>Manually disconnect network connections to force failures.</li>
 <li>Use mock services to test the transition between breaker states.</li>
 </ul>
@@ -2912,7 +2904,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 29, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 30, 2024</span>
   </span>
 
     
