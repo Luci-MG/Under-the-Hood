@@ -18,7 +18,7 @@
         <link rel="prev" href="../Gradle/">
       
       
-        <link rel="next" href="../JavaHeapStack/">
+        <link rel="next" href="../MemoryModel/">
       
       
       <link rel="icon" href="../../../assets/favicon.png">
@@ -1416,11 +1416,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../JavaHeapStack/" class="md-nav__link">
+      <a href="../MemoryModel/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Heap-Stack
+    Memory Model
   </span>
   
 
@@ -2694,90 +2694,87 @@
 <tbody>
 <tr>
 <td><strong>Configuration Style</strong></td>
-<td>Uses <strong>XML</strong> (<code>pom.xml</code>).</td>
-<td>Uses <strong>Groovy/Kotlin DSL</strong> (<code>build.gradle</code>).</td>
+<td>Uses XML (<code>pom.xml</code>).</td>
+<td>Uses Groovy/Kotlin DSL (<code>build.gradle</code>).</td>
 </tr>
 <tr>
 <td><strong>Performance</strong></td>
-<td><strong>Slower</strong>, especially for large projects (no build caching).</td>
-<td><strong>Faster</strong> with <strong>incremental builds</strong> and <strong>caching</strong>.</td>
+<td>Slower, especially for large projects (no build caching).</td>
+<td>Faster with incremental builds and caching.</td>
 </tr>
 <tr>
 <td><strong>Flexibility</strong></td>
-<td>Follows <strong>convention over configuration</strong>, less customizable.</td>
-<td><strong>Highly customizable</strong>, supports custom build logic.</td>
+<td>Follows convention over configuration, less customizable.</td>
+<td>Highly customizable, supports custom build logic.</td>
 </tr>
 <tr>
 <td><strong>Dependency Management</strong></td>
-<td><strong>Maven Central</strong> and custom repositories.</td>
-<td>Supports <strong>Maven Central, JCenter, Ivy</strong>, and custom repositories.</td>
+<td>Maven Central and custom repositories.</td>
+<td>Supports Maven Central, JCenter, Ivy, and custom repositories.</td>
 </tr>
 <tr>
 <td><strong>Plugin System</strong></td>
-<td>Pre-built <strong>Maven plugins</strong> (strict lifecycle integration).</td>
-<td><strong>More flexible plugins</strong> with multiple custom task types.</td>
+<td>Pre-built Maven plugins (strict lifecycle integration).</td>
+<td>More flexible plugins with multiple custom task types.</td>
 </tr>
 <tr>
 <td><strong>Build Output</strong></td>
-<td>Produces <strong>JARs, WARs</strong>, and other artifacts.</td>
-<td>Produces <strong>JARs, WARs</strong>, and <strong>custom artifacts</strong> more easily.</td>
+<td>Produces JARs, WARs, and other artifacts.</td>
+<td>Produces JARs, WARs, and custom artifacts more easily.</td>
 </tr>
 <tr>
 <td><strong>Multi-Project Support</strong></td>
-<td>Good for <strong>enterprise projects</strong> with structured multi-module builds.</td>
-<td>Excellent for <strong>multi-module projects</strong>, especially in complex setups.</td>
+<td>Good for enterprise projects with structured multi-module builds.</td>
+<td>Excellent for multi-module projects, especially in complex setups.</td>
 </tr>
 <tr>
 <td><strong>Integration with CI/CD</strong></td>
-<td>Easily integrates with <strong>Jenkins, GitHub Actions, Bamboo</strong>.</td>
-<td>Same level of integration with <strong>Jenkins, CircleCI, GitHub Actions</strong>.</td>
+<td>Easily integrates with Jenkins, GitHub Actions, Bamboo.</td>
+<td>Same level of integration with Jenkins, CircleCI, GitHub Actions.</td>
 </tr>
 <tr>
 <td><strong>Use in Android Development</strong></td>
 <td>Not suitable.</td>
-<td><strong>Preferred</strong> build tool for Android development.</td>
+<td>Preferred build tool for Android development.</td>
 </tr>
 <tr>
 <td><strong>Incremental Builds</strong></td>
 <td>Not supported.</td>
-<td>Supported, resulting in <strong>faster</strong> builds.</td>
+<td>Supported, resulting in faster builds.</td>
 </tr>
 <tr>
 <td><strong>Offline Mode</strong></td>
-<td>Uses the <strong>local Maven repository</strong> (<code>~/.m2/repository</code>).</td>
-<td>Uses a <strong>local cache</strong> (<code>~/.gradle/caches/</code>) and has offline mode.</td>
+<td>Uses the local Maven repository (<code>~/.m2/repository</code>).</td>
+<td>Uses a local cache (<code>~/.gradle/caches/</code>) and has offline mode.</td>
 </tr>
 <tr>
 <td><strong>Version Control of Build Tool</strong></td>
-<td><strong>Maven Wrapper (mvnw)</strong> ensures consistent versions.</td>
-<td><strong>Gradle Wrapper (gradlew)</strong> ensures consistent versions.</td>
+<td>Maven Wrapper (mvnw) ensures consistent versions.</td>
+<td>Gradle Wrapper (gradlew) ensures consistent versions.</td>
 </tr>
 <tr>
 <td><strong>Preferred Projects</strong></td>
-<td><strong>Enterprise Java applications</strong> with well-defined standards.</td>
-<td><strong>Android apps</strong>, complex and large projects with custom build requirements.</td>
+<td>Enterprise Java applications with well-defined standards.</td>
+<td>Android apps, complex and large projects with custom build requirements.</td>
 </tr>
 </tbody>
 </table>
-<hr />
 <h2 id="when-to-use-gradle"><strong>When to Use Gradle ?</strong><a class="headerlink" href="#when-to-use-gradle" title="Permanent link">&para;</a></h2>
 <ul>
 <li>For Android development gradle is the default and recommended build tool.</li>
-<li>When you need fine-grained control over the build process for Large and complex projects.</li>
+<li>When you need fine-grained control over the build process for Large complex projects.</li>
 <li>Gradle excels with multi-module projects that require custom dependencies and task chaining.</li>
-<li>Use gradle when performance is critical, as it got incremental builds caching, so faster builds.</li>
+<li>Use when performance is critical, as it got incremental builds caching, so faster builds.</li>
 <li>When your project needs custom workflows and builds, tasks beyond standard lifecycles.</li>
 </ul>
-<hr />
 <h2 id="when-to-use-maven"><strong>When to Use Maven ?</strong><a class="headerlink" href="#when-to-use-maven" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Maven works well for standard enterprise projects that adhere to established conventions.</li>
 <li>Maven’s default conventions are great for straightforward builds for simple projects.</li>
 <li>Maven’s dependency resolution and management is robust for large enterprise projects with heavy dependency management.</li>
 <li>When you need reproducible builds with a focus on consistency and stability helpful with team projects with strict versioning.</li>
-<li>*Maven is easier to learn if you are already familiar with XML based configurations.</li>
+<li>Maven is easier to learn if you are already familiar with XML based configurations.</li>
 </ul>
-<hr />
 <h2 id="advantages-of-gradle"><strong>Advantages of Gradle</strong><a class="headerlink" href="#advantages-of-gradle" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Faster builds due to incremental builds and caching.</li>
@@ -2786,7 +2783,6 @@
 <li>Runs independent tasks in parallel, reducing build times.</li>
 <li>Uses Groovy or Kotlin DSL for more concise configurations.</li>
 </ul>
-<hr />
 <h2 id="advantages-of-maven"><strong>Advantages of Maven</strong><a class="headerlink" href="#advantages-of-maven" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Follows standard conventions for project structure and lifecycle, making it easy to start.</li>
@@ -2795,7 +2791,6 @@
 <li>Comes with many pre-built plugins for common tasks with rich plugin eco system.</li>
 <li>Standardized approach ensures that all builds behave similarly across environments so strong consistency.</li>
 </ul>
-<hr />
 <h2 id="which-tool-is-preferred"><strong>Which Tool is Preferred?</strong><a class="headerlink" href="#which-tool-is-preferred" title="Permanent link">&para;</a></h2>
 <ul>
 <li>For Android Development Gradle is the clear winner (it’s required by Android Studio).</li>
@@ -2804,7 +2799,6 @@
 <li>For Enterprise Applications Maven is usually chosen for its standardization and ease of dependency management.</li>
 <li>For Projects Needing Speed Gradle is preferred because of its incremental builds and caching features.</li>
 </ul>
-<hr />
 <h2 id="where-gradle-maven-fit"><strong>Where Gradle Maven Fit ?</strong><a class="headerlink" href="#where-gradle-maven-fit" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2817,46 +2811,45 @@
 <tbody>
 <tr>
 <td><strong>JDK (Java Development Kit)</strong></td>
-<td>Provides tools to <strong>compile</strong> Java code into bytecode.</td>
-<td>Gradle and Maven use the <strong>JDK compiler</strong> (javac) to build code.</td>
+<td>Provides tools to compile Java code into bytecode.</td>
+<td>Gradle and Maven use the JDK compiler (javac) to build code.</td>
 </tr>
 <tr>
 <td><strong>JVM (Java Virtual Machine)</strong></td>
-<td>Runs the <strong>compiled bytecode</strong> (.class files).</td>
-<td>Gradle/Maven can <strong>execute unit tests and applications</strong> on the JVM.</td>
+<td>Runs the compiled bytecode (.class files).</td>
+<td>Gradle/Maven can execute unit tests and applications on the JVM.</td>
 </tr>
 <tr>
 <td><strong>JRE (Java Runtime Environment)</strong></td>
-<td>Provides the libraries required to <strong>run Java applications</strong>.</td>
-<td>The output artifacts (e.g., JAR/WAR) produced by Gradle/Maven require the <strong>JRE</strong> to run.</td>
+<td>Provides the libraries required to run Java applications.</td>
+<td>The output artifacts (e.g., JAR/WAR) produced by Gradle/Maven require the JRE to run.</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>Both Gradle and Maven use the <strong>JDK</strong> to compile code, <strong>JVM</strong> to run tests, and <strong>JRE</strong> for running packaged artifacts (like <strong>JARs</strong>).</li>
-<li>These tools <strong>do not replace</strong> the JDK, JVM, or JRE, instead, they <strong>automate the processes</strong> involved in building, testing, and packaging Java applications.</li>
+<li>Both Gradle and Maven use the JDK to compile code, JVM to run tests, and JRE for running packaged artifacts (like JARs).</li>
+<li>These tools do not replace the JDK, JVM, or JRE, instead, they automate the processes involved in building, testing, and packaging Java applications.</li>
 </ul>
-<hr />
 <h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p><strong>Use Maven</strong> if:</p>
 <ul>
-<li>Your project is <strong>enterprise-level</strong> or follows standard Java conventions.</li>
-<li>You want a <strong>simpler setup</strong> with a standardized approach.</li>
-<li>Your team is familiar with <strong>XML-based configurations</strong>.</li>
+<li>Your project is enterprise-level or follows standard Java conventions.</li>
+<li>You want a simpler setup with a standardized approach.</li>
+<li>Your team is familiar with XML-based configurations.</li>
 </ul>
 </li>
 <li>
 <p><strong>Use Gradle</strong> if:</p>
 <ul>
-<li>You need <strong>faster builds</strong> and <strong>incremental caching</strong>.</li>
-<li>Your project is an <strong>Android app</strong> or involves <strong>complex custom builds</strong>.</li>
-<li>You want <strong>fine-grained control</strong> over the build lifecycle.</li>
+<li>You need faster builds and incremental caching.</li>
+<li>Your project is an Android app or involves complex custom builds.</li>
+<li>You want fine-grained control over the build lifecycle.</li>
 </ul>
 </li>
 </ul>
-<p>In conclusion, both <strong>Maven</strong> and <strong>Gradle</strong> are excellent tools, and the choice depends on the project requirements. For enterprise applications, Maven remains a solid choice. For Android apps, large multi-module projects, or performance-critical builds, Gradle stands out as the preferred option.</p>
+<p>In conclusion, both Maven and Gradle are excellent tools, and the choice depends on the project requirements. For enterprise applications, Maven remains a solid choice. For Android apps, large multi-module projects, or performance-critical builds, Gradle stands out as the preferred option.</p>
 <hr />
 
 
@@ -2880,7 +2873,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 21, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 30, 2024</span>
   </span>
 
     
@@ -2965,13 +2958,13 @@
         
         
           
-          <a href="../JavaHeapStack/" class="md-footer__link md-footer__link--next" aria-label="Next: Heap-Stack">
+          <a href="../MemoryModel/" class="md-footer__link md-footer__link--next" aria-label="Next: Memory Model">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Heap-Stack
+                Memory Model
               </div>
             </div>
             <div class="md-footer__button md-icon">

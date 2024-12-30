@@ -12,7 +12,7 @@
         <meta name="author" content="Mrudhul Guda">
       
       
-        <link rel="canonical" href="https://luci-mg.github.io/Under-the-Hood/langdives/Java/JavaHeapStack/">
+        <link rel="canonical" href="https://luci-mg.github.io/Under-the-Hood/langdives/Java/MemoryModel/">
       
       
         <link rel="prev" href="../MavenVsGradle/">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Heap-Stack - Under the Hood</title>
+        <title>Memory Model - Under the Hood</title>
       
     
     
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Heap-Stack
+              Memory Model
             
           </span>
         </div>
@@ -1315,7 +1315,7 @@
           
   
   <span class="md-ellipsis">
-    Heap-Stack
+    Memory Model
   </span>
   
 
@@ -1326,7 +1326,7 @@
         
   
   <span class="md-ellipsis">
-    Heap-Stack
+    Memory Model
   </span>
   
 
@@ -2601,7 +2601,7 @@
                   
 
   
-    <a href="https://github.com/Luci-MG/Under-the-Hood/edit/main/docs/langdives/Java/JavaHeapStack.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/Luci-MG/Under-the-Hood/edit/main/docs/langdives/Java/MemoryModel.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -2610,7 +2610,7 @@
 
 
 <h1 id="java-memory-model"><strong>Java Memory Model</strong><a class="headerlink" href="#java-memory-model" title="Permanent link">&para;</a></h1>
-<p>Java uses a memory model that divides memory into different areas, primarily the <strong>heap</strong> and <strong>stack</strong>. </p>
+<p>Java uses a memory model that divides memory into different areas, primarily the heap and stack. </p>
 <h2 id="heap-memory"><strong>Heap Memory</strong><a class="headerlink" href="#heap-memory" title="Permanent link">&para;</a></h2>
 <p>The heap is mainly used for dynamic memory allocation. Objects created using the <code>new</code> keyword are stored in the heap. Coming to it's life time objects in the heap remain in memory until they are no longer referenced and are garbage collected. This means the lifetime of an object is not tied to the scope of a method and Accessing memory in the heap is slower than in the stack due to its dynamic nature and the potential for fragmentation.</p>
 <div class="admonition note">

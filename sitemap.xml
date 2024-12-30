@@ -113,10 +113,6 @@
          <lastmod>2024-12-30</lastmod>
     </url>
     <url>
-         <loc>https://luci-mg.github.io/Under-the-Hood/langdives/Java/JavaHeapStack/</loc>
-         <lastmod>2024-12-30</lastmod>
-    </url>
-    <url>
          <loc>https://luci-mg.github.io/Under-the-Hood/langdives/Java/JavaPassBy/</loc>
          <lastmod>2024-12-30</lastmod>
     </url>
@@ -162,6 +158,10 @@
     </url>
     <url>
          <loc>https://luci-mg.github.io/Under-the-Hood/langdives/Java/MavenVsGradle/</loc>
+         <lastmod>2024-12-30</lastmod>
+    </url>
+    <url>
+         <loc>https://luci-mg.github.io/Under-the-Hood/langdives/Java/MemoryModel/</loc>
          <lastmod>2024-12-30</lastmod>
     </url>
     <url>
