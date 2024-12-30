@@ -33,17 +33,20 @@ There are multiple models of circuit breakers to choose from depending on use ca
 
 The basic mechanics of a circuit breaker involve three states:
 
-- **Closed State** 
-    - All requests are passed through.
-    - If failures exceed the threshold, it trips to the **Open state**.
+**Closed State** 
 
-- **Open State**
-    - No requests are forwarded to the target service.
-    - Calls return a **fallback response** or **error** immediately.
+- All requests are passed through.
+- If failures exceed the threshold, it trips to the Open state.
 
-- **Half-Open State**
-    - The breaker allows **limited requests** to check if the service has recovered.
-    - If requests succeed, it switches back to **Closed**. If not, it returns to **Open**.
+**Open State**
+
+- No requests are forwarded to the target service.
+- Calls return a fallback response or error immediately.
+
+**Half-Open State**
+
+- The breaker allows limited requests to check if the service has recovered.
+- If requests succeed, it switches back to Closed. If not, it returns to Open.
 
 !!! info "State Transition Flow"
     ```
@@ -53,8 +56,8 @@ The basic mechanics of a circuit breaker involve three states:
 
 ## **Use Cases**
 
-- **E-commerce**: Payment gateways failing temporarily; switch to fallback payment options.
-- **Microservices**: A microservice becomes unresponsive; the breaker prevents excessive load.
+- **E-commerce**: Payment gateways failing temporarily switch to fallback payment options.
+- **Microservices**: A microservice becomes unresponsive breaker prevents excessive load.
 - **API Gateways**: Protect external APIs from crashing under heavy traffic.
 - **Circuit Breakers in UI**: Stop retrying user requests that target a failing backend.
 
@@ -128,11 +131,11 @@ Several popular libraries and frameworks make circuit breaker implementations si
 
 ### **Monitoring and Metrics**
 
-Circuit breakers need to be **monitored** to ensure they perform correctly. You can integrate them with monitoring tools like **Prometheus** or **Grafana**. Many libraries offer hooks to capture metrics such as
+Circuit breakers need to be monitored to ensure they perform correctly. You can integrate them with monitoring tools like Prometheus or Grafana. Many libraries offer hooks to capture metrics such as
 
-- **Failure rate**  
-- **Open/closed/half-open state transitions**  
-- **Request success/failure ratios**
+- Failure rate
+- Open/closed/half-open state transitions
+- Request success/failure ratios
 
 ### **Tuning the Circuit Breaker**
 
@@ -142,7 +145,7 @@ Circuit breakers need to be **monitored** to ensure they perform correctly. You 
 
 ### **Testing Circuit Breakers**
 
-- **Chaos Engineering** tools like **Gremlin** or **Simian Army**.
+- Chaos Engineering tools like Gremlin or Simian Army.
 - Manually disconnect network connections to force failures.
 - Use mock services to test the transition between breaker states.
 
