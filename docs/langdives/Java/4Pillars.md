@@ -3,11 +3,11 @@
 ## **Encapsulation**
 **What**: Hiding the internal details of an object and only exposing necessary parts through public methods.
 
-**Why**: It helps in **data hiding** and ensures controlled access to variables.
+**Why**: It helps in data hiding and ensures controlled access to variables.
 
-**How**: Use **private** variables to restrict direct access and provide **getters** and **setters** to access and modify the data.
+**How**: Use private variables to restrict direct access and provide getters and setters to access and modify the data.
 
-???+ example
+??? example "Encapsulation Example"
     ```java
     public class Person {
         private String name; // Encapsulated field
@@ -27,11 +27,11 @@
 ## **Inheritance**
 **What**: Allows a class (child/subclass) to acquire the properties and behaviors of another class (parent/superclass).
 
-**How**: Use the **`extends`** keyword.
+**How**: Use the `extends` keyword.
 
-**Why**: Promotes **code reusability** and establishes a **parent-child relationship**.
+**Why**: Promotes code reusability and establishes a parent-child relationship.
 
-???+ example
+??? example "Inheritance Example"
     ```java
     class Animal {
         public void sound() {
@@ -54,9 +54,9 @@
   - **Compile-time polymorphism**: Method overloading (same method name, different parameters).
   - **Runtime polymorphism**: Method overriding (subclass redefines a method of the superclass).
 
-**Why**: Increases **flexibility** and supports **dynamic method invocation**.
+**Why**: Increases flexibility and supports dynamic method invocation.
 
-???+ example
+??? example "Polymorphism Example"
     ```java title="Method Overloading"
     class Calculator {
         public int add(int a, int b) {
@@ -87,11 +87,11 @@
 ## **Abstraction**
 **What**: Hiding the complex implementation details and only exposing the essential features.
 
-**Why**: Helps in achieving **modularity** and **loose coupling** between components.
+**Why**: Helps in achieving modularity and loose coupling between components.
 
-**How**: Use **abstract classes** and **interfaces**.
+**How**: Use abstract classes and interfaces.
 
-???+ example
+??? example "Abstraction Example"
     ```java title="Abstract Class Example"
     abstract class Vehicle {
         abstract void start();

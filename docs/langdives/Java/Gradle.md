@@ -277,7 +277,7 @@ Gradle is designed for speed and efficiency
 
 ## **Summary**
 
-Gradle provides several advantages for **modern projects**
+Gradle provides several advantages for modern projects
 
 - **Flexibility**: Customizable tasks and plugins allow you to tailor builds to your needs.
 - **Speed**: Incremental builds and build caching reduce build times.

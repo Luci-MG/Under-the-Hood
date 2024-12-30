@@ -202,7 +202,7 @@ nav:
         - Maven: langdives/Java/Maven.md 
         - Gradle: langdives/Java/Gradle.md
         - Maven vs Gradle: langdives/Java/MavenVsGradle.md
-        - Heap-Stack: langdives/Java/JavaHeapStack.md # TODO:: need to edit this title # should rename this file 
+        - Memory Model: langdives/Java/MemoryModel.md
         - 4 Pillars: langdives/Java/4Pillars.md
         - Access modifiers: langdives/Java/AccessModifPPPPP.md
         - Keywords/Terminologies: langdives/Java/KeyWordsTerminolgies.md

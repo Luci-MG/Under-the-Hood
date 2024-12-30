@@ -1,7 +1,7 @@
 # **Primitive and Reference Types**
 
 ## **Primitive Types**  
-Java has **8 primitive data types** that store simple values directly in memory.
+Java has **8** primitive data types that store simple values directly in memory.
 
 | **Type**   | **Size**       | **Default Value** | **Range**                                | **Example**             |
 |------------|----------------|-------------------|------------------------------------------|-------------------------|
@@ -16,19 +16,19 @@ Java has **8 primitive data types** that store simple values directly in memory.
 
 
 ## **Reference Types**  
-Reference types store **references (addresses)** to objects in memory, unlike primitive types that store values directly.
+Reference types store references (addresses) to objects in memory, unlike primitive types that store values directly.
 
-- **`String`**:  Represents a sequence of characters.
+- `String`:  Represents a sequence of characters.
    ```java
    String str = "Hello, World!";
    ```
 
-- **Arrays**:  Collections of elements of the same type.
+- Arrays:  Collections of elements of the same type.
    ```java
    int[] numbers = {1, 2, 3};
    ```
 
-- **Classes and Objects**:  Custom data types representing real-world entities.
+- Classes and Objects:  Custom data types representing real-world entities.
    ```java
    class Person {
        String name;
@@ -36,21 +36,21 @@ Reference types store **references (addresses)** to objects in memory, unlike pr
    Person p = new Person();
    ```
 
-- **Interfaces**:  Contracts that classes can implement.
+- Interfaces:  Contracts that classes can implement.
    ```java
    interface Animal {
        void sound();
    }
    ```
 
-- **Enums**:  Special classes that define a set of constants.
+- Enums:  Special classes that define a set of constants.
    ```java
    enum Day {
        MONDAY, TUESDAY, WEDNESDAY;
    }
    ```
 
-- **Wrapper Classes**:  Used to convert primitive types into objects (auto-boxing/unboxing).
+- Wrapper Classes:  Used to convert primitive types into objects (auto-boxing/unboxing).
 
    | **Primitive** | **Wrapper Class** |
    |---------------|-------------------|

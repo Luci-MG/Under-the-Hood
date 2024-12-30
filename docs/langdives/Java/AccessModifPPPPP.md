@@ -2,9 +2,9 @@
 
 ## **Public**  
 **Keyword**: `public`  
-**Access**: Accessible from **anywhere** (inside/outside the class, package, or project).  
-**Usage**: Typically used for **classes, methods, and variables** that need global access.  
-???+ example
+**Access**: Accessible from anywhere (inside/outside the class, package, or project).  
+**Usage**: Typically used for classes, methods, and variables that need global access.  
+???+ example "Public Example"
     ```java
     public class MyClass {
         public int value = 10;
@@ -16,9 +16,9 @@
 
 ## **Private**  
 **Keyword**: `private`  
-**Access**: Accessible **only within the same class**.  
-**Usage**: Used to **hide class fields or methods**, following the principle of **encapsulation**.  
-???+ example
+**Access**: Accessible only within the same class.  
+**Usage**: Used to hide class fields or methods, following the principle of encapsulation.  
+???+ example "Private Example"
     ```java
     public class MyClass {
         private int value = 10; // Not accessible outside this class
@@ -31,9 +31,9 @@
 
 ## **Protected**  
 **Keyword**: `protected`  
-**Access**: Accessible **within the same package** and **by subclasses (even if outside the package)**.  
+**Access**: Accessible within the same package and by subclasses (even if outside the package).  
 **Usage**: Useful when extending classes across packages.  
-???+ example
+???+ example "Protected Example"
     ```java
     public class MyClass {
         protected int value = 10;
@@ -44,14 +44,14 @@
     }
     ```
 !!! note
-    If accessed by a subclass in a **different package**, it must be through inheritance (not directly via an instance).
+    If accessed by a subclass in a different package, it must be through inheritance (not directly via an instance).
 
 
 ## **Package-Private**  
 **Keyword**: *No keyword*  (Default Access)  
-**Access**: Accessible only **within the same package**.  
-**Usage**: Used for classes and members that **don’t need to be accessed outside their package**.  
-???+ example
+**Access**: Accessible only within the same package.  
+**Usage**: Used for classes and members that don’t need to be accessed outside their package.  
+???+ example "Package-Private Example"
     ```java
     class MyClass { // No access modifier, so it's package-private
         int value = 10;

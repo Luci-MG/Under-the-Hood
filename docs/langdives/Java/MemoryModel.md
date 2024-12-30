@@ -1,6 +1,6 @@
 # **Java Memory Model**
 
-Java uses a memory model that divides memory into different areas, primarily the **heap** and **stack**. 
+Java uses a memory model that divides memory into different areas, primarily the heap and stack. 
 
 ## **Heap Memory**
 
