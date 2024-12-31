@@ -1390,7 +1390,7 @@
         
   
   <span class="md-ellipsis">
-    Primitives References
+    Primitives & References
   </span>
   
 
@@ -1469,6 +1469,30 @@
       String
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="String">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#string-pool-interned-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      String Pool (Interned Strings)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heap-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heap Memory
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2653,6 +2677,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="String">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#string-pool-interned-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      String Pool (Interned Strings)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heap-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heap Memory
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2784,19 +2832,13 @@
 
 
 <h1 id="reference-types-in-depth"><strong>Reference Types In Depth.</strong><a class="headerlink" href="#reference-types-in-depth" title="Permanent link">&para;</a></h1>
-<p>Let's deep dive to understand How memory management, object references, and behaviors work in Java, with a focus on <strong>String handling</strong> and other reference types like <strong>arrays, classes, and wrapper objects</strong>.</p>
-<hr />
+<p>Let's deep dive to understand How memory management, object references, and behaviors work in Java in this article, with a focus on String handling and other reference types like arrays, classes, and wrapper objects.</p>
 <h2 id="intro"><strong>Intro</strong><a class="headerlink" href="#intro" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Primitive types</strong> store values directly in <strong>stack memory</strong>.</li>
-<li><strong>Reference types</strong> store <strong>references (addresses)</strong> to objects located in <strong>heap memory</strong>.</li>
-<li>When you assign a reference type (e.g., <code>String</code> or an array), <strong>only the reference (address)</strong> is copied, not the actual data. This means <strong>multiple references can point to the same object</strong>.</li>
-</ul>
-<hr />
+<p>Primitive types store values directly in stack memory Where as Reference types store references (addresses) to objects located in heap memory, When you assign a reference type (e.g., <code>String</code> or an array), only the reference (address) is copied, not the actual data. This means multiple references can point to the same object.</p>
 <h2 id="string"><strong>String</strong><a class="headerlink" href="#string" title="Permanent link">&para;</a></h2>
-<p>The <strong><code>String</code></strong> class in Java is a special reference type with some unique behaviors. Strings are <strong>immutable</strong> once a <code>String</code> object is created, it cannot be changed. Any modification on a <code>String</code> results in the creation of a <strong>new object</strong> in memory.</p>
-<p><strong>String Pool (Interned Strings)</strong>:<br />
- A special memory area inside the heap used to store string literals. If a string literal like <code>"Hello"</code> is created, Java first checks the string pool to see if it already exists. If it does, it returns the reference from the pool. If not, the string is added to the pool.</p>
+<p>The <strong><code>String</code></strong> class in Java is a special reference type with some unique behaviors. Strings are immutable once a <code>String</code> object is created, it cannot be changed. Any modification on a <code>String</code> results in the creation of a new object in memory.</p>
+<h3 id="string-pool-interned-strings"><strong>String Pool (Interned Strings)</strong><a class="headerlink" href="#string-pool-interned-strings" title="Permanent link">&para;</a></h3>
+<p>A special memory area inside the heap used to store string literals. If a string literal like <code>"Hello"</code> is created, Java first checks the string pool to see if it already exists. If it does, it returns the reference from the pool. If not, the string is added to the pool.</p>
 <details class="example" open="open">
 <summary>Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">String</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// Stored in the String Pool</span>
@@ -2805,8 +2847,8 @@
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">s2</span><span class="p">);</span><span class="w">  </span><span class="c1">// true (same reference)</span>
 </span></code></pre></div>
 </details>
-<p><strong>Heap Memory</strong>: <br />
-When you use the <code>new</code> keyword, a new <code>String</code> object is always created in the heap memory. Even if the same string already exists in the string pool, the <code>new</code> keyword forces the creation of a separate instance in the heap.</p>
+<h3 id="heap-memory"><strong>Heap Memory</strong><a class="headerlink" href="#heap-memory" title="Permanent link">&para;</a></h3>
+<p>When you use the <code>new</code> keyword, a new <code>String</code> object is always created in the heap memory. Even if the same string already exists in the string pool, the <code>new</code> keyword forces the creation of a separate instance in the heap.</p>
 <details class="example" open="open">
 <summary>Example</summary>
 <p><div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">String</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// creates a new object outside the pool in the heap.</span>
@@ -2817,7 +2859,6 @@ When you use the <code>new</code> keyword, a new <code>String</code> object is a
 </span></code></pre></div>
 When you use <code>new String()</code>, Java forces the creation of a new object in heap even if the same string exists in the pool.</p>
 </details>
-<hr />
 <h2 id="arrays"><strong>Arrays</strong><a class="headerlink" href="#arrays" title="Permanent link">&para;</a></h2>
 <p>Arrays are reference types, meaning the array variable stores a reference to the memory location where the array data is stored.</p>
 <details class="example" open="open">
@@ -2829,13 +2870,12 @@ When you use <code>new String()</code>, Java forces the creation of a new object
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">arr1</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span><span class="w">  </span><span class="c1">// Output: 10 (both arr1 and arr2 reference the same array)</span>
 </span></code></pre></div>
-</details>
 <p><strong>How Array References Work:</strong></p>
 <ul>
 <li><code>arr1</code> and <code>arr2</code> point to the same memory location in the heap.</li>
 <li>If you change the array via <code>arr2</code>, the change will reflect in <code>arr1</code> because both refer to the same object.</li>
 </ul>
-<hr />
+</details>
 <h2 id="classes-and-objects"><strong>Classes and Objects</strong><a class="headerlink" href="#classes-and-objects" title="Permanent link">&para;</a></h2>
 <p>When you create an object using <code>new</code>, the reference variable points to the object in heap memory.</p>
 <details class="example" open="open">
@@ -2852,15 +2892,14 @@ When you use <code>new String()</code>, Java forces the creation of a new object
 </span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
 </span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">p1</span><span class="p">.</span><span class="na">name</span><span class="p">);</span><span class="w">  </span><span class="c1">// Output: Bob (both references point to the same object)</span>
 </span></code></pre></div>
-</details>
 <p><strong>How References Work with Objects:</strong></p>
 <ul>
-<li><code>p1</code> and <code>p2</code> point to the <strong>same Person object</strong>. Changing the object via <code>p2</code> affects <code>p1</code>.</li>
-<li>This is how <strong>shallow copies</strong> work — only the reference is copied, not the object itself.</li>
+<li><code>p1</code> and <code>p2</code> point to the same Person object. Changing the object via <code>p2</code> affects <code>p1</code>.</li>
+<li>This is how shallow copies work, only the reference is copied, not the object itself.</li>
 </ul>
-<hr />
+</details>
 <h2 id="wrapper-classes"><strong>Wrapper Classes</strong><a class="headerlink" href="#wrapper-classes" title="Permanent link">&para;</a></h2>
-<p>Wrapper classes (<code>Integer</code>, <code>Double</code>, <code>Boolean</code>, etc.) wrap primitive types into objects. These are reference types, and Java performs <strong>autoboxing/unboxing</strong> to convert between primitive types and wrapper objects.</p>
+<p>Wrapper classes (<code>Integer</code>, <code>Double</code>, <code>Boolean</code>, etc.) wrap primitive types into objects. These are reference types, and Java performs autoboxing/unboxing to convert between primitive types and wrapper objects.</p>
 <details class="example" open="open">
 <summary>Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">Integer</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
@@ -2876,12 +2915,11 @@ When you use <code>new String()</code>, Java forces the creation of a new object
 </details>
 <p><strong>Wrapper Caching</strong></p>
 <ul>
-<li>Java caches <code>Integer</code> objects in the <strong>range -128 to 127</strong> for performance.</li>
-<li>Beyond this range, <strong>new objects</strong> are created.</li>
+<li>Java caches <code>Integer</code> objects in the range -128 to 127 for performance.</li>
+<li>Beyond this range, new objects are created.</li>
 </ul>
-<hr />
 <h2 id="reference-and-deep-copy"><strong>Reference and Deep Copy</strong><a class="headerlink" href="#reference-and-deep-copy" title="Permanent link">&para;</a></h2>
-<p><strong>Shallow Copy</strong>: Copies only the <strong>reference</strong>, so both variables refer to the same object.</p>
+<p><strong>Shallow Copy</strong>: Copies only the reference, so both variables refer to the same object.</p>
 <details class="example" open="open">
 <summary>Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">original</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
@@ -2891,7 +2929,7 @@ When you use <code>new String()</code>, Java forces the creation of a new object
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">original</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span><span class="w">  </span><span class="c1">// Output: 100</span>
 </span></code></pre></div>
 </details>
-<p><strong>Deep Copy</strong>: Creates a <strong>new object</strong> with the same data.</p>
+<p><strong>Deep Copy</strong>: Creates a new object with the same data.</p>
 <details class="example" open="open">
 <summary>Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">original</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
@@ -2901,34 +2939,31 @@ When you use <code>new String()</code>, Java forces the creation of a new object
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">original</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span><span class="w">  </span><span class="c1">// Output: 1</span>
 </span></code></pre></div>
 </details>
-<hr />
 <h2 id="nullnullpointerexception"><strong>Null/<code>NullPointerException</code></strong><a class="headerlink" href="#nullnullpointerexception" title="Permanent link">&para;</a></h2>
-<p>When a reference is <strong>not initialized</strong>, it holds the value <strong><code>null</code></strong>. Accessing a field or method on a <strong><code>null</code> reference</strong> throws a <strong><code>NullPointerException</code></strong>.</p>
+<p>When a reference is not initialized, it holds the value <code>null</code>. Accessing a field or method on a <code>null</code> reference throws a <code>NullPointerException</code>.</p>
 <details class="example" open="open">
 <summary>Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">Person</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="na">name</span><span class="p">);</span><span class="w">  </span><span class="c1">// Throws NullPointerException</span>
 </span></code></pre></div>
 </details>
-<hr />
 <h2 id="garbage-collection"><strong>Garbage Collection</strong><a class="headerlink" href="#garbage-collection" title="Permanent link">&para;</a></h2>
-<p>Java uses <strong>Garbage Collection</strong> to manage memory. When no references point to an object, it becomes <strong>eligible for garbage collection</strong>.</p>
+<p>Java uses Garbage Collection to manage memory. When no references point to an object, it becomes eligible for garbage collection.</p>
 <details class="example" open="open">
 <summary>Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">Person</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">();</span><span class="w">  </span><span class="c1">// Object created</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">  </span><span class="c1">// Now eligible for garbage collection</span>
 </span></code></pre></div>
 </details>
-<hr />
+<p>We will learn about garbage collection more in depth in another article.</p>
 <h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Strings</strong>: Immutable, stored in the <strong>String Pool</strong> if created with literals. <code>new String()</code> creates a separate object.</li>
+<li><strong>Strings</strong>: Immutable, stored in the String Pool if created with literals. <code>new String()</code> creates a separate object.</li>
 <li><strong>Arrays</strong>: Reference types, so multiple variables can point to the same array object.</li>
-<li><strong>Classes</strong>: Objects are referenced in memory; multiple references can point to the same object.</li>
+<li><strong>Classes</strong>: Objects are referenced in memory multiple references can point to same object.</li>
 <li><strong>Wrapper Classes</strong>: Use caching for certain ranges (e.g., <code>Integer</code> values from -128 to 127).</li>
 <li><strong>Garbage Collection</strong>: Objects are eligible for garbage collection when no active references point to them.</li>
 </ul>
-<hr />
 <h2 id="string-pool-in-depth"><strong>String Pool In Depth</strong><a class="headerlink" href="#string-pool-in-depth" title="Permanent link">&para;</a></h2>
 <p>The <strong>String Pool</strong> (also called the <strong>intern pool</strong>) in Java is implemented using a Hash Table-like data structure internally. Let’s explore the design and behavior behind this structure:</p>
 <h3 id="internals"><strong>Internals</strong><a class="headerlink" href="#internals" title="Permanent link">&para;</a></h3>
@@ -3016,7 +3051,7 @@ The interned pool is part of the JVM's heap and managed by the Java String class
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 10, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 31, 2024</span>
   </span>
 
     
@@ -3084,7 +3119,7 @@ The interned pool is part of the JVM's heap and managed by the Java String class
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../PrimitiveReferenceTypes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Primitives References">
+          <a href="../PrimitiveReferenceTypes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Primitives &amp; References">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3094,7 +3129,7 @@ The interned pool is part of the JVM's heap and managed by the Java String class
                 Previous
               </span>
               <div class="md-ellipsis">
-                Primitives References
+                Primitives & References
               </div>
             </div>
           </a>
