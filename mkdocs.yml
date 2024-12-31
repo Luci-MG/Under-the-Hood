@@ -206,7 +206,7 @@ nav:
         - 4 Pillars: langdives/Java/4Pillars.md
         - Access modifiers: langdives/Java/AccessModifPPPPP.md
         - Keywords/Terminologies: langdives/Java/KeyWordsTerminolgies.md
-        - Primitives References: langdives/Java/PrimitiveReferenceTypes.md
+        - Primitives & References: langdives/Java/PrimitiveReferenceTypes.md
         - Reference Types Indepth: langdives/Java/ReferenceTypesInDepth.md
         - Pass By Value: langdives/Java/JavaPassBy.md # TODO:: need to edit this title
         - Collections JCF: langdives/Java/Collections-JCF.md
