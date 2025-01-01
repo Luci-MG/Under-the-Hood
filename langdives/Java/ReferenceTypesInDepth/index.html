@@ -1588,9 +1588,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#string-pool-summary" class="md-nav__link">
+  <a href="#summary_1" class="md-nav__link">
     <span class="md-ellipsis">
-      String pool Summary
+      Summary
     </span>
   </a>
   
@@ -2795,9 +2795,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#string-pool-summary" class="md-nav__link">
+  <a href="#summary_1" class="md-nav__link">
     <span class="md-ellipsis">
-      String pool Summary
+      Summary
     </span>
   </a>
   
@@ -2957,31 +2957,26 @@ When you use <code>new String()</code>, Java forces the creation of a new object
 </details>
 <p>We will learn about garbage collection more in depth in another article.</p>
 <h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Strings</strong>: Immutable, stored in the String Pool if created with literals. <code>new String()</code> creates a separate object.</li>
-<li><strong>Arrays</strong>: Reference types, so multiple variables can point to the same array object.</li>
-<li><strong>Classes</strong>: Objects are referenced in memory multiple references can point to same object.</li>
-<li><strong>Wrapper Classes</strong>: Use caching for certain ranges (e.g., <code>Integer</code> values from -128 to 127).</li>
-<li><strong>Garbage Collection</strong>: Objects are eligible for garbage collection when no active references point to them.</li>
-</ul>
+<p>Strings are immutable and stored in the String Pool when created with literals, while using new String() creates a separate object. Arrays are reference types, allowing multiple variables to point to the same array object. For classes, objects are referenced in memory, meaning multiple references can point to the same object. Wrapper classes utilize caching for certain ranges, such as Integer values between -128 and 127. Objects become eligible for garbage collection when no active references point to them.</p>
+<hr />
 <h2 id="string-pool-in-depth"><strong>String Pool In Depth</strong><a class="headerlink" href="#string-pool-in-depth" title="Permanent link">&para;</a></h2>
-<p>The <strong>String Pool</strong> (also called the <strong>intern pool</strong>) in Java is implemented using a Hash Table-like data structure internally. Let’s explore the design and behavior behind this structure:</p>
+<p>The String Pool (also called the intern pool) in Java is implemented using a Hash Table-like data structure internally. Let’s explore the design and behavior behind this structure:</p>
 <h3 id="internals"><strong>Internals</strong><a class="headerlink" href="#internals" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
-<p><strong>Hash Table Concept:</strong><br />
-The <strong>String Pool</strong> uses a Hash Map-like structure internally, where the key is the string literal, and the value is a reference to the interned string in the pool. This ensures fast lookups and deduplication of identical strings because hash-based structures allow O(1) average-time complexity for lookup operations.</p>
+<p><strong>Hash Table:</strong><br />
+The String Pool uses a Hash Map-like structure internally, where the key is the string literal, and the value is a reference to the interned string in the pool. This ensures fast lookups and deduplication of identical strings because hash-based structures allow O(1) average-time complexity for lookup operations.</p>
 </li>
 <li>
 <p><strong>Behavior of String Pool:</strong>
-If a new string literal is created, the pool <strong>Checks</strong> if the string already exists (by computing its hash), If the string exists, it returns the existing reference. If not, the string is added to the pool.</p>
+If a new string literal is created, the pool checks if the string already exists (by computing its hash), If the string exists, it returns the existing reference. If not, the string is added to the pool.</p>
 </li>
 <li>
 <p><strong>Rehashing and Thread Safety:</strong><br />
-The interned pool is part of the JVM's heap and managed by the Java String class. <strong>Since Java 7</strong>, the pool is stored in the heap instead of the PermGen space to allow better memory management. The pool structure is thread-safe, meaning multiple threads can safely use the pool.</p>
+The interned pool is part of the JVM's heap and managed by the Java String class. Since Java 7, the pool is stored in the heap instead of the PermGen space to allow better memory management. The pool structure is thread-safe, meaning multiple threads can safely use the pool.</p>
 </li>
 </ul>
-<details class="example" open="open">
+<details class="example">
 <summary>Simplified conceptual pseudocode Example</summary>
 <p><div class="language-java highlight"><span class="filename">How the pool works internally</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">class</span> <span class="nc">StringPool</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
@@ -2996,9 +2991,9 @@ The interned pool is part of the JVM's heap and managed by the Java String class
 </span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="p">}</span>
 </span></code></pre></div>
-- When calling <code>String.intern()</code>, Java <strong>interns the string</strong>, meaning it adds the string to the pool if it's not already present.</p>
+When calling <code>String.intern()</code>, Java interns the string, meaning it adds the string to the pool if it's not already present.</p>
 </details>
-<details class="example" open="open">
+<details class="example">
 <summary>String Pool Usage Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -3014,20 +3009,20 @@ The interned pool is part of the JVM's heap and managed by the Java String class
 </details>
 <h3 id="why-use-hash-table"><strong>Why Use Hash Table ?</strong><a class="headerlink" href="#why-use-hash-table" title="Permanent link">&para;</a></h3>
 <ul>
-<li>A hash table allows <strong>constant time complexity (O(1))</strong> for faster lookups.</li>
+<li>A hash table allows constant time complexity (O(1)) for faster lookups.</li>
 <li>Strings are immutable, so duplicate strings are avoided, improving memory usage so efficient meemory management.</li>
-<li>The JVM ensures that the pool is <strong>safe for concurrent access</strong>, so multiple threads can use the intern pool efficiently.</li>
+<li>The JVM ensures that the pool is safe for concurrent access, so multiple threads can use the intern pool efficiently.</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Key Takeaways</p>
 <ul>
-<li><strong>Since Java 7</strong>, the string pool has been moved to the <strong>heap</strong>, so it grows dynamically with the application’s memory needs.</li>
-<li><strong>Before Java 7</strong>, the pool was in <strong>PermGen</strong> space, which had a fixed size and could lead to <code>OutOfMemoryError</code> if too many strings were interned.</li>
-<li><strong>Interning Costs:</strong> Calling <code>intern()</code> on every string can <strong>increase the overhead</strong> slightly (because of the hash lookup). It’s only beneficial for <strong>reducing memory usage</strong> when you expect many repeated strings.</li>
+<li>Since Java 7, the string pool has been moved to the heap, so it grows dynamically with the application’s memory needs.</li>
+<li>Before Java 7, the pool was in PermGen space, which had a fixed size and could lead to <code>OutOfMemoryError</code> if too many strings were interned.</li>
+<li>Interning Costs, Calling <code>intern()</code> on every string can increase the overhead slightly (because of the hash lookup). It’s only beneficial for reducing memory usage when you expect many repeated strings.</li>
 </ul>
 </div>
-<h3 id="string-pool-summary"><strong>String pool Summary</strong><a class="headerlink" href="#string-pool-summary" title="Permanent link">&para;</a></h3>
-<p>The <strong>String Pool</strong> is implemented using a <strong>Hash Table-like data structure</strong>, This allows for efficient string reuse through fast lookups and ensures no duplicate literals are created. Strings added via literals or <code>intern()</code> are stored in the pool, with existing references returned on subsequent requests.</p>
+<h3 id="summary_1"><strong>Summary</strong><a class="headerlink" href="#summary_1" title="Permanent link">&para;</a></h3>
+<p>The String Pool is implemented using a Hash Table-like data structure, This allows for efficient string reuse through fast lookups and ensures no duplicate literals are created. Strings added via literals or <code>intern()</code> are stored in the pool, with existing references returned on subsequent requests.</p>
 <hr />
 
 
@@ -3051,7 +3046,7 @@ The interned pool is part of the JVM's heap and managed by the Java String class
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 31, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 1, 2025</span>
   </span>
 
     
