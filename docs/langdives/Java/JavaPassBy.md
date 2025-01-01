@@ -2,21 +2,15 @@
 
 Java is stricly pass by value but lets go in depth.
 
-## **Reference vs Primitive**
-
-**Primitive Types**: These are the basic data types in Java (e.g., `int`, `char`, `boolean`). When you pass a primitive type to a method, a **copy** of the value is made.
-  
-**Reference Types**: These include objects, arrays, and instances of classes. When you pass a reference type to a method, you pass a reference (or pointer) to the actual object in memory, not the object itself.
-
 ## **Pass by Value**
 
-Java uses a mechanism called **pass by value** for method arguments, but it’s important to clarify how this applies to primitive and reference types.
+Java uses a mechanism called pass by value for method arguments, but it’s important to know how this applies to primitive and reference types.
 
 ### **Primitive Types**
 
-When you pass a primitive type to a method, the method receives a copy of the variable's value. Any changes made to this copy do not affect the original variable.
+These are the basic data types in Java (e.g., `int`, `char`, `boolean`), When you pass a primitive type to a method, the method receives a copy of the variable's value. Any changes made to this copy do not affect the original variable.
 
-???+ example
+??? example "Primitive Types Example"
     ```java
     public class PassByValueExample {
         public static void main(String[] args) {
@@ -33,9 +27,9 @@ When you pass a primitive type to a method, the method receives a copy of the va
 
 ### **Reference Types**
 
-When you pass a reference type to a method, the reference itself is passed by value. This means the method receives a copy of the reference to the object. While you can change the object's properties, you cannot change the reference to point to a different object.
+These include objects, arrays, and instances of classes, When you pass a reference type to a method, the reference itself is passed by value. This means the method receives a copy of the reference to the object. While you can change the object's properties, you cannot change the reference to point to a different object.
 
-???+ example
+??? example "Reference Types Example"
     ```java
     class MyClass {
         int value;
@@ -61,7 +55,7 @@ When you pass a reference type to a method, the reference itself is passed by va
 
 ## **Why?**
 
- When a method is called, a new stack frame is created, and local variables (including method parameters) are stored in this stack frame. Objects are stored in the heap, and the reference to these objects is passed to methods. When you modify the object’s state inside the method, it reflects outside the method because both the original reference and the parameter reference point to the same object in memory.
+When a method is called, a new stack frame is created, and local variables (including method parameters) are stored in this stack frame. Objects are stored in the heap, and the reference to these objects is passed to methods. When you modify the object’s state inside the method, it reflects outside the method because both the original reference and the parameter reference point to the same object in memory.
 
 ## **Scope and Lifetime**
 
@@ -71,9 +65,11 @@ When you pass a reference type to a method, the reference itself is passed by va
 
 ## **Summary**
 
-Java is **pass-by-value**: 
+Java is pass-by-value: 
 
 - Primitive types pass a copy of the value.
 - Reference types pass a copy of the reference to the object.
 
 Changes to the object through the reference affect the original object, but reassignment of the reference does not affect the original reference.
+
+---
