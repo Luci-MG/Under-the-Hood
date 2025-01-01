@@ -148,30 +148,27 @@ We will learn about garbage collection more in depth in another article.
 
 ## **Summary**
 
-- **Strings**: Immutable, stored in the String Pool if created with literals. `new String()` creates a separate object.
-- **Arrays**: Reference types, so multiple variables can point to the same array object.
-- **Classes**: Objects are referenced in memory multiple references can point to same object.
-- **Wrapper Classes**: Use caching for certain ranges (e.g., `Integer` values from -128 to 127).
-- **Garbage Collection**: Objects are eligible for garbage collection when no active references point to them.
+Strings are immutable and stored in the String Pool when created with literals, while using new String() creates a separate object. Arrays are reference types, allowing multiple variables to point to the same array object. For classes, objects are referenced in memory, meaning multiple references can point to the same object. Wrapper classes utilize caching for certain ranges, such as Integer values between -128 and 127. Objects become eligible for garbage collection when no active references point to them.
 
+---
 
 ## **String Pool In Depth**
 
-The **String Pool** (also called the **intern pool**) in Java is implemented using a Hash Table-like data structure internally. Let’s explore the design and behavior behind this structure:
+The String Pool (also called the intern pool) in Java is implemented using a Hash Table-like data structure internally. Let’s explore the design and behavior behind this structure:
 
 ### **Internals**
 
-- **Hash Table Concept:**  
-The **String Pool** uses a Hash Map-like structure internally, where the key is the string literal, and the value is a reference to the interned string in the pool. This ensures fast lookups and deduplication of identical strings because hash-based structures allow O(1) average-time complexity for lookup operations.
+- **Hash Table:**  
+The String Pool uses a Hash Map-like structure internally, where the key is the string literal, and the value is a reference to the interned string in the pool. This ensures fast lookups and deduplication of identical strings because hash-based structures allow O(1) average-time complexity for lookup operations.
 
 - **Behavior of String Pool:**
-If a new string literal is created, the pool **Checks** if the string already exists (by computing its hash), If the string exists, it returns the existing reference. If not, the string is added to the pool.
+If a new string literal is created, the pool checks if the string already exists (by computing its hash), If the string exists, it returns the existing reference. If not, the string is added to the pool.
 
 - **Rehashing and Thread Safety:**  
-The interned pool is part of the JVM's heap and managed by the Java String class. **Since Java 7**, the pool is stored in the heap instead of the PermGen space to allow better memory management. The pool structure is thread-safe, meaning multiple threads can safely use the pool.
+The interned pool is part of the JVM's heap and managed by the Java String class. Since Java 7, the pool is stored in the heap instead of the PermGen space to allow better memory management. The pool structure is thread-safe, meaning multiple threads can safely use the pool.
 
 
-???+ example "Simplified conceptual pseudocode Example"
+??? example "Simplified conceptual pseudocode Example"
     ```java title="How the pool works internally"
     class StringPool {
         private static Map<String, String> pool = new HashMap<>();
@@ -186,9 +183,9 @@ The interned pool is part of the JVM's heap and managed by the Java String class
         }
     }
     ```
-    - When calling `String.intern()`, Java **interns the string**, meaning it adds the string to the pool if it's not already present.
+    When calling `String.intern()`, Java interns the string, meaning it adds the string to the pool if it's not already present.
 
-???+ example "String Pool Usage Example"
+??? example "String Pool Usage Example"
     ```java
     public class Main {
         public static void main(String[] args) {
@@ -204,18 +201,18 @@ The interned pool is part of the JVM's heap and managed by the Java String class
 
 ### **Why Use Hash Table ?**
 
-- A hash table allows **constant time complexity (O(1))** for faster lookups.
+- A hash table allows constant time complexity (O(1)) for faster lookups.
 - Strings are immutable, so duplicate strings are avoided, improving memory usage so efficient meemory management.
-- The JVM ensures that the pool is **safe for concurrent access**, so multiple threads can use the intern pool efficiently.
+- The JVM ensures that the pool is safe for concurrent access, so multiple threads can use the intern pool efficiently.
 
 
 !!! note "Key Takeaways"
-    - **Since Java 7**, the string pool has been moved to the **heap**, so it grows dynamically with the application’s memory needs.
-    - **Before Java 7**, the pool was in **PermGen** space, which had a fixed size and could lead to `OutOfMemoryError` if too many strings were interned.
-    - **Interning Costs:** Calling `intern()` on every string can **increase the overhead** slightly (because of the hash lookup). It’s only beneficial for **reducing memory usage** when you expect many repeated strings.
+    - Since Java 7, the string pool has been moved to the heap, so it grows dynamically with the application’s memory needs.
+    - Before Java 7, the pool was in PermGen space, which had a fixed size and could lead to `OutOfMemoryError` if too many strings were interned.
+    - Interning Costs, Calling `intern()` on every string can increase the overhead slightly (because of the hash lookup). It’s only beneficial for reducing memory usage when you expect many repeated strings.
 
-### **String pool Summary**
+### **Summary**
 
-The **String Pool** is implemented using a **Hash Table-like data structure**, This allows for efficient string reuse through fast lookups and ensures no duplicate literals are created. Strings added via literals or `intern()` are stored in the pool, with existing references returned on subsequent requests.
+The String Pool is implemented using a Hash Table-like data structure, This allows for efficient string reuse through fast lookups and ensures no duplicate literals are created. Strings added via literals or `intern()` are stored in the pool, with existing references returned on subsequent requests.
 
 ---
