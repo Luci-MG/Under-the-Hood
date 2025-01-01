@@ -1476,15 +1476,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#reference-vs-primitive" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reference vs Primitive
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#pass-by-value" class="md-nav__link">
     <span class="md-ellipsis">
       Pass by Value
@@ -2584,15 +2575,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#reference-vs-primitive" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reference vs Primitive
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#pass-by-value" class="md-nav__link">
     <span class="md-ellipsis">
       Pass by Value
@@ -2677,15 +2659,12 @@
 
 <h1 id="is-java-pass-by-value-or-by-reference"><strong>Is Java Pass By Value or By Reference</strong> ?<a class="headerlink" href="#is-java-pass-by-value-or-by-reference" title="Permanent link">&para;</a></h1>
 <p>Java is stricly pass by value but lets go in depth.</p>
-<h2 id="reference-vs-primitive"><strong>Reference vs Primitive</strong><a class="headerlink" href="#reference-vs-primitive" title="Permanent link">&para;</a></h2>
-<p><strong>Primitive Types</strong>: These are the basic data types in Java (e.g., <code>int</code>, <code>char</code>, <code>boolean</code>). When you pass a primitive type to a method, a <strong>copy</strong> of the value is made.</p>
-<p><strong>Reference Types</strong>: These include objects, arrays, and instances of classes. When you pass a reference type to a method, you pass a reference (or pointer) to the actual object in memory, not the object itself.</p>
 <h2 id="pass-by-value"><strong>Pass by Value</strong><a class="headerlink" href="#pass-by-value" title="Permanent link">&para;</a></h2>
-<p>Java uses a mechanism called <strong>pass by value</strong> for method arguments, but it’s important to clarify how this applies to primitive and reference types.</p>
+<p>Java uses a mechanism called pass by value for method arguments, but it’s important to know how this applies to primitive and reference types.</p>
 <h3 id="primitive-types"><strong>Primitive Types</strong><a class="headerlink" href="#primitive-types" title="Permanent link">&para;</a></h3>
-<p>When you pass a primitive type to a method, the method receives a copy of the variable's value. Any changes made to this copy do not affect the original variable.</p>
-<details class="example" open="open">
-<summary>Example</summary>
+<p>These are the basic data types in Java (e.g., <code>int</code>, <code>char</code>, <code>boolean</code>), When you pass a primitive type to a method, the method receives a copy of the variable's value. Any changes made to this copy do not affect the original variable.</p>
+<details class="example">
+<summary>Primitive Types Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PassByValueExample</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
@@ -2700,9 +2679,9 @@
 </span></code></pre></div>
 </details>
 <h3 id="reference-types"><strong>Reference Types</strong><a class="headerlink" href="#reference-types" title="Permanent link">&para;</a></h3>
-<p>When you pass a reference type to a method, the reference itself is passed by value. This means the method receives a copy of the reference to the object. While you can change the object's properties, you cannot change the reference to point to a different object.</p>
-<details class="example" open="open">
-<summary>Example</summary>
+<p>These include objects, arrays, and instances of classes, When you pass a reference type to a method, the reference itself is passed by value. This means the method receives a copy of the reference to the object. While you can change the object's properties, you cannot change the reference to point to a different object.</p>
+<details class="example">
+<summary>Reference Types Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">class</span> <span class="nc">MyClass</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
@@ -2737,12 +2716,13 @@
 </li>
 </ul>
 <h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
-<p>Java is <strong>pass-by-value</strong>: </p>
+<p>Java is pass-by-value: </p>
 <ul>
 <li>Primitive types pass a copy of the value.</li>
 <li>Reference types pass a copy of the reference to the object.</li>
 </ul>
 <p>Changes to the object through the reference affect the original object, but reassignment of the reference does not affect the original reference.</p>
+<hr />
 
 
 
@@ -2765,7 +2745,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 22, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 1, 2025</span>
   </span>
 
     
