@@ -4,7 +4,8 @@
 Enables functional programming by treating functions as first-class citizens.
 
 - **Syntax**: `(parameters) -> expression` or `(parameters) -> { statements }`
-???+ example
+
+??? example "Lamba Example"
       ```java
       List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
       names.forEach(name -> System.out.println(name));
@@ -14,15 +15,15 @@ Enables functional programming by treating functions as first-class citizens.
 
 A functional interface is an interface with only one abstract method. This is important because lambda expressions can be used to provide the implementation for these interfaces. 
 
-???+ example
-    ```java title="Example functional interface"
+??? example "Functional Interface Example"
+    ```java title="Define functional interface"
     @FunctionalInterface  // Optional but ensures the interface has only one abstract method.
     interface MyFunction {
         int apply(int a, int b);  // Single abstract method
     }
     ```
 
-    Now, when you want to use this interface, you **don’t need to create a class** and provide an implementation like before. Instead, you can use a **lambda expression** to quickly provide the logic.
+    Now, when you want to use this interface, you don’t need to create a class and provide an implementation like before. Instead, you can use a lambda expression to quickly provide the logic.
 
     ```java title="Using Lambda with MyFunction"
     MyFunction addition = (a, b) -> a + b;  // Lambda expression for addition
@@ -37,33 +38,33 @@ A functional interface is an interface with only one abstract method. This is im
 
 A method reference is a shorthand way of writing a lambda when a method already exists that matches the lambda’s purpose. This makes the code more concise and readable.
 
-???+ example "Example with `forEach` and Method Reference"
-      Consider the following list of names:
-      ```java
-      List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
-      ```
+??? example "Example with `forEach` and Method Reference"
+    Consider the following list of names:
+    ```java
+    List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+    ```
 
-      You want to **print all names** using `forEach()`. You could do it with a lambda like this:
-      ```java
-      names.forEach(name -> System.out.println(name));  // Lambda expression
-      ```
+    You want to print all names using `forEach()`. You could do it with a lambda like this:
+    ```java
+    names.forEach(name -> System.out.println(name));  // Lambda expression
+    ```
 
-      Now, Java provides a shorthand: **Method Reference**. Since `System.out.println()` already matches the structure `(String) -> void`, you can write:
-      ```java
-      names.forEach(System.out::println);  // Method reference
-      ```
+    Now, Java provides a shorthand: Method Reference. Since `System.out.println()` already matches the structure `(String) -> void`, you can write:
+    ```java
+    names.forEach(System.out::println);  // Method reference
+    ```
+    
+    ???+ info "Explanation"
+         - `System.out::println` is a method reference to the `println()` method of `System.out`.
+         - It behaves just like the lambda `name -> System.out.println(name)` but is cleaner.
 
-???+ info "Explanation"
-      - `System.out::println` is a **method reference** to the `println()` method of `System.out`.
-      - It behaves just like the lambda `name -> System.out.println(name)` but is cleaner.
+Use method references when:
 
-Use **method references** when:
-
-- A lambda calls an **existing method** directly without modifying the input.
-- It improves **readability** of the code.
+- A lambda calls an existing method directly without modifying the input.
+- It improves readability of the code.
 
 
-???+ example "More Examples"
+??? example "More Examples"
       ```java
       // 1. Static method reference
       Function<String, Integer> parse = Integer::parseInt;
@@ -74,10 +75,9 @@ Use **method references** when:
       words.sort(String::compareToIgnoreCase);  // Sorts case-insensitively
       ```
 
----
 
 ## **Streams API**  
-Introduced in **Java 8** to process collections in a declarative way.
+Introduced in Java 8 to process collections in a declarative way.
 
 !!! info "Core Stream Operations"
     #### Creation
@@ -126,10 +126,9 @@ Introduced in **Java 8** to process collections in a declarative way.
     list.parallelStream().forEach(System.out::println);
     ```
 
----
 
 ## **Examples Streams/Lambdas**  
-???+ example "Find the sum of even numbers"
+??? example "Find the sum of even numbers"
       ```java
       int sumOfEvens = Stream.of(1, 2, 3, 4, 5, 6)
                             .filter(n -> n % 2 == 0)
@@ -137,24 +136,23 @@ Introduced in **Java 8** to process collections in a declarative way.
       System.out.println(sumOfEvens);  // Output: 12
       ```
 
-???+ example "Convert List of Strings to Uppercase"
+??? example "Convert List of Strings to Uppercase"
       ```java
       List<String> upperCaseNames = list.stream()
                                         .map(String::toUpperCase)
                                         .collect(Collectors.toList());
       ```
 
-???+ example "Group elements by length"
+??? example "Group elements by length"
       ```java
       Map<Integer, List<String>> groupedByLength = list.stream()
                                                       .collect(Collectors.groupingBy(String::length));
       ```
 
----
 
 ## **Best Practices**  
-- Prefer **Streams** over loops for readability.
-- Use **parallel streams** with caution (only when operations are stateless).
-- Avoid side effects in **Intermediate Operations** (e.g., printing inside `map()`).
+- Prefer Streams over loops for readability.
+- Use parallel streams with caution (only when operations are stateless).
+- Avoid side effects in Intermediate Operations (e.g., printing inside `map()`).
 
 ---
