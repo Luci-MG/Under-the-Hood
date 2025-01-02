@@ -2894,101 +2894,98 @@
 <h1 id="java-collections-framework"><strong>Java Collections Framework</strong><a class="headerlink" href="#java-collections-framework" title="Permanent link">&para;</a></h1>
 <h2 id="categories-of-collections"><strong>Categories of Collections</strong><a class="headerlink" href="#categories-of-collections" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>List</strong>: Ordered, allows duplicates.</li>
-<li><strong>Set</strong>: Unordered, no duplicates.</li>
-<li><strong>Queue/Deque</strong>: FIFO or LIFO order.</li>
-<li><strong>Map</strong>: Stores key-value pairs.</li>
-<li><strong>Utility Collections</strong>: Collections with special behavior, e.g., <code>Collections.synchronizedList()</code>.</li>
+<li>List: Ordered, allows duplicates.</li>
+<li>Set: Unordered, no duplicates.</li>
+<li>Queue/Deque: FIFO or LIFO order.</li>
+<li>Map: Stores key-value pairs.</li>
+<li>Utility Collections: Collections with special behavior, eg: <code>Collections.synchronizedList()</code>.</li>
 </ul>
-<hr />
 <h2 id="list"><strong>List</strong><a class="headerlink" href="#list" title="Permanent link">&para;</a></h2>
 <h3 id="arraylist"><strong>ArrayList</strong><a class="headerlink" href="#arraylist" title="Permanent link">&para;</a></h3>
-<p>A resizable array, fast random access. It's backed by <strong>Array</strong>, When <strong>random access</strong> is needed and insertions are rare you can use this.</p>
-<p><strong>Operations &amp; Complexities</strong></p>
+<p>A resizable array, fast random access. It's backed by Array, When random access is needed and insertions are rare you can use this.</p>
+<p>Operations &amp; Complexities</p>
 <ul>
-<li><strong>Access by Index</strong>: <code>O(1)</code>  </li>
-<li><strong>Insertion (end)</strong>: <code>O(1)</code> (amortized)  </li>
-<li><strong>Insertion (middle)</strong>: <code>O(n)</code>  </li>
-<li><strong>Space Complexity</strong>: <strong><code>O(n)</code></strong>  </li>
+<li>Access by Index: <code>O(1)</code>  </li>
+<li>Insertion (end): <code>O(1)</code> (amortized)  </li>
+<li>Insertion (middle): <code>O(n)</code>  </li>
+<li>Space Complexity: <code>O(n)</code>  </li>
 </ul>
-<p><strong>Thread Safety</strong>:  Not synchronized, use <code>Collections.synchronizedList()</code> for thread safety.</p>
-<details class="example" open="open">
-<summary>Example</summary>
+<p>Thread Safety:  Not synchronized, use <code>Collections.synchronizedList()</code> for thread safety.</p>
+<details class="example">
+<summary>ArrayList Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">list</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;Apple&quot;</span><span class="p">);</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">list</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w">  </span><span class="c1">// Fast access</span>
 </span></code></pre></div>
 </details>
 <h3 id="linkedlist"><strong>LinkedList</strong><a class="headerlink" href="#linkedlist" title="Permanent link">&para;</a></h3>
-<p>A Doubly linked list, better at frequent insertions and deletions. It's backed by <strong>Doubly Linked List</strong>, When <strong>insertion/deletion</strong> in the middle is frequent you can use this.</p>
-<p><strong>Operations &amp; Complexities</strong></p>
+<p>A Doubly linked list, better at frequent insertions and deletions. It's backed by Doubly Linked List, When insertion/deletion in the middle is frequent you can use this.</p>
+<p>Operations &amp; Complexities</p>
 <ul>
-<li><strong>Access by Index</strong>: <code>O(n)</code>  </li>
-<li><strong>Insertion/Deletion</strong>: <code>O(1)</code> (at head or tail)  </li>
-<li><strong>Space Complexity</strong>: <strong><code>O(n)</code></strong></li>
+<li>Access by Index: <code>O(n)</code>  </li>
+<li>Insertion/Deletion: <code>O(1)</code> (at head or tail)  </li>
+<li>Space Complexity: <code>O(n)</code></li>
 </ul>
-<p><strong>Thread Safety</strong>: Not synchronized.</p>
-<details class="example" open="open">
-<summary>Example</summary>
+<p>Thread Safety: Not synchronized.</p>
+<details class="example">
+<summary>LinkedList Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LinkedList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">list</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;Banana&quot;</span><span class="p">);</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">list</span><span class="p">.</span><span class="na">addFirst</span><span class="p">(</span><span class="s">&quot;Apple&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// O(1) insertion at head</span>
 </span></code></pre></div>
 </details>
-<hr />
 <h2 id="set"><strong>Set</strong><a class="headerlink" href="#set" title="Permanent link">&para;</a></h2>
 <h3 id="hashset"><strong>HashSet</strong><a class="headerlink" href="#hashset" title="Permanent link">&para;</a></h3>
-<p>It's Unordered, no duplicates, backed by <strong>Hash Table</strong>. You can use this When you need <strong>fast lookups</strong> and no duplicates.</p>
-<p><strong>Operations &amp; Complexities</strong></p>
+<p>It's Unordered, no duplicates, backed by Hash Table. You can use this When you need fast lookups and no duplicates.</p>
+<p>Operations &amp; Complexities</p>
 <ul>
-<li><strong>Add/Remove/Contains</strong>: <code>O(1)</code> (on average)  </li>
-<li><strong>Space Complexity</strong>: <strong><code>O(n)</code></strong></li>
+<li>Add/Remove/Contains: <code>O(1)</code> (on average)  </li>
+<li>Space Complexity: <code>O(n)</code></li>
 </ul>
-<p><strong>Thread Safety</strong>: Not synchronized, use <code>Collections.synchronizedSet()</code>.</p>
-<details class="example" open="open">
-<summary>Example</summary>
+<p>Thread Safety: Not synchronized, use <code>Collections.synchronizedSet()</code>.</p>
+<details class="example">
+<summary>HashSet Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;&gt;</span><span class="p">();</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">set</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;Cat&quot;</span><span class="p">);</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">set</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;Dog&quot;</span><span class="p">);</span>
 </span></code></pre></div>
 </details>
 <h3 id="linkedhashset"><strong>LinkedHashSet</strong><a class="headerlink" href="#linkedhashset" title="Permanent link">&para;</a></h3>
-<p>This maintains <strong>insertion order</strong>, backed by a <strong>Hash Table + Linked List</strong>. You can use this when you need <strong>order-preserving</strong> behavior.</p>
-<p><strong>Operations &amp; Complexities</strong>: Same as <strong>HashSet</strong> (<code>O(1)</code> operations) but with <strong>slightly higher overhead</strong> due to linked list maintenance.</p>
-<details class="example" open="open">
-<summary>Example</summary>
+<p>This maintains insertion order, backed by a Hash Table + Linked List. You can use this when you need order-preserving behavior.</p>
+<p>Operations &amp; Complexities: Same as HashSet (<code>O(1)</code> operations) but with slightly higher overhead due to linked list maintenance.</p>
+<details class="example">
+<summary>LinkedHashSet Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LinkedHashSet</span><span class="o">&lt;&gt;</span><span class="p">();</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">set</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;Apple&quot;</span><span class="p">);</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">set</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;Banana&quot;</span><span class="p">);</span>
 </span></code></pre></div>
 </details>
 <h3 id="treeset"><strong>TreeSet</strong><a class="headerlink" href="#treeset" title="Permanent link">&para;</a></h3>
-<p>A Sorted set, backed by <strong>Red-Black Tree</strong>, When you need <strong>sorted data</strong>.</p>
-<p><strong>Operations &amp; Complexities</strong></p>
+<p>A Sorted set, backed by Red-Black Tree, When you need sorted data.</p>
+<p>Operations &amp; Complexities</p>
 <ul>
-<li><strong>Add/Remove/Contains</strong>: <code>O(log n)</code>  </li>
-<li><strong>Space Complexity</strong>: <strong><code>O(n)</code></strong></li>
+<li>Add/Remove/Contains: <code>O(log n)</code>  </li>
+<li>Space Complexity: <code>O(n)</code></li>
 </ul>
-<p><strong>Thread Safety</strong>: Not synchronized.</p>
-<details class="example" open="open">
-<summary>Example</summary>
+<p>Thread Safety: Not synchronized.</p>
+<details class="example">
+<summary>TreeSet Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">Set</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TreeSet</span><span class="o">&lt;&gt;</span><span class="p">();</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">set</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">set</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w">  </span><span class="c1">// Sorted automatically</span>
 </span></code></pre></div>
 </details>
-<hr />
 <h2 id="queuedeque"><strong>Queue/Deque</strong><a class="headerlink" href="#queuedeque" title="Permanent link">&para;</a></h2>
 <h3 id="priorityqueue"><strong>PriorityQueue</strong><a class="headerlink" href="#priorityqueue" title="Permanent link">&para;</a></h3>
-<p>Elements are ordered based on their <strong>natural order</strong> or a <strong>custom comparator</strong>. It's backed by <strong>Binary Heap</strong>, When <strong>priority-based retrieval</strong> is needed.</p>
-<p><strong>Operations &amp; Complexities</strong></p>
+<p>Elements are ordered based on their natural order or a custom comparator. It's backed by Binary Heap, When priority-based retrieval is needed.</p>
+<p>Operations &amp; Complexities</p>
 <ul>
-<li><strong>Insertion</strong>: <code>O(log n)</code>  </li>
-<li><strong>Access (peek)</strong>: <code>O(1)</code>  </li>
-<li><strong>Remove (poll)</strong>: <code>O(log n)</code>  </li>
+<li>Insertion: <code>O(log n)</code>  </li>
+<li>Access (peek): <code>O(1)</code>  </li>
+<li>Remove (poll): <code>O(log n)</code>  </li>
 </ul>
-<details class="example" open="open">
-<summary>Example</summary>
+<details class="example">
+<summary>PriorityQueue Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">Queue</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PriorityQueue</span><span class="o">&lt;&gt;</span><span class="p">();</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">queue</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">queue</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w">  </span><span class="c1">// 5 will be at the top</span>
@@ -2996,78 +2993,73 @@
 </details>
 <h3 id="arraydeque"><strong>ArrayDeque</strong><a class="headerlink" href="#arraydeque" title="Permanent link">&para;</a></h3>
 <p>Resizable-array-backed deque, allows adding/removing from both ends, When you need both stack and queue operations.</p>
-<p><strong>Operations &amp; Complexities</strong></p>
+<p>Operations &amp; Complexities</p>
 <ul>
-<li><strong>Add/Remove (head/tail)</strong>: <code>O(1)</code>  </li>
-<li><strong>Space Complexity</strong>: <strong><code>O(n)</code></strong></li>
+<li>Add/Remove (head/tail): <code>O(1)</code>  </li>
+<li>Space Complexity: <code>O(n)</code></li>
 </ul>
-<details class="example" open="open">
-<summary>Example</summary>
+<details class="example">
+<summary>ArrayDeque Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">Deque</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">deque</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayDeque</span><span class="o">&lt;&gt;</span><span class="p">();</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">deque</span><span class="p">.</span><span class="na">addFirst</span><span class="p">(</span><span class="s">&quot;First&quot;</span><span class="p">);</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">deque</span><span class="p">.</span><span class="na">addLast</span><span class="p">(</span><span class="s">&quot;Last&quot;</span><span class="p">);</span>
 </span></code></pre></div>
 </details>
-<hr />
 <h2 id="map"><strong>Map</strong><a class="headerlink" href="#map" title="Permanent link">&para;</a></h2>
 <h3 id="hashmap"><strong>HashMap</strong><a class="headerlink" href="#hashmap" title="Permanent link">&para;</a></h3>
-<p>Stores <strong>key-value pairs</strong>, backed by <strong>Hash Table</strong>, Fast lookups for key-value pairs.</p>
-<p><strong>Operations &amp; Complexities</strong></p>
+<p>Stores key-value pairs, backed by Hash Table, Fast lookups for key-value pairs.</p>
+<p>Operations &amp; Complexities</p>
 <ul>
-<li><strong>Get/Put/Remove</strong>: <code>O(1)</code> (average)  </li>
-<li><strong>Space Complexity</strong>: <strong><code>O(n)</code></strong></li>
+<li>Get/Put/Remove: <code>O(1)</code> (average)  </li>
+<li>Space Complexity: <code>O(n)</code></li>
 </ul>
-<p><strong>Thread Safety</strong>: Not synchronized, use <code>ConcurrentHashMap</code> for thread-safe operations.</p>
-<details class="example" open="open">
-<summary>Example</summary>
+<p>Thread Safety: Not synchronized, use <code>ConcurrentHashMap</code> for thread-safe operations.</p>
+<details class="example">
+<summary>HashMap Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;Apple&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;Banana&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
 </span></code></pre></div>
 </details>
 <h3 id="linkedhashmap"><strong>LinkedHashMap</strong><a class="headerlink" href="#linkedhashmap" title="Permanent link">&para;</a></h3>
-<p>Maintains insertion order, backed by <strong>Hash Table + Linked List</strong>, When <strong>ordering of entries</strong> matters.</p>
-<details class="example" open="open">
-<summary>Example</summary>
+<p>Maintains insertion order, backed by Hash Table + Linked List, When ordering of entries matters.</p>
+<details class="example">
+<summary>LinkedHashMap Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LinkedHashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;Apple&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;Banana&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w">  </span><span class="c1">// Maintains insertion order</span>
 </span></code></pre></div>
 </details>
 <h3 id="treemap"><strong>TreeMap</strong><a class="headerlink" href="#treemap" title="Permanent link">&para;</a></h3>
-<p>Sorted map, backed by <strong>Red-Black Tree</strong>, When you need a <strong>sorted key-value store</strong>.</p>
-<p><strong>Operations &amp; Complexities</strong>: <strong>Get/Put/Remove</strong>: <code>O(log n)</code>  </p>
-<details class="example" open="open">
-<summary>Example</summary>
+<p>Sorted map, backed by Red-Black Tree, When you need a sorted key-value store.</p>
+<p>Operations &amp; Complexities: Get/Put/Remove: <code>O(log n)</code>  </p>
+<details class="example">
+<summary>TreeMap Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TreeMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Three&quot;</span><span class="p">);</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;One&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// Sorted by key</span>
 </span></code></pre></div>
 </details>
-<hr />
 <h2 id="synchronized-collections"><strong>Synchronized Collections</strong><a class="headerlink" href="#synchronized-collections" title="Permanent link">&para;</a></h2>
-<p><strong>Synchronized Wrappers</strong>:<br />
-Use <code>Collections.synchronizedList()</code> or <code>Collections.synchronizedSet()</code> to make collections thread-safe.</p>
-<details class="example" open="open">
-<summary>Example</summary>
+<p><strong>Synchronized Wrappers:</strong> Use <code>Collections.synchronizedList()</code> or <code>Collections.synchronizedSet()</code> to make collections thread-safe.</p>
+<details class="example">
+<summary>Collections Synchronized Wrapper Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Collections</span><span class="p">.</span><span class="na">synchronizedList</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">());</span>
 </span></code></pre></div>
 </details>
-<p><strong>Concurrent Collections</strong>:<br />
-Use <strong><code>ConcurrentHashMap</code></strong>, <strong><code>CopyOnWriteArrayList</code></strong>, or <strong><code>BlockingQueue</code></strong> for better thread-safe alternatives.</p>
-<hr />
+<p><strong>Concurrent Collections:</strong> Use <code>ConcurrentHashMap</code>, <code>CopyOnWriteArrayList</code>, or <code>BlockingQueue</code> for better thread-safe alternatives.</p>
 <h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th><strong>Collection</strong></th>
-<th><strong>Type</strong></th>
-<th><strong>Backed By</strong></th>
-<th><strong>Access Time</strong></th>
-<th><strong>Insertion Time</strong></th>
-<th><strong>Deletion Time</strong></th>
-<th><strong>Thread Safety</strong></th>
-<th><strong>Use Case</strong></th>
+<th>Collection</th>
+<th>Type</th>
+<th>Backed By</th>
+<th>Access Time</th>
+<th>Insertion Time</th>
+<th>Deletion Time</th>
+<th>Thread Safety</th>
+<th>Use Case</th>
 </tr>
 </thead>
 <tbody>
@@ -3226,7 +3218,7 @@ Use <strong><code>ConcurrentHashMap</code></strong>, <strong><code>CopyOnWriteAr
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 25, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 2, 2025</span>
   </span>
 
     
