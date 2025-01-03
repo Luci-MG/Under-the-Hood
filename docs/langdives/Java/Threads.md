@@ -53,7 +53,7 @@ public class Main {
     }
 }
 ```
-!!! note "When to Use ?"
+!!! tip "When to Use ?"
     - **`Runnable`**: When you need to inherit from another class, use `Runnable` since Java does not support multiple inheritance.
     - **`Thread`**: If your class does not need to extend any other class, extending `Thread` might be more intuitive.
 
@@ -66,6 +66,9 @@ A thread in Java goes through the following states:
     - **NEW**: Thread is created but not started yet.
     - **RUNNABLE**: Thread is ready to run or running but waiting for CPU time.
     - **BLOCKED / WAITING / TIMED_WAITING**: Thread is waiting for a resource or condition.
+        - **Blocked**: Occurs when the thread is waiting for a monitor lock.
+        - **Waiting**: Occurs when a thread calls `wait()` or waits indefinitely.
+        - **Timed Waiting**: Happens when `sleep()` or `join(time)` is invoked, meaning the thread will resume after a specific time.
     - **RUNNING**: Thread is executing.
     - **TERMINATED**: Thread has completed execution or stopped due to an exception.
 
@@ -89,17 +92,11 @@ A thread in Java goes through the following states:
     }
     ```
 
-!!! note "Thread States"
-    - **Blocked State**: Occurs when the thread is waiting for a monitor lock (e.g., waiting for I/O or a lock in synchronized methods).
-    - **Waiting State**: Occurs when a thread calls `wait()` or waits indefinitely.
-    - **Timed Waiting**: Happens when `sleep()` or `join(time)` is invoked, meaning the thread will resume after a specific time.
-
-
 ## **Daemon Threads**
 
 A daemon thread is a background thread that provides support services, like the garbage collector. It does not prevent the JVM from shutting down once all user threads are completed.
 
-??? example "Example of Daemon Thread"
+??? example "Daemon Thread Example"
     ```java
     class DaemonThread extends Thread {
         public void run() {
@@ -219,7 +216,7 @@ Java allows threads to communicate using wait-notify methods, avoiding busy wait
     ```
 
 
-## **Thread-Local Variables**
+## **Thread Local Variables**
 
 `ThreadLocal` provides a way to create thread-isolated variables. Each thread gets its own copy of the variable, and changes made by one thread do not affect others. This is useful when you don’t want threads to share a common state.
 
@@ -382,13 +379,7 @@ The `volatile` keyword ensures visibility of changes to variables across threads
 
 ## **Thread Memory**
 
-The memory consumption per thread and the maximum number of threads in Java depend on several factors, such as:
-
-- JVM and OS configurations (32-bit vs 64-bit JVM).
-- Thread stack size (which can be configured).
-- Available system memory.
-- OS-imposed limits.
-
+The memory consumption per thread and the maximum number of threads in Java depend on several factors, Let's discuss them.
 
 ### **Memory used by Thread**
 
@@ -399,12 +390,7 @@ Each Java thread consumes two key areas of memory:
 
 #### **Thread Stack Memory**
 
-Each thread gets its own stack, which holds Local variables (primitives, references), Method call frames, Intermediate results during method execution.
-
-The default stack size depends on the JVM and platform:
-
-- **Linux / macOS / Windows 64-bit**: ~1 MB per thread.
-- **32-bit JVM**: ~320 KB to 512 KB per thread.
+Each thread has its own stack, which stores local variables (primitives and references), method call frames, and intermediate results during method execution. The default stack size varies depending on the JVM and platform. For 64-bit systems on Linux, macOS, or Windows, the stack size is typically around 1 MB per thread, while for 32-bit JVMs, it ranges from 320 KB to 512 KB per thread.
 
 You can change the stack size with the `-Xss` JVM option:
 ```bash
@@ -415,13 +401,12 @@ java -Xss512k YourProgram
 
 In addition to stack memory, the OS kernel allocates metadata per thread (for thread control structures). This varies by platform but is typically in the range of 8 KB to 16 KB per thread.
 
-
 So the typical memory consumption per thread includes two key components: the stack size, which ranges from 512 KB to 1 MB, and the native metadata overhead, which is approximately 16 KB, depending on the operating system.
 
 Thus, a single thread could use ~1 MB to 1.1 MB of memory.
 
 
-### **Max Threads ?**
+### **Max Threads**
 
 The number of threads you can create depends on:
 
@@ -430,52 +415,12 @@ The number of threads you can create depends on:
 - Thread stack size (configurable with `-Xss`).
 - OS limits on threads per process.
 
-??? example "Practical Calculation Example"
-    Let's say:
 
-    - Available physical memory: 8 GB.
-    - JVM heap size: 2 GB (`-Xmx2g`).
-    - Available memory for threads: 6 GB (8 GB - 2 GB heap).
-    - Stack size per thread: 1 MB (`-Xss1m`).
+When calculating thread limits, consider both memory availability and operating system constraints. For example, if a system has 8 GB of physical memory and a JVM heap size of 2 GB (`-Xmx2g`), the remaining 6 GB is available for thread allocation. With a stack size of 1 MB per thread (`-Xss1m`), this allows for approximately `6000` threads (`6 GB / 1 MB per thread`).
 
-    **Maximum threads** = `6 GB / 1 MB per thread = ~6000 threads`.
+However, operating system limits often restrict the maximum number of threads per process. On Linux, this ranges from `1024 to 32,768` threads, depending on configurations in `/etc/security/limits.conf`. In contrast, Windows typically supports around `2000 to 3000` threads per process.
 
-!!! note "OS Limits on Threads"
-    Even if memory allows for thousands of threads, the OS imposes limits:
-
-    - Linux: 1024 - 32,768 threads (configurable with `/etc/security/limits.conf`).
-    - Windows: Around 2000-3000 threads per process.
-
-### **Too Many Threads Created ?**
-
-- `OutOfMemoryError: unable to create new native thread` Occurs when the OS can't allocate more native threads.
-
-- Performance Degradation as context switching between many threads becomes expensive, leading to CPU thrashing.
-
-### **Optimizing Thread Usage**
-
-Rather than creating many threads manually, **use thread pools** to manage a fixed number of threads efficiently:
-
-???+ example "Thread Pools Example"
-    ```java
-    import java.util.concurrent.ExecutorService;
-    import java.util.concurrent.Executors;
-
-    public class ThreadPoolExample {
-        public static void main(String[] args) {
-            ExecutorService executor = Executors.newFixedThreadPool(10);
-            for (int i = 0; i < 100; i++) {
-                executor.submit(() -> {
-                    System.out.println("Running thread: " + Thread.currentThread().getName());
-                });
-            }
-            executor.shutdown();
-        }
-    }
-    ```
-**Thread pools** reuse threads, reducing memory usage and improving performance.
-
-### **How to Increase Max Thread ?**
+#### **Increasing Max Threads in Linux**
 
 On Linux, you can increase the maximum threads per process
 
@@ -492,10 +437,31 @@ your_user_name  hard  nproc  65535
 your_user_name  soft  nproc  65535
 ```
 
-!!! note "Key points"
+#### **Too Many Threads**
 
-    - **Memory per thread**: Typically **1 MB to 1.1 MB**.
-    - **Number of threads**: Limited by **available memory** and **OS restrictions**.
-    - **Practical upper limit**: A system with **8 GB RAM** and **1 MB stack size** can support around **6000 threads**, but OS limits (like **Linux: ~32K**, **Windows: ~2K**) may restrict this.
+- `OutOfMemoryError: unable to create new native thread` Occurs when the OS can't allocate more native threads.
 
+- Performance Degradation as context switching between many threads becomes expensive, leading to CPU thrashing.
+
+### **Optimizing Thread Usage**
+
+Rather than creating many threads manually, use thread pools to manage a fixed number of threads efficiently, thread pools reuse threads, reducing memory usage and improving performance, we will discuss about thread pools in this [article](./ThreadPools.md) more.
+
+??? example "Thread Pools Example"
+    ```java
+    import java.util.concurrent.ExecutorService;
+    import java.util.concurrent.Executors;
+
+    public class ThreadPoolExample {
+        public static void main(String[] args) {
+            ExecutorService executor = Executors.newFixedThreadPool(10);
+            for (int i = 0; i < 100; i++) {
+                executor.submit(() -> {
+                    System.out.println("Running thread: " + Thread.currentThread().getName());
+                });
+            }
+            executor.shutdown();
+        }
+    }
+    ```
 ---
