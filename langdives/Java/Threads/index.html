@@ -1604,7 +1604,7 @@
         <li class="md-nav__item">
   <a href="#thread-local-variables" class="md-nav__link">
     <span class="md-ellipsis">
-      Thread-Local Variables
+      Thread Local Variables
     </span>
   </a>
   
@@ -1650,16 +1650,7 @@
           <li class="md-nav__item">
   <a href="#max-threads" class="md-nav__link">
     <span class="md-ellipsis">
-      Max Threads ?
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#too-many-threads-created" class="md-nav__link">
-    <span class="md-ellipsis">
-      Too Many Threads Created ?
+      Max Threads
     </span>
   </a>
   
@@ -1669,15 +1660,6 @@
   <a href="#optimizing-thread-usage" class="md-nav__link">
     <span class="md-ellipsis">
       Optimizing Thread Usage
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-to-increase-max-thread" class="md-nav__link">
-    <span class="md-ellipsis">
-      How to Increase Max Thread ?
     </span>
   </a>
   
@@ -2730,7 +2712,7 @@
         <li class="md-nav__item">
   <a href="#thread-local-variables" class="md-nav__link">
     <span class="md-ellipsis">
-      Thread-Local Variables
+      Thread Local Variables
     </span>
   </a>
   
@@ -2776,16 +2758,7 @@
           <li class="md-nav__item">
   <a href="#max-threads" class="md-nav__link">
     <span class="md-ellipsis">
-      Max Threads ?
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#too-many-threads-created" class="md-nav__link">
-    <span class="md-ellipsis">
-      Too Many Threads Created ?
+      Max Threads
     </span>
   </a>
   
@@ -2795,15 +2768,6 @@
   <a href="#optimizing-thread-usage" class="md-nav__link">
     <span class="md-ellipsis">
       Optimizing Thread Usage
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-to-increase-max-thread" class="md-nav__link">
-    <span class="md-ellipsis">
-      How to Increase Max Thread ?
     </span>
   </a>
   
@@ -2875,7 +2839,7 @@
 </span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="p">}</span>
 </span></code></pre></div>
-<div class="admonition note">
+<div class="admonition tip">
 <p class="admonition-title">When to Use ?</p>
 <ul>
 <li><strong><code>Runnable</code></strong>: When you need to inherit from another class, use <code>Runnable</code> since Java does not support multiple inheritance.</li>
@@ -2889,7 +2853,12 @@
 <ul>
 <li><strong>NEW</strong>: Thread is created but not started yet.</li>
 <li><strong>RUNNABLE</strong>: Thread is ready to run or running but waiting for CPU time.</li>
-<li><strong>BLOCKED / WAITING / TIMED_WAITING</strong>: Thread is waiting for a resource or condition.</li>
+<li><strong>BLOCKED / WAITING / TIMED_WAITING</strong>: Thread is waiting for a resource or condition.<ul>
+<li><strong>Blocked</strong>: Occurs when the thread is waiting for a monitor lock.</li>
+<li><strong>Waiting</strong>: Occurs when a thread calls <code>wait()</code> or waits indefinitely.</li>
+<li><strong>Timed Waiting</strong>: Happens when <code>sleep()</code> or <code>join(time)</code> is invoked, meaning the thread will resume after a specific time.</li>
+</ul>
+</li>
 <li><strong>RUNNING</strong>: Thread is executing.</li>
 <li><strong>TERMINATED</strong>: Thread has completed execution or stopped due to an exception.</li>
 </ul>
@@ -2914,18 +2883,10 @@
 </span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<div class="admonition note">
-<p class="admonition-title">Thread States</p>
-<ul>
-<li><strong>Blocked State</strong>: Occurs when the thread is waiting for a monitor lock (e.g., waiting for I/O or a lock in synchronized methods).</li>
-<li><strong>Waiting State</strong>: Occurs when a thread calls <code>wait()</code> or waits indefinitely.</li>
-<li><strong>Timed Waiting</strong>: Happens when <code>sleep()</code> or <code>join(time)</code> is invoked, meaning the thread will resume after a specific time.</li>
-</ul>
-</div>
 <h2 id="daemon-threads"><strong>Daemon Threads</strong><a class="headerlink" href="#daemon-threads" title="Permanent link">&para;</a></h2>
 <p>A daemon thread is a background thread that provides support services, like the garbage collector. It does not prevent the JVM from shutting down once all user threads are completed.</p>
 <details class="example">
-<summary>Example of Daemon Thread</summary>
+<summary>Daemon Thread Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">class</span> <span class="nc">DaemonThread</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Thread</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Thread</span><span class="p">.</span><span class="na">currentThread</span><span class="p">().</span><span class="na">isDaemon</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
@@ -3040,7 +3001,7 @@
 </span><span id="__span-5-48"><a id="__codelineno-5-48" name="__codelineno-5-48" href="#__codelineno-5-48"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<h2 id="thread-local-variables"><strong>Thread-Local Variables</strong><a class="headerlink" href="#thread-local-variables" title="Permanent link">&para;</a></h2>
+<h2 id="thread-local-variables"><strong>Thread Local Variables</strong><a class="headerlink" href="#thread-local-variables" title="Permanent link">&para;</a></h2>
 <p><code>ThreadLocal</code> provides a way to create thread-isolated variables. Each thread gets its own copy of the variable, and changes made by one thread do not affect others. This is useful when you don’t want threads to share a common state.</p>
 <details class="example">
 <summary>ThreadLocal Usage Example</summary>
@@ -3201,13 +3162,7 @@
 </details>
 </div>
 <h2 id="thread-memory"><strong>Thread Memory</strong><a class="headerlink" href="#thread-memory" title="Permanent link">&para;</a></h2>
-<p>The memory consumption per thread and the maximum number of threads in Java depend on several factors, such as:</p>
-<ul>
-<li>JVM and OS configurations (32-bit vs 64-bit JVM).</li>
-<li>Thread stack size (which can be configured).</li>
-<li>Available system memory.</li>
-<li>OS-imposed limits.</li>
-</ul>
+<p>The memory consumption per thread and the maximum number of threads in Java depend on several factors, Let's discuss them.</p>
 <h3 id="memory-used-by-thread"><strong>Memory used by Thread</strong><a class="headerlink" href="#memory-used-by-thread" title="Permanent link">&para;</a></h3>
 <p>Each Java thread consumes two key areas of memory:</p>
 <ul>
@@ -3215,12 +3170,7 @@
 <li>Native Thread Metadata / Overhead (handled by the OS).</li>
 </ul>
 <h4 id="thread-stack-memory"><strong>Thread Stack Memory</strong><a class="headerlink" href="#thread-stack-memory" title="Permanent link">&para;</a></h4>
-<p>Each thread gets its own stack, which holds Local variables (primitives, references), Method call frames, Intermediate results during method execution.</p>
-<p>The default stack size depends on the JVM and platform:</p>
-<ul>
-<li><strong>Linux / macOS / Windows 64-bit</strong>: ~1 MB per thread.</li>
-<li><strong>32-bit JVM</strong>: ~320 KB to 512 KB per thread.</li>
-</ul>
+<p>Each thread has its own stack, which stores local variables (primitives and references), method call frames, and intermediate results during method execution. The default stack size varies depending on the JVM and platform. For 64-bit systems on Linux, macOS, or Windows, the stack size is typically around 1 MB per thread, while for 32-bit JVMs, it ranges from 320 KB to 512 KB per thread.</p>
 <p>You can change the stack size with the <code>-Xss</code> JVM option:
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>java<span class="w"> </span>-Xss512k<span class="w"> </span>YourProgram
 </span></code></pre></div></p>
@@ -3228,7 +3178,7 @@
 <p>In addition to stack memory, the OS kernel allocates metadata per thread (for thread control structures). This varies by platform but is typically in the range of 8 KB to 16 KB per thread.</p>
 <p>So the typical memory consumption per thread includes two key components: the stack size, which ranges from 512 KB to 1 MB, and the native metadata overhead, which is approximately 16 KB, depending on the operating system.</p>
 <p>Thus, a single thread could use ~1 MB to 1.1 MB of memory.</p>
-<h3 id="max-threads"><strong>Max Threads ?</strong><a class="headerlink" href="#max-threads" title="Permanent link">&para;</a></h3>
+<h3 id="max-threads"><strong>Max Threads</strong><a class="headerlink" href="#max-threads" title="Permanent link">&para;</a></h3>
 <p>The number of threads you can create depends on:</p>
 <ul>
 <li>Available system memory.</li>
@@ -3236,26 +3186,18 @@
 <li>Thread stack size (configurable with <code>-Xss</code>).</li>
 <li>OS limits on threads per process.</li>
 </ul>
-<details class="example">
-<summary>Practical Calculation Example</summary>
-<p>Let's say:</p>
-<ul>
-<li>Available physical memory: 8 GB.</li>
-<li>JVM heap size: 2 GB (<code>-Xmx2g</code>).</li>
-<li>Available memory for threads: 6 GB (8 GB - 2 GB heap).</li>
-<li>Stack size per thread: 1 MB (<code>-Xss1m</code>).</li>
-</ul>
-<p><strong>Maximum threads</strong> = <code>6 GB / 1 MB per thread = ~6000 threads</code>.</p>
-</details>
-<div class="admonition note">
-<p class="admonition-title">OS Limits on Threads</p>
-<p>Even if memory allows for thousands of threads, the OS imposes limits:</p>
-<ul>
-<li>Linux: 1024 - 32,768 threads (configurable with <code>/etc/security/limits.conf</code>).</li>
-<li>Windows: Around 2000-3000 threads per process.</li>
-</ul>
-</div>
-<h3 id="too-many-threads-created"><strong>Too Many Threads Created ?</strong><a class="headerlink" href="#too-many-threads-created" title="Permanent link">&para;</a></h3>
+<p>When calculating thread limits, consider both memory availability and operating system constraints. For example, if a system has 8 GB of physical memory and a JVM heap size of 2 GB (<code>-Xmx2g</code>), the remaining 6 GB is available for thread allocation. With a stack size of 1 MB per thread (<code>-Xss1m</code>), this allows for approximately <code>6000</code> threads (<code>6 GB / 1 MB per thread</code>).</p>
+<p>However, operating system limits often restrict the maximum number of threads per process. On Linux, this ranges from <code>1024 to 32,768</code> threads, depending on configurations in <code>/etc/security/limits.conf</code>. In contrast, Windows typically supports around <code>2000 to 3000</code> threads per process.</p>
+<h4 id="increasing-max-threads-in-linux"><strong>Increasing Max Threads in Linux</strong><a class="headerlink" href="#increasing-max-threads-in-linux" title="Permanent link">&para;</a></h4>
+<p>On Linux, you can increase the maximum threads per process</p>
+<div class="language-bash highlight"><span class="filename">Check current limits</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nb">ulimit</span><span class="w"> </span>-u<span class="w">  </span><span class="c1"># Max user processes</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><span class="filename">Increase limit (temporary)</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">ulimit</span><span class="w"> </span>-u<span class="w"> </span><span class="m">65535</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Permanent change: Edit '/etc/security/limits.conf' and add</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>your_user_name  hard  nproc  65535
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>your_user_name  soft  nproc  65535
+</span></code></pre></div>
+<h4 id="too-many-threads"><strong>Too Many Threads</strong><a class="headerlink" href="#too-many-threads" title="Permanent link">&para;</a></h4>
 <ul>
 <li>
 <p><code>OutOfMemoryError: unable to create new native thread</code> Occurs when the OS can't allocate more native threads.</p>
@@ -3265,43 +3207,25 @@
 </li>
 </ul>
 <h3 id="optimizing-thread-usage"><strong>Optimizing Thread Usage</strong><a class="headerlink" href="#optimizing-thread-usage" title="Permanent link">&para;</a></h3>
-<p>Rather than creating many threads manually, <strong>use thread pools</strong> to manage a fixed number of threads efficiently:</p>
-<details class="example" open="open">
+<p>Rather than creating many threads manually, use thread pools to manage a fixed number of threads efficiently, thread pools reuse threads, reducing memory usage and improving performance, we will discuss about thread pools in this <a href="../ThreadPools/">article</a> more.</p>
+<details class="example">
 <summary>Thread Pools Example</summary>
-<div class="language-java highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.ExecutorService</span><span class="p">;</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.Executors</span><span class="p">;</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ThreadPoolExample</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">        </span><span class="n">ExecutorService</span><span class="w"> </span><span class="n">executor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Executors</span><span class="p">.</span><span class="na">newFixedThreadPool</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">            </span><span class="n">executor</span><span class="p">.</span><span class="na">submit</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Running thread: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Thread</span><span class="p">.</span><span class="na">currentThread</span><span class="p">().</span><span class="na">getName</span><span class="p">());</span>
-</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">            </span><span class="p">});</span>
-</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">        </span><span class="p">}</span>
-</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">        </span><span class="n">executor</span><span class="p">.</span><span class="na">shutdown</span><span class="p">();</span>
-</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="p">}</span>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.ExecutorService</span><span class="p">;</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.Executors</span><span class="p">;</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ThreadPoolExample</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">        </span><span class="n">ExecutorService</span><span class="w"> </span><span class="n">executor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Executors</span><span class="p">.</span><span class="na">newFixedThreadPool</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">            </span><span class="n">executor</span><span class="p">.</span><span class="na">submit</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Running thread: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Thread</span><span class="p">.</span><span class="na">currentThread</span><span class="p">().</span><span class="na">getName</span><span class="p">());</span>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">            </span><span class="p">});</span>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">        </span><span class="n">executor</span><span class="p">.</span><span class="na">shutdown</span><span class="p">();</span>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<p><strong>Thread pools</strong> reuse threads, reducing memory usage and improving performance.</p>
-<h3 id="how-to-increase-max-thread"><strong>How to Increase Max Thread ?</strong><a class="headerlink" href="#how-to-increase-max-thread" title="Permanent link">&para;</a></h3>
-<p>On Linux, you can increase the maximum threads per process</p>
-<div class="language-bash highlight"><span class="filename">Check current limits</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">ulimit</span><span class="w"> </span>-u<span class="w">  </span><span class="c1"># Max user processes</span>
-</span></code></pre></div>
-<div class="language-bash highlight"><span class="filename">Increase limit (temporary)</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">ulimit</span><span class="w"> </span>-u<span class="w"> </span><span class="m">65535</span>
-</span></code></pre></div>
-<div class="language-text highlight"><span class="filename">Permanent change: Edit '/etc/security/limits.conf' and add</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>your_user_name  hard  nproc  65535
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>your_user_name  soft  nproc  65535
-</span></code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Key points</p>
-<ul>
-<li><strong>Memory per thread</strong>: Typically <strong>1 MB to 1.1 MB</strong>.</li>
-<li><strong>Number of threads</strong>: Limited by <strong>available memory</strong> and <strong>OS restrictions</strong>.</li>
-<li><strong>Practical upper limit</strong>: A system with <strong>8 GB RAM</strong> and <strong>1 MB stack size</strong> can support around <strong>6000 threads</strong>, but OS limits (like <strong>Linux: ~32K</strong>, <strong>Windows: ~2K</strong>) may restrict this.</li>
-</ul>
-</div>
 <hr />
 
 
