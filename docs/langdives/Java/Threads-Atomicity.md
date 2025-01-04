@@ -2,9 +2,8 @@
 
 Atomicity is a fundamental concept in multithreading and concurrency that ensures operations are executed entirely or not at all, with no intermediate states visible to other threads. In Java, atomicity plays a crucial role in maintaining data consistency in concurrent environments.
 
-This Article covers everything about atomic operations, issues with atomicity, atomic classes in Java, and best practices to ensure atomic behavior in your code.
+We are going to cover everything about atomic operations, issues with atomicity, atomic classes in Java, and best practices to ensure atomic behavior in your code in this article.
 
----
 
 ## **What is Atomicity ?**
 
@@ -13,17 +12,15 @@ In a multithreaded program, atomicity guarantees that operations are executed as
 - No other thread can see the intermediate state of the operation.
 - The operation either completes fully or fails without any effect.
 
----
 
 ## **Why it is Important ?**
 
-Without atomic operations, multiple threads could **interfere** with each other, leading to **race conditions** and **data inconsistencies**. For example, if two threads try to **increment a shared counter** simultaneously, the result may not reflect both increments due to **interleaving** of operations.
+Without atomic operations, multiple threads could interfere with each other, leading to race conditions and data inconsistencies. For example, if two threads try to increment a shared counter simultaneously, the result may not reflect both increments due to interleaving of operations.
 
----
 
 ## **Problems ?**
 
-???+ example "Non-Atomic Operations on Primitive Data Types"
+!!! example "Non-Atomic Operations on Primitive Data Types"
     ```java title="Counter Increment Example"
     class Counter {
         private int count = 0;
@@ -39,40 +36,38 @@ Without atomic operations, multiple threads could **interfere** with each other,
     ```
 
     !!! danger "Problem"
-        The statement `count++` is **not atomic**. It consists of **three operations**
+        The statement `count++` is **not atomic**. It consists of three operations
 
-        - **Read** the value of `count`.
-        - **Increment** the value.
-        - **Write** the new value back to `count`.
+        - Read the value of `count`.
+        - Increment the value.
+        - Write the new value back to `count`.
 
-    If two threads execute `count++` simultaneously, **one increment might be lost** due to race conditions.
+        If two threads execute `count++` simultaneously, one increment might be lost due to race conditions.
 
----
 
 ## **How to Ensure Atomicity ?**
 
-Java provides several ways to ensure **atomicity**, including:
+Java provides several ways to ensure atomicity, including:
 
-- **`synchronized` blocks and methods**.
-- **Explicit locks** using `ReentrantLock`.
-- **Atomic classes** from the `java.util.concurrent.atomic` package (recommended for simple atomic operations).
+- `synchronized` blocks and methods.
+- Explicit locks using `ReentrantLock`.
+- Atomic classes from the `java.util.concurrent.atomic` package (recommended for simple atomic operations).
 
----
 
-## **Java’s `Atomic` Classes**
+## **`Atomic` Classes in Java**
 
-The **`java.util.concurrent.atomic`** package offers classes that support lock-free, thread-safe operations on single variables. These classes rely on low-level atomic operations (like CAS — Compare-And-Swap) provided by the underlying hardware.
+The `java.util.concurrent.atomic` package offers classes that support lock-free, thread-safe operations on single variables. These classes rely on low-level atomic operations (like CAS — Compare-And-Swap) provided by the underlying hardware.
 
-### **Common Atomic Classes**
-- **`AtomicInteger`** – Atomic operations on integers.
-- **`AtomicLong`** – Atomic operations on long values.
-- **`AtomicBoolean`** – Atomic operations on boolean values.
-- **`AtomicReference<V>`** – Atomic operations on reference variables.
-- **`AtomicStampedReference<V>`** – Supports versioned references to prevent ABA problems.
+#### **Common Atomic Classes**
+- `AtomicInteger` – Atomic operations on integers.
+- `AtomicLong` – Atomic operations on long values.
+- `AtomicBoolean` – Atomic operations on boolean values.
+- `AtomicReference<V>` – Atomic operations on reference variables.
+- `AtomicStampedReference<V>` – Supports versioned references to prevent ABA problems.
 
 ### **`AtomicInteger`**
 
-???+ example "Example: Solving the Increment Problem"
+??? example "`AtomicInteger`: Solving the Increment Problem Example"
     ```java
     import java.util.concurrent.atomic.AtomicInteger;
 
@@ -114,14 +109,14 @@ The **`java.util.concurrent.atomic`** package offers classes that support lock-f
     }
     ```
 
-    ???+ info "Explanation"
+    !!! info "Explanation"
         - The `incrementAndGet()` method ensures **atomicity** without using locks.
         - This solution is **faster** and **more scalable** than using `synchronized` or `ReentrantLock`.
 
 
 ### **`AtomicBoolean`**
 
-???+ example "Example: Managing Flags Safely"
+??? example "`AtomicBoolean`: Managing Flags Safely Example"
     ```java
     import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -158,13 +153,13 @@ The **`java.util.concurrent.atomic`** package offers classes that support lock-f
     }
     ```
 
-    ???+ info "Explanation"
+    !!! info "Explanation"
         `compareAndSet()` changes the flag only if it matches the expected value, ensuring thread safety.
 
 
 ### **`AtomicReference`**
 
-???+ example "Example: Atomic Operations on Objects"
+??? example "`AtomicReference`: Atomic Operations on Objects Example"
     ```java 
     import java.util.concurrent.atomic.AtomicReference;
 
@@ -187,7 +182,7 @@ The **`java.util.concurrent.atomic`** package offers classes that support lock-f
     }
     ```
 
-!!! note "When to Use ?"
+!!! tip "When to Use ?"
     Use `AtomicReference` when you need atomic operations on object references.
 
 
@@ -195,7 +190,7 @@ The **`java.util.concurrent.atomic`** package offers classes that support lock-f
 
 The ABA problem occurs when a value changes from `A` to `B` and then back to `A`. `AtomicStampedReference` solves this by associating a version (stamp) with the value.
 
-???+ example "Example: ABA problem prevention"
+??? example "`AtomicStampedReference`: ABA problem prevention Example"
     ```java
     import java.util.concurrent.atomic.AtomicStampedReference;
 
@@ -213,18 +208,18 @@ The ABA problem occurs when a value changes from `A` to `B` and then back to `A`
     }
     ```
 
-    ???+ info "Explanation"
+    !!! info "Explanation"
         `AtomicStampedReference` ensures that the same value change does not go undetected by tracking the version.
 
----
 
 ## **Performance ?**
 
-- **No Locks**: Atomic operations are **non-blocking** and do not require heavy locks, improving **throughput**.
-- **Scalability**: They perform well in **highly concurrent environments**.
+Atomic classes offer significant performance advantages in multithreaded applications due to their non-blocking nature. Unlike traditional synchronization mechanisms, atomic operations rely on Compare-And-Swap (CAS) instructions, which are natively supported by hardware. This reduces latency and improves overall throughput. Their lightweight design makes them ideal for highly concurrent environments, offering excellent scalability and minimal overhead. Below are the key performance benefits of using atomic classes
+
+- **No Locks**: Atomic operations are non-blocking and do not require heavy locks, improving throughput.
+- **Scalability**: They perform well in highly concurrent environments.
 - **Low Overhead**: CAS operations are supported natively by hardware, providing low-latency operations.
 
----
 
 ## **When to Use ?**
 
@@ -234,26 +229,27 @@ The ABA problem occurs when a value changes from `A` to `B` and then back to `A`
 
 - Use `AtomicStampedReference` for versioned updates to prevent ABA problems.
 
----
 
 ## **Limitations ?**
 
-- Atomic classes only work with **single variables**. For **multiple variables**, use `synchronized` or `ReentrantLock`.
+While atomic classes provide a powerful tool for managing thread-safe operations, they come with certain limitations that developers must be aware of. These classes are best suited for simple scenarios involving single variables, but they fall short when managing more complex state changes or multiple variables simultaneously. Below are some key limitations to consider when using atomic classes
 
-- For **complex operations** involving multiple state changes, **atomic classes** are insufficient.
+- Atomic classes only work with single variables. For multiple variables, use `synchronized` or `ReentrantLock`.
 
-- Atomic operations avoid deadlocks but can still suffer from **livelocks** (threads continuously retrying without progress).
+- For complex operations involving multiple state changes, atomic classes are insufficient.
 
----
+- Atomic operations avoid deadlocks but can still suffer from livelocks (threads continuously retrying without progress).
+
 
 ## **Best Practices**
+
+When working with multithreaded applications, efficient and safe state management is crucial to maintain performance and prevent data corruption. However, their use requires careful consideration to ensure they are applied effectively in appropriate scenarios. Below are some best practices to follow when leveraging atomic classes in your code
 
 - Use atomic classes for simple state management (e.g., counters, flags).
 - Avoid overuse of atomic classes for complex operations, use `synchronized` or `ReentrantLock`.
 - Monitor performance while atomic operations are faster, they might not suit every situation (e.g., write-heavy workloads).
 - Avoid busy-waiting with atomic classes to prevent CPU wastage.
 
----
 
 ## **Summary**
 
