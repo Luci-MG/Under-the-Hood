@@ -2,9 +2,7 @@
 
 ## **What is a Thread Pool ?**
 
-A **thread pool** is a collection of worker threads that are created at the start and reused to perform multiple tasks. When tasks are submitted to the pool, a free thread picks up the task and executes it. If no threads are free, the tasks wait in a **queue** until one becomes available.
-
----
+A thread pool is a collection of worker threads that are created at the start and reused to perform multiple tasks. When tasks are submitted to the pool, a free thread picks up the task and executes it. If no threads are free, the tasks wait in a queue until one becomes available.
 
 ## **Advantages of Thread Pooling**
 - Reduces the overhead of creating and destroying threads improving performence.
@@ -12,26 +10,24 @@ A **thread pool** is a collection of worker threads that are created at the star
 - Handles the submission of multiple concurrent tasks efficiently.
 - Provides better scalability for server applications.
 
----
-
 ## **Creating Thread Pools**
 
-### **Ways to Create**
+The `Executors` class provides convenient factory methods to create thread pools:
 
-- The `Executors` class provides convenient factory methods to create thread pools:
+- `newFixedThreadPool()`
+- `newCachedThreadPool()`
+- `newSingleThreadExecutor()`
+- `newScheduledThreadPool()`
 
-    - `newFixedThreadPool()`
-    - `newCachedThreadPool()`
-    - `newSingleThreadExecutor()`
-    - `newScheduledThreadPool()`
+For greater control, you can instantiate `ThreadPoolExecutor` directly.
 
-- For greater control, you can instantiate `ThreadPoolExecutor` directly.
+Let's go through them one by one.
 
 ### **Fixed Thread Pool**
 
-Creates a pool with a **fixed number of threads**. When all threads are busy, tasks are placed in a **queue** and executed as soon as a thread becomes available.
+Creates a pool with a fixed number of threads. When all threads are busy, tasks are placed in a queue and executed as soon as a thread becomes available.
 
-???+ example "`newFixedThreadPool`"
+??? example "`newFixedThreadPool` Example"
     ```java
     import java.util.concurrent.ExecutorService;
     import java.util.concurrent.Executors;
@@ -52,20 +48,19 @@ Creates a pool with a **fixed number of threads**. When all threads are busy, ta
     }
     ```
 
-???+ success "Advantages"
+!!! success "Advantages"
     - Limits the number of concurrent threads.
     - Ideal when the number of tasks is known in advance.
     - Helps avoid resource exhaustion by limiting threads.
 
-???+ tip "When to Use ?"
+!!! tip "When to Use ?"
     - CPU-bound tasks where the thread count is close to the number of available processors.
     - Server applications that need to serve a fixed number of requests at any given time.
 
----
 
 ### **Cached Thread Pool**
 
-A **dynamic thread pool** where threads are created as needed. If threads are idle for 60 seconds, they are terminated. If a thread is available, it will be reused for a new task.
+A dynamic thread pool where threads are created as needed. If threads are idle for 60 seconds, they are terminated. If a thread is available, it will be reused for a new task.
 
 ???+ example "`newCachedThreadPool`"
     ```java
