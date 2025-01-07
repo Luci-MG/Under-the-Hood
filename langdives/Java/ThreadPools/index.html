@@ -1659,9 +1659,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comparison" class="md-nav__link">
+  <a href="#thread-pools-comparison" class="md-nav__link">
     <span class="md-ellipsis">
-      Comparison
+      Thread Pools Comparison
     </span>
   </a>
   
@@ -2749,9 +2749,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comparison" class="md-nav__link">
+  <a href="#thread-pools-comparison" class="md-nav__link">
     <span class="md-ellipsis">
-      Comparison
+      Thread Pools Comparison
     </span>
   </a>
   
@@ -2850,6 +2850,7 @@
 
 
 <h1 id="thread-pools"><strong>Thread Pools</strong>.<a class="headerlink" href="#thread-pools" title="Permanent link">&para;</a></h1>
+<p>Efficient task management is key to building high-performance applications. Thread pools streamline concurrency by reusing a fixed number of threads, reducing overhead and preventing resource exhaustion. This article explores thread pools, their benefits, and practical use cases, from basic implementations with Executors to advanced configurations with ThreadPoolExecutor. We will also covers essential interfaces like Runnable, Callable, and Future, demonstrating how they integrate with thread pools to handle concurrent tasks effectively.</p>
 <h2 id="what-is-a-thread-pool"><strong>What is a Thread Pool ?</strong><a class="headerlink" href="#what-is-a-thread-pool" title="Permanent link">&para;</a></h2>
 <p>A thread pool is a collection of worker threads that are created at the start and reused to perform multiple tasks. When tasks are submitted to the pool, a free thread picks up the task and executes it. If no threads are free, the tasks wait in a queue until one becomes available.</p>
 <h2 id="advantages-of-thread-pooling"><strong>Advantages of Thread Pooling</strong><a class="headerlink" href="#advantages-of-thread-pooling" title="Permanent link">&para;</a></h2>
@@ -2909,8 +2910,8 @@
 </div>
 <h3 id="cached-thread-pool"><strong>Cached Thread Pool</strong><a class="headerlink" href="#cached-thread-pool" title="Permanent link">&para;</a></h3>
 <p>A dynamic thread pool where threads are created as needed. If threads are idle for 60 seconds, they are terminated. If a thread is available, it will be reused for a new task.</p>
-<details class="example" open="open">
-<summary><code>newCachedThreadPool</code></summary>
+<details class="example">
+<summary><code>newCachedThreadPool</code> Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.ExecutorService</span><span class="p">;</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.Executors</span><span class="p">;</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
@@ -2930,31 +2931,30 @@
 </span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<details class="success" open="open">
-<summary>Advantages</summary>
+<div class="admonition success">
+<p class="admonition-title">Advantages</p>
 <ul>
 <li>Highly scalable, creates threads as needed.</li>
 <li>Best for short-lived, lightweight tasks.</li>
 </ul>
-</details>
-<details class="tip" open="open">
-<summary>When to Use ?</summary>
+</div>
+<div class="admonition failure">
+<p class="admonition-title">Drawbacks</p>
+<ul>
+<li>Can potentially overwhelm the system with too many threads if tasks arrive rapidly.</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">When to Use ?</p>
 <ul>
 <li>I/O-bound tasks that spend most of the time waiting (e.g., network requests).</li>
 <li>Scenarios where the number of tasks fluctuates frequently.</li>
 </ul>
-</details>
-<details class="failure" open="open">
-<summary>Drawbacks</summary>
-<ul>
-<li>Can potentially <strong>overwhelm the system</strong> with too many threads if tasks arrive rapidly.</li>
-</ul>
-</details>
-<hr />
+</div>
 <h3 id="single-thread-executor"><strong>Single Thread Executor</strong><a class="headerlink" href="#single-thread-executor" title="Permanent link">&para;</a></h3>
-<p>A <strong>single-threaded executor</strong> that ensures tasks are executed <strong>sequentially</strong> in the order they are submitted. If the thread dies due to an exception, a new thread is created to replace it.</p>
-<details class="example" open="open">
-<summary><code>newSingleThreadExecutor</code></summary>
+<p>A single-threaded executor that ensures tasks are executed sequentially in the order they are submitted. If the thread dies due to an exception, a new thread is created to replace it.</p>
+<details class="example">
+<summary><code>newSingleThreadExecutor</code> Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.ExecutorService</span><span class="p">;</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.Executors</span><span class="p">;</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
@@ -2974,25 +2974,24 @@
 </span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<details class="success" open="open">
-<summary>Advantages</summary>
+<div class="admonition success">
+<p class="admonition-title">Advantages</p>
 <ul>
 <li>Guarantees sequential execution of tasks.</li>
 <li>Thread safety No need for additional synchronization between tasks.</li>
 </ul>
-</details>
-<details class="tip" open="open">
-<summary>When to Use ?</summary>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">When to Use ?</p>
 <ul>
 <li>Useful when tasks must be executed in a strict sequence (e.g., writing logs).</li>
 <li>Scenarios that require single-threaded logic (e.g., managing a shared resource).</li>
 </ul>
-</details>
-<hr />
+</div>
 <h3 id="scheduled-thread-pool"><strong>Scheduled Thread Pool</strong><a class="headerlink" href="#scheduled-thread-pool" title="Permanent link">&para;</a></h3>
-<p>A <strong>scheduled thread pool</strong> allows you to <strong>schedule tasks</strong> to run after a delay or periodically at a fixed rate.</p>
-<details class="example" open="open">
-<summary><code>newScheduledThreadPool</code></summary>
+<p>A scheduled thread pool allows you to schedule tasks to run after a delay or periodically at a fixed rate.</p>
+<details class="example">
+<summary><code>newScheduledThreadPool</code> Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.Executors</span><span class="p">;</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.ScheduledExecutorService</span><span class="p">;</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.TimeUnit</span><span class="p">;</span>
@@ -3015,23 +3014,22 @@
 </span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<details class="success" open="open">
-<summary>Advantages</summary>
+<div class="admonition success">
+<p class="admonition-title">Advantages</p>
 <ul>
 <li>Delayed and periodic execution of tasks.</li>
 <li>Ideal for timing-sensitive operations.</li>
 </ul>
-</details>
-<details class="tip" open="open">
-<summary>When to Use ?</summary>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">When to Use ?</p>
 <ul>
 <li>Polling services or periodic background tasks (e.g., refreshing a cache).</li>
 <li>Scheduled events, like sending notifications at intervals.</li>
 </ul>
-</details>
-<hr />
+</div>
 <h3 id="threadpoolexecutor"><strong>ThreadPoolExecutor</strong><a class="headerlink" href="#threadpoolexecutor" title="Permanent link">&para;</a></h3>
-<p><code>ThreadPoolExecutor</code> is the <strong>core implementation</strong> of thread pools in Java. Using it allows you to <strong>fine-tune</strong> the thread pool’s behavior with more control over the number of threads, queue type, and rejection policy.</p>
+<p><code>ThreadPoolExecutor</code> is the core implementation of thread pools in Java. Using it allows you to fine-tune the thread pool’s behavior with more control over the number of threads, queue type, and rejection policy.</p>
 <div class="language-java highlight"><span class="filename">Parameters of ThreadPoolExecutor</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">ThreadPoolExecutor</span><span class="w"> </span><span class="n">executor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ThreadPoolExecutor</span><span class="p">(</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">        </span><span class="n">corePoolSize</span><span class="p">,</span><span class="w">      </span><span class="c1">// Minimum number of threads</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">        </span><span class="n">maximumPoolSize</span><span class="p">,</span><span class="w">   </span><span class="c1">// Maximum number of threads</span>
@@ -3042,8 +3040,8 @@
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="n">handler</span><span class="w">            </span><span class="c1">// Rejection policy when the queue is full</span>
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="p">);</span>
 </span></code></pre></div>
-<details class="example" open="open">
-<summary>Custom Thread Pool</summary>
+<details class="example">
+<summary>Custom Thread Pool Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.*</span><span class="p">;</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CustomThreadPoolExecutorExample</span><span class="w"> </span><span class="p">{</span>
@@ -3068,29 +3066,28 @@
 </span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<details class="success" open="open">
-<summary>Advantages</summary>
+<div class="admonition success">
+<p class="admonition-title">Advantages</p>
 <ul>
 <li>Fine-tuned control over thread management.</li>
 <li>Allows using custom queues and rejection policies.</li>
 </ul>
-</details>
-<details class="tip" open="open">
-<summary>When to Use ?</summary>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">When to Use ?</p>
 <ul>
 <li>Applications with complex task management needs.</li>
 <li>Systems where you need to monitor and control thread behavior closely.</li>
 </ul>
-</details>
-<p><strong>Common Rejection Policies</strong> in <code>ThreadPoolExecutor</code></p>
+</div>
+<p>Common rejection policies in <code>ThreadPoolExecutor</code></p>
 <ul>
 <li><strong>AbortPolicy</strong>: Throws <code>RejectedExecutionException</code> when a task is rejected.</li>
 <li><strong>CallerRunsPolicy</strong>: Executes the rejected task in the caller's thread.</li>
 <li><strong>DiscardPolicy</strong>: Silently discards the rejected task.</li>
 <li><strong>DiscardOldestPolicy</strong>: Discards the oldest unhandled task.</li>
 </ul>
-<hr />
-<h2 id="comparison"><strong>Comparison</strong><a class="headerlink" href="#comparison" title="Permanent link">&para;</a></h2>
+<h2 id="thread-pools-comparison"><strong>Thread Pools Comparison</strong><a class="headerlink" href="#thread-pools-comparison" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -3139,17 +3136,16 @@
 </tr>
 </tbody>
 </table>
-<hr />
 <h2 id="interface-concepts"><strong>Interface Concepts</strong><a class="headerlink" href="#interface-concepts" title="Permanent link">&para;</a></h2>
 <h3 id="runnable-interface"><strong>Runnable Interface</strong><a class="headerlink" href="#runnable-interface" title="Permanent link">&para;</a></h3>
-<p>The <code>Runnable</code> interface represents a <strong>task</strong> that can run asynchronously in a thread but <strong>does not return any result</strong> or throw a checked exception.</p>
-<div class="language-java highlight"><span class="filename">Structure</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nd">@FunctionalInterface</span>
+<p>The <code>Runnable</code> interface represents a task that can run asynchronously in a thread but does not return any result or throw a checked exception.</p>
+<div class="language-java highlight"><span class="filename">Runnable Structure</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nd">@FunctionalInterface</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">Runnable</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">();</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">}</span>
 </span></code></pre></div>
-<details class="example" open="open">
-<summary>Example</summary>
+<details class="example">
+<summary>Simple Runnable Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RunnableExample</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">        </span><span class="n">Runnable</span><span class="w"> </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -3162,22 +3158,22 @@
 </span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<details class="tip" open="open">
-<summary>When to Use ?</summary>
+<div class="admonition tip">
+<p class="admonition-title">When to Use ?</p>
 <ul>
-<li>Use <code>Runnable</code> when <strong>no result</strong> is expected from the task.</li>
+<li>Use <code>Runnable</code> when no result is expected from the task.</li>
 <li>Commonly used to run simple background tasks.</li>
 </ul>
-</details>
+</div>
 <h3 id="callable-interface"><strong>Callable Interface</strong><a class="headerlink" href="#callable-interface" title="Permanent link">&para;</a></h3>
-<p>The <code>Callable</code> interface is similar to <code>Runnable</code>, but it <strong>can return a result</strong> and <strong>throw a checked exception</strong>.</p>
-<div class="language-java highlight"><span class="filename">Structure</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nd">@FunctionalInterface</span>
+<p>The <code>Callable</code> interface is similar to <code>Runnable</code>, but it can return a result and throw a checked exception.</p>
+<div class="language-java highlight"><span class="filename">Callable Structure</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nd">@FunctionalInterface</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">Callable</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="n">V</span><span class="w"> </span><span class="nf">call</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="p">;</span>
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">}</span>
 </span></code></pre></div>
-<details class="example" open="open">
-<summary>Example</summary>
+<details class="example">
+<summary>Simple Callable Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.Callable</span><span class="p">;</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CallableExample</span><span class="w"> </span><span class="p">{</span>
@@ -3194,16 +3190,16 @@
 </span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<details class="tip" open="open">
-<summary>When to Use ?</summary>
+<div class="admonition tip">
+<p class="admonition-title">When to Use ?</p>
 <ul>
-<li>Use <code>Callable</code> when a <strong>result</strong> or an <strong>exception</strong> is expected.</li>
-<li>Works well with thread pools where tasks need to return values (e.g., for <strong>parallel computation</strong>).</li>
+<li>Use <code>Callable</code> when a result or an exception is expected.</li>
+<li>Works well with thread pools where tasks need to return values (e.g., for parallel computation).</li>
 </ul>
-</details>
+</div>
 <h3 id="future-interface"><strong>Future Interface</strong><a class="headerlink" href="#future-interface" title="Permanent link">&para;</a></h3>
-<p>A <code>Future</code> represents the <strong>result of an asynchronous computation</strong>. It provides methods to check if the computation is complete, wait for the result, and cancel the task if necessary.</p>
-<div class="language-java highlight"><span class="filename">Structure</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">Future</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<p>A <code>Future</code> represents the result of an asynchronous computation. It provides methods to check if the computation is complete, wait for the result, and cancel the task if necessary.</p>
+<div class="language-java highlight"><span class="filename">Future Structure</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">Future</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">cancel</span><span class="p">(</span><span class="kt">boolean</span><span class="w"> </span><span class="n">mayInterruptIfRunning</span><span class="p">);</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isCancelled</span><span class="p">();</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isDone</span><span class="p">();</span>
@@ -3211,8 +3207,8 @@
 </span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="n">V</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="n">timeout</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUnit</span><span class="w"> </span><span class="n">unit</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="p">,</span><span class="w"> </span><span class="n">ExecutionException</span><span class="p">,</span><span class="w"> </span><span class="n">TimeoutException</span><span class="p">;</span>
 </span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="p">}</span>
 </span></code></pre></div>
-<details class="example" open="open">
-<summary>Example</summary>
+<details class="example">
+<summary>Simple Future Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.*</span><span class="p">;</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FutureExample</span><span class="w"> </span><span class="p">{</span>
@@ -3238,35 +3234,35 @@
 </span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<details class="tip" open="open">
-<summary>When to Use ?</summary>
+<div class="admonition tip">
+<p class="admonition-title">When to Use ?</p>
 <ul>
-<li><strong><code>Future</code></strong> allows you to <strong>submit tasks</strong> to thread pools and <strong>retrieve their results</strong> once completed.</li>
-<li>Useful for <strong>waiting for multiple tasks</strong> to finish.</li>
+<li><code>Future</code> allows you to submit tasks to thread pools and retrieve their results once completed.</li>
+<li>Useful for waiting for multiple tasks to finish.</li>
 </ul>
-</details>
-<details class="note" open="open">
-<summary>Key Methods</summary>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Key Methods of Future</p>
 <ul>
-<li><strong><code>get()</code></strong>: Blocks until the task completes and returns the result.</li>
-<li><strong><code>isDone()</code></strong>: Checks if the task is completed.</li>
-<li><strong><code>cancel()</code></strong>: Cancels the task if it's still running.</li>
+<li><code>get()</code>: Blocks until the task completes and returns the result.</li>
+<li><code>isDone()</code>: Checks if the task is completed.</li>
+<li><code>cancel()</code>: Cancels the task if it's still running.</li>
 </ul>
-</details>
+</div>
 <h3 id="blockingqueue-interface"><strong>BlockingQueue Interface</strong><a class="headerlink" href="#blockingqueue-interface" title="Permanent link">&para;</a></h3>
-<p><code>BlockingQueue</code> is a <strong>thread-safe queue</strong> that <strong>blocks the calling thread</strong> when:</p>
+<p><code>BlockingQueue</code> is a thread-safe queue that blocks the calling thread when:</p>
 <ul>
-<li><strong>Retrieving from an empty queue</strong>: The thread waits until an item becomes available.</li>
-<li><strong>Adding to a full queue</strong>: The thread waits until space is available.</li>
+<li>Retrieving from an empty queue: The thread waits until an item becomes available.</li>
+<li>Adding to a full queue: The thread waits until space is available.</li>
 </ul>
-<div class="language-java highlight"><span class="filename">Structure</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">BlockingQueue</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Queue</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<div class="language-java highlight"><span class="filename">BlockingQueue Structure</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">BlockingQueue</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Queue</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">put</span><span class="p">(</span><span class="n">E</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="p">;</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="nf">take</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="p">;</span>
 </span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span><span class="c1">// Other methods for timed operations, size, etc.</span>
 </span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="p">}</span>
 </span></code></pre></div>
-<details class="example" open="open">
-<summary>Example</summary>
+<details class="example">
+<summary>Simple BlockingQueue Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.*</span><span class="p">;</span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BlockingQueueExample</span><span class="w"> </span><span class="p">{</span>
@@ -3302,19 +3298,19 @@
 </span><span id="__span-13-33"><a id="__codelineno-13-33" name="__codelineno-13-33" href="#__codelineno-13-33"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<details class="tip" open="open">
-<summary>Usages ?</summary>
+<div class="admonition tip">
+<p class="admonition-title">Usages ?</p>
 <ul>
 <li><code>BlockingQueue</code> is commonly used for task queues in thread pools (<code>ThreadPoolExecutor</code>).</li>
 <li>Ensures proper handoff between producers and consumers without explicit synchronization.</li>
 </ul>
-</details>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Types of BlockingQueues</p>
 <ul>
-<li><strong><code>ArrayBlockingQueue</code></strong>: A fixed-size queue.</li>
-<li><strong><code>LinkedBlockingQueue</code></strong>: A potentially unbounded queue.</li>
-<li><strong><code>PriorityBlockingQueue</code></strong>: A priority-based queue.</li>
+<li><code>ArrayBlockingQueue</code>: A fixed-size queue.</li>
+<li><code>LinkedBlockingQueue</code>: A potentially unbounded queue.</li>
+<li><code>PriorityBlockingQueue</code>: A priority-based queue.</li>
 </ul>
 </div>
 <h3 id="runnable-vs-callable"><strong>Runnable vs Callable</strong><a class="headerlink" href="#runnable-vs-callable" title="Permanent link">&para;</a></h3>
@@ -3390,7 +3386,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 5, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 7, 2025</span>
   </span>
 
     
