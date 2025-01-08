@@ -1668,15 +1668,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#thread-pool-size-tuning" class="md-nav__link">
-    <span class="md-ellipsis">
-      Thread Pool Size Tuning
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#rejection-policies" class="md-nav__link">
     <span class="md-ellipsis">
       Rejection Policies
@@ -2734,15 +2725,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#thread-pool-size-tuning" class="md-nav__link">
-    <span class="md-ellipsis">
-      Thread Pool Size Tuning
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#rejection-policies" class="md-nav__link">
     <span class="md-ellipsis">
       Rejection Policies
@@ -2845,111 +2827,98 @@
 
 <h1 id="thread-pool-configuration-tuning"><strong>Thread Pool Configuration Tuning</strong><a class="headerlink" href="#thread-pool-configuration-tuning" title="Permanent link">&para;</a></h1>
 <p>Thread pool configuration is critical for optimizing the performance of your applications. Poorly configured thread pools can lead to problems such as CPU starvation, thread contention, memory exhaustion, or poor resource utilization. In this Article, we’ll dive deep into CPU-bound vs I/O-bound tasks, explore how to determine optimal thread pool sizes, and discuss key considerations such as queue types and rejection policies.</p>
-<hr />
 <h2 id="cpu-vs-io-bound-tasks"><strong>CPU vs I/O Bound Tasks</strong><a class="headerlink" href="#cpu-vs-io-bound-tasks" title="Permanent link">&para;</a></h2>
 <p>When configuring thread pools, it is essential to classify your tasks as CPU-bound or I/O-bound, as this distinction guides the number of threads your pool should maintain.</p>
 <h3 id="cpu-bound-tasks"><strong>CPU-Bound Tasks</strong><a class="headerlink" href="#cpu-bound-tasks" title="Permanent link">&para;</a></h3>
-<p>Tasks that perform intensive computations (e.g., mathematical calculations, data processing, encoding), and here limiting factor is the <strong>CPU core availability</strong>. So its better to avoid context switching overhead by keeping the number of threads close to the available CPU cores.</p>
+<p>Tasks that perform intensive computations (e.g., mathematical calculations, data processing, encoding), and here limiting factor is the CPU core availability. So its better to avoid context switching overhead by keeping the number of threads close to the available CPU cores.</p>
 <div class="language-java highlight"><span class="filename">Optimal Thread Pool Size for CPU-Bound Tasks</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">coreCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Runtime</span><span class="p">.</span><span class="na">getRuntime</span><span class="p">().</span><span class="na">availableProcessors</span><span class="p">();</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">ExecutorService</span><span class="w"> </span><span class="n">cpuBoundPool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Executors</span><span class="p">.</span><span class="na">newFixedThreadPool</span><span class="p">(</span><span class="n">coreCount</span><span class="p">);</span>
 </span></code></pre></div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If more threads than CPU cores are running, threads will compete for CPU cycles, causing <strong>context switching</strong>, which adds overhead.
+<p class="admonition-title">Choosing count for CPU Bound Tasks</p>
+<p>If more threads than CPU cores are running, threads will compete for CPU cycles, causing context switching, which adds overhead.
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Optimal Threads = Number of Cores
 </span></code></pre></div></p>
 </div>
-<details class="tip" open="open">
-<summary>When to use ?</summary>
+<div class="admonition tip">
+<p class="admonition-title">When to use ?</p>
 <ul>
 <li>Data crunching (e.g., scientific calculations).</li>
 <li>Image or video processing.</li>
 <li>Encryption/decryption tasks.</li>
 </ul>
-</details>
+</div>
 <h3 id="io-bound-tasks"><strong>I/O-Bound Tasks</strong><a class="headerlink" href="#io-bound-tasks" title="Permanent link">&para;</a></h3>
-<p>Tasks that spend most of the time <strong>waiting</strong> for I/O operations (e.g., network, database, file I/O). and here the limiting factor is the time spent <strong>waiting on I/O</strong>. So it's better to use <strong>more threads</strong> than the number of cores to ensure that idle CPU cycles are used efficiently while waiting for I/O.</p>
+<p>Tasks that spend most of the time waiting for I/O operations (e.g., network, database, file I/O). and here the limiting factor is the time spent waiting on I/O. So it's better to use more threads than the number of cores to ensure that idle CPU cycles are used efficiently while waiting for I/O.</p>
 <div class="language-java highlight"><span class="filename">Optimal Thread Pool Size for I/O-Bound Tasks</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">coreCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Runtime</span><span class="p">.</span><span class="na">getRuntime</span><span class="p">().</span><span class="na">availableProcessors</span><span class="p">();</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">optimalThreads</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coreCount</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">ExecutorService</span><span class="w"> </span><span class="n">ioBoundPool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Executors</span><span class="p">.</span><span class="na">newFixedThreadPool</span><span class="p">(</span><span class="n">optimalThreads</span><span class="p">);</span>
 </span></code></pre></div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Since the tasks spend significant time waiting for I/O, more threads can be created to make sure the <strong>CPU is not idle</strong> while other threads wait for input/output operations.
+<p class="admonition-title">Choosing count for I/O Bound Tasks</p>
+<p>Since the tasks spend significant time waiting for I/O, more threads can be created to make sure the CPU is not idle while other threads wait for input/output operations.
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Optimal Threads = Number of Cores * (1 + Wait Time / Compute Time)
 </span></code></pre></div></p>
+<p>For example if a thread spends 70% of the time waiting on I/O, and only 30% performing work then
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Optimal Threads = 4 * (1 + 0.7 / 0.3) = 12
+</span></code></pre></div></p>
 </div>
-<details class="tip" open="open">
-<summary>When to use ?</summary>
+<div class="admonition tip">
+<p class="admonition-title">When to use ?</p>
 <ul>
 <li>Web servers handling multiple HTTP requests.</li>
 <li>Database query processing.</li>
 <li>File upload/download tasks.</li>
 </ul>
-</details>
-<hr />
+</div>
 <h2 id="queues-for-threadpoolexecutor"><strong>Queues for ThreadPoolExecutor</strong><a class="headerlink" href="#queues-for-threadpoolexecutor" title="Permanent link">&para;</a></h2>
-<p>Choosing the right work queue is crucial for memory management and task scheduling. The queue holds <strong>tasks waiting to be executed</strong> when all threads are busy.</p>
+<p>Choosing the right work queue is crucial for memory management and task scheduling. The queue holds tasks waiting to be executed when all threads are busy.</p>
 <h3 id="unbounded-queue"><strong>Unbounded Queue</strong><a class="headerlink" href="#unbounded-queue" title="Permanent link">&para;</a></h3>
-<p>A queue with <strong>no size limit</strong>, but if too many tasks are submitted, it can lead to memory exhaustion (out-of-memory errors).</p>
-<div class="language-java highlight"><span class="filename">LinkedBlockingQueue</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">BlockingQueue</span><span class="o">&lt;</span><span class="n">Runnable</span><span class="o">&gt;</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LinkedBlockingQueue</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<p>A queue with no size limit, but if too many tasks are submitted, it can lead to memory exhaustion (out-of-memory errors).</p>
+<div class="language-java highlight"><span class="filename">LinkedBlockingQueue</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">BlockingQueue</span><span class="o">&lt;</span><span class="n">Runnable</span><span class="o">&gt;</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LinkedBlockingQueue</span><span class="o">&lt;&gt;</span><span class="p">();</span>
 </span></code></pre></div>
-<details class="tip" open="open">
-<summary>When to use ?</summary>
-<p>Suitable only if you expect tasks to <strong>complete quickly</strong> and the queue will not grow indefinitely.</p>
-</details>
+<div class="admonition tip">
+<p class="admonition-title">When to use ?</p>
+<p>Suitable only if you expect tasks to complete quickly and the queue will not grow indefinitely.</p>
+</div>
 <h3 id="bounded-queue"><strong>Bounded Queue</strong><a class="headerlink" href="#bounded-queue" title="Permanent link">&para;</a></h3>
-<p>A queue with a <strong>fixed size limit</strong>, it prevents unbounded memory usage, and If the queue is full, tasks will be <strong>rejected</strong> or handled based on a rejection policy.</p>
-<div class="language-java highlight"><span class="filename">ArrayBlockingQueue</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">BlockingQueue</span><span class="o">&lt;</span><span class="n">Runnable</span><span class="o">&gt;</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayBlockingQueue</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<p>A queue with a fixed size limit, it prevents unbounded memory usage, and If the queue is full, tasks will be rejected or handled based on a rejection policy.</p>
+<div class="language-java highlight"><span class="filename">ArrayBlockingQueue</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">BlockingQueue</span><span class="o">&lt;</span><span class="n">Runnable</span><span class="o">&gt;</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayBlockingQueue</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
 </span></code></pre></div>
-<details class="tip" open="open">
-<summary>When to use ?</summary>
-<p>Ideal for <strong>controlled environments</strong> where you want to cap the number of waiting tasks.</p>
-</details>
-<hr />
-<h2 id="thread-pool-size-tuning"><strong>Thread Pool Size Tuning</strong><a class="headerlink" href="#thread-pool-size-tuning" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><span class="filename">For CPU-Bound Tasks</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Optimal Threads = Number of Cores
-</span></code></pre></div>
-<div class="language-text highlight"><span class="filename">For I/O-Bound Tasks</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Optimal Threads = Number of Cores * (1 + Wait Time / Compute Time)
-</span></code></pre></div>
-<details class="example" open="open">
-<summary>Example</summary>
-<p>If a thread spends 70% of the time waiting on I/O, and only 30% performing work:
- <div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Optimal Threads = 4 * (1 + 0.7 / 0.3) = 12
-</span></code></pre></div></p>
-</details>
-<hr />
+<div class="admonition tip">
+<p class="admonition-title">When to use ?</p>
+<p>Ideal for controlled environments where you want to cap the number of waiting tasks.</p>
+</div>
 <h2 id="rejection-policies"><strong>Rejection Policies</strong><a class="headerlink" href="#rejection-policies" title="Permanent link">&para;</a></h2>
 <p>When the task queue is full and the pool is at its maximum size, the <code>ThreadPoolExecutor</code> must decide what to do with new tasks. You can configure rejection policies to handle these situations.</p>
 <h3 id="abortpolicy-default"><strong>AbortPolicy (Default)</strong><a class="headerlink" href="#abortpolicy-default" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Throws a <code>RejectedExecutionException</code>.</li>
 <li>Use when you want to fail fast upon task overload.
-   <div class="language-java highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">new</span><span class="w"> </span><span class="n">ThreadPoolExecutor</span><span class="p">.</span><span class="na">AbortPolicy</span><span class="p">();</span>
+   <div class="language-java highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">new</span><span class="w"> </span><span class="n">ThreadPoolExecutor</span><span class="p">.</span><span class="na">AbortPolicy</span><span class="p">();</span>
 </span></code></pre></div></li>
 </ul>
 <h3 id="callerrunspolicy"><strong>CallerRunsPolicy</strong><a class="headerlink" href="#callerrunspolicy" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Executes the task in the calling thread (the thread that submitted the task).</li>
 <li>Prevents task loss but slows down the caller.
-   <div class="language-java highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">new</span><span class="w"> </span><span class="n">ThreadPoolExecutor</span><span class="p">.</span><span class="na">CallerRunsPolicy</span><span class="p">();</span>
+   <div class="language-java highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">new</span><span class="w"> </span><span class="n">ThreadPoolExecutor</span><span class="p">.</span><span class="na">CallerRunsPolicy</span><span class="p">();</span>
 </span></code></pre></div></li>
 </ul>
 <h3 id="discardpolicy"><strong>DiscardPolicy</strong><a class="headerlink" href="#discardpolicy" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Silently discards the rejected task.</li>
 <li>Use when tasks are non-critical.
-   <div class="language-java highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">new</span><span class="w"> </span><span class="n">ThreadPoolExecutor</span><span class="p">.</span><span class="na">DiscardPolicy</span><span class="p">();</span>
+   <div class="language-java highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">new</span><span class="w"> </span><span class="n">ThreadPoolExecutor</span><span class="p">.</span><span class="na">DiscardPolicy</span><span class="p">();</span>
 </span></code></pre></div></li>
 </ul>
 <h3 id="discardoldestpolicy"><strong>DiscardOldestPolicy</strong><a class="headerlink" href="#discardoldestpolicy" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Discards the oldest unhandled task in the queue to make room for the new task.</li>
 <li>Use when newer tasks are more critical.
-   <div class="language-java highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">new</span><span class="w"> </span><span class="n">ThreadPoolExecutor</span><span class="p">.</span><span class="na">DiscardOldestPolicy</span><span class="p">();</span>
+   <div class="language-java highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">new</span><span class="w"> </span><span class="n">ThreadPoolExecutor</span><span class="p">.</span><span class="na">DiscardOldestPolicy</span><span class="p">();</span>
 </span></code></pre></div></li>
 </ul>
-<hr />
 <h2 id="monitoring-thread-pools"><strong>Monitoring Thread Pools</strong><a class="headerlink" href="#monitoring-thread-pools" title="Permanent link">&para;</a></h2>
 <p>Monitoring thread pools ensures that your configuration is correct and performing well. You can monitor the following metrics:</p>
 <div class="admonition note">
@@ -2961,38 +2930,35 @@
 <li><strong>Average Task Time</strong>: Measure how long tasks take to execute.</li>
 </ul>
 </div>
-<details class="example" open="open">
-<summary>Example: Monitoring Active Threads</summary>
-<div class="language-java highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">ThreadPoolExecutor</span><span class="w"> </span><span class="n">executor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">SECONDS</span><span class="p">,</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">      </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayBlockingQueue</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Active Threads: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">executor</span><span class="p">.</span><span class="na">getActiveCount</span><span class="p">());</span>
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Task Count: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">executor</span><span class="p">.</span><span class="na">getTaskCount</span><span class="p">());</span>
-</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Completed Tasks: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">executor</span><span class="p">.</span><span class="na">getCompletedTaskCount</span><span class="p">());</span>
+<details class="example">
+<summary>Monitoring Active Threads Example</summary>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">ThreadPoolExecutor</span><span class="w"> </span><span class="n">executor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">SECONDS</span><span class="p">,</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">      </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayBlockingQueue</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Active Threads: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">executor</span><span class="p">.</span><span class="na">getActiveCount</span><span class="p">());</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Task Count: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">executor</span><span class="p">.</span><span class="na">getTaskCount</span><span class="p">());</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Completed Tasks: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">executor</span><span class="p">.</span><span class="na">getCompletedTaskCount</span><span class="p">());</span>
 </span></code></pre></div>
 </details>
-<hr />
 <h2 id="dynamic-thread-pool-adjustment"><strong>Dynamic Thread Pool Adjustment</strong><a class="headerlink" href="#dynamic-thread-pool-adjustment" title="Permanent link">&para;</a></h2>
 <p>Sometimes, you may need to adjust the pool size at runtime to respond to changing workloads.</p>
-<details class="example" open="open">
-<summary>Example: Adjusting Thread Pool Size Dynamically</summary>
-<div class="language-java highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">ThreadPoolExecutor</span><span class="w"> </span><span class="n">executor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">SECONDS</span><span class="p">,</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">      </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayBlockingQueue</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1">// Adjust core and max pool size dynamically</span>
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="n">executor</span><span class="p">.</span><span class="na">setCorePoolSize</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="n">executor</span><span class="p">.</span><span class="na">setMaximumPoolSize</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
+<details class="example">
+<summary>Adjusting Thread Pool Size Dynamically Example</summary>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">ThreadPoolExecutor</span><span class="w"> </span><span class="n">executor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">SECONDS</span><span class="p">,</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">      </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayBlockingQueue</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1">// Adjust core and max pool size dynamically</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">executor</span><span class="p">.</span><span class="na">setCorePoolSize</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="n">executor</span><span class="p">.</span><span class="na">setMaximumPoolSize</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
 </span></code></pre></div>
 </details>
-<hr />
 <h2 id="best-practices"><strong>Best Practices</strong><a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
 <ul>
-<li>For <strong>CPU-bound tasks</strong>, set the size close to the number of CPU cores.
-<div class="language-java highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">poolSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Runtime</span><span class="p">.</span><span class="na">getRuntime</span><span class="p">().</span><span class="na">availableProcessors</span><span class="p">();</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">ExecutorService</span><span class="w"> </span><span class="n">executor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Executors</span><span class="p">.</span><span class="na">newFixedThreadPool</span><span class="p">(</span><span class="n">poolSize</span><span class="p">);</span>
-</span></code></pre></div></li>
 <li>
-<p>For <strong>I/O-bound tasks</strong>, use more threads than the number of cores.</p>
+<p>For CPU-bound tasks, set the size close to the number of CPU cores.</p>
+</li>
+<li>
+<p>For I/O-bound tasks, use more threads than the number of cores.</p>
 </li>
 <li>
 <p>Use bounded queues to prevent memory issues.</p>
@@ -3002,14 +2968,14 @@
 </li>
 <li>
 <p>Gracefully shutdown thread pools to prevent resource leaks
-<div class="language-java highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">executor</span><span class="p">.</span><span class="na">shutdown</span><span class="p">();</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">executor</span><span class="p">.</span><span class="na">awaitTermination</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">SECONDS</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">         </span><span class="n">executor</span><span class="p">.</span><span class="na">shutdownNow</span><span class="p">();</span>
-</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">      </span><span class="p">}</span>
-</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">      </span><span class="n">executor</span><span class="p">.</span><span class="na">shutdownNow</span><span class="p">();</span>
-</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="p">}</span>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">executor</span><span class="p">.</span><span class="na">shutdown</span><span class="p">();</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">executor</span><span class="p">.</span><span class="na">awaitTermination</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">SECONDS</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">         </span><span class="n">executor</span><span class="p">.</span><span class="na">shutdownNow</span><span class="p">();</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">      </span><span class="p">}</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">      </span><span class="n">executor</span><span class="p">.</span><span class="na">shutdownNow</span><span class="p">();</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="p">}</span>
 </span></code></pre></div></p>
 </li>
 <li>
@@ -3039,7 +3005,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 28, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 8, 2025</span>
   </span>
 
     
