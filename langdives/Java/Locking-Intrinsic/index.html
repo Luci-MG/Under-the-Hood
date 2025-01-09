@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#locking" class="md-skip">
+        <a href="#intrinsic-locking" class="md-skip">
           Skip to content
         </a>
       
@@ -1623,20 +1623,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-locking" class="md-nav__link">
+  <a href="#synchronized-intrinsic-locks" class="md-nav__link">
     <span class="md-ellipsis">
-      What is Locking?
+      Synchronized &amp; Intrinsic Locks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Synchronized & Intrinsic Locks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-synchronized-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How synchronized Works
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#synchronized-and-intrinsic-locks" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#intrinsic-lock" class="md-nav__link">
     <span class="md-ellipsis">
-      Synchronized and Intrinsic Locks
+      Intrinsic Lock
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimizations-in-locking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimizations in Locking
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1683,15 +1707,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-it-work-internally" class="md-nav__link">
-    <span class="md-ellipsis">
-      How it Work Internally
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#best-practices" class="md-nav__link">
     <span class="md-ellipsis">
       Best Practices
@@ -1704,6 +1719,15 @@
   <a href="#potential-issues" class="md-nav__link">
     <span class="md-ellipsis">
       Potential Issues
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
     </span>
   </a>
   
@@ -2602,20 +2626,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-locking" class="md-nav__link">
+  <a href="#synchronized-intrinsic-locks" class="md-nav__link">
     <span class="md-ellipsis">
-      What is Locking?
+      Synchronized &amp; Intrinsic Locks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Synchronized & Intrinsic Locks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-synchronized-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How synchronized Works
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#synchronized-and-intrinsic-locks" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#intrinsic-lock" class="md-nav__link">
     <span class="md-ellipsis">
-      Synchronized and Intrinsic Locks
+      Intrinsic Lock
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimizations-in-locking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimizations in Locking
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2662,15 +2710,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-it-work-internally" class="md-nav__link">
-    <span class="md-ellipsis">
-      How it Work Internally
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#best-practices" class="md-nav__link">
     <span class="md-ellipsis">
       Best Practices
@@ -2683,6 +2722,15 @@
   <a href="#potential-issues" class="md-nav__link">
     <span class="md-ellipsis">
       Potential Issues
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
     </span>
   </a>
   
@@ -2711,26 +2759,36 @@
   
 
 
-<h1 id="locking"><strong>Locking</strong><a class="headerlink" href="#locking" title="Permanent link">&para;</a></h1>
-<p>Locking is an essential concept in multithreaded programming to prevent race conditions and ensure thread safety. When multiple threads access shared resources, locks ensure that only one thread accesses the critical section at a time.</p>
-<p>This article covers synchronized blocks.</p>
-<hr />
-<h2 id="what-is-locking"><strong>What is Locking?</strong><a class="headerlink" href="#what-is-locking" title="Permanent link">&para;</a></h2>
-<p><strong>Locking</strong> is a way to ensure that <strong>only one thread at a time</strong> executes a critical section or modifies a shared resource, Without proper locks, multiple threads may interfere with each other, leading to data inconsistency or unexpected behavior (race conditions).</p>
-<p>Java offers various <strong>locking mechanisms</strong>, from <strong>synchronized blocks</strong> to <strong>explicit locks</strong> like <code>ReentrantLock</code>.</p>
-<hr />
-<h2 id="synchronized-and-intrinsic-locks"><strong>Synchronized and Intrinsic Locks</strong><a class="headerlink" href="#synchronized-and-intrinsic-locks" title="Permanent link">&para;</a></h2>
-<p>Java’s <strong><code>synchronized</code></strong> key   word is one of the primary ways to control <strong>access to shared resources</strong> in multithreaded programs. It ensures <strong>thread safety</strong> by providing <strong>mutual exclusion</strong> and <strong>visibility guarantees</strong>. Let's go further into every aspect of <code>synchronized</code>.</p>
-<p><strong>How <code>synchronized</code> Works ?</strong></p>
+<h1 id="intrinsic-locking"><strong>Intrinsic Locking</strong><a class="headerlink" href="#intrinsic-locking" title="Permanent link">&para;</a></h1>
+<p>Locking is an essential concept in multithreaded programming to prevent race conditions and ensure thread safety. When multiple threads access shared resources, locks ensure that only one thread accesses the critical section at a time. Java offers various locking mechanisms, from synchronized blocks to explicit locks like <code>ReentrantLock</code>.</p>
+<p>We will cover synchronized blocks in this article.</p>
+<h2 id="synchronized-intrinsic-locks"><strong>Synchronized &amp; Intrinsic Locks</strong><a class="headerlink" href="#synchronized-intrinsic-locks" title="Permanent link">&para;</a></h2>
+<p>Java’s <code>synchronized</code> key word is one of the primary ways to control access to shared resources in multithreaded programs. It ensures thread safety by providing mutual exclusion and visibility guarantees. Let's go further into every aspect of <code>synchronized</code>.</p>
+<h3 id="how-synchronized-works">How <code>synchronized</code> Works<a class="headerlink" href="#how-synchronized-works" title="Permanent link">&para;</a></h3>
 <p>When a method or block is marked as <code>synchronized</code>, the JVM uses a monitor lock (intrinsic lock) for the associated object or class. The monitor is a synchronization construct provided by the JVM.</p>
-<p>Two things happen when a thread enters a synchronized block or method:</p>
+<p>This monitor ensures two key properties:</p>
 <ul>
-<li><strong>Mutual Exclusion:</strong> No other thread can enter the synchronized block on the same object until the first thread exits.</li>
-<li><strong>Visibility Guarantee:</strong> Changes made by the thread to variables inside the synchronized block are <strong>visible to other threads</strong>.</li>
+<li>Mutual Exclusion: No other thread can enter the synchronized block on the same object until the first thread exits.</li>
+<li>Visibility Guarantee: Changes made by the thread to variables inside the synchronized block are visible to other threads.</li>
 </ul>
-<p><strong>Intrinsic Lock:</strong>
-Each <strong>Java object has an intrinsic lock</strong> (also called <strong>monitor lock</strong>) associated with it, The thread that enters the synchronized block <strong>acquires the intrinsic lock</strong>. When it leaves the block, it <strong>releases the lock</strong>, allowing other threads to acquire it.</p>
-<hr />
+<h3 id="intrinsic-lock">Intrinsic Lock<a class="headerlink" href="#intrinsic-lock" title="Permanent link">&para;</a></h3>
+<p>Every Java object has an intrinsic lock, also known as a monitor lock. Here's how it works internally:  </p>
+<ul>
+<li>
+<p>Entry to the Monitor:  When a thread enters a synchronized block or method, it acquires the monitor associated with the object or class. If another thread attempts to enter the same synchronized block or method, it will be blocked until the current thread releases the monitor.  </p>
+</li>
+<li>
+<p>Exit from the Monitor:  When the thread exits the synchronized block, it releases the monitor, allowing other waiting threads to acquire it and proceed. </p>
+</li>
+</ul>
+<h3 id="optimizations-in-locking">Optimizations in Locking<a class="headerlink" href="#optimizations-in-locking" title="Permanent link">&para;</a></h3>
+<p>The JVM employs various optimizations to reduce the overhead of synchronization:  </p>
+<ul>
+<li>Bias Locking: If a lock is consistently used by a single thread, the JVM enables biased locking to minimize the cost of acquiring the lock.  </li>
+<li>Lightweight Locking: For uncontended locks, the JVM uses a fast path called lightweight locking to further optimize performance.  </li>
+<li>Heavyweight Locking: If contention occurs (multiple threads competing for the lock), the JVM escalates to heavyweight locking, which involves blocking other threads.  </li>
+</ul>
+<p>By leveraging these optimizations, the JVM ensures efficient synchronization while maintaining thread safety, even under varying levels of contention. </p>
 <h2 id="synchronized-methods"><strong>Synchronized Methods</strong><a class="headerlink" href="#synchronized-methods" title="Permanent link">&para;</a></h2>
 <h3 id="instance-level-locking"><strong>Instance-Level Locking</strong><a class="headerlink" href="#instance-level-locking" title="Permanent link">&para;</a></h3>
 <p>When you synchronize a non-static method, the thread acquires the lock on the instance of the class (the <code>this</code> object).</p>
@@ -2739,12 +2797,9 @@ Each <strong>Java object has an intrinsic lock</strong> (also called <strong>mon
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span>
 </span></code></pre></div>
-<ul>
-<li><strong>Impact</strong>: If multiple threads try to access <code>increment()</code> on the <strong>same object instance</strong>, only one thread will execute the method at a time. </li>
-<li><strong>Different Instances:</strong> If threads are working on <strong>different instances</strong> of the class, they can run synchronized methods simultaneously.</li>
-</ul>
-<details class="example" open="open">
-<summary>Example with Instance-Level Locking</summary>
+<p>If multiple threads attempt to access the increment() method on the same object instance, only one thread will execute the method at a time due to synchronization. However, if the threads are working on different instances of the class, they can execute the synchronized methods simultaneously without interference.</p>
+<details class="example">
+<summary>Instance-Level Locking Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">class</span> <span class="nc">Counter</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
@@ -2780,20 +2835,18 @@ Each <strong>Java object has an intrinsic lock</strong> (also called <strong>mon
 </span></code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Why does this work ?</p>
-<p>Since both threads are operating on the same <code>Counter</code> object, <strong>only one thread at a time</strong> can execute the <code>increment()</code> method due to <strong>instance-level locking</strong>.</p>
+<p>Since both threads are operating on the same <code>Counter</code> object, only one thread at a time can execute the <code>increment()</code> method due to instance-level locking.</p>
 </div>
 </details>
 <h3 id="class-level-locking"><strong>Class-Level Locking</strong><a class="headerlink" href="#class-level-locking" title="Permanent link">&para;</a></h3>
-<p>A <strong>static synchronized method</strong> locks on the <strong>Class object</strong> (i.e., <code>ClassName.class</code>) rather than on an instance. This ensures that all threads calling static methods on the class are synchronized.</p>
+<p>A static synchronized method locks on the Class object (i.e., <code>ClassName.class</code>) rather than on an instance. This ensures that all threads calling static methods on the class are synchronized.</p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">staticIncrement</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="c1">// Lock acquired on the class object (Counter.class)</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">}</span>
 </span></code></pre></div>
-<ul>
-<li><strong>Impact</strong>: If a thread calls a <strong>static synchronized method</strong>, no other thread can access any <strong>other static synchronized method</strong> on that class until the lock is released. However, threads can still call non-static synchronized methods, since <strong>the instance and class-level locks are different</strong>.</li>
-</ul>
-<details class="example" open="open">
-<summary>Example with Class-Level Locking</summary>
+<p>If a thread calls a static synchronized method, no other thread can access any other static synchronized method of that class until the lock is released. However, threads can still call non-static synchronized methods because instance-level locks are separate from class-level locks. Additionally, threads working on different instances of the class can execute non-static synchronized methods simultaneously, as each instance has its own lock, but static synchronized methods remain locked across all instances.</p>
+<details class="example">
+<summary>Class-Level Locking Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">class</span> <span class="nc">Counter</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
@@ -2826,21 +2879,22 @@ Each <strong>Java object has an intrinsic lock</strong> (also called <strong>mon
 </span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<hr />
 <h2 id="synchronized-blocks"><strong>Synchronized Blocks</strong><a class="headerlink" href="#synchronized-blocks" title="Permanent link">&para;</a></h2>
-<p>A <strong>synchronized block</strong> provides <strong>more control</strong> than a synchronized method. You can choose <strong>which object’s intrinsic lock</strong> to use, instead of locking the entire method.</p>
+<p>A synchronized block provides more control than a synchronized method. You can choose which object’s intrinsic lock to use, instead of locking the entire method.</p>
+<div class="admonition tip">
+<p class="admonition-title">When to use ?</p>
+<ul>
+<li>
+<p>To improve performance instead of synchronizing the entire method, only the critical section needs to be synchronized.
 <div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">increment</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="kd">synchronized</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// Locking on the current instance</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">        </span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">}</span>
-</span></code></pre></div>
-<details class="tip" open="open">
-<summary>When to use ?</summary>
-<ul>
-<li><strong>To improve performance</strong>: Instead of synchronizing the entire method, only the critical section needs to be synchronized.</li>
-<li><strong>To lock on specific objects</strong>: You can use any object as the lock, not just the instance or class.</li>
-</ul>
+</span></code></pre></div></p>
+</li>
+<li>
+<p>To lock on specific objects you can use any object as the lock, not just the instance or class.
 <div class="language-java highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">class</span> <span class="nc">Counter</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">lock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Object</span><span class="p">();</span>
@@ -2851,10 +2905,12 @@ Each <strong>Java object has an intrinsic lock</strong> (also called <strong>mon
 </span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="p">}</span>
 </span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="p">}</span>
-</span></code></pre></div>
-</details>
-<details class="example" open="open">
-<summary>Example: Synchronized Block with Fine-Grained Control</summary>
+</span></code></pre></div></p>
+</li>
+</ul>
+</div>
+<details class="example">
+<summary>Synchronized Block with Fine-Grained Control Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">updateBothCounters</span><span class="p">(</span><span class="n">Counter</span><span class="w"> </span><span class="n">counter1</span><span class="p">,</span><span class="w"> </span><span class="n">Counter</span><span class="w"> </span><span class="n">counter2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="kd">synchronized</span><span class="w"> </span><span class="p">(</span><span class="n">counter1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// Locking on the first Counter object</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">        </span><span class="n">counter1</span><span class="p">.</span><span class="na">increment</span><span class="p">();</span>
@@ -2865,47 +2921,21 @@ Each <strong>Java object has an intrinsic lock</strong> (also called <strong>mon
 </span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<hr />
-<h2 id="how-it-work-internally"><strong>How it Work Internally</strong><a class="headerlink" href="#how-it-work-internally" title="Permanent link">&para;</a></h2>
-<ul>
-<li>
-<p>Entry to the Monitor</p>
-<ul>
-<li>When a thread enters a synchronized block or method, it <strong>acquires the monitor</strong> on the object or class.</li>
-<li>If another thread tries to enter the same block, it <strong>gets blocked</strong> until the monitor is released.</li>
-</ul>
-</li>
-<li>
-<p>Exit from the Monitor</p>
-<ul>
-<li>When the thread exits the synchronized block, the monitor is <strong>released</strong>, and another thread waiting on the monitor can proceed.</li>
-</ul>
-</li>
-<li>
-<p>Bias Locking and Lightweight Locking</p>
-<ul>
-<li>The JVM optimizes locks with biased locking (when only one thread uses the lock most of the time) and lightweight locking (fast path for uncontended locks).</li>
-<li>If contention occurs, the JVM escalates the lock to a heavyweight lock (blocking other threads).</li>
-</ul>
-</li>
-</ul>
-<hr />
 <h2 id="best-practices"><strong>Best Practices</strong><a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p>Synchronizing unnecessary code slows down the application so use when necessary.</p>
 </li>
 <li>
-<p>Minimize the scope of synchronization so use <strong>synchronized blocks</strong> rather than whole methods to <strong>reduce contention</strong>.</p>
+<p>Minimize the scope of synchronization so use synchronized blocks rather than whole methods to reduce contention.</p>
 </li>
 <li>
-<p>Ensure you synchronize on the same object across threads to avoid incorrect locking behavior.</p>
+<p>Ensure you synchronize on the same object across threads to avoid incorrect locking.</p>
 </li>
 <li>
-<p>Nested synchronized blocks can lead to <strong>deadlock</strong>. Use consistent lock ordering.</p>
+<p>Nested synchronized blocks can lead to deadlock. Use consistent lock ordering.</p>
 </li>
 </ul>
-<hr />
 <h2 id="potential-issues"><strong>Potential Issues</strong><a class="headerlink" href="#potential-issues" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
@@ -2918,6 +2948,8 @@ Each <strong>Java object has an intrinsic lock</strong> (also called <strong>mon
 <p>Livelock, threads keep responding to each other without making progress (e.g., both threads keep yielding the lock to each other).</p>
 </li>
 </ul>
+<h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>Locking is essential in multithreaded programming to ensure thread safety and prevent race conditions. Java’s <code>synchronized</code> provides intrinsic locking with mutual exclusion and visibility guarantees. It supports instance-level locking (<code>this</code>) and class-level locking (<code>ClassName.class</code>). The JVM optimizes synchronization using biased, lightweight, and heavyweight locks to enhance performance. Synchronized blocks offer finer control by locking specific critical sections. Best practices include minimizing synchronization scope, using consistent locks, and avoiding nested locks to prevent deadlocks. Key issues to watch for are deadlocks, performance bottlenecks, and livelocks.</p>
 <hr />
 
 
@@ -2941,7 +2973,7 @@ Each <strong>Java object has an intrinsic lock</strong> (also called <strong>mon
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 6, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 9, 2025</span>
   </span>
 
     
