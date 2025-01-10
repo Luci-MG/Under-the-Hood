@@ -1,22 +1,12 @@
-# **Locking**.
+# **ReentrantLock Locking**
 
-Locking is an essential concept in multithreaded programming to prevent race conditions and ensure thread safety. When multiple threads access shared resources, locks ensure that only one thread accesses the critical section at a time.
+Locking is an essential concept in multithreaded programming to prevent race conditions and ensure thread safety. When multiple threads access shared resources, locks ensure that only one thread accesses the critical section at a time. Java offers various locking mechanisms, from synchronized blocks to explicit locks like `ReentrantLock`.
 
-This article covers reentrant locks.
-
----
-
-## **What is Locking ?**
-
-**Locking** is a way to ensure that **only one thread at a time** executes a critical section or modifies a shared resource, Without proper locks, multiple threads may interfere with each other, leading to data inconsistency or unexpected behavior (race conditions).
-
-Java offers various **locking mechanisms**, from **synchronized blocks** to **explicit locks** like `ReentrantLock`.
-
----
+We will cover ReentrantLock in this article.
 
 ## **What is `ReentrantLock` ?**
 
-The **`ReentrantLock`** class, introduced in **Java 5**, offers more control over thread synchronization than the `synchronized` keyword. It allows for advanced locking techniques such as fairness policies, tryLock, and interruptible locks. Let’s explore everything about `ReentrantLock`, including its use cases, internal mechanisms, and best practices.
+The `ReentrantLock` class, introduced in Java 5, offers more control over thread synchronization than the `synchronized` keyword. It allows for advanced locking techniques such as fairness policies, tryLock, and interruptible locks. Let’s explore everything about `ReentrantLock`, including its use cases, internal mechanisms, and best practices.
 
 `ReentrantLock` is a concrete class in the `java.util.concurrent.locks` package that implements the Lock interface. 
 
@@ -25,7 +15,7 @@ The **`ReentrantLock`** class, introduced in **Java 5**, offers more control ove
     - The ability for a thread to re-acquire a lock it already holds without blocking (hence the term "reentrant").
     - Explicit unlocking, unlike the `synchronized` keyword, which automatically releases the lock when the block exits.
 
-???+ example
+??? example "ReentrantLock Example"
     ```java
     import java.util.concurrent.locks.ReentrantLock;
 
@@ -74,13 +64,12 @@ The **`ReentrantLock`** class, introduced in **Java 5**, offers more control ove
     }
     ```
 
----
 
 ## **How it Works Internally ?**
 
-**Lock Acquisition:** When a thread calls `lock()`, it tries to acquire the lock. If the lock is available, the thread proceeds otherwise, it **blocks** until the lock becomes available.
+Lock Acquisition: When a thread calls `lock()`, it tries to acquire the lock. If the lock is available, the thread proceeds otherwise, it blocks until the lock becomes available.
 
-**Reentrancy:** A thread that holds the lock can acquire the lock again without blocking. This is useful when a thread *nters a method that also calls another synchronized method or block that requires the same lock.
+Reentrancy: A thread that holds the lock can acquire the lock again without blocking. This is useful when a thread *nters a method that also calls another synchronized method or block that requires the same lock.
 
 **Fair vs Unfair Locking:**
 
@@ -94,7 +83,6 @@ The **`ReentrantLock`** class, introduced in **Java 5**, offers more control ove
    ReentrantLock lock = new ReentrantLock();  // Unfair lock (default)
    ```
 
----
 
 ## **Advanced Locking Techniques**
 
@@ -102,7 +90,7 @@ The **`ReentrantLock`** class, introduced in **Java 5**, offers more control ove
 
 The `tryLock()` method attempts to acquire the lock without blocking. It returns true if the lock is acquired, otherwise false.
 
-???+ example
+??? example "`tryLock()` Example"
     ```java
     if (lock.tryLock()) {
         try {
@@ -114,15 +102,15 @@ The `tryLock()` method attempts to acquire the lock without blocking. It returns
         System.out.println("Could not acquire lock, doing something else...");
     }
     ```
-???+ tip "When to use ?"
-     When you want to avoid **blocking indefinitely** if the lock is not available.
+!!! tip "When to use ?"
+     When you want to avoid blocking indefinitely if the lock is not available.
 
 
 ### **tryLock with Timeout**
 
 The `tryLock(long timeout, TimeUnit unit)` method waits for a specific amount of time to acquire the lock.
 
-???+ example
+??? example "`tryLock()` Timeout Example"
     ```java
     import java.util.concurrent.TimeUnit;
 
@@ -137,15 +125,15 @@ The `tryLock(long timeout, TimeUnit unit)` method waits for a specific amount of
     }
     ```
 
-???+ tip "When to use ?"
+!!! tip "When to use ?"
      When waiting indefinitely is not practical, such as network operations or I/O tasks.
 
 
 ### **Interruptible Lock Acquisition**
 
-The `lockInterruptibly()` method allows a thread to acquire the lock but **respond to interrupts** while waiting.
+The `lockInterruptibly()` method allows a thread to acquire the lock but respond to interrupts while waiting.
 
-???+ example
+??? example "`lockInterruptibly` Example"
     ```java
     try {
         lock.lockInterruptibly();  // Wait for lock, but respond to interrupts
@@ -159,17 +147,16 @@ The `lockInterruptibly()` method allows a thread to acquire the lock but **respo
     }
     ```
 
-???+ tip "When to use ?"
-     Use when a thread needs to be **interrupted** while waiting for a lock.
+!!! tip "When to use ?"
+     Use when a thread needs to be interrupted while waiting for a lock.
 
----
 
 ## **Behavior**
 
-A reentrant lock means that the same thread can acquire the lock multiple times without blocking itself. However, the thread must **release the lock the same number of times** to fully unlock it.
+A reentrant lock means that the same thread can acquire the lock multiple times without blocking itself. However, the thread must release the lock the same number of times to fully unlock it.
 
 
-???+ example "Behavior Example"
+??? example "Behavior Example"
     ```java
     class ReentrantExample {
         private final ReentrantLock lock = new ReentrantLock();
@@ -195,16 +182,15 @@ A reentrant lock means that the same thread can acquire the lock multiple times 
     }
     ```
 
-    ???+ info "Explanation"
-         In this example, **`outerMethod`** calls **`innerMethod`**, and both methods acquire the same lock. This works without issues because `ReentrantLock` allows **reentrant locking**.
+    !!! info "Explanation"
+         In this example, `outerMethod` calls `innerMethod`, and both methods acquire the same lock. This works without issues because `ReentrantLock` allows **reentrant locking**.
 
----
 
 ## **Condition Variables**
 
-The `Condition` interface (associated with a `ReentrantLock`) allows a thread to **wait for a condition to be met** before proceeding. It provides **better control** than the traditional `wait()`/`notify()`.
+The `Condition` interface (associated with a `ReentrantLock`) allows a thread to wait for a condition to be met before proceeding. It provides better control than the traditional `wait()`/`notify()`.
 
-???+ example "Condition Variables Example"
+??? example "Condition Variables Example"
     ```java
     import java.util.concurrent.locks.Condition;
     import java.util.concurrent.locks.ReentrantLock;
@@ -238,10 +224,13 @@ The `Condition` interface (associated with a `ReentrantLock`) allows a thread to
     }
     ```
 
----
 
 ## **Performance**
 
 ReentrantLock has more overhead than `synchronized` due to fairness policies and explicit lock management, Use `synchronized` for simple scenarios, use reentrantLock for more complex locking requirements(eg: tryLock, fairness).
+
+## **Summary**
+
+`ReentrantLock` is a flexible locking mechanism in Java that offers advanced synchronization features beyond `synchronized`. It provides reentrant locking, fairness policies (fair and unfair locks), and explicit lock management. Key methods include `lock()`, `tryLock()` (non-blocking lock acquisition), `tryLock` with timeout, and `lockInterruptibly()` (responds to interrupts). ReentrantLock supports reentrant behavior, allowing the same thread to acquire the lock multiple times, and uses condition variables for fine-grained thread coordination. While it provides greater control, it incurs more overhead than `synchronized` and should be used for complex locking scenarios requiring features like fairness or timeout.
 
 ---
