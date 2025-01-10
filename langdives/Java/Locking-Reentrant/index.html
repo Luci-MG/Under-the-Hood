@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#locking" class="md-skip">
+        <a href="#reentrantlock-locking" class="md-skip">
           Skip to content
         </a>
       
@@ -1644,15 +1644,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-locking" class="md-nav__link">
-    <span class="md-ellipsis">
-      What is Locking ?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#what-is-reentrantlock" class="md-nav__link">
     <span class="md-ellipsis">
       What is ReentrantLock ?
@@ -1734,6 +1725,15 @@
   <a href="#performance" class="md-nav__link">
     <span class="md-ellipsis">
       Performance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
     </span>
   </a>
   
@@ -2611,15 +2611,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-locking" class="md-nav__link">
-    <span class="md-ellipsis">
-      What is Locking ?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#what-is-reentrantlock" class="md-nav__link">
     <span class="md-ellipsis">
       What is ReentrantLock ?
@@ -2706,6 +2697,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2729,16 +2729,11 @@
   
 
 
-<h1 id="locking"><strong>Locking</strong>.<a class="headerlink" href="#locking" title="Permanent link">&para;</a></h1>
-<p>Locking is an essential concept in multithreaded programming to prevent race conditions and ensure thread safety. When multiple threads access shared resources, locks ensure that only one thread accesses the critical section at a time.</p>
-<p>This article covers reentrant locks.</p>
-<hr />
-<h2 id="what-is-locking"><strong>What is Locking ?</strong><a class="headerlink" href="#what-is-locking" title="Permanent link">&para;</a></h2>
-<p><strong>Locking</strong> is a way to ensure that <strong>only one thread at a time</strong> executes a critical section or modifies a shared resource, Without proper locks, multiple threads may interfere with each other, leading to data inconsistency or unexpected behavior (race conditions).</p>
-<p>Java offers various <strong>locking mechanisms</strong>, from <strong>synchronized blocks</strong> to <strong>explicit locks</strong> like <code>ReentrantLock</code>.</p>
-<hr />
+<h1 id="reentrantlock-locking"><strong>ReentrantLock Locking</strong><a class="headerlink" href="#reentrantlock-locking" title="Permanent link">&para;</a></h1>
+<p>Locking is an essential concept in multithreaded programming to prevent race conditions and ensure thread safety. When multiple threads access shared resources, locks ensure that only one thread accesses the critical section at a time. Java offers various locking mechanisms, from synchronized blocks to explicit locks like <code>ReentrantLock</code>.</p>
+<p>We will cover ReentrantLock in this article.</p>
 <h2 id="what-is-reentrantlock"><strong>What is <code>ReentrantLock</code> ?</strong><a class="headerlink" href="#what-is-reentrantlock" title="Permanent link">&para;</a></h2>
-<p>The <strong><code>ReentrantLock</code></strong> class, introduced in <strong>Java 5</strong>, offers more control over thread synchronization than the <code>synchronized</code> keyword. It allows for advanced locking techniques such as fairness policies, tryLock, and interruptible locks. Let’s explore everything about <code>ReentrantLock</code>, including its use cases, internal mechanisms, and best practices.</p>
+<p>The <code>ReentrantLock</code> class, introduced in Java 5, offers more control over thread synchronization than the <code>synchronized</code> keyword. It allows for advanced locking techniques such as fairness policies, tryLock, and interruptible locks. Let’s explore everything about <code>ReentrantLock</code>, including its use cases, internal mechanisms, and best practices.</p>
 <p><code>ReentrantLock</code> is a concrete class in the <code>java.util.concurrent.locks</code> package that implements the Lock interface. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2748,8 +2743,8 @@
 <li>Explicit unlocking, unlike the <code>synchronized</code> keyword, which automatically releases the lock when the block exits.</li>
 </ul>
 </div>
-<details class="example" open="open">
-<summary>Example</summary>
+<details class="example">
+<summary>ReentrantLock Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.locks.ReentrantLock</span><span class="p">;</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kd">class</span> <span class="nc">Counter</span><span class="w"> </span><span class="p">{</span>
@@ -2797,10 +2792,9 @@
 </span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<hr />
 <h2 id="how-it-works-internally"><strong>How it Works Internally ?</strong><a class="headerlink" href="#how-it-works-internally" title="Permanent link">&para;</a></h2>
-<p><strong>Lock Acquisition:</strong> When a thread calls <code>lock()</code>, it tries to acquire the lock. If the lock is available, the thread proceeds otherwise, it <strong>blocks</strong> until the lock becomes available.</p>
-<p><strong>Reentrancy:</strong> A thread that holds the lock can acquire the lock again without blocking. This is useful when a thread *nters a method that also calls another synchronized method or block that requires the same lock.</p>
+<p>Lock Acquisition: When a thread calls <code>lock()</code>, it tries to acquire the lock. If the lock is available, the thread proceeds otherwise, it blocks until the lock becomes available.</p>
+<p>Reentrancy: A thread that holds the lock can acquire the lock again without blocking. This is useful when a thread *nters a method that also calls another synchronized method or block that requires the same lock.</p>
 <p><strong>Fair vs Unfair Locking:</strong></p>
 <ul>
 <li>
@@ -2814,12 +2808,11 @@
 </span></code></pre></div></p>
 </li>
 </ul>
-<hr />
 <h2 id="advanced-locking-techniques"><strong>Advanced Locking Techniques</strong><a class="headerlink" href="#advanced-locking-techniques" title="Permanent link">&para;</a></h2>
 <h3 id="trylock"><strong>tryLock()</strong><a class="headerlink" href="#trylock" title="Permanent link">&para;</a></h3>
 <p>The <code>tryLock()</code> method attempts to acquire the lock without blocking. It returns true if the lock is acquired, otherwise false.</p>
-<details class="example" open="open">
-<summary>Example</summary>
+<details class="example">
+<summary><code>tryLock()</code> Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lock</span><span class="p">.</span><span class="na">tryLock</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="c1">// Perform task</span>
@@ -2831,14 +2824,14 @@
 </span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<details class="tip" open="open">
-<summary>When to use ?</summary>
-<p>When you want to avoid <strong>blocking indefinitely</strong> if the lock is not available.</p>
-</details>
+<div class="admonition tip">
+<p class="admonition-title">When to use ?</p>
+<p>When you want to avoid blocking indefinitely if the lock is not available.</p>
+</div>
 <h3 id="trylock-with-timeout"><strong>tryLock with Timeout</strong><a class="headerlink" href="#trylock-with-timeout" title="Permanent link">&para;</a></h3>
 <p>The <code>tryLock(long timeout, TimeUnit unit)</code> method waits for a specific amount of time to acquire the lock.</p>
-<details class="example" open="open">
-<summary>Example</summary>
+<details class="example">
+<summary><code>tryLock()</code> Timeout Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.TimeUnit</span><span class="p">;</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lock</span><span class="p">.</span><span class="na">tryLock</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">SECONDS</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
@@ -2852,14 +2845,14 @@
 </span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<details class="tip" open="open">
-<summary>When to use ?</summary>
+<div class="admonition tip">
+<p class="admonition-title">When to use ?</p>
 <p>When waiting indefinitely is not practical, such as network operations or I/O tasks.</p>
-</details>
+</div>
 <h3 id="interruptible-lock-acquisition"><strong>Interruptible Lock Acquisition</strong><a class="headerlink" href="#interruptible-lock-acquisition" title="Permanent link">&para;</a></h3>
-<p>The <code>lockInterruptibly()</code> method allows a thread to acquire the lock but <strong>respond to interrupts</strong> while waiting.</p>
-<details class="example" open="open">
-<summary>Example</summary>
+<p>The <code>lockInterruptibly()</code> method allows a thread to acquire the lock but respond to interrupts while waiting.</p>
+<details class="example">
+<summary><code>lockInterruptibly</code> Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">lock</span><span class="p">.</span><span class="na">lockInterruptibly</span><span class="p">();</span><span class="w">  </span><span class="c1">// Wait for lock, but respond to interrupts</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
@@ -2872,14 +2865,13 @@
 </span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<details class="tip" open="open">
-<summary>When to use ?</summary>
-<p>Use when a thread needs to be <strong>interrupted</strong> while waiting for a lock.</p>
-</details>
-<hr />
+<div class="admonition tip">
+<p class="admonition-title">When to use ?</p>
+<p>Use when a thread needs to be interrupted while waiting for a lock.</p>
+</div>
 <h2 id="behavior"><strong>Behavior</strong><a class="headerlink" href="#behavior" title="Permanent link">&para;</a></h2>
-<p>A reentrant lock means that the same thread can acquire the lock multiple times without blocking itself. However, the thread must <strong>release the lock the same number of times</strong> to fully unlock it.</p>
-<details class="example" open="open">
+<p>A reentrant lock means that the same thread can acquire the lock multiple times without blocking itself. However, the thread must release the lock the same number of times to fully unlock it.</p>
+<details class="example">
 <summary>Behavior Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">class</span> <span class="nc">ReentrantExample</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">ReentrantLock</span><span class="w"> </span><span class="n">lock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ReentrantLock</span><span class="p">();</span>
@@ -2904,15 +2896,14 @@
 </span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="p">}</span>
 </span></code></pre></div>
-<details class="info" open="open">
-<summary>Explanation</summary>
-<p>In this example, <strong><code>outerMethod</code></strong> calls <strong><code>innerMethod</code></strong>, and both methods acquire the same lock. This works without issues because <code>ReentrantLock</code> allows <strong>reentrant locking</strong>.</p>
+<div class="admonition info">
+<p class="admonition-title">Explanation</p>
+<p>In this example, <code>outerMethod</code> calls <code>innerMethod</code>, and both methods acquire the same lock. This works without issues because <code>ReentrantLock</code> allows <strong>reentrant locking</strong>.</p>
+</div>
 </details>
-</details>
-<hr />
 <h2 id="condition-variables"><strong>Condition Variables</strong><a class="headerlink" href="#condition-variables" title="Permanent link">&para;</a></h2>
-<p>The <code>Condition</code> interface (associated with a <code>ReentrantLock</code>) allows a thread to <strong>wait for a condition to be met</strong> before proceeding. It provides <strong>better control</strong> than the traditional <code>wait()</code>/<code>notify()</code>.</p>
-<details class="example" open="open">
+<p>The <code>Condition</code> interface (associated with a <code>ReentrantLock</code>) allows a thread to wait for a condition to be met before proceeding. It provides better control than the traditional <code>wait()</code>/<code>notify()</code>.</p>
+<details class="example">
 <summary>Condition Variables Example</summary>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.locks.Condition</span><span class="p">;</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.locks.ReentrantLock</span><span class="p">;</span>
@@ -2946,9 +2937,10 @@
 </span><span id="__span-7-30"><a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<hr />
 <h2 id="performance"><strong>Performance</strong><a class="headerlink" href="#performance" title="Permanent link">&para;</a></h2>
 <p>ReentrantLock has more overhead than <code>synchronized</code> due to fairness policies and explicit lock management, Use <code>synchronized</code> for simple scenarios, use reentrantLock for more complex locking requirements(eg: tryLock, fairness).</p>
+<h2 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p><code>ReentrantLock</code> is a flexible locking mechanism in Java that offers advanced synchronization features beyond <code>synchronized</code>. It provides reentrant locking, fairness policies (fair and unfair locks), and explicit lock management. Key methods include <code>lock()</code>, <code>tryLock()</code> (non-blocking lock acquisition), <code>tryLock</code> with timeout, and <code>lockInterruptibly()</code> (responds to interrupts). ReentrantLock supports reentrant behavior, allowing the same thread to acquire the lock multiple times, and uses condition variables for fine-grained thread coordination. While it provides greater control, it incurs more overhead than <code>synchronized</code> and should be used for complex locking scenarios requiring features like fairness or timeout.</p>
 <hr />
 
 
@@ -2972,7 +2964,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 6, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 10, 2025</span>
   </span>
 
     
